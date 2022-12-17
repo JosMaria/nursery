@@ -1,16 +1,12 @@
 package com.fdryt.nursery.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ForeignKey;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.SEQUENCE;
 
 @NoArgsConstructor
@@ -34,4 +30,18 @@ public class Identification {
     @ManyToOne
     @JoinColumn(nullable = false, foreignKey = @ForeignKey(name = "fk_identification"))
     private Family family;
+
+    @ManyToMany(fetch = LAZY)
+    @JoinTable(
+            name = "identifications_classifications",
+            joinColumns = @JoinColumn(foreignKey = @ForeignKey(name = "fk_iden_classi"), name = "identification_id"),
+            inverseJoinColumns = @JoinColumn(foreignKey = @ForeignKey(name = "fk_classi_iden"), name = "classification_id"))
+    private final Set<Classification> classificationsByUtility = new HashSet<>();
+
+    public Identification(String commonName, String scientificName, Character firstLetterLastname, Family family) {
+        this.commonName = commonName;
+        this.scientificName = scientificName;
+        this.firstLetterLastname = firstLetterLastname;
+        this.family = family;
+    }
 }
