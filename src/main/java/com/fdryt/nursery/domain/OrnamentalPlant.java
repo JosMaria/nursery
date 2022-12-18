@@ -25,7 +25,7 @@ public class OrnamentalPlant {
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "ornamental_plant_sequence")
     @SequenceGenerator(name = "ornamental_plant_sequence", sequenceName = "ornamental_plant_sequence", allocationSize = 1)
-    private Long id;
+    private Integer id;
 
     @Enumerated(value = STRING)
     private Status status;
