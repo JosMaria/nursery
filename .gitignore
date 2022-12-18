@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### Personal ###
-src/main/java/com/fdryt/nursery/configuration/
+# src/main/java/com/fdryt/nursery/configuration/

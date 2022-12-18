@@ -1,11 +1,22 @@
 package com.fdryt.nursery.domain;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
 import java.util.Set;
 
+import static jakarta.persistence.CascadeType.PERSIST;
 import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.SEQUENCE;
 
@@ -27,8 +38,8 @@ public class Identification {
 
     private Character firstLetterLastname;
 
-    @ManyToOne
-    @JoinColumn(nullable = false, foreignKey = @ForeignKey(name = "fk_identification"))
+    @OneToOne(cascade = PERSIST)
+    @JoinColumn(foreignKey = @ForeignKey(name = "fk_family"))
     private Family family;
 
     @ManyToMany(fetch = LAZY)
