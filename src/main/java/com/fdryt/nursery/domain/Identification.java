@@ -13,6 +13,7 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.NoArgsConstructor;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -54,5 +55,13 @@ public class Identification {
         this.scientificName = scientificName;
         this.firstLetterLastname = firstLetterLastname;
         this.family = family;
+    }
+
+    public void addClassification(Classification classification) {
+        classificationsByUtility.add(classification);
+    }
+
+    public void addClassifications(Collection<Classification> classifications) {
+        classificationsByUtility.addAll(classifications);
     }
 }
