@@ -9,6 +9,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 
@@ -17,6 +18,7 @@ import static jakarta.persistence.EnumType.STRING;
 import static jakarta.persistence.GenerationType.SEQUENCE;
 import static org.hibernate.annotations.OnDeleteAction.CASCADE;
 
+@Getter
 @NoArgsConstructor
 @Entity
 @Table(name = "ornamental_plants")
@@ -27,6 +29,7 @@ public class OrnamentalPlant {
     @SequenceGenerator(name = "ornamental_plant_sequence", sequenceName = "ornamental_plant_sequence", allocationSize = 1)
     private Integer id;
 
+    @JoinColumn(nullable = false)
     @Enumerated(value = STRING)
     private Status status;
 
