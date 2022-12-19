@@ -3,11 +3,6 @@ server:
     include-message: always
 
 spring:
-  security:
-    user:
-      name: jose
-      password: maria17
-      roles: ADMIN
   datasource:
     url: jdbc:h2:mem:nursery
     driver-class-name: org.h2.Driver
