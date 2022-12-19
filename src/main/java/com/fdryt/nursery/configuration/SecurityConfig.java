@@ -40,15 +40,27 @@ public class SecurityConfig {
         UserDetails jose = User.builder()
                 .username("jose")
                 .password(passwordEncoder.encode("maria17"))
-                .roles("USER")
+                .roles("ADMINISTRATOR")
                 .build();
 
-        UserDetails darleen = User.builder()
+        UserDetails consuelo = User.builder()
                 .username("consuelo")
                 .password(passwordEncoder.encode("consuelo17"))
-                .roles("ADMIN")
+                .roles("ADMINISTRATOR")
                 .build();
 
-        return new InMemoryUserDetailsManager(jose, darleen);
+        UserDetails cristina = User.builder()
+                .username("cristina")
+                .password(passwordEncoder.encode("cristina17"))
+                .roles("ASSISTANT")
+                .build();
+
+        UserDetails nicole = User.builder()
+                .username("nicole")
+                .password("nicole17")
+                .roles("ASSISTANT")
+                .build();
+
+        return new InMemoryUserDetailsManager(jose, consuelo, cristina, nicole);
     }
 }
