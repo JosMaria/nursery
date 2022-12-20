@@ -1,5 +1,6 @@
 package com.fdryt.nursery.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -7,10 +8,21 @@ import lombok.Getter;
 @AllArgsConstructor
 public class IdentificationResponseDTO {
 
+    @JsonProperty("id")
     private Integer id;
+
+    @JsonProperty("commonName")
     private String commonName;
+
+    @JsonProperty("scientificName")
     private String scientificName;
+
+    @JsonProperty("firstLetterLastname")
     private Character firstLetterLastname;
+
+    @JsonProperty("family")
     private String nameFamily;
+
+    @JsonProperty("status")
     private String status;
 }
