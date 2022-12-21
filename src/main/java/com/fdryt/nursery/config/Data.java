@@ -1,4 +1,4 @@
-package com.fdryt.nursery.configuration;
+package com.fdryt.nursery.config;
 
 import com.fdryt.nursery.domain.*;
 import com.fdryt.nursery.repository.ClassificationRepository;

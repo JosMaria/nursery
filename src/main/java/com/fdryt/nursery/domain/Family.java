@@ -23,9 +23,9 @@ public class Family {
     private Integer id;
 
     @Column(length = 50, nullable = false, unique = true)
-    private String commonName;
+    private String name;
 
-    public Family(String commonName) {
-        this.commonName = commonName;
+    public Family(String name) {
+        this.name = name;
     }
 }
