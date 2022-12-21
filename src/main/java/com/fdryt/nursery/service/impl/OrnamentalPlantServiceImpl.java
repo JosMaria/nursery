@@ -36,7 +36,7 @@ public class OrnamentalPlantServiceImpl implements OrnamentalPlantService {
                 identification.getCommonName(),
                 identification.getScientificName(),
                 identification.getFirstLetterLastname(),
-                family != null ? family.getCommonName() : null,
+                family != null ? family.getName() : null,
                 ornamentalPlant.getStatus().name());
     }
 }
