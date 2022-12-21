@@ -1,13 +1,11 @@
 package com.fdryt.nursery.service.impl;
 
-import com.fdryt.nursery.domain.Family;
-import com.fdryt.nursery.domain.Identification;
-import com.fdryt.nursery.domain.OrnamentalPlant;
 import com.fdryt.nursery.dto.IdentificationResponseDTO;
 import com.fdryt.nursery.repository.OrnamentalPlantRepository;
 import com.fdryt.nursery.service.OrnamentalPlantService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +15,7 @@ import java.util.List;
 @Service
 public class OrnamentalPlantServiceImpl implements OrnamentalPlantService {
 
+    private final ModelMapper mapper;
     private final OrnamentalPlantRepository repository;
 
     @Override
@@ -24,19 +23,7 @@ public class OrnamentalPlantServiceImpl implements OrnamentalPlantService {
         log.info("Fetching all the identifications");
         return repository.findAll()
                 .stream()
-                .map(this::entityToDTO)
+                .map(ornamentalPlant -> mapper.map(ornamentalPlant, IdentificationResponseDTO.class))
                 .toList();
-    }
-
-    private IdentificationResponseDTO entityToDTO(OrnamentalPlant ornamentalPlant) {
-        Identification identification = ornamentalPlant.getIdentification();
-        Family family = identification.getFamily();
-        return new IdentificationResponseDTO(
-                ornamentalPlant.getId(),
-                identification.getCommonName(),
-                identification.getScientificName(),
-                identification.getFirstLetterLastname(),
-                family != null ? family.getCommonName() : null,
-                ornamentalPlant.getStatus().name());
     }
 }
