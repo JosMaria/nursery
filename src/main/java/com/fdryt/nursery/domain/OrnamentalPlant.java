@@ -1,17 +1,13 @@
 package com.fdryt.nursery.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.ForeignKey;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import static jakarta.persistence.CascadeType.PERSIST;
 import static jakarta.persistence.EnumType.STRING;
@@ -33,6 +29,10 @@ public class OrnamentalPlant {
     @Enumerated(value = STRING)
     private Status status;
 
+    @OneToMany(mappedBy = "ornamentalPlant")
+    @OnDelete(action = CASCADE)
+    private final Set<Picture> urlPictures = new HashSet<>();
+
     @OneToOne(cascade = PERSIST)
     @OnDelete(action = CASCADE)
     @JoinColumn(nullable = false, foreignKey = @ForeignKey(name = "fk_identification"))
@@ -41,5 +41,13 @@ public class OrnamentalPlant {
     public OrnamentalPlant(Status status, Identification identification) {
         this.status = status;
         this.identification = identification;
+    }
+
+    public void addPicture(Picture picture) {
+        urlPictures.add(picture);
+    }
+
+    public void addPictures(Collection<Picture> pictures) {
+        urlPictures.addAll(pictures);
     }
 }
