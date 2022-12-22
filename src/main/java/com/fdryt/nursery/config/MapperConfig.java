@@ -2,7 +2,9 @@ package com.fdryt.nursery.config;
 
 import com.fdryt.nursery.domain.Identification;
 import com.fdryt.nursery.domain.OrnamentalPlant;
+import com.fdryt.nursery.domain.Status;
 import com.fdryt.nursery.dto.IdentificationResponseDTO;
+import com.fdryt.nursery.dto.ProductResponseDTO;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
@@ -27,6 +29,20 @@ public class MapperConfig {
                 using(converter).map(source.getIdentification(), destination.getNameFamily());
             }
         });
+
+        Converter<Status, String> statusToString = context -> context.getSource().name();
+
+        mapper.addMappings(new PropertyMap<OrnamentalPlant, ProductResponseDTO>() {
+            @Override
+            protected void configure() {
+                map().setCommonName(source.getIdentification().getCommonName());
+                map().setScientificName(source.getIdentification().getScientificName());
+                map().setFirstLetterLastname(source.getIdentification().getFirstLetterLastname());
+                using(converter).map(source.getIdentification(), destination.getNameFamily());
+                using(statusToString).map(source.getStatus(), destination.getStatus());
+            }
+        });
+
         return mapper;
     }
 }

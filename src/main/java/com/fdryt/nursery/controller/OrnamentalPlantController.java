@@ -1,6 +1,7 @@
 package com.fdryt.nursery.controller;
 
 import com.fdryt.nursery.dto.IdentificationResponseDTO;
+import com.fdryt.nursery.dto.ProductResponseDTO;
 import com.fdryt.nursery.service.OrnamentalPlantService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,13 +13,18 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/ornamental")
+@RequestMapping("/api/nursery")
 public class OrnamentalPlantController {
 
     private final OrnamentalPlantService service;
 
-    @GetMapping
+    @GetMapping("/identifications")
     public ResponseEntity<List<IdentificationResponseDTO>> findAllIdentifications() {
         return ResponseEntity.ok(service.findAllIdentifications());
+    }
+
+    @GetMapping("/products")
+    public ResponseEntity<List<ProductResponseDTO>> findOrnamentalPlants() {
+        return ResponseEntity.ok(service.findOrnamentalPlants());
     }
 }
