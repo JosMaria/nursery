@@ -7,6 +7,7 @@ import com.fdryt.nursery.service.OrnamentalPlantService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,9 +30,9 @@ public class OrnamentalPlantServiceImpl implements OrnamentalPlantService {
     }
 
     @Override
-    public List<ProductResponseDTO> findOrnamentalPlants() {
+    public List<ProductResponseDTO> findOrnamentalPlants(Pageable pageable) {
         log.info("Fetching all the products");
-        return repository.findAll()
+        return repository.findAllSortedByPriority(pageable)
                 .stream()
                 .map(ornamentalPlant -> mapper.map(ornamentalPlant, ProductResponseDTO.class))
                 .toList();

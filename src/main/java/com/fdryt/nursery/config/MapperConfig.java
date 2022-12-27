@@ -11,6 +11,8 @@ import org.modelmapper.PropertyMap;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Set;
+
 @Configuration
 public class MapperConfig {
 
@@ -31,6 +33,10 @@ public class MapperConfig {
         });
 
         Converter<Status, String> statusToString = context -> context.getSource().name();
+        Converter<Set<String>, String> setStringToString = context ->
+                context.getSource().stream()
+                        .findFirst()
+                        .orElse("https://image_not_found");
 
         mapper.addMappings(new PropertyMap<OrnamentalPlant, ProductResponseDTO>() {
             @Override
@@ -40,6 +46,7 @@ public class MapperConfig {
                 map().setFirstLetterLastname(source.getIdentification().getFirstLetterLastname());
                 using(converter).map(source.getIdentification(), destination.getNameFamily());
                 using(statusToString).map(source.getStatus(), destination.getStatus());
+                using(setStringToString).map(source.getUrlPictures(), destination.getUrlPicture());
             }
         });
 

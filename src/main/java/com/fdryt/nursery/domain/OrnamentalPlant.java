@@ -37,9 +37,13 @@ public class OrnamentalPlant {
     @JoinColumn(nullable = false, foreignKey = @ForeignKey(name = "fk_identification"))
     private Identification identification;
 
-    public OrnamentalPlant(Status status, Identification identification) {
+    @Column(length = 1)
+    private Integer priority = 0;
+
+    public OrnamentalPlant(Status status, Identification identification, Integer priority) {
         this.status = status;
         this.identification = identification;
+        this.priority = priority;
     }
 
     public void addPicture(String urlPicture) {

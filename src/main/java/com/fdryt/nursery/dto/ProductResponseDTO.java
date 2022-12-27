@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -32,6 +30,9 @@ public class ProductResponseDTO {
     @JsonProperty("status")
     private String status;
 
-    @JsonProperty("pictures")
-    private Set<String> urlPictures;
+    @JsonProperty("priority")
+    private Integer priority;
+
+    @JsonProperty("urlPicture")
+    private String urlPicture;
 }
