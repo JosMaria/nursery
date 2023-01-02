@@ -1,5 +1,5 @@
-package com.fdryt.nursery.configuration;
-
+package com.fdryt.nursery.config.security;
+/*
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-import static org.springframework.security.config.Customizer.withDefaults;
+import static org.springframework.security.config.Customizer.withDefaults;*/
+/*
 
 @RequiredArgsConstructor
 @Configuration
@@ -27,8 +28,9 @@ public class SecurityConfig {
                 .csrf().disable()
                 .authorizeHttpRequests(
                         authorize -> {
-                            authorize.requestMatchers("/api/ornamental").permitAll();
-                            authorize.anyRequest().authenticated();
+//                            authorize.requestMatchers("/api/nursery/**").permitAll();
+//                            authorize.anyRequest().authenticated();
+                            authorize.anyRequest().permitAll();
                         }
                 )
                 .httpBasic(withDefaults())
@@ -64,3 +66,4 @@ public class SecurityConfig {
         return new InMemoryUserDetailsManager(jose, consuelo, cristina, nicole);
     }
 }
+*/

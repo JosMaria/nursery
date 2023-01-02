@@ -7,7 +7,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -193,155 +192,211 @@ public class Data {
             Identification dracena = new Identification("dracena", null, null, null);
             dracena.addClassification(ornamental);
 
-            OrnamentalPlant florDeNavidadPlant = new OrnamentalPlant(AVAILABLE, florDeNavidad);
-            florDeNavidadPlant.addPictures(List.of(new Picture("https://url_image_o0_1"), new Picture("https://url_image_o0_2")));
+            OrnamentalPlant florDeNavidadPlant = new OrnamentalPlant(AVAILABLE, florDeNavidad, 9);
+            florDeNavidadPlant.addPicture("https://url_image_o0_1");
+            florDeNavidadPlant.addPicture("https://url_image_o0_2");
 
-            OrnamentalPlant acaciaOrridaPlant = new OrnamentalPlant(AVAILABLE, acaciaOrrida);
-            acaciaOrridaPlant.addPictures(List.of(new Picture("https://url_image_o1_1"), new Picture("https://url_image_o1_2")));
+            OrnamentalPlant acaciaOrridaPlant = new OrnamentalPlant(AVAILABLE, acaciaOrrida, 7);
+            acaciaOrridaPlant.addPicture("https://url_image_o1_1");
+            acaciaOrridaPlant.addPicture("https://url_image_o1_2");
 
-            OrnamentalPlant agavePlant = new OrnamentalPlant(IN_CONSERVATION, agave);
-            agavePlant.addPictures(List.of(new Picture("https://url_image_o2_1"), new Picture("https://url_image_o2_2")));
+            OrnamentalPlant agavePlant = new OrnamentalPlant(IN_CONSERVATION, agave, 1);
+            agavePlant.addPicture("https://url_image_o2_1");
+            agavePlant.addPicture("https://url_image_o2_2");
 
-            OrnamentalPlant ajiOrnamentalPlant = new OrnamentalPlant(AVAILABLE, ajiOrnamental);
-            ajiOrnamentalPlant.addPictures(List.of(new Picture("https://url_image_o3_1"), new Picture("https://url_image_o3_2")));
+            OrnamentalPlant ajiOrnamentalPlant = new OrnamentalPlant(AVAILABLE, ajiOrnamental, 2);
+            ajiOrnamentalPlant.addPicture("https://url_image_o3_1");
+            ajiOrnamentalPlant.addPicture("https://url_image_o3_2");
 
-            OrnamentalPlant ajugaPlant = new OrnamentalPlant(NON_EXISTENT, ajuga);
-            ajugaPlant.addPictures(List.of(new Picture("https://url_image_o4_1"), new Picture("https://url_image_o4_2")));
+            OrnamentalPlant ajugaPlant = new OrnamentalPlant(NON_EXISTENT, ajuga, 5);
+            ajugaPlant.addPicture("https://url_image_o4_1");
+            ajugaPlant.addPicture("https://url_image_o4_2");
 
-            OrnamentalPlant alamoPlant = new OrnamentalPlant(AVAILABLE, alamo);
-            alamoPlant.addPictures(List.of(new Picture("https://url_image_o5_1"), new Picture("https://url_image_o5_2")));
+            OrnamentalPlant alamoPlant = new OrnamentalPlant(AVAILABLE, alamo, 8);
+            alamoPlant.addPicture("https://url_image_o5_1");
+            alamoPlant.addPicture("https://url_image_o5_2");
 
-            OrnamentalPlant aloePlant = new OrnamentalPlant(IN_CONSERVATION, aloe);
-            aloePlant.addPictures(List.of(new Picture("https://url_image_o6_1"), new Picture("https://url_image_o6_2")));
+            OrnamentalPlant aloePlant = new OrnamentalPlant(IN_CONSERVATION, aloe, 4);
+            aloePlant.addPicture("https://url_image_o6_1");
+            aloePlant.addPicture("https://url_image_o6_2");
 
-            OrnamentalPlant amarilisPlant = new OrnamentalPlant(NON_EXISTENT, amarilis);
-            amarilisPlant.addPictures(List.of(new Picture("https://url_image_o7_1"), new Picture("https://url_image_o7_2")));
+            OrnamentalPlant amarilisPlant = new OrnamentalPlant(NON_EXISTENT, amarilis, 6);
+            amarilisPlant.addPicture("https://url_image_o7_1");
+            amarilisPlant.addPicture("https://url_image_o7_2");
 
-            OrnamentalPlant amorDeHombrePlant = new OrnamentalPlant(AVAILABLE, amorDeHombre);
-            amorDeHombrePlant.addPictures(Collections.singleton(new Picture("https://url_image_o8_1")));
+            OrnamentalPlant amorDeHombrePlant = new OrnamentalPlant(AVAILABLE, amorDeHombre, 2);
+            amorDeHombrePlant.addPicture("https://url_image_o8_1");
 
-            OrnamentalPlant anturioPlant = new OrnamentalPlant(IN_CONSERVATION, anturio);
-            anturioPlant.addPictures(List.of(new Picture("https://url_image_o9_1"), new Picture("https://url_image_o9_2")));
+            OrnamentalPlant anturioPlant = new OrnamentalPlant(IN_CONSERVATION, anturio, 2);
+            anturioPlant.addPicture("https://url_image_o9_1");
+            anturioPlant.addPicture("https://url_image_o9_2");
 
-            OrnamentalPlant anturioGigantePlant = new OrnamentalPlant(AVAILABLE, anturioGigante);
-            anturioGigantePlant.addPictures(List.of(new Picture("https://url_image_o10_1"), new Picture("https://url_image_o10_2")));
+            OrnamentalPlant anturioGigantePlant = new OrnamentalPlant(AVAILABLE, anturioGigante, 1);
+            anturioGigantePlant.addPicture("https://url_image_o10_1");
+            anturioGigantePlant.addPicture("https://url_image_o10_2");
 
-            OrnamentalPlant aspidrastaPlant = new OrnamentalPlant(AVAILABLE, aspidrasta);
-            aspidrastaPlant.addPictures(List.of(new Picture("https://url_image_o11_1"), new Picture("https://url_image_o11_2")));
+            OrnamentalPlant aspidrastaPlant = new OrnamentalPlant(AVAILABLE, aspidrasta, 5);
+            aspidrastaPlant.addPicture("https://url_image_o11_1");
+            aspidrastaPlant.addPicture("https://url_image_o11_2");
 
-            OrnamentalPlant begoniaCebraPlant = new OrnamentalPlant(AVAILABLE, begoniaCebra);
-            begoniaCebraPlant.addPictures(List.of(new Picture("https://url_image_o12_1"), new Picture("https://url_image_o12_2")));
+            OrnamentalPlant begoniaCebraPlant = new OrnamentalPlant(AVAILABLE, begoniaCebra, 2);
+            begoniaCebraPlant.addPicture("https://url_image_o12_1");
+            begoniaCebraPlant.addPicture("https://url_image_o12_2");
 
-            OrnamentalPlant begoniaRexPlant = new OrnamentalPlant(NON_EXISTENT, begoniaRex);
-            begoniaRexPlant.addPictures(List.of(new Picture("https://url_image_o13_1"), new Picture("https://url_image_o13_2")));
+            OrnamentalPlant begoniaRexPlant = new OrnamentalPlant(NON_EXISTENT, begoniaRex, 4);
+            begoniaRexPlant.addPicture("https://url_image_o13_1");
+            begoniaRexPlant.addPicture("https://url_image_o13_2");
 
-            OrnamentalPlant begoniaTuberosaPlant = new OrnamentalPlant(IN_CONSERVATION, begoniaTuberosa);
-            begoniaTuberosaPlant.addPictures(List.of(new Picture("https://url_image_o14_1"), new Picture("https://url_image_o14_2")));
+            OrnamentalPlant begoniaTuberosaPlant = new OrnamentalPlant(IN_CONSERVATION, begoniaTuberosa, 8);
+            begoniaTuberosaPlant.addPicture("https://url_image_o14_1");
+            begoniaTuberosaPlant.addPicture("https://url_image_o14_2");
 
-            OrnamentalPlant bingoDeOroPlant = new OrnamentalPlant(AVAILABLE, bingoDeOro);
-            bingoDeOroPlant.addPictures(List.of(new Picture("https://url_image_o15_1"), new Picture("https://url_image_o15_2"), new Picture("https://url_image_o15_3")));
+            OrnamentalPlant bingoDeOroPlant = new OrnamentalPlant(AVAILABLE, bingoDeOro, 9);
+            bingoDeOroPlant.addPicture("https://url_image_o15_1");
+            bingoDeOroPlant.addPicture("https://url_image_o15_2");
+            bingoDeOroPlant.addPicture("https://url_image_o15_3");
 
-            OrnamentalPlant bouquetDeNoviaPlant = new OrnamentalPlant(AVAILABLE, bouquetDeNovia);
-            bouquetDeNoviaPlant.addPictures(List.of(new Picture("https://url_image_o16_1"), new Picture("https://url_image_o16_2"), new Picture("https://url_image_o16_3")));
+            OrnamentalPlant bouquetDeNoviaPlant = new OrnamentalPlant(AVAILABLE, bouquetDeNovia, 2);
+            bouquetDeNoviaPlant.addPicture("https://url_image_o16_1");
+            bouquetDeNoviaPlant.addPicture("https://url_image_o16_2");
+            bouquetDeNoviaPlant.addPicture("https://url_image_o16_3");
 
-            OrnamentalPlant brachichitoPlant = new OrnamentalPlant(NON_EXISTENT, brachichito);
-            brachichitoPlant.addPictures(List.of(new Picture("https://url_image_o17_1"), new Picture("https://url_image_o17_2"), new Picture("https://url_image_o17_3")));
+            OrnamentalPlant brachichitoPlant = new OrnamentalPlant(NON_EXISTENT, brachichito, 1);
+            brachichitoPlant.addPicture("https://url_image_o17_1");
+            brachichitoPlant.addPicture("https://url_image_o17_2");
+            brachichitoPlant.addPicture("https://url_image_o17_3");
 
-            OrnamentalPlant bromeliaPlant = new OrnamentalPlant(IN_CONSERVATION, bromelia);
-            bromeliaPlant.addPictures(List.of(new Picture("https://url_image_o18_1"), new Picture("https://url_image_o18_2")));
+            OrnamentalPlant bromeliaPlant = new OrnamentalPlant(IN_CONSERVATION, bromelia, 1);
+            bromeliaPlant.addPicture("https://url_image_o18_1");
+            bromeliaPlant.addPicture("https://url_image_o18_2");
 
-            OrnamentalPlant buganvillaPlant = new OrnamentalPlant(AVAILABLE, buganvilla);
-            buganvillaPlant.addPictures(List.of(new Picture("https://url_image_o19_1"), new Picture("https://url_image_o19_2"), new Picture("https://url_image_o19_3")));
+            OrnamentalPlant buganvillaPlant = new OrnamentalPlant(AVAILABLE, buganvilla, 1);
+            buganvillaPlant.addPicture("https://url_image_o19_1");
+            buganvillaPlant.addPicture("https://url_image_o19_2");
+            buganvillaPlant.addPicture("https://url_image_o19_3");
 
-            OrnamentalPlant cactuSanPedroPlant = new OrnamentalPlant(AVAILABLE, cactuSanPedro);
-            cactuSanPedroPlant.addPictures(List.of(new Picture("https://url_image_o20_1"), new Picture("https://url_image_o20_2"), new Picture("https://url_image_o20_3")));
+            OrnamentalPlant cactuSanPedroPlant = new OrnamentalPlant(AVAILABLE, cactuSanPedro, 1);
+            cactuSanPedroPlant.addPicture("https://url_image_o20_1");
+            cactuSanPedroPlant.addPicture("https://url_image_o20_2");
+            cactuSanPedroPlant.addPicture("https://url_image_o20_3");
 
-            OrnamentalPlant cactuColaDeRataPlant = new OrnamentalPlant(AVAILABLE, cactuColaDeRata);
-            cactuColaDeRataPlant.addPictures(List.of(new Picture("https://url_image_o21_1"), new Picture("https://url_image_o21_2")));
+            OrnamentalPlant cactuColaDeRataPlant = new OrnamentalPlant(AVAILABLE, cactuColaDeRata, 2);
+            cactuColaDeRataPlant.addPicture("https://url_image_o21_1");
+            cactuColaDeRataPlant.addPicture("https://url_image_o21_2");
 
-            OrnamentalPlant cactuEstrellaDeMarPlant = new OrnamentalPlant(AVAILABLE, cactuEstrellaDeMar);
-            cactuEstrellaDeMarPlant.addPictures(List.of(new Picture("https://url_image_o22_1"), new Picture("https://url_image_o22_2")));
+            OrnamentalPlant cactuEstrellaDeMarPlant = new OrnamentalPlant(AVAILABLE, cactuEstrellaDeMar, 5);
+            cactuEstrellaDeMarPlant.addPicture("https://url_image_o22_1");
+            cactuEstrellaDeMarPlant.addPicture("https://url_image_o22_2");
 
-            OrnamentalPlant cactuFlorDeMayoPlant = new OrnamentalPlant(NON_EXISTENT, cactuFlorDeMayo);
-            cactuFlorDeMayoPlant.addPictures(List.of(new Picture("https://url_image_o23_1"), new Picture("https://url_image_o23_2")));
+            OrnamentalPlant cactuFlorDeMayoPlant = new OrnamentalPlant(NON_EXISTENT, cactuFlorDeMayo, 8);
+            cactuFlorDeMayoPlant.addPicture("https://url_image_o23_1");
+            cactuFlorDeMayoPlant.addPicture("https://url_image_o23_2");
 
-            OrnamentalPlant cactuLeopardoPlant = new OrnamentalPlant(AVAILABLE, cactuLeopardo);
-            cactuLeopardoPlant.addPictures(List.of(new Picture("https://url_image_o24_1"), new Picture("https://url_image_o24_2")));
+            OrnamentalPlant cactuLeopardoPlant = new OrnamentalPlant(AVAILABLE, cactuLeopardo, 6);
+            cactuLeopardoPlant.addPicture("https://url_image_o24_1");
+            cactuLeopardoPlant.addPicture("https://url_image_o24_2");
 
-            OrnamentalPlant cactuMamilariaPlant = new OrnamentalPlant(AVAILABLE, cactuMamilaria);
-            cactuMamilariaPlant.addPictures(List.of(new Picture("https://url_image_o25_1"), new Picture("https://url_image_o25_2")));
+            OrnamentalPlant cactuMamilariaPlant = new OrnamentalPlant(AVAILABLE, cactuMamilaria, 6);
+            cactuMamilariaPlant.addPicture("https://url_image_o25_1");
+            cactuMamilariaPlant.addPicture("https://url_image_o25_2");
 
-            OrnamentalPlant cactuNopalPlant = new OrnamentalPlant(AVAILABLE, cactuNopal);
-            cactuNopalPlant.addPictures(Collections.singletonList(new Picture("https://url_image_o26_1")));
+            OrnamentalPlant cactuNopalPlant = new OrnamentalPlant(AVAILABLE, cactuNopal, 8);
+            cactuNopalPlant.addPicture("https://url_image_o26_1");
 
-            OrnamentalPlant cactuSerruchoPlant = new OrnamentalPlant(NON_EXISTENT, cactuSerrucho);
-            cactuSerruchoPlant.addPicture(new Picture("https://url_image_o27_1"));
+            OrnamentalPlant cactuSerruchoPlant = new OrnamentalPlant(NON_EXISTENT, cactuSerrucho, 6);
+            cactuSerruchoPlant.addPicture("https://url_image_o27_1");
 
-            OrnamentalPlant cactuVariadosPlant = new OrnamentalPlant(IN_CONSERVATION, cactuVariados);
-            cactuVariadosPlant.addPicture(new Picture("https://url_image_o28_1"));
+            OrnamentalPlant cactuVariadosPlant = new OrnamentalPlant(IN_CONSERVATION, cactuVariados, 2);
+            cactuVariadosPlant.addPicture("https://url_image_o28_1");
 
-            OrnamentalPlant cafePlant = new OrnamentalPlant(AVAILABLE, cafe);
-            cafePlant.addPicture(new Picture("https://url_image_o29_1"));
+            OrnamentalPlant cafePlant = new OrnamentalPlant(AVAILABLE, cafe, 2);
+            cafePlant.addPicture("https://url_image_o29_1");
 
-            OrnamentalPlant calaPlant = new OrnamentalPlant(IN_CONSERVATION, cala);
-            calaPlant.addPictures(List.of(new Picture("https://url_image_o30_1"), new Picture("https://url_image_o30_2")));
+            OrnamentalPlant calaPlant = new OrnamentalPlant(IN_CONSERVATION, cala, 2);
+            calaPlant.addPicture("https://url_image_o30_1");
+            calaPlant.addPicture("https://url_image_o30_2");
 
-            OrnamentalPlant calateaLargaPlant = new OrnamentalPlant(AVAILABLE, calateaLarga);
-            calateaLargaPlant.addPictures(List.of(new Picture("https://url_image_o31_1"), new Picture("https://url_image_o31_2")));
+            OrnamentalPlant calateaLargaPlant = new OrnamentalPlant(AVAILABLE, calateaLarga, 2);
+            calateaLargaPlant.addPicture("https://url_image_o31_1");
+            calateaLargaPlant.addPicture("https://url_image_o31_2");
 
-            OrnamentalPlant calateaZebrinaPlant = new OrnamentalPlant(IN_CONSERVATION, calateaZebrina);
-            calateaZebrinaPlant.addPictures(List.of(new Picture("https://url_image_o32_1"), new Picture("https://url_image_o32_2")));
+            OrnamentalPlant calateaZebrinaPlant = new OrnamentalPlant(IN_CONSERVATION, calateaZebrina, 2);
+            calateaZebrinaPlant.addPicture("https://url_image_o32_1");
+            calateaZebrinaPlant.addPicture("https://url_image_o32_2");
 
-            OrnamentalPlant canelaAspisdrastaPlant = new OrnamentalPlant(IN_CONSERVATION, canelaAspisdrasta);
-            canelaAspisdrastaPlant.addPictures(List.of(new Picture("https://url_image_o33_1"), new Picture("https://url_image_o33_2")));
+            OrnamentalPlant canelaAspisdrastaPlant = new OrnamentalPlant(IN_CONSERVATION, canelaAspisdrasta, 5);
+            canelaAspisdrastaPlant.addPicture("https://url_image_o33_1");
+            canelaAspisdrastaPlant.addPicture("https://url_image_o33_2");
 
-            OrnamentalPlant cebollinPlant = new OrnamentalPlant(IN_CONSERVATION, cebollin);
-            cebollinPlant.addPictures(List.of(new Picture("https://url_image_o34_1"), new Picture("https://url_image_o34_2")));
+            OrnamentalPlant cebollinPlant = new OrnamentalPlant(IN_CONSERVATION, cebollin, 5);
+            cebollinPlant.addPicture("https://url_image_o34_1");
+            cebollinPlant.addPicture("https://url_image_o34_2");
 
-            OrnamentalPlant chacateaPlant = new OrnamentalPlant(NON_EXISTENT, chacatea);
-            chacateaPlant.addPictures(List.of(new Picture("https://url_image_o35_1"), new Picture("https://url_image_o35_2")));
+            OrnamentalPlant chacateaPlant = new OrnamentalPlant(NON_EXISTENT, chacatea, 6);
+            chacateaPlant.addPicture("https://url_image_o35_1");
+            chacateaPlant.addPicture("https://url_image_o35_2");
 
-            OrnamentalPlant chefleraPlant = new OrnamentalPlant(AVAILABLE, cheflera);
-            chefleraPlant.addPictures(List.of(new Picture("https://url_image_o36_1"), new Picture("https://url_image_o36_2")));
+            OrnamentalPlant chefleraPlant = new OrnamentalPlant(AVAILABLE, cheflera, 6);
+            chefleraPlant.addPicture("https://url_image_o36_1");
+            chefleraPlant.addPicture("https://url_image_o36_2");
 
-            OrnamentalPlant chilijchiCeiboPlant = new OrnamentalPlant(AVAILABLE, chilijchiCeibo);
-            chilijchiCeiboPlant.addPictures(List.of(new Picture("https://url_image_o37_1"), new Picture("https://url_image_o37_2")));
+            OrnamentalPlant chilijchiCeiboPlant = new OrnamentalPlant(AVAILABLE, chilijchiCeibo, 6);
+            chilijchiCeiboPlant.addPicture("https://url_image_o37_1");
+            chilijchiCeiboPlant.addPicture("https://url_image_o37_2");
 
-            OrnamentalPlant chirimoyaPlant = new OrnamentalPlant(AVAILABLE, chirimoya);
-            chirimoyaPlant.addPictures(List.of(new Picture("https://url_image_o38_1"), new Picture("https://url_image_o38_2")));
+            OrnamentalPlant chirimoyaPlant = new OrnamentalPlant(AVAILABLE, chirimoya, 6);
+            chirimoyaPlant.addPicture("https://url_image_o38_1");
+            chirimoyaPlant.addPicture("https://url_image_o38_2");
 
-            OrnamentalPlant cidraPlant = new OrnamentalPlant(AVAILABLE, cidra);
-            cidraPlant.addPictures(List.of(new Picture("https://url_image_o39_1"), new Picture("https://url_image_o39_2")));
+            OrnamentalPlant cidraPlant = new OrnamentalPlant(AVAILABLE, cidra, 6);
+            cidraPlant.addPicture("https://url_image_o39_1");
+            cidraPlant.addPicture("https://url_image_o39_2");
 
-            OrnamentalPlant cissusPlant = new OrnamentalPlant(AVAILABLE, cissus);
-            cissusPlant.addPictures(List.of(new Picture("https://url_image_o40_1"), new Picture("https://url_image_o40_2")));
+            OrnamentalPlant cissusPlant = new OrnamentalPlant(AVAILABLE, cissus, 6);
+            cissusPlant.addPicture("https://url_image_o40_2");
+            cissusPlant.addPicture("https://url_image_o40_1");
 
-            OrnamentalPlant crasasPunteagudasPlant = new OrnamentalPlant(AVAILABLE, crasasPunteagudas);
-            crasasPunteagudasPlant.addPictures(List.of(new Picture("https://url_image_o41_1"), new Picture("https://url_image_o41_2"), new Picture("https://url_image_o41_3")));
+            OrnamentalPlant crasasPunteagudasPlant = new OrnamentalPlant(AVAILABLE, crasasPunteagudas, 9);
+            crasasPunteagudasPlant.addPicture("https://url_image_o41_1");
+            crasasPunteagudasPlant.addPicture("https://url_image_o41_2");
+            crasasPunteagudasPlant.addPicture("https://url_image_o41_3");
 
-            OrnamentalPlant cucardaPlant = new OrnamentalPlant(IN_CONSERVATION, cucarda);
-            cucardaPlant.addPictures(List.of(new Picture("https://url_image_o42_1"), new Picture("https://url_image_o42_2"), new Picture("https://url_image_o42_3")));
+            OrnamentalPlant cucardaPlant = new OrnamentalPlant(IN_CONSERVATION, cucarda, 1);
+            cucardaPlant.addPicture("https://url_image_o42_1");
+            cucardaPlant.addPicture("https://url_image_o42_2");
+            cucardaPlant.addPicture("https://url_image_o42_3");
 
-            OrnamentalPlant cuernoDeAlcePlant = new OrnamentalPlant(AVAILABLE, cuernoDeAlce);
-            cuernoDeAlcePlant.addPictures(List.of(new Picture("https://url_image_o43_1"), new Picture("https://url_image_o43_2"), new Picture("https://url_image_o43_3")));
+            OrnamentalPlant cuernoDeAlcePlant = new OrnamentalPlant(AVAILABLE, cuernoDeAlce, 3);
+            cuernoDeAlcePlant.addPicture("https://url_image_o43_1");
+            cuernoDeAlcePlant.addPicture("https://url_image_o43_2");
+            cuernoDeAlcePlant.addPicture("https://url_image_o43_3");
 
-            OrnamentalPlant cupidoPlant = new OrnamentalPlant(NON_EXISTENT, cupido);
-            cupidoPlant.addPictures(List.of(new Picture("https://url_image_o44_1"), new Picture("https://url_image_o44_2"), new Picture("https://url_image_o44_3")));
+            OrnamentalPlant cupidoPlant = new OrnamentalPlant(NON_EXISTENT, cupido, 3);
+            cupidoPlant.addPicture("https://url_image_o44_1");
+            cupidoPlant.addPicture("https://url_image_o44_2");
+            cupidoPlant.addPicture("https://url_image_o44_3");
 
-            OrnamentalPlant deditosDeNinoPlant = new OrnamentalPlant(NON_EXISTENT, deditosDeNino);
-            deditosDeNinoPlant.addPictures(List.of(new Picture("https://url_image_o45_1"), new Picture("https://url_image_o45_2"), new Picture("https://url_image_o45_3")));
+            OrnamentalPlant deditosDeNinoPlant = new OrnamentalPlant(NON_EXISTENT, deditosDeNino, 3);
+            deditosDeNinoPlant.addPicture("https://url_image_o45_1");
+            deditosDeNinoPlant.addPicture("https://url_image_o45_2");
+            deditosDeNinoPlant.addPicture("https://url_image_o45_3");
 
-            OrnamentalPlant diamelaPlant = new OrnamentalPlant(AVAILABLE, diamela);
-            diamelaPlant.addPictures(List.of(new Picture("https://url_image_o46_1"), new Picture("https://url_image_o46_2"), new Picture("https://url_image_o46_3")));
+            OrnamentalPlant diamelaPlant = new OrnamentalPlant(AVAILABLE, diamela, 3);
+            diamelaPlant.addPicture("https://url_image_o46_1");
+            diamelaPlant.addPicture("https://url_image_o46_2");
+            diamelaPlant.addPicture("https://url_image_o46_3");
 
-            OrnamentalPlant dolarPlant = new OrnamentalPlant(IN_CONSERVATION, dolar);
-            dolarPlant.addPictures(List.of(new Picture("https://url_image_o47_1"), new Picture("https://url_image_o47_2"), new Picture("https://url_image_o47_3")));
+            OrnamentalPlant dolarPlant = new OrnamentalPlant(IN_CONSERVATION, dolar, 3);
+            dolarPlant.addPicture("https://url_image_o47_1");
+            dolarPlant.addPicture("https://url_image_o47_2");
+            dolarPlant.addPicture("https://url_image_o47_3");
 
-            OrnamentalPlant dracaenaNativaPlant = new OrnamentalPlant(AVAILABLE, dracaenaNativa);
-            dracaenaNativaPlant.addPictures(List.of(new Picture("https://url_image_o48_1"), new Picture("https://url_image_o48_2")));
+            OrnamentalPlant dracaenaNativaPlant = new OrnamentalPlant(AVAILABLE, dracaenaNativa, 3);
+            dracaenaNativaPlant.addPicture("https://url_image_o48_1");
+            dracaenaNativaPlant.addPicture("https://url_image_o48_2");
 
-            OrnamentalPlant dracenaPlant = new OrnamentalPlant(IN_CONSERVATION, dracena);
-            dracenaPlant.addPictures(Collections.singletonList(new Picture("https://url_image_o49_1")));
+            OrnamentalPlant dracenaPlant = new OrnamentalPlant(IN_CONSERVATION, dracena, 3);
+            dracenaPlant.addPicture("https://url_image_o49_1");
 
             ornamentalPlantRepository.saveAll(
                     List.of(florDeNavidadPlant, acaciaOrridaPlant, agavePlant, ajiOrnamentalPlant, ajugaPlant, alamoPlant, aloePlant,

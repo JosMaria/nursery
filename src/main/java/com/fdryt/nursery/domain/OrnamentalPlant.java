@@ -5,12 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 import static jakarta.persistence.CascadeType.PERSIST;
 import static jakarta.persistence.EnumType.STRING;
+import static jakarta.persistence.FetchType.EAGER;
 import static jakarta.persistence.GenerationType.SEQUENCE;
 import static org.hibernate.annotations.OnDeleteAction.CASCADE;
 
@@ -29,25 +29,24 @@ public class OrnamentalPlant {
     @Enumerated(value = STRING)
     private Status status;
 
-    @OneToMany(mappedBy = "ornamentalPlant")
-    @OnDelete(action = CASCADE)
-    private final Set<Picture> urlPictures = new HashSet<>();
+    @ElementCollection(fetch = EAGER)
+    private final Set<String> urlPictures = new HashSet<>();
 
     @OneToOne(cascade = PERSIST)
     @OnDelete(action = CASCADE)
     @JoinColumn(nullable = false, foreignKey = @ForeignKey(name = "fk_identification"))
     private Identification identification;
 
-    public OrnamentalPlant(Status status, Identification identification) {
+    @Column(length = 1)
+    private Integer priority = 0;
+
+    public OrnamentalPlant(Status status, Identification identification, Integer priority) {
         this.status = status;
         this.identification = identification;
+        this.priority = priority;
     }
 
-    public void addPicture(Picture picture) {
-        urlPictures.add(picture);
-    }
-
-    public void addPictures(Collection<Picture> pictures) {
-        urlPictures.addAll(pictures);
+    public void addPicture(String urlPicture) {
+        urlPictures.add(urlPicture);
     }
 }

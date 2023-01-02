@@ -1,11 +1,13 @@
 package com.fdryt.nursery.service.impl;
 
 import com.fdryt.nursery.dto.IdentificationResponseDTO;
+import com.fdryt.nursery.dto.ProductResponseDTO;
 import com.fdryt.nursery.repository.OrnamentalPlantRepository;
 import com.fdryt.nursery.service.OrnamentalPlantService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +26,15 @@ public class OrnamentalPlantServiceImpl implements OrnamentalPlantService {
         return repository.findAll()
                 .stream()
                 .map(ornamentalPlant -> mapper.map(ornamentalPlant, IdentificationResponseDTO.class))
+                .toList();
+    }
+
+    @Override
+    public List<ProductResponseDTO> findOrnamentalPlants(Pageable pageable) {
+        log.info("Fetching all the products");
+        return repository.findAllSortedByPriority(pageable)
+                .stream()
+                .map(ornamentalPlant -> mapper.map(ornamentalPlant, ProductResponseDTO.class))
                 .toList();
     }
 }
