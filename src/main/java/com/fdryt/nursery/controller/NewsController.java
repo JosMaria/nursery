@@ -6,15 +6,13 @@ import com.fdryt.nursery.service.NewsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/api/nursery/news")
 public class NewsController {
 
     private final NewsService service;
@@ -25,7 +23,7 @@ public class NewsController {
     }
 
     @PostMapping
-    public ResponseEntity<Boolean> create(@RequestBody CreateNewsDTO payload) {
+    public ResponseEntity<String> create(@RequestBody CreateNewsDTO payload) {
         return new ResponseEntity<>(service.create(payload), HttpStatus.CREATED);
     }
 }

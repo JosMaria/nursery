@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface NewsService {
 
-    Boolean create(CreateNewsDTO payload);
+    String create(CreateNewsDTO payload);
 
     List<NewsResponseDTO> fetch();
 }

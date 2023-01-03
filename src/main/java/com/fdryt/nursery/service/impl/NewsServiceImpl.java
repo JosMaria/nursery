@@ -5,27 +5,37 @@ import com.fdryt.nursery.dto.CreateNewsDTO;
 import com.fdryt.nursery.dto.NewsResponseDTO;
 import com.fdryt.nursery.repository.NewsRepository;
 import com.fdryt.nursery.service.NewsService;
+import com.fdryt.nursery.validators.ObjectsValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @RequiredArgsConstructor
 @Service
 public class NewsServiceImpl implements NewsService {
 
     private final NewsRepository repository;
+    private final ObjectsValidator<CreateNewsDTO> validator;
 
     @Override
-    public Boolean create(CreateNewsDTO payload) {
-        repository.save(dtoToEntity(payload));
-        return true;
+    public String create(CreateNewsDTO payload) {
+        Set<String>  violations = validator.validate(payload);
+        if (!violations.isEmpty()) {
+            return String.join("\n", violations);
+        }
+
+        News newsMapped = dtoToEntity(payload);
+
+        repository.save(newsMapped);
+        return "true";
     }
 
     private News dtoToEntity(CreateNewsDTO dto) {
         News news = new News();
-        news.setTitle(dto.getTitle());
-        news.setDescription(dto.getDescription());
+        news.setDescription(dto.title());
+        news.setTitle(dto.description());
         return news;
     }
 

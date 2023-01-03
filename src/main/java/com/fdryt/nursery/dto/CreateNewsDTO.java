@@ -1,12 +1,9 @@
 package com.fdryt.nursery.dto;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import jakarta.validation.constraints.NotBlank;
 
-@Getter
-@RequiredArgsConstructor
-public class CreateNewsDTO {
+public record CreateNewsDTO(
 
-    private final String title;
-    private final String description;
-}
+        @NotBlank(message = "The TITLE should not be null, empty or blank") String title,
+        @NotBlank(message = "The DESCRIPTION should not be null, empty or blank") String description
+) {}
