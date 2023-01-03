@@ -10,21 +10,17 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
 @RequiredArgsConstructor
 @Service
 public class NewsServiceImpl implements NewsService {
 
     private final NewsRepository repository;
-    private final ObjectsValidator<CreateNewsDTO> validator;
+    private final ObjectsValidator<CreateNewsDTO> createNewsValidator;
 
     @Override
     public String create(CreateNewsDTO payload) {
-        Set<String>  violations = validator.validate(payload);
-        if (!violations.isEmpty()) {
-            return String.join("\n", violations);
-        }
+        createNewsValidator.validate(payload);
 
         News newsMapped = dtoToEntity(payload);
 
