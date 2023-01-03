@@ -4,11 +4,12 @@ import com.fdryt.nursery.dto.CreateNewsDTO;
 import com.fdryt.nursery.dto.NewsResponseDTO;
 import com.fdryt.nursery.service.NewsService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.springframework.http.HttpStatus.CREATED;
 
 @RequiredArgsConstructor
 @RestController
@@ -23,7 +24,7 @@ public class NewsController {
     }
 
     @PostMapping
-    public ResponseEntity<String> create(@RequestBody CreateNewsDTO payload) {
-        return new ResponseEntity<>(service.create(payload), HttpStatus.CREATED);
+    public ResponseEntity<NewsResponseDTO> create(@RequestBody CreateNewsDTO payload) {
+        return new ResponseEntity<>(service.create(payload), CREATED);
     }
 }

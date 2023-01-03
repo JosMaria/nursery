@@ -19,13 +19,14 @@ public class NewsServiceImpl implements NewsService {
     private final ObjectsValidator<CreateNewsDTO> createNewsValidator;
 
     @Override
-    public String create(CreateNewsDTO payload) {
+    public NewsResponseDTO create(CreateNewsDTO payload) {
         createNewsValidator.validate(payload);
 
         News newsMapped = dtoToEntity(payload);
 
-        repository.save(newsMapped);
-        return "true";
+        News newsPersisted = repository.save(newsMapped);
+
+        return entityToDTO(newsPersisted);
     }
 
     private News dtoToEntity(CreateNewsDTO dto) {
