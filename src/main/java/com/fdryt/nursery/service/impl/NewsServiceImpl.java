@@ -9,6 +9,7 @@ import com.fdryt.nursery.validators.ObjectsValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -33,12 +34,14 @@ public class NewsServiceImpl implements NewsService {
         News news = new News();
         news.setDescription(dto.title());
         news.setTitle(dto.description());
+        news.setStartDate(dto.startDate() == null ? LocalDateTime.now() : dto.startDate());
+        news.setEndDate(dto.endDate());
         return news;
     }
 
     @Override
     public List<NewsResponseDTO> fetch() {
-        return repository.findAll()
+        return repository.findAllByStartDateAndEndDateBetween(LocalDateTime.now())
                 .stream()
                 .map(this::entityToDTO)
                 .toList();
@@ -48,6 +51,8 @@ public class NewsServiceImpl implements NewsService {
         NewsResponseDTO dto = new NewsResponseDTO();
         dto.setTitle(news.getTitle());
         dto.setDescription(news.getDescription());
+        dto.setStarted(news.getStartDate());
+        dto.setEnded(news.getEndDate());
         return dto;
     }
 }
