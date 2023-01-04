@@ -7,52 +7,37 @@ import com.fdryt.nursery.repository.NewsRepository;
 import com.fdryt.nursery.service.NewsService;
 import com.fdryt.nursery.validators.ObjectsValidator;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @RequiredArgsConstructor
+@Slf4j
 @Service
 public class NewsServiceImpl implements NewsService {
 
-    private final NewsRepository repository;
+    private final NewsRepository news;
     private final ObjectsValidator<CreateNewsDTO> createNewsValidator;
+    private final ModelMapper newsMapper;
 
     @Override
     public NewsResponseDTO create(CreateNewsDTO payload) {
         createNewsValidator.validate(payload);
 
-        News newsMapped = dtoToEntity(payload);
+        News newsMapped = newsMapper.map(payload, News.class);
+        News newsPersisted = news.save(newsMapped);
 
-        News newsPersisted = repository.save(newsMapped);
-
-        return entityToDTO(newsPersisted);
-    }
-
-    private News dtoToEntity(CreateNewsDTO dto) {
-        News news = new News();
-        news.setDescription(dto.title());
-        news.setTitle(dto.description());
-        news.setStartDate(dto.startDate() == null ? LocalDateTime.now() : dto.startDate());
-        news.setEndDate(dto.endDate());
-        return news;
+        return newsMapper.map(newsPersisted, NewsResponseDTO.class);
     }
 
     @Override
     public List<NewsResponseDTO> fetch() {
-        return repository.findAllByStartDateAndEndDateBetween(LocalDateTime.now())
+        return news.findAllByStartDateAndEndDateBetween(LocalDateTime.now())
                 .stream()
-                .map(this::entityToDTO)
+                .map(news -> newsMapper.map(news, NewsResponseDTO.class))
                 .toList();
-    }
-
-    private NewsResponseDTO entityToDTO(News news) {
-        NewsResponseDTO dto = new NewsResponseDTO();
-        dto.setTitle(news.getTitle());
-        dto.setDescription(news.getDescription());
-        dto.setStarted(news.getStartDate());
-        dto.setEnded(news.getEndDate());
-        return dto;
     }
 }

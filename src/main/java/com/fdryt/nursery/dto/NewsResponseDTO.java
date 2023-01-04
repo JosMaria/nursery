@@ -1,15 +1,14 @@
 package com.fdryt.nursery.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
+@Data
 public class NewsResponseDTO {
 
+    private Integer id;
     private String title;
     private String description;
 

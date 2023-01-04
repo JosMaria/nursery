@@ -16,15 +16,15 @@ import static org.springframework.http.HttpStatus.CREATED;
 @RequestMapping("/api/nursery/news")
 public class NewsController {
 
-    private final NewsService service;
+    private final NewsService newsService;
 
     @GetMapping
     public ResponseEntity<List<NewsResponseDTO>> fetch() {
-        return ResponseEntity.ok(service.fetch());
+        return ResponseEntity.ok(newsService.fetch());
     }
 
     @PostMapping
     public ResponseEntity<NewsResponseDTO> create(@RequestBody CreateNewsDTO payload) {
-        return new ResponseEntity<>(service.create(payload), CREATED);
+        return new ResponseEntity<>(newsService.create(payload), CREATED);
     }
 }

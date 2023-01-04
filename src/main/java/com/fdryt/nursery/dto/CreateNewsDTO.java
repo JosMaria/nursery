@@ -6,27 +6,29 @@ import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
-public record CreateNewsDTO(
+@Data
+public class CreateNewsDTO {
 
         @NotBlank(message = "The TITLE should not be null, empty or blank")
         @JsonProperty("title")
-        String title,
+        private String title;
 
         @NotBlank(message = "The DESCRIPTION should not be null, empty or blank")
         @JsonProperty("description")
-        String description,
+        private String description;
 
         @FutureOrPresent(message = "The START should not be past or present date")
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
         @JsonProperty("start")
-        LocalDateTime startDate,
+        private LocalDateTime startDate;
 
         @NotNull(message = "The END should not be null")
         @Future(message = "The END should not be past or present date")
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
         @JsonProperty("end")
-        LocalDateTime endDate
-) {}
+        private LocalDateTime endDate;
+}

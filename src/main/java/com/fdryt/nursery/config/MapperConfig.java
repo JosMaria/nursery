@@ -1,9 +1,12 @@
 package com.fdryt.nursery.config;
 
 import com.fdryt.nursery.domain.Family;
+import com.fdryt.nursery.domain.News;
 import com.fdryt.nursery.domain.OrnamentalPlant;
 import com.fdryt.nursery.domain.Status;
+import com.fdryt.nursery.dto.CreateNewsDTO;
 import com.fdryt.nursery.dto.IdentificationResponseDTO;
+import com.fdryt.nursery.dto.NewsResponseDTO;
 import com.fdryt.nursery.dto.ProductResponseDTO;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
@@ -11,6 +14,7 @@ import org.modelmapper.PropertyMap;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Configuration
@@ -19,7 +23,7 @@ public class MapperConfig {
     private static final String URL_TO_IMAGE_NOT_FOUND = "https://image_not_found";
 
     @Bean("ornamentalPlantMapper")
-    public ModelMapper mapper() {
+    public ModelMapper ornamentalPlantMapper() {
         ModelMapper modelMapper = new ModelMapper();
 
         Converter<Family, String> enumFamilyToString =
@@ -52,6 +56,32 @@ public class MapperConfig {
                 using(enumFamilyToString).map(source.getIdentification().getFamily(), destination.getNameFamily());
                 using(enumStatusToString).map(source.getStatus(), destination.getStatus());
                 using(setOfStringUrlsToStringUrl).map(source.getUrlPictures(), destination.getUrlPicture());
+            }
+        });
+
+        return modelMapper;
+    }
+
+    @Bean("newsMapper")
+    public ModelMapper newsMapper() {
+        ModelMapper modelMapper = new ModelMapper();
+
+        modelMapper.addMappings(new PropertyMap<News, NewsResponseDTO>() {
+            @Override
+            protected void configure() {
+                map().setStarted(source.getStartDate());
+                map().setEnded(source.getEndDate());
+            }
+        });
+
+        modelMapper.addMappings(new PropertyMap<CreateNewsDTO, News>() {
+            final Converter<LocalDateTime, LocalDateTime> dateConverter = context ->
+                    context.getSource() == null ? LocalDateTime.now() : context.getSource();
+
+            @Override
+            protected void configure() {
+                map().setEndDate(source.getEndDate());
+                using(dateConverter).map(source.getStartDate(), destination.getStartDate());
             }
         });
 
