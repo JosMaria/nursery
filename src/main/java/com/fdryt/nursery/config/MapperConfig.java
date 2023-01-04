@@ -1,6 +1,6 @@
 package com.fdryt.nursery.config;
 
-import com.fdryt.nursery.domain.Identification;
+import com.fdryt.nursery.domain.Family;
 import com.fdryt.nursery.domain.OrnamentalPlant;
 import com.fdryt.nursery.domain.Status;
 import com.fdryt.nursery.dto.IdentificationResponseDTO;
@@ -16,40 +16,45 @@ import java.util.Set;
 @Configuration
 public class MapperConfig {
 
-    @Bean("mapper")
+    private static final String URL_TO_IMAGE_NOT_FOUND = "https://image_not_found";
+
+    @Bean("ornamentalPlantMapper")
     public ModelMapper mapper() {
-        ModelMapper mapper = new ModelMapper();
-        Converter<Identification, String> converter =
-                context -> context.getSource().getFamily() != null ? context.getSource().getFamily().getName() : null;
+        ModelMapper modelMapper = new ModelMapper();
 
-        mapper.addMappings(new PropertyMap<OrnamentalPlant, IdentificationResponseDTO>() {
-            @Override
-            protected void configure() {
-                map().setCommonName(source.getIdentification().getCommonName());
-                map().setScientificName(source.getIdentification().getScientificName());
-                map().setFirstLetterLastname(source.getIdentification().getFirstLetterLastname());
-                using(converter).map(source.getIdentification(), destination.getNameFamily());
-            }
-        });
+        Converter<Family, String> enumFamilyToString =
+                context -> context.getSource() != null ? context.getSource().getName() : null;
 
-        Converter<Status, String> statusToString = context -> context.getSource().name();
-        Converter<Set<String>, String> setStringToString = context ->
-                context.getSource().stream()
+        Converter<Status, String> enumStatusToString = context -> context.getSource().name();
+
+        Converter<Set<String>, String> setOfStringUrlsToStringUrl =
+                context -> context.getSource()
+                        .stream()
                         .findFirst()
-                        .orElse("https://image_not_found");
+                        .orElse(URL_TO_IMAGE_NOT_FOUND);
 
-        mapper.addMappings(new PropertyMap<OrnamentalPlant, ProductResponseDTO>() {
+        modelMapper.addMappings(new PropertyMap<OrnamentalPlant, IdentificationResponseDTO>() {
             @Override
             protected void configure() {
                 map().setCommonName(source.getIdentification().getCommonName());
                 map().setScientificName(source.getIdentification().getScientificName());
                 map().setFirstLetterLastname(source.getIdentification().getFirstLetterLastname());
-                using(converter).map(source.getIdentification(), destination.getNameFamily());
-                using(statusToString).map(source.getStatus(), destination.getStatus());
-                using(setStringToString).map(source.getUrlPictures(), destination.getUrlPicture());
+                using(enumFamilyToString).map(source.getIdentification().getFamily(), destination.getNameFamily());
             }
         });
 
-        return mapper;
+        modelMapper.addMappings(new PropertyMap<OrnamentalPlant, ProductResponseDTO>() {
+            @Override
+            protected void configure() {
+                map().setCommonName(source.getIdentification().getCommonName());
+                map().setScientificName(source.getIdentification().getScientificName());
+                map().setFirstLetterLastname(source.getIdentification().getFirstLetterLastname());
+                using(enumFamilyToString).map(source.getIdentification().getFamily(), destination.getNameFamily());
+                using(enumStatusToString).map(source.getStatus(), destination.getStatus());
+                using(setOfStringUrlsToStringUrl).map(source.getUrlPictures(), destination.getUrlPicture());
+            }
+        });
+
+        return modelMapper;
     }
 }

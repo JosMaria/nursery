@@ -12,29 +12,29 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Slf4j
 @RequiredArgsConstructor
+@Slf4j
 @Service
 public class OrnamentalPlantServiceImpl implements OrnamentalPlantService {
 
-    private final ModelMapper mapper;
-    private final OrnamentalPlantRepository repository;
+    private final OrnamentalPlantRepository ornamentalPlantRepository;
+    private final ModelMapper ornamentalPlantMapper;
 
     @Override
     public List<IdentificationResponseDTO> findAllIdentifications() {
         log.info("Fetching all the identifications");
-        return repository.findAll()
+        return ornamentalPlantRepository.findAll()
                 .stream()
-                .map(ornamentalPlant -> mapper.map(ornamentalPlant, IdentificationResponseDTO.class))
+                .map(ornamentalPlant -> ornamentalPlantMapper.map(ornamentalPlant, IdentificationResponseDTO.class))
                 .toList();
     }
 
     @Override
     public List<ProductResponseDTO> findOrnamentalPlants(Pageable pageable) {
         log.info("Fetching all the products");
-        return repository.findAllSortedByPriority(pageable)
+        return ornamentalPlantRepository.findAllSortedByPriority(pageable)
                 .stream()
-                .map(ornamentalPlant -> mapper.map(ornamentalPlant, ProductResponseDTO.class))
+                .map(ornamentalPlant -> ornamentalPlantMapper.map(ornamentalPlant, ProductResponseDTO.class))
                 .toList();
     }
 }
