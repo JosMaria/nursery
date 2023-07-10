@@ -1,6 +1,11 @@
+import { Navbar } from './components/Navbar';
 
 export const App = () => (
-  <h1 className="text-xl font-bold underline bg-orange-100" >
-    Hello world!
-  </h1 >
+  <>
+    <Navbar />
+    <main className='bg-red-500 h-screen'>
+
+    </main>
+  </>
+  
 )
