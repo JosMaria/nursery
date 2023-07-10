@@ -12,7 +12,7 @@ export const Navbar = () => {
             (<li key={index}>{item}</li>))
         }
       </ul>
-      <button>
+      <button onClick={() => console.log('open modal to sign in')}>
         Acceder
       </button>
     </nav>
