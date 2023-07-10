@@ -9,7 +9,7 @@ export const Navbar = () => {
       <ul className='flex justify-center gap-5 text-xl '>
         {
           navigation.map((item, index) =>
-            (<li key={index}>{item}</li>))
+            (<li key={index} onClick={() => console.log(`click on item ${item}`)}>{item}</li>))
         }
       </ul>
       <button onClick={() => console.log('open modal to sign in')}>
