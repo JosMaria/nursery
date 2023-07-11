@@ -5,7 +5,21 @@ export default {
     './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        form: {
+          color: 'var(--COLOR-BG-FORM)'
+        },
+        paint: {
+          brown: 'var(--COLOR-BROWN)',
+        },
+      },
+      borderColor: {
+        form: {
+          color: 'var(--COLOR-BORDER-FORM)'
+        }
+      },
+    },
   },
   plugins: [],
 }

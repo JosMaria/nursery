@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    /* colors to form */
+    --COLOR-BG-FORM: #1e293b;
+    --COLOR-BORDER-FORM: #334155;
+
+    /* palette color  */
+    --COLOR-BROWN: #483b33;
+    
+  }
+}
+
+@layer components {
+  .label-form {
+    @apply text-sm font-medium text-white
+  }
+
+  .input-form {
+    @apply text-sm p-2.5 bg-slate-700 border border-slate-700 placeholder-slate-400 text-white rounded-lg;
+  }
+
+  .button-submit-form {
+    @apply text-white font-medium rounded-lg text-sm p-3.5 text-center bg-[#316029] hover:bg-[#275121]
+  }
+}
