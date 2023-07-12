@@ -1,13 +1,17 @@
-import { Footer, Header } from './components';
-import { CatalogPage } from './pages';
+import { BrowserRouter, Routes } from 'react-router-dom';
 
 export const App = () => (
   <div className='flex flex-col h-screen'>
-    <Header />
+    <BrowserRouter>
+      <Routes>
+        
+      </Routes>
+    </BrowserRouter>
+    {/* <Header />
     <main className='bg-paint-brownLight'>
-      <CatalogPage />
+      <CatalogPage />|
     </main>
-    <Footer />
+    <Footer /> */}
   </div>
 
 )
