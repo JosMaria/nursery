@@ -1,6 +1,13 @@
+import { Footer, Header } from './components';
+import { CatalogPage } from './pages';
 
 export const App = () => (
-  <h1 className="text-xl font-bold underline bg-orange-100" >
-    Hello world!
-  </h1 >
+  <div className='flex flex-col h-screen'>
+    <Header />
+    <main className='bg-paint-brownLight'>
+      <CatalogPage />
+    </main>
+    <Footer />
+  </div>
+
 )
