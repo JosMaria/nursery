@@ -1,7 +1,8 @@
 export const PublicRoutes = {
-  CATALOG: 'catalog',
-  INVENTORY: 'inventory',
-  NEWS: 'news'
+  SINGLE_PRODUCT: 'single-product',
+  REPERTORY: 'repertory',
+  NEWS: 'news',
+  SINGLE_NEWS: 'single-news',
 }
 
 export const PrivateRoutes = {
