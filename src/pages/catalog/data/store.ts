@@ -1,6 +1,6 @@
 import { PageCatalog } from "../types";
 
-const data: PageCatalog = {
+export const data: PageCatalog = {
 	content: [
 		{
 			id: 3,

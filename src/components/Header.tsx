@@ -12,7 +12,7 @@ export const Header = () => {
   )
 
   return (
-    <header className='flex justify-between items-center p-4 bg-paint-brown text-white'>
+    <header className='fixed w-full flex justify-between items-center p-4 bg-paint-brown text-white'>
       {logo}
       <Navbar />
       {signIn}
@@ -26,7 +26,6 @@ const Navbar = () => (
   <nav className='flex justify-center gap-5 text-lg font-medium'>
     {NAV_ITEMS.map((item, index) => (
       <div key={index} onClick={() => console.log(`click on item ${item}`)}>{item}</div>
-      ))
-    }
+    ))}
   </nav>
 )
