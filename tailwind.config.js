@@ -12,6 +12,7 @@ export default {
         },
         paint: {
           brown: 'var(--COLOR-BROWN)',
+          brownLight: 'var(--COLOR-BROWN-LIGHT)' 
         },
       },
       borderColor: {

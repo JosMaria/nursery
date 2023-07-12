@@ -1,13 +1,14 @@
-import { Navbar } from './components';
+import { Footer, Header } from './components';
 
 export const App = () => (
   <>
-    <Navbar />
+    <Header />
     <main>
-      <div className='bg-[#224229] h-screen'>
+      <div className='bg-paint-brownLight h-screen'>
         <p>Hola</p>
       </div>      
     </main>
+    <Footer />
   </>
   
 )
