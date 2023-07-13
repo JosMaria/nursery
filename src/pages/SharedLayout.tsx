@@ -2,9 +2,9 @@ import { Outlet } from 'react-router';
 import { Header, Footer } from '../components';
 
 export const Home = () => (
-  <div className='flex flex-col justify-between items-center h-screen'>
+  <div className='flex flex-col justify-between items-center h-screen bg-paint-brownLight'>
     <Header />
-    <main className='bg-paint-brownLight'>
+    <main>
       <Outlet />
     </main>
     <Footer />
