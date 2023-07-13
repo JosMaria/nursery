@@ -1,4 +1,4 @@
-import { PageCatalog } from "../types";
+import { PageCatalog } from '../types';
 
 export const data: PageCatalog = {
 	content: [

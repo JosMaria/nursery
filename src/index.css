@@ -15,15 +15,57 @@
 }
 
 @layer components {
+  .active {
+    border-bottom-width: 2px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .inactive {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .pending {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
   .label-form {
-    @apply text-sm font-medium text-white
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    color: white;
   }
 
   .input-form {
-    @apply text-sm p-2.5 bg-slate-700 border border-slate-700 placeholder-slate-400 text-white rounded-lg;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    padding: 0.625rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+    border-width: 1px;
+    --tw-border-opacity: 1;
+    border-color: rgb(51 65 85 / var(--tw-border-opacity));
+    --tw-placeholder-opacity: 1;
+    color: rgb(148 163 184 / var(--tw-placeholder-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+    border-radius: 0.5rem;
   }
 
   .button-submit-form {
-    @apply text-white font-medium rounded-lg text-sm p-3.5 text-center bg-[#316029] hover:bg-[#275121]
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+    font-weight: 500;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    padding: 0.875rem;
+    text-align: center;
+    --tw-bg-opacity: 1;
+    background-color: rgb(49 96 41 / var(--tw-bg-opacity));
+    --tw-bg-opacity: 1;
+    background-color: rgb(39 81 33 / var(--tw-bg-opacity));
   }
 }
