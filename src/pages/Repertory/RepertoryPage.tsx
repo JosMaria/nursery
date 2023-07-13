@@ -1,5 +1,8 @@
-export const RepertoryPage = () => {
-  return (
-    <h1>RepertoryPage</h1>
-  )
-}
+import { Table } from './components'
+
+export const RepertoryPage = () => (
+  <article className='h-screen p-5'>
+    <Table />
+  </article>
+)
+
