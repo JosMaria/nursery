@@ -3,6 +3,7 @@ import { data as ITEMS } from '../data/store'
 const HEADERS_TITLE = ['Nombre Comun', 'Nombre Cientifico', 'Familia', 'Estado']
 
 export const Table = () => {
+  const cellStyled = 'px-4 py-1.5 font-medium first-letter:uppercase'
 
   const tableHeader = (
     <thead className='bg-paint-brown text-white'>
@@ -15,21 +16,25 @@ export const Table = () => {
     </thead>
   )
 
+  const tableBody = (
+    <tbody>
+      {ITEMS.content.map(item =>
+        <tr
+          key={item.id}
+          className='text-sm bg-stone-200 [&:nth-child(even)]:bg-stone-300'
+        >
+          <td className={cellStyled}>{item.commonName}</td>
+          <td className={`${cellStyled} italic`}>{item.scientificName} {item.scientistSurnameInitial?.toUpperCase()}</td>
+          <td className={cellStyled}>{item.family}</td>
+          <td className={cellStyled}>{item.status}</td>
+        </tr>)}
+    </tbody>
+  )
+
   return (
-    <table className='w-[60em]'>
+    <table className='w-[50em]'>
       {tableHeader}
-      <tbody>
-        {ITEMS.content.map(item =>
-          <tr
-            key={item.id}
-            className='text-sm'
-          >
-            <td>{item.commonName}</td>
-            <td>{item.scientificName} {item.scientistSurnameInitial}</td>
-            <td>{item.family}</td>
-            <td>{item.status}</td>
-          </tr>)}
-      </tbody>
+      {tableBody}
     </table>
   )
 }
