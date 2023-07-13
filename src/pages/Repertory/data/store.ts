@@ -1,4 +1,6 @@
-const data = {
+import { PageRepertory } from '../types';
+
+export const data: PageRepertory = {
 	content: [
 		{
 			id: 121,
@@ -114,3 +116,4 @@ const data = {
 	numberOfElements: 13,
 	empty: false
 }
+	

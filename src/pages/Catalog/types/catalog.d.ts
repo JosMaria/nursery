@@ -1,7 +1,7 @@
 import { ItemResponseDTO, Page, StatusType } from '../../../types'
 
 interface ProductResponseDTO extends ItemResponseDTO {
-  urlPicture: Array<string>
+  photo_URL: Array<string>
 }
 
 export interface PageCatalog extends Page {
