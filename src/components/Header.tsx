@@ -12,7 +12,7 @@ export const Header = () => {
   )
 
   return (
-    <header className='fixed w-full flex justify-between items-center p-4 bg-paint-brown text-white'>
+    <header className='w-full flex justify-between items-center p-4 bg-paint-brown text-white'>
       {logo}
       <Navbar />
       {signIn}

@@ -28,10 +28,10 @@ export const Footer = () => {
   )
 
   return (
-    <footer className='bg-paint-brown text-white font-light'>
+    <footer className='w-full bg-paint-brown text-white font-light'>
       <div className='flex flex-wrap justify-around content-center p-5 gap-5'>
-        <Section title={TEXT_INFORMATION.title} content={TEXT_INFORMATION.content} />
-        <Section title={TEXT_ABOUT.title} content={TEXT_ABOUT.content} />
+        <FooterSection title={TEXT_INFORMATION.title} content={TEXT_INFORMATION.content} />
+        <FooterSection title={TEXT_ABOUT.title} content={TEXT_ABOUT.content} />
       </div>
       <hr />
       {copyright}
@@ -44,7 +44,7 @@ interface FooterSectionProps {
   content: string
 }
 
-const Section = ({ title, content }: FooterSectionProps) => (
+const FooterSection = ({ title, content }: FooterSectionProps) => (
   <div className='flex flex-col w-[36em]'>
     <h2 className='text-lg font-medium mb-2'>{title}</h2>
     <p className='text-sm'>{content}</p>
