@@ -1,25 +1,9 @@
-type StatusType =
-  'AVAILABLE' |
-  'IN_CONSERVATION' |
-  'NON_EXISTENT'
+import { ItemResponseDTO, Page, StatusType } from '../../../types'
 
-interface ProductResponseDTO {
-  id: number,
-  commonName: string,
-  scientificName: string | null,
-  scientistSurnameInitial: string | null,
-  status: StatusType,
-  family: string | null
+interface ProductResponseDTO extends ItemResponseDTO {
+  photo_URL: Array<string>
 }
 
-export interface PageCatalog {
-  content: Array<ProductResponseDTO>,
-  last: boolean,
-	totalElements: number,
-	totalPages: number,
-	size: number,
-	number: number,
-	first: boolean,
-	numberOfElements: number,
-	empty: boolean
+export interface PageCatalog extends Page {
+  content: Array<ProductResponseDTO>
 }

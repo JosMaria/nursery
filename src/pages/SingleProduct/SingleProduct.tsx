@@ -1,5 +1,9 @@
-export const SingleProduct = () => {
-  return (
-    <h1>SingleProduct</h1>
-  )
-}
+import { Information, TechnicalSheet, Suggestions } from './components'
+
+export const SingleProduct = () => (
+  <>
+    <Information />
+    <TechnicalSheet />
+    <Suggestions />
+  </>
+)
