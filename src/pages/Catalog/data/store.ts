@@ -8,7 +8,8 @@ export const data: PageCatalog = {
 			scientificName: 'agave tequilero',
 			scientistSurnameInitial: null,
 			status: 'NON_EXISTENT',
-			family: 'asparagaceae'
+			family: 'asparagaceae',
+			photo_URL: []
 		},
 		{
 			id: 6,
@@ -16,7 +17,8 @@ export const data: PageCatalog = {
 			scientificName: 'populus x canadensis moench',
 			scientistSurnameInitial: null,
 			status: 'NON_EXISTENT',
-			family: 'salicaceae'
+			family: 'salicaceae',
+			photo_URL: []
 		},
 		{
 			id: 9,
@@ -24,7 +26,8 @@ export const data: PageCatalog = {
 			scientificName: 'trasdecantia pallida',
 			scientistSurnameInitial: null,
 			status: 'NON_EXISTENT',
-			family: 'commelinaceae'
+			family: 'commelinaceae',
+			photo_URL: []
 		},
 		{
 			id: 12,
@@ -32,7 +35,7 @@ export const data: PageCatalog = {
 			scientificName: 'aspidiastra elatior',
 			scientistSurnameInitial: null,
 			status: 'NON_EXISTENT',
-			family: 'ruscaceae'
+			family: 'ruscaceae', photo_URL: []
 		},
 		{
 			id: 15,
@@ -40,7 +43,8 @@ export const data: PageCatalog = {
 			scientificName: 'begonia x tuberhybrida',
 			scientistSurnameInitial: null,
 			status: 'NON_EXISTENT',
-			family: 'begoniaceae'
+			family: 'begoniaceae',
+			photo_URL: []
 		},
 		{
 			id: 18,
@@ -48,7 +52,8 @@ export const data: PageCatalog = {
 			scientificName: 'brachychiton populneus',
 			scientistSurnameInitial: null,
 			status: 'NON_EXISTENT',
-			family: 'malvaceae'
+			family: 'malvaceae',
+			photo_URL: []
 		},
 		{
 			id: 21,
@@ -56,7 +61,8 @@ export const data: PageCatalog = {
 			scientificName: 'echinopsis pachanoi',
 			scientistSurnameInitial: null,
 			status: 'NON_EXISTENT',
-			family: 'cactaceae'
+			family: 'cactaceae',
+			photo_URL: []
 		},
 		{
 			id: 24,
@@ -64,7 +70,8 @@ export const data: PageCatalog = {
 			scientificName: 'schlumbergera truncata',
 			scientistSurnameInitial: null,
 			status: 'NON_EXISTENT',
-			family: 'cactaceae'
+			family: 'cactaceae',
+			photo_URL: []
 		},
 		{
 			id: 27,
@@ -72,7 +79,8 @@ export const data: PageCatalog = {
 			scientificName: 'opuntia ficus indica',
 			scientistSurnameInitial: null,
 			status: 'NON_EXISTENT',
-			family: 'cactaceae'
+			family: 'cactaceae',
+			photo_URL: []
 		},
 		{
 			id: 30,
@@ -80,7 +88,8 @@ export const data: PageCatalog = {
 			scientificName: 'coffea arabica',
 			scientistSurnameInitial: null,
 			status: 'NON_EXISTENT',
-			family: 'rubiaceae'
+			family: 'rubiaceae',
+			photo_URL: []
 		},
 		{
 			id: 33,
@@ -88,7 +97,8 @@ export const data: PageCatalog = {
 			scientificName: 'calathea zebrina',
 			scientistSurnameInitial: null,
 			status: 'NON_EXISTENT',
-			family: 'marantaceae'
+			family: 'marantaceae',
+			photo_URL: []
 		},
 		{
 			id: 36,
@@ -96,7 +106,8 @@ export const data: PageCatalog = {
 			scientificName: 'dodonaea viscosa',
 			scientistSurnameInitial: null,
 			status: 'NON_EXISTENT',
-			family: 'sapindaceae'
+			family: 'sapindaceae',
+			photo_URL: []
 		},
 		{
 			id: 39,
@@ -104,7 +115,8 @@ export const data: PageCatalog = {
 			scientificName: 'annona cherimola mill',
 			scientistSurnameInitial: null,
 			status: 'NON_EXISTENT',
-			family: 'annonaceae'
+			family: 'annonaceae',
+			photo_URL: []
 		},
 		{
 			id: 42,
@@ -112,7 +124,8 @@ export const data: PageCatalog = {
 			scientificName: null,
 			scientistSurnameInitial: null,
 			status: 'NON_EXISTENT',
-			family: null
+			family: null,
+			photo_URL: []
 		},
 		{
 			id: 45,
@@ -120,7 +133,8 @@ export const data: PageCatalog = {
 			scientificName: null,
 			scientistSurnameInitial: null,
 			status: 'NON_EXISTENT',
-			family: null
+			family: null,
+			photo_URL: []
 		},
 		{
 			id: 48,
@@ -128,7 +142,8 @@ export const data: PageCatalog = {
 			scientificName: 'plectranthus nummularius',
 			scientistSurnameInitial: 'b',
 			status: 'NON_EXISTENT',
-			family: 'lamiaceae'
+			family: 'lamiaceae',
+			photo_URL: []
 		},
 		{
 			id: 51,
@@ -136,7 +151,8 @@ export const data: PageCatalog = {
 			scientificName: 'duranta repens',
 			scientistSurnameInitial: null,
 			status: 'NON_EXISTENT',
-			family: 'verbenaceae'
+			family: 'verbenaceae',
+			photo_URL: []
 		},
 		{
 			id: 54,
@@ -144,7 +160,8 @@ export const data: PageCatalog = {
 			scientificName: null,
 			scientistSurnameInitial: null,
 			status: 'NON_EXISTENT',
-			family: null
+			family: null,
+			photo_URL: []
 		},
 		{
 			id: 57,
@@ -152,7 +169,8 @@ export const data: PageCatalog = {
 			scientificName: 'euphorbia tirucalli',
 			scientistSurnameInitial: null,
 			status: 'NON_EXISTENT',
-			family: 'euphorbiaceae'
+			family: 'euphorbiaceae',
+			photo_URL: []
 		},
 		{
 			id: 60,
@@ -160,7 +178,8 @@ export const data: PageCatalog = {
 			scientificName: 'fraxinus americana',
 			scientistSurnameInitial: null,
 			status: 'NON_EXISTENT',
-			family: 'oleaceae'
+			family: 'oleaceae',
+			photo_URL: []
 		}
 	],
 	last: false,
