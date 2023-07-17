@@ -1,21 +1,27 @@
-export const Information = () => {
+import { SingleProductDTO } from "../types"
+
+interface InformationProps {
+  product: SingleProductDTO
+}
+
+export const Information = ({ product }: InformationProps) => {
   const contentInfoBase = (
     <div className='flex flex-col items-center gap-5 bg-paint-brownLight'>
-      <h1 className='font-serif text-center text-2xl font-medium first-letter:uppercase'>flor de navidad</h1>
+      <h1 className='font-serif text-center text-2xl font-medium first-letter:uppercase'>{product.commonName}</h1>
       <div className='flex flex-col gap-1 w-96'>
         <InfoParagraph word='NOMBRE CIENTIFICO'>
-          <p className='first-letter:uppercase'>euphorbia pulcherrima</p>
+          <p className='first-letter:uppercase'><i>{product.scientificName} {product.scientistSurnameInitial}</i></p>
         </InfoParagraph>
         <InfoParagraph word='FAMILIA'>
-          <p className='first-letter:uppercase'><i>euphorbiaceae</i></p>
+          <p className='first-letter:uppercase'>{product.family}</p>
         </InfoParagraph>
         <InfoParagraph word='ESTADO'>
-          <p>DISPONIBLE</p>
+          <p>{product.status}</p>
         </InfoParagraph>
         <InfoParagraph word='CLASIFICACIONES'>
           <ul className='list-disc'>
-            <li>ORNAMENTAL</li>
-            <li>CACTUS</li>
+            {product.classifications.map(classification => (
+              <li key={classification}>{classification}</li>))}
           </ul>
         </InfoParagraph>
       </div>

@@ -1,5 +1,5 @@
 export const PublicRoutes = {
-  SINGLE_PRODUCT: 'product',
+  SINGLE_PRODUCT: '/products/:id',
   REPERTORY: 'repertory',
   NEWS: 'news',
   SINGLE_NEWS: 'single-news',
