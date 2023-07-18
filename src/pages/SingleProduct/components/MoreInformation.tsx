@@ -28,7 +28,9 @@ export const MoreInformation = () => {
           Notas
         </NavLink>
       </nav>
-      <Outlet />
+      <section className='w-2/3 p-5 flex flex-col gap-2 bg-amber-50'>
+        <Outlet />
+      </section>
     </article>
   )
 }
@@ -83,25 +85,33 @@ export const TechnicalSheet = () => {
   ]
 
   return (
-    <section className='w-2/3 p-5 flex flex-col gap-2 bg-amber-50'>
+    <>
       {technicalSheetInfo.map((item, index) => (
         <div key={index} className='flex text-sm border-b-2 border-gray-400'>
           <p className='font-medium min-w-[12em] max-w-[12em]'>{item.word}</p>
           <p>{item.info}</p>
         </div>
       ))}
-    </section>
+    </>
   )
 }
 
 export const Details = () => (
-  <h1>
-    Seccion de detalles
-  </h1>
+  <>
+    <ul className='list-inside list-disc'>
+      <li>Information sobre la planta, datos que no incluimos en la ficha tecnica </li>
+      <li>Information sobre la planta, cuidados, recomendaciones </li>
+      <li>Information sobre la planta, datos que no incluimos en la ficha tecnica </li>
+    </ul>
+  </>
 )
 
 export const Notes = () => (
-  <h1>
-    Seccion de notas
-  </h1>
+  <>
+    <ul className='list-inside list-disc'>
+      <li>Information sobre la situacion de la plantas </li>
+      <li>Si es que no hay plantas de este tipo podemos dar una breve explicacion a los usuarios en esta seccion </li>
+      <li>No es necesario colocar detalles y notas a todas las plantas solo si es necesarios</li>
+    </ul>
+  </>
 )
