@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from 'react-router-dom'
 
 export const MoreInformation = () => {
-  const styleCommon = 'py-2 px-10 rounded-t-md'
+  const styleCommon = 'py-2 px-10 rounded-t-lg'
 
   return (
     <article className='flex flex-col p-5'>
@@ -28,7 +28,7 @@ export const MoreInformation = () => {
           Notas
         </NavLink>
       </nav>
-      <section className='w-2/3 p-5 flex flex-col gap-2 bg-amber-50'>
+      <section className='w-2/3 p-5 flex flex-col gap-2 bg-amber-50 rounded-b-lg'>
         <Outlet />
       </section>
     </article>
