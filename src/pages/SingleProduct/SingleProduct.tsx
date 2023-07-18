@@ -1,8 +1,9 @@
-import { useParams } from 'react-router-dom'
-import { Information, TechnicalSheet, Suggestions } from './components'
+import { Outlet, useParams } from 'react-router-dom'
+import { Information, Suggestions } from './components'
 import { useEffect, useState } from 'react'
 import { getProductByID } from './services'
 import { SingleProductDTO } from './types'
+import { NavLink } from 'react-router-dom'
 
 const initialProduct: SingleProductDTO = {
   id: 0,
@@ -29,7 +30,29 @@ export const SingleProduct = () => {
   return (
     <>
       <Information product={product} />
-      <TechnicalSheet />
+      <div>
+        <nav className='flex gap-5'>
+          <NavLink
+            to='.'
+            className={({ isActive }) => isActive ? 'underline' : ''}
+          >
+            Ficha tecnica
+          </NavLink>
+          <NavLink
+            to='details'
+            className={({ isActive }) => isActive ? 'underline' : ''}
+          >
+            Detalles
+          </NavLink>
+          <NavLink
+            to='notes'
+            className={({ isActive }) => isActive ? 'underline' : ''}
+          >
+            Notas
+          </NavLink>
+        </nav>
+        <Outlet />
+      </div>
       <Suggestions />
     </>
   )

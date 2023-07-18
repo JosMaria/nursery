@@ -1,6 +1,5 @@
 import { PiSignInBold } from 'react-icons/pi';
 import { NavLink } from 'react-router-dom';
-import { PublicRoutes } from '../routes/routes';
 
 export const Header = () => {
   const logo = (
@@ -25,16 +24,16 @@ export const Header = () => {
 const NAVLINKS = [
   {
     text: 'Inicio',
-    path: '/'
+    path: '.'
   },
-  // {
-  //   text: 'Listado',
-  //   path: PublicRoutes.REPERTORY
-  // },
-  // {
-  //   text: 'Novedades',
-  //   path: PublicRoutes.NEWS
-  // }
+  {
+    text: 'Listado',
+    path: 'list'
+  },
+  {
+    text: 'Novedades',
+    path: 'news'
+  }
 ]
 
 const Navbar = () => (
@@ -43,7 +42,7 @@ const Navbar = () => (
       <NavLink
         key={item.text}
         to={item.path}
-        className={({ isActive, isPending }) => isPending ? 'bg-slate-300' : isActive ? 'bg-slate-400' : ''}
+        className={({ isActive }) => isActive ? 'underline' : ''}
       >
         {item.text}
       </NavLink>
