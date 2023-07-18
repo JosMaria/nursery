@@ -27,14 +27,14 @@ const NAVLINKS = [
     text: 'Inicio',
     path: '/'
   },
-  {
-    text: 'Listado',
-    path: PublicRoutes.REPERTORY
-  },
-  {
-    text: 'Novedades',
-    path: PublicRoutes.NEWS
-  }
+  // {
+  //   text: 'Listado',
+  //   path: PublicRoutes.REPERTORY
+  // },
+  // {
+  //   text: 'Novedades',
+  //   path: PublicRoutes.NEWS
+  // }
 ]
 
 const Navbar = () => (
@@ -43,7 +43,7 @@ const Navbar = () => (
       <NavLink
         key={item.text}
         to={item.path}
-        className={({ isActive, isPending }) => isPending ? 'pending' : isActive ? 'active' : 'inactive'}
+        className={({ isActive, isPending }) => isPending ? 'bg-slate-300' : isActive ? 'bg-slate-400' : ''}
       >
         {item.text}
       </NavLink>

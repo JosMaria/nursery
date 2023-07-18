@@ -8,3 +8,4 @@ export const PublicRoutes = {
 export const PrivateRoutes = {
   FORM_CREATE_PLANT: 'create-plant'
 }
+
