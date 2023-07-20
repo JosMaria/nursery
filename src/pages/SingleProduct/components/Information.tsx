@@ -1,6 +1,8 @@
 import { StatusType } from '../../../types'
 import { SingleProductDTO } from '../types'
 
+import { HiOutlineArrowNarrowLeft, HiOutlineArrowNarrowRight } from 'react-icons/hi';
+
 interface InformationProps {
   product: SingleProductDTO
 }
@@ -12,10 +14,21 @@ export const Information = ({ product }: InformationProps) => {
     Las hojas son de consistencia y grosor notables, ovales, en forma de corazón o punta de flecha, 
     bastante grande, a veces divididas en lóbulos o incluso en forma de mano.`
 
+  const urls = [
+    'https://1.bp.blogspot.com/-Si6dlsgeaPQ/UtAcg7AxF9I/AAAAAAACIdQ/p80ZR0fKgdk/s1600/paisajes-naturales-nueva-colecci%C3%B3n-de-fotos-bonitas-landscape+(3).jpg',
+    'https://i.pinimg.com/originals/c0/9d/f8/c09df8116570b19381b905653bca9341.jpg',
+    'https://2.bp.blogspot.com/-dxvWO1aL3_w/Uetgi0x4SnI/AAAAAAAAJGA/XBIkSeYd8LI/s1600/1002932_FB_Google.jpg',
+    'https://4.bp.blogspot.com/-QMGOoEe7ORo/UictQ1DRsJI/AAAAAAAB4ow/Q3F1jbR67fo/s400/cerca-del-cielo-y-los-planetas-im%C3%A1genes-de-fantas%C3%ADa-close-to-sky-landscape-1920x1200-wallpaper-.jpg',
+    'https://1.bp.blogspot.com/-Si6dlsgeaPQ/UtAcg7AxF9I/AAAAAAACIdQ/p80ZR0fKgdk/s1600/paisajes-naturales-nueva-colecci%C3%B3n-de-fotos-bonitas-landscape+(3).jpg',
+    // 'https://i.pinimg.com/originals/c0/9d/f8/c09df8116570b19381b905653bca9341.jpg',
+    // 'https://2.bp.blogspot.com/-dxvWO1aL3_w/Uetgi0x4SnI/AAAAAAAAJGA/XBIkSeYd8LI/s1600/1002932_FB_Google.jpg',
+    // 'https://4.bp.blogspot.com/-QMGOoEe7ORo/UictQ1DRsJI/AAAAAAAB4ow/Q3F1jbR67fo/s400/cerca-del-cielo-y-los-planetas-im%C3%A1genes-de-fantas%C3%ADa-close-to-sky-landscape-1920x1200-wallpaper-.jpg'
+  ]
+
   return (
-    <article className='flex gap-10 h-96 p-5'>
-      <section className='w-1/2 bg-red-400'>
-        Imagenes
+    <article className='flex gap-10 p-5'>
+      <section className='w-1/2 bg-amber-50 flex flex-wrap gap-5 justify-center'>
+        <PicturesSection urls={urls} />
       </section>
       <section className='w-1/2 flex flex-col p-5 bg-amber-50 text-sm rounded-lg'>
         <InformationBase
@@ -29,6 +42,42 @@ export const Information = ({ product }: InformationProps) => {
         <Description description={descriptionMock} />
       </section>
     </article>
+  )
+}
+
+interface PicturesSectionProps {
+  urls: Array<string>
+}
+
+const PicturesSection = ({ urls }: PicturesSectionProps) => {
+  return (
+    <>
+      <div className='flex flex-col flex-wrap-reverse h-96 w-80 gap-2 items-end justify-start'>
+        {urls.map((url, index) => (
+          <img
+            key={index}
+            src={url}
+            alt={`Image ${index}`}
+            className='max-w-[9em] w-full h-20 cursor-pointer border-4 border-black'
+          />
+        ))}
+      </div>
+      <div className='flex flex-col items-center gap-2'>
+        <img
+          className='max-w-[30em] w-full opacity-100 transition-opacity'
+          src='https://1.bp.blogspot.com/-Si6dlsgeaPQ/UtAcg7AxF9I/AAAAAAACIdQ/p80ZR0fKgdk/s1600/paisajes-naturales-nueva-colecci%C3%B3n-de-fotos-bonitas-landscape+(3).jpg'
+          alt='Image  mock'
+        />
+        <div className='flex justify-evenly w-full items-center'>
+          <button className='px-5 py-1 hover:bg-slate-100'>
+            <HiOutlineArrowNarrowLeft size='2em' />
+          </button>
+          <button className='px-5 py-1 hover:bg-slate-100'>
+            <HiOutlineArrowNarrowRight size='2em' />
+          </button>
+        </div>
+      </div>
+    </>
   )
 }
 

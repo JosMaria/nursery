@@ -15,14 +15,12 @@ export const MoreInformation = () => {
         </NavLink>
         <NavLink
           to='details'
-          end
           className={({ isActive }) => isActive ? `${styleCommon} bg-amber-50 border-b-4 border-black` : `${styleCommon}`}
         >
           Detalles
         </NavLink>
         <NavLink
           to='notes'
-          end
           className={({ isActive }) => isActive ? `${styleCommon} bg-amber-50 border-b-4 border-black` : `${styleCommon}`}
         >
           Notas
