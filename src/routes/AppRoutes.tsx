@@ -1,25 +1,30 @@
-import { BrowserRouter, Route } from 'react-router-dom'
-import { PublicRoutes } from './routes'
-import { RoutesWithNotFound } from '../utils'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import {
-  Home,
   CatalogPage,
   SingleProduct,
   RepertoryPage,
   NewsPage,
   SingleNews
 } from '../pages'
+import { Layout } from '../components'
+import { Details, Notes, TechnicalSheet } from '../pages/SingleProduct/components'
 
 export const AppRoutes = () => (
   <BrowserRouter>
-    <RoutesWithNotFound>
-      <Route path='/' element={<Home />}>
+    <Routes>
+      <Route element={<Layout />}>
         <Route index element={<CatalogPage />} />
-        <Route path={PublicRoutes.SINGLE_PRODUCT} element={<SingleProduct />} />
-        <Route path={PublicRoutes.REPERTORY} element={<RepertoryPage />} />
-        <Route path={PublicRoutes.NEWS} element={<NewsPage />} />
-        <Route path={PublicRoutes.SINGLE_NEWS} element={<SingleNews />} />
+
+        <Route path='products/:id' element={<SingleProduct />}>
+          <Route index element={<TechnicalSheet />}/>
+          <Route path='details' element={<Details />}/>
+          <Route path='notes' element={<Notes />}/>
+        </Route>
+        
+        <Route path='list' element={<RepertoryPage />} />
+        <Route path='news' element={<NewsPage />} />
+        <Route path='news/:id' element={<SingleNews />} />
       </Route>
-    </RoutesWithNotFound>
+    </Routes>
   </BrowserRouter>
 )
