@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { StatusType } from '../../../types'
 import { SingleProductDTO } from '../types'
 
@@ -50,6 +51,34 @@ interface PicturesSectionProps {
 }
 
 const PicturesSection = ({ urls }: PicturesSectionProps) => {
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [loaded, setLoaded] = useState(false)
+
+  const movePrevious = () => {
+    if (selectedIndex > 0) {
+      const moveToIndex = selectedIndex - 1
+      changeStates(moveToIndex)
+    }
+  }
+
+  const moveNext = () => {
+    if (selectedIndex < urls.length) {
+      const moveToIndex = selectedIndex + 1
+      changeStates(moveToIndex)
+    }
+  }
+
+  const moveTo = (index: number) => {
+    if (index >= 0 && index < urls.length) {
+      changeStates(index)
+    }
+  }
+
+  const changeStates = (indexOfImage: number) => {
+    setLoaded(false)
+    setSelectedIndex(indexOfImage)
+  }
+
   return (
     <>
       <div className='flex flex-col flex-wrap-reverse h-96 w-80 gap-2 items-end justify-start'>
@@ -58,21 +87,31 @@ const PicturesSection = ({ urls }: PicturesSectionProps) => {
             key={index}
             src={url}
             alt={`Image ${index}`}
-            className='max-w-[9em] w-full h-20 cursor-pointer border-4 border-black'
+            onClick={() => moveTo(index)}
+            className={`max-w-[9em] w-full h-20 cursor-pointer ${selectedIndex === index ? 'border-4 border-black' : ''}`}
           />
         ))}
       </div>
-      <div className='flex flex-col items-center gap-2'>
+      <div className='flex flex-col items-center gap-2 w-[30em]'>
         <img
-          className='max-w-[30em] w-full opacity-100 transition-opacity'
-          src='https://1.bp.blogspot.com/-Si6dlsgeaPQ/UtAcg7AxF9I/AAAAAAACIdQ/p80ZR0fKgdk/s1600/paisajes-naturales-nueva-colecci%C3%B3n-de-fotos-bonitas-landscape+(3).jpg'
-          alt='Image  mock'
+          className={`max-w-[30em] h-80 w-full ${loaded ? 'opacity-100 transition-opacity' : 'opacity-0'} `}
+          src={urls[selectedIndex]}
+          alt={`Image ${selectedIndex}`}
+          onLoad={() => setLoaded(true)}
         />
         <div className='flex justify-evenly w-full items-center'>
-          <button className='px-5 py-1 hover:bg-slate-100'>
+          <button
+            onClick={movePrevious}
+            disabled={selectedIndex === 0}
+            className={`px-5 py-1 ${selectedIndex === 0 ? 'opacity-0' : 'hover:bg-slate-100'}`}
+          >
             <HiOutlineArrowNarrowLeft size='2em' />
           </button>
-          <button className='px-5 py-1 hover:bg-slate-100'>
+          <button
+            onClick={moveNext}
+            disabled={selectedIndex === urls.length - 1}
+            className={`px-5 py-1 ${selectedIndex === urls.length - 1 ? 'opacity-0' : 'hover:bg-slate-100'}`}
+          >
             <HiOutlineArrowNarrowRight size='2em' />
           </button>
         </div>
