@@ -1,5 +1,3 @@
-export * from './SharedLayout'
-
 export * from './Catalog'
 export * from './Repertory'
 export * from './News'

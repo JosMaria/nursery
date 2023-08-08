@@ -18,7 +18,7 @@ export const Card = ({ id, commonName, scientificName, scientistSurnameInitial, 
     <Link
       key={id}
       className='flex flex-col text-sm leading-5 p-2 cursor-pointer'
-      to={PublicRoutes.SINGLE_PRODUCT}
+      to={`/products/${id}`}
     >
       <p className='font-bold text-lg text-center first-letter:uppercase'>{commonName}</p>
       <p className='font-thin italic'>{scientificName} {scientistSurnameInitial}</p>

@@ -1,3 +1,3 @@
 export * from './Information'
-export * from './TechnicalSheet'
+export * from './MoreInformation'
 export * from './Suggestions'
