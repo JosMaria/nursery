@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import EmptyImage from '../../../assets/no-image.png'
 import { StatusType } from '../../../types'
-import { PublicRoutes } from '../../../routes/routes'
 
 interface Props {
   id: number

@@ -1,4 +1,4 @@
-import { PlantClassificationType } from "../types"
+import { PlantClassificationType } from "../../../types"
 
 export const ClassificationNavbar = () => {
 

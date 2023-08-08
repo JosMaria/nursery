@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { PageCatalog, PlantClassificationType } from '../types'
+import { PageCatalog,  } from '../types'
+import { PlantClassificationType } from '../../../types'
 
 const instance = axios.create({
   baseURL: 'http://localhost:8080/api/v1/products'
