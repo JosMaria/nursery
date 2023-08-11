@@ -2,12 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.bg-color-mark {
+  @apply bg-teal-900 text-slate-100;
+}
+
 .navlink-active {
-  @apply p-2 text-center flex-1 bg-teal-900 border-b-4
+  @apply p-2 text-center flex-1 bg-teal-900 border-b-4;
 }
 
 .navlink-inactive {
-  @apply p-2 text-center flex-1
+  @apply p-2 text-center flex-1;
 }
 
 @layer base {

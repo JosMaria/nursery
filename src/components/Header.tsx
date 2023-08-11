@@ -1,18 +1,11 @@
 import { NavLink } from 'react-router-dom';
-
-const NAVLINKS = [
-  { text: 'Inicio', path: '.' },
-  { text: 'Listado', path: 'list' },
-  { text: 'Novedades', path: 'news' },
-];
+import { NAVLINKS } from './constants';
 
 export const Header = () => {
   const title = (
     <h1 className='ml-4 text-3xl'>
       🪴
-      <span className='ml-2 text-2xl font-mono font-semibold max-md:text-xl'>
-        Vivero
-      </span>
+      <span className='ml-2 text-2xl max-md:text-xl'>Vivero</span>
     </h1>
   );
 
@@ -33,10 +26,12 @@ export const Header = () => {
   );
 
   return (
-    <header className='bg-teal-800 text-white p-2 flex items-center justify-between gap-2 max-md:flex-wrap max-md:pt-3 max-md:p-0'>
+    <header className='bg-color-mark font-medium p-2 flex items-center justify-between gap-2 max-md:flex-wrap max-md:pt-3 max-md:p-0'>
       {title}
       {navbar}
-      <button className='mr-4 max-md:text-2xl text-3xl'>&#8677;</button>
+      <button className='mr-4 max-md:text-2xl text-3xl font-medium'>
+        &#8677;
+      </button>
     </header>
   );
 };
