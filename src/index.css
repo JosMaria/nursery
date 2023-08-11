@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.navlink-active {
+  @apply p-2 text-center flex-1 bg-teal-900 border-b-4
+}
+
+.navlink-inactive {
+  @apply p-2 text-center flex-1
+}
+
 @layer base {
   :root {
     /* colors to form */

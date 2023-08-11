@@ -5,7 +5,7 @@ import { Header } from './Header';
 export const Layout = () => (
   <>
     <Header />
-    <main className='bg-paint-brownLight'>
+    <main className='h-screen'>
       <Outlet />
     </main>
     <Footer />
