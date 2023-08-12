@@ -7,7 +7,7 @@ interface Props {
 }
 export const Article = ({ title, date, briefDescription }: Props) => (
   <Link
-    to='#'
+    to='/news/1'
     className='flex flex-col gap-2 p-5 border-2 border-slate-500 rounded-xl bg-[#dfd4c2]'
   >
     <h2 className='text-2xl font-semibold'>{title}</h2>
