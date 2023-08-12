@@ -3,11 +3,11 @@ import { Footer } from './Footer';
 import { Header } from './Header';
 
 export const Layout = () => (
-  <>
+  <div className='flex flex-col'>
     <Header />
-    <main className='h-screen flex flex-col items-center bg-stone-300'>
+    <main className='flex flex-col items-center bg-stone-300'>
       <Outlet />
     </main>
     <Footer />
-  </>
+  </div>
 )
