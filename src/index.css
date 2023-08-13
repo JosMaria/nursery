@@ -26,7 +26,28 @@
 }
 
 .form-btn {
-  @apply bg-teal-900 text-slate-100 font-medium hover:bg-teal-700 py-1.5 px-4 border border-teal-900 rounded;
+  @apply bg-color-mark font-medium hover:bg-teal-700 py-1.5 px-4 border border-teal-900 rounded;
+}
+
+/* Table styles */
+.table-header {
+  @apply bg-color-mark font-medium whitespace-nowrap;
+}
+
+.custom-row {
+  @apply p-2 first-letter:uppercase;
+}
+
+.available-status {
+  @apply text-green-800 bg-green-200;
+}
+
+.conservation-status {
+  @apply text-yellow-800 bg-yellow-100;
+}
+
+.non-existent-status {
+  @apply text-gray-800 bg-gray-300;
 }
 
 @layer base {
