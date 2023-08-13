@@ -26,7 +26,7 @@
 }
 
 .form-btn {
-  @apply font-medium bg-teal-800 hover:bg-teal-700 text-white py-1.5 px-4 border border-teal-900 rounded;
+  @apply bg-teal-900 text-slate-100 font-medium hover:bg-teal-700 py-1.5 px-4 border border-teal-900 rounded;
 }
 
 @layer base {
