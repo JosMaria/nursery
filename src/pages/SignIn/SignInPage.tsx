@@ -4,7 +4,7 @@ export const SignInPage = () => {
   const id = useId();
 
   const inputUsername = (
-    <div className='flex flex-col gap-1'>
+    <div className='container-input'>
       <label className='font-medium' htmlFor={`${id}-username`}>
         Nombre de usuario
       </label>
@@ -12,19 +12,19 @@ export const SignInPage = () => {
         className='form-input'
         type='text'
         id={`${id}-username`}
-        placeholder='consuelo'
+        placeholder='admin'
         required
       />
     </div>
   );
 
   const inputPassword = (
-    <div className='flex flex-col gap-1'>
+    <div className='container-input'>
       <label className='font-medium' htmlFor={`${id}-password`}>
         Contrase&ntilde;a
       </label>
       <input
-        className=' text-sm px-3 py-2 border rounded-md  focus:ring-opacity-40 focus:outline-none focus:ring bg-gray-300 border-gray-400 focus:border-blue-300 focus:ring-blue-300'
+        className='form-input'
         type='password'
         id={`${id}-password`}
         placeholder='••••••••••'
@@ -34,8 +34,8 @@ export const SignInPage = () => {
   );
 
   return (
-    <form className=' justify-center gap-5 bg-slate-400 p-5 w-full h-fit flex flex-col items-center'>
-      <h1 className='font-medium text-2xl'>Vivero de FDRyT</h1>
+    <form className='bg-stone-400 w-96 h-80 max-sm:w-full flex flex-col items-center justify-center gap-5 m-5'>
+      <h1 className='font-medium text-3xl'>Vivero de FDRyT</h1>
       {inputUsername}
       {inputPassword}
       <button type='submit' className='form-btn'>
