@@ -1,5 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { SingleProduct, RepertoryPage, NewsPage, SingleNews } from '../pages';
+import {
+  SingleProduct,
+  RepertoryPage,
+  NewsPage,
+  SingleNews,
+  SignInPage,
+} from '../pages';
 import { Layout } from '../components';
 import {
   Details,
@@ -23,6 +29,7 @@ export const AppRoutes = () => (
         <Route path='list' element={<RepertoryPage />} />
         <Route path='news' element={<NewsPage />} />
         <Route path='news/:id' element={<SingleNews />} />
+        <Route path='signin' element={<SignInPage />} />
       </Route>
     </Routes>
   </BrowserRouter>
