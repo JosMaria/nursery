@@ -54,7 +54,7 @@ export const Table = () => {
           </td>
           <td className='custom-row'>{item.family}</td>
           <td className='custom-row flex justify-center'>
-            <p className={`${getStyledBy(item.status)} font-medium text-xs px-3 rounded-full`}>
+            <p className={`${getStyledBy(item.status)} font-medium text-xs px-3 rounded-full whitespace-nowrap`}>
               {statusToSpanish(item.status)}
             </p>
           </td>
