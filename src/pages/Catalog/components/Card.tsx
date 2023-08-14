@@ -20,13 +20,13 @@ export const Card = ({
   family,
   status,
 }: Props) => (
-  <div className='flex flex-col gap-1 w-80 bg-stone-50 border border-stone-300 p-2 rounded-xl shadow-black shadow-sm hover:shadow-black hover:shadow-md'>
+  <div className='max-lg:w-40 max-lg:h-52 flex flex-col p-2 rounded-xl bg-stone-50 border border-stone-300 shadow-black shadow-sm hover:shadow-black hover:shadow-md'>
     <img src={EmptyImage} alt={commonName} />
     <Link key={id} className='cursor-pointer' to={`/products/${id}`}>
-      <p className='font-bold text-lg first-letter:uppercase text-center'>
+      <p className='font-bold max-sm:text-sm text-lg first-letter:uppercase text-center'>
         {commonName}
       </p>
-      <div className='grid grid-rows-3 text-sm px-2 pb-2 h-14'>
+      <div className='grid grid-rows-3 text-xs max- px-2 pb-2 whitespace-nowrap overflow-x-auto'>
         <p className='italic'>
           {scientificName} {scientistSurnameInitial}
         </p>
