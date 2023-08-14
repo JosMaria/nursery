@@ -5,6 +5,7 @@ import {
   NewsPage,
   SingleNews,
   SignInPage,
+  CatalogPage,
 } from '../pages';
 import { Layout } from '../components';
 import {
@@ -17,9 +18,7 @@ export const AppRoutes = () => (
   <BrowserRouter>
     <Routes>
       <Route element={<Layout />}>
-        <Route index element={<NewsPage />} />
-        {/* <Route index element={<CatalogPage />} /> */}
-        {/* <Route index element={<CreatePlant />} /> */}
+        <Route index element={<CatalogPage />} />
         <Route path='products/:id' element={<SingleProduct />}>
           <Route index element={<TechnicalSheet />} />
           <Route path='details' element={<Details />} />

@@ -1,35 +1,11 @@
-import { useEffect, useState } from 'react'
-import { Card, ClassificationNavbar } from './components'
-import { getPaginatedProducts } from './services'
-import { PageCatalog } from './types'
-
-const pageCatalogInitial: PageCatalog = {
-  content: [],
-  number: 0,
-  totalElements: 0,
-  totalPages: 0,
-  size: 0,
-  numberOfElements: 0,
-  empty: true,
-  first: true,
-  last: true
-}
+import { Card } from './components';
+import { products } from './data/store';
 
 export const CatalogPage = () => {
-  const [pageCatalog, setPageCatalog] = useState<PageCatalog>(pageCatalogInitial)
-
-  useEffect(() => {
-    getPaginatedProducts()
-      .then(response => setPageCatalog(response))
-  }, [])
-
   return (
     <>
-      <nav>
-        <ClassificationNavbar />
-      </nav>
-      <article className='flex flex-wrap justify-center gap-12 p-5'>
-        {pageCatalog.content.map(product => (
+      <article className='flex flex-wrap justify-center gap-10 p-5'>
+        {products.map((product) => (
           <Card
             key={product.id}
             id={product.id}
@@ -42,5 +18,5 @@ export const CatalogPage = () => {
         ))}
       </article>
     </>
-  )
-}
+  );
+};
