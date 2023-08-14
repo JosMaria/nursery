@@ -40,7 +40,7 @@
 
 /* start block - warning - those styles are used by method getStyledGivenStatus of utils folder */
 .lbl-status {
-  @apply font-medium text-xs px-3 rounded-full whitespace-nowrap;
+  @apply font-medium text-xs px-2 rounded-full whitespace-nowrap;
 }
 
 .available-status {

@@ -26,7 +26,7 @@ export const Table = () => {
       {ITEMS.content.map((item) => (
         <tr
           key={item.id}
-          className='text-sm bg-stone-200 [&:nth-child(even)]:bg-stone-100'
+          className='text-sm bg-stone-50 [&:nth-child(even)]:bg-stone-300'
         >
           <td className='custom-row'>{item.commonName}</td>
           <td className='custom-row italic'>
