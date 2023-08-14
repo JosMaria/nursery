@@ -2,16 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Header and Footer styles */
 .bg-color-mark {
   @apply bg-teal-900 text-slate-100;
 }
 
+/* Navlink styles */
 .navlink-active {
-  @apply p-2 text-center flex-1 bg-teal-900 border-b-4;
+  @apply p-2 text-center flex-1 bg-teal-800 border-b-4;
 }
 
 .navlink-inactive {
   @apply p-2 text-center flex-1;
+}
+
+/* Form styles */
+.container-input {
+  @apply flex flex-col gap-1;
+}
+
+.form-input {
+  @apply w-72 text-sm px-3 py-2 border rounded-md focus:ring-opacity-40 focus:outline-none focus:ring bg-gray-300 border-gray-400 focus:border-blue-500 focus:ring-blue-400;
+}
+
+.form-btn {
+  @apply bg-color-mark font-medium hover:bg-teal-700 py-1.5 px-4 border border-teal-900 rounded;
+}
+
+/* Table styles */
+.table-header {
+  @apply bg-color-mark font-medium whitespace-nowrap;
+}
+
+.custom-row {
+  @apply p-2 first-letter:uppercase;
+}
+
+.available-status {
+  @apply text-green-800 bg-green-200;
+}
+
+.conservation-status {
+  @apply text-yellow-800 bg-yellow-100;
+}
+
+.non-existent-status {
+  @apply text-gray-800 bg-gray-300;
 }
 
 @layer base {
@@ -23,61 +59,5 @@
     /* palette color  */
     --COLOR-BROWN: #3c322b;
     --COLOR-BROWN-LIGHT: #f4ebdb;
-  }
-}
-
-@layer components {
-  .active {
-    border-bottom-width: 2px;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-
-  .inactive {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-
-  .pending {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-
-  .label-form {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    font-weight: 500;
-    color: white;
-  }
-
-  .input-form {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    padding: 0.625rem;
-    --tw-bg-opacity: 1;
-    background-color: rgb(51 65 85 / var(--tw-bg-opacity));
-    border-width: 1px;
-    --tw-border-opacity: 1;
-    border-color: rgb(51 65 85 / var(--tw-border-opacity));
-    --tw-placeholder-opacity: 1;
-    color: rgb(148 163 184 / var(--tw-placeholder-opacity));
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity));
-    border-radius: 0.5rem;
-  }
-
-  .button-submit-form {
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity));
-    font-weight: 500;
-    border-radius: 0.5rem;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    padding: 0.875rem;
-    text-align: center;
-    --tw-bg-opacity: 1;
-    background-color: rgb(49 96 41 / var(--tw-bg-opacity));
-    --tw-bg-opacity: 1;
-    background-color: rgb(39 81 33 / var(--tw-bg-opacity));
   }
 }

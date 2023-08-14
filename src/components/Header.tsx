@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { NAVLINKS } from './constants';
 
 export const Header = () => {
@@ -29,9 +29,12 @@ export const Header = () => {
     <header className='bg-color-mark font-medium p-2 flex items-center justify-between gap-2 max-md:flex-wrap max-md:pt-3 max-md:p-0'>
       {title}
       {navbar}
-      <button className='mr-4 max-md:text-2xl text-3xl font-medium'>
+      <Link
+        to='signin'
+        className='px-2 max-md:text-2xl text-3xl font-medium active:bg-teal-700'
+      >
         &#8677;
-      </button>
+      </Link>
     </header>
   );
 };
