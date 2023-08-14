@@ -38,6 +38,7 @@
   @apply p-2 first-letter:uppercase;
 }
 
+/* start block - warning - those styles are used by method getStyledGivenStatus of utils folder */
 .lbl-status {
   @apply font-medium text-xs px-3 rounded-full whitespace-nowrap;
 }
@@ -53,6 +54,7 @@
 .non-existent-status {
   @apply lbl-status text-gray-800 bg-gray-300;
 }
+/* end block */
 
 @layer base {
   :root {

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import EmptyImage from '../../../assets/no-image.png';
 import { StatusType } from '../../../types';
+import { getStyledGivenStatus, traduceStatus } from '../../../utils';
 
 interface Props {
   id: number;
@@ -30,7 +31,7 @@ export const Card = ({
           {scientificName} {scientistSurnameInitial}
         </p>
         <p className=''>{family}</p>
-        <p className='available-status place-self-end'>{status}</p>
+        <p className={`${getStyledGivenStatus(status)} place-self-end`}>{traduceStatus(status)}</p>
       </div>
     </Link>
   </div>
