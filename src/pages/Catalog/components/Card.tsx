@@ -27,7 +27,7 @@ export const Card = ({
     <div className='bg-orange-300'>
       <img src={EmptyImage} alt={commonName} />
     </div>
-    <div className='h-20 flex flex-col justify-around max-sm:text-sm px-2 max-sm:px-0 '>
+    <div className='h-20 flex flex-col justify-around max-sm:text-sm px-2 max-sm:px-1'>
       <p className='font-medium max-sm:font-normal whitespace-nowrap overflow-x-auto overflow-y-hidden'>
         {commonName}
       </p>
