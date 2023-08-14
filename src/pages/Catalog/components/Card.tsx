@@ -20,19 +20,26 @@ export const Card = ({
   family,
   status,
 }: Props) => (
-  <div className='max-lg:w-40 max-lg:h-52 flex flex-col p-2 rounded-xl bg-stone-50 border border-stone-300 shadow-black shadow-sm hover:shadow-black hover:shadow-md'>
-    <img src={EmptyImage} alt={commonName} />
-    <Link key={id} className='cursor-pointer' to={`/products/${id}`}>
-      <p className='font-bold max-sm:text-sm text-lg first-letter:uppercase text-center'>
+  <Link
+    to={`products/${id}`}
+    className='bg-stone-50 border-stone-900 shadow-black shadow-sm hover:shadow-black hover:shadow-md p-1 flex flex-col gap-1 w-80 max-xl:w-72 max-md:w-60 max-sm:w-48 max-xs:w-40 text-center rounded-b-lg'
+  >
+    <div className='bg-orange-300'>
+      <img src={EmptyImage} alt={commonName} />
+    </div>
+    <div className='h-20 flex flex-col justify-around max-sm:text-sm px-2 max-sm:px-0 '>
+      <p className='font-medium max-sm:font-normal whitespace-nowrap overflow-x-auto overflow-y-hidden'>
         {commonName}
       </p>
-      <div className='grid grid-rows-3 text-xs max- px-2 pb-2 whitespace-nowrap overflow-x-auto'>
-        <p className='italic'>
+      <div className='flex flex-col items-start justify-between text-sm max-sm:text-xs max-xs:text-xs leading-none h-fit overflow-x-auto overflow-y-hidden whitespace-nowrap'>
+        <p className='leading-none'>
           {scientificName} {scientistSurnameInitial}
         </p>
-        <p className=''>{family}</p>
-        <p className={`${getStyledGivenStatus(status)} place-self-end`}>{traduceStatus(status)}</p>
+        <p className='leading-none'>{family}</p>
       </div>
-    </Link>
-  </div>
+      <p className={`${getStyledGivenStatus(status)} self-end w-fit`}>
+        {traduceStatus(status)}
+      </p>
+    </div>
+  </Link>
 );
