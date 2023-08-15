@@ -1,4 +1,4 @@
-import { StatusType } from '../../../types';
+import { getStyledGivenStatus, traduceStatus } from '../../../utils';
 import { data as ITEMS } from '../data/store';
 
 const HEADERS_TITLE = [
@@ -7,26 +7,6 @@ const HEADERS_TITLE = [
   'Familia',
   'Estado',
 ];
-
-const statusToSpanish = (status: StatusType): string => {
-  if (status === 'IN_CONSERVATION') {
-    return 'EN CONSERVACIÓN';
-  } else if (status === 'AVAILABLE') {
-    return 'DISPONIBLE';
-  } else {
-    return 'NO EXISTENTE';
-  }
-};
-
-const getStyledBy = (status: StatusType): string => {
-  if (status === 'IN_CONSERVATION') {
-    return 'conservation-status';
-  } else if (status === 'AVAILABLE') {
-    return 'available-status';
-  } else {
-    return 'non-existent-status';
-  }
-};
 
 export const Table = () => {
   const tableHeader = (
@@ -46,7 +26,7 @@ export const Table = () => {
       {ITEMS.content.map((item) => (
         <tr
           key={item.id}
-          className='text-sm bg-stone-200 [&:nth-child(even)]:bg-stone-100'
+          className='text-sm bg-stone-50 [&:nth-child(even)]:bg-stone-300'
         >
           <td className='custom-row'>{item.commonName}</td>
           <td className='custom-row italic'>
@@ -54,8 +34,8 @@ export const Table = () => {
           </td>
           <td className='custom-row'>{item.family}</td>
           <td className='custom-row flex justify-center'>
-            <p className={`${getStyledBy(item.status)} font-medium text-xs px-3 rounded-full whitespace-nowrap`}>
-              {statusToSpanish(item.status)}
+            <p className={getStyledGivenStatus(item.status)}>
+              {traduceStatus(item.status)}
             </p>
           </td>
         </tr>

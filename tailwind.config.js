@@ -5,22 +5,14 @@ export default {
     './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {
-      backgroundColor: {
-        form: {
-          color: 'var(--COLOR-BG-FORM)'
-        },
-        paint: {
-          brown: 'var(--COLOR-BROWN)',
-          brownLight: 'var(--COLOR-BROWN-LIGHT)' 
-        },
-      },
-      borderColor: {
-        form: {
-          color: 'var(--COLOR-BORDER-FORM)'
-        }
-      },
-    },
+    screens: {
+      'xs': '420px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px'
+    }
   },
   plugins: [],
 }

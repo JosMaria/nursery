@@ -1,46 +1,20 @@
-import { useEffect, useState } from 'react'
-import { Card, ClassificationNavbar } from './components'
-import { getPaginatedProducts } from './services'
-import { PageCatalog } from './types'
+import { Card } from './components';
+import { products } from './data/store';
 
-const pageCatalogInitial: PageCatalog = {
-  content: [],
-  number: 0,
-  totalElements: 0,
-  totalPages: 0,
-  size: 0,
-  numberOfElements: 0,
-  empty: true,
-  first: true,
-  last: true
-}
-
-export const CatalogPage = () => {
-  const [pageCatalog, setPageCatalog] = useState<PageCatalog>(pageCatalogInitial)
-
-  useEffect(() => {
-    getPaginatedProducts()
-      .then(response => setPageCatalog(response))
-  }, [])
-
-  return (
-    <>
-      <nav>
-        <ClassificationNavbar />
-      </nav>
-      <article className='flex flex-wrap justify-center gap-12 p-5'>
-        {pageCatalog.content.map(product => (
-          <Card
-            key={product.id}
-            id={product.id}
-            commonName={product.commonName}
-            scientificName={product.scientificName}
-            scientistSurnameInitial={product.scientistSurnameInitial}
-            family={product.family}
-            status={product.status}
-          />
-        ))}
-      </article>
-    </>
-  )
-}
+export const CatalogPage = () => (
+  <>
+    <section className='grid grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 place-items-center gap-2 xs:gap-3 sm:gap-5 lg:gap-10 w-full py-5'>
+      {products.map((product) => (
+        <Card
+          key={product.id}
+          id={product.id}
+          commonName={product.commonName}
+          scientificName={product.scientificName}
+          scientistSurnameInitial={product.scientistSurnameInitial}
+          family={product.family}
+          status={product.status}
+        />
+      ))}
+    </section>
+  </>
+);

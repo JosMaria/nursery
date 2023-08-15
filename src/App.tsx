@@ -4,4 +4,4 @@ export const App = () => (
   <>
     <AppRoutes />
   </>
-)
+);
