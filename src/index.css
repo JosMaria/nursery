@@ -13,6 +13,9 @@
     /* navbar */
     --fill-color-nav-selected: 63, 98, 18;
     --border-nav-selected: 236, 252, 203;
+    /* card */
+    --gradient-from: 236, 252, 203;
+    --gradient-to: 247, 254, 231;
   }
 
   .theme-admin {
@@ -25,6 +28,9 @@
     /* navbar */
     --fill-color-nav-selected: 120, 53, 15;
     --border-nav-selected: 254, 243, 199;
+    /* card */
+    --gradient-from: 254, 243, 199;
+    --gradient-to: 255, 251, 235;
   }
 
   .theme-assistant {
@@ -37,6 +43,9 @@
     /* navbar */
     --fill-color-nav-selected: 7, 89, 133;
     --border-nav-selected: 224, 242, 254;
+    /* card */
+    --gradient-from: 224, 242, 254;
+    --gradient-to: 240, 249, 255;
   }
 }
 

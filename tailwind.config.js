@@ -36,6 +36,12 @@ export default {
         skin: {
           nav: withOpacity('--border-nav-selected')
         }
+      },
+      gradientColorStops: {
+        card: {
+          start: withOpacity('--gradient-from'),
+          end: withOpacity('--gradient-to'),
+        }
       }
     },
   },
