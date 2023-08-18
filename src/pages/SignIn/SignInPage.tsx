@@ -34,7 +34,7 @@ export const SignInPage = () => {
   );
 
   return (
-    <form className='bg-stone-400 w-96 h-80 max-sm:w-full flex flex-col items-center justify-center gap-5 m-5'>
+    <form className='bg-stone-200 w-96 h-80 max-sm:w-full flex flex-col items-center justify-center gap-5 m-5'>
       <h1 className='font-medium text-3xl'>Vivero de FDRyT</h1>
       {inputUsername}
       {inputPassword}

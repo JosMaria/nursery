@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --color-base: rgb(19, 78, 74);
+  }
+
+  .theme-admin {
+    --color-base: rgb(125, 70, 0);
+  }
+
+  .theme-assistant {
+    --color-base: rgb(70, 105, 149);
+  }
+}
+/*
+#7d4600 cafe
+#466995 azul
+*/
+
 /* Header and Footer styles */
 .bg-color-mark {
   @apply bg-teal-900 text-slate-100;

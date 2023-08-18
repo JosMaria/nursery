@@ -26,7 +26,7 @@ export const Header = () => {
   );
 
   return (
-    <header className='bg-color-mark font-medium p-2 flex items-center justify-between gap-2 max-md:flex-wrap max-md:pt-3 max-md:p-0'>
+    <header className='bg-skin-base font-medium p-2 flex items-center justify-between gap-2 max-md:flex-wrap max-md:pt-3 max-md:p-0'>
       {title}
       {navbar}
       <Link
