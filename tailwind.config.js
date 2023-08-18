@@ -21,9 +21,22 @@ export default {
     extend: {
       backgroundColor: {
         skin: {
-          base: withOpacity('--color-base'),
+          dark: withOpacity('--fill-color-dark'),
+          light: withOpacity('--fill-color-light'),
+          nav: withOpacity('--fill-color-nav-selected')
         },
       },
+      textColor: {
+        skin: {
+          dark: withOpacity('--text-color-dark'),
+          light: withOpacity('--text-color-light'),
+        },
+      },
+      borderColor: {
+        skin: {
+          nav: withOpacity('--border-nav-selected')
+        }
+      }
     },
   },
   plugins: [],

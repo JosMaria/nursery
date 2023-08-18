@@ -4,15 +4,29 @@
 
 @layer base {
   :root {
-    --color-base: 19, 78, 74;
+    /* content */
+    --fill-color-dark: 54, 83, 20;
+    --fill-color-light: 247, 254, 231;
+    /* text */
+    --text-color-dark: 26, 46, 5;
+    --text-color-light: 247, 254, 231;
+    /* navbar */
+    --fill-color-nav-selected: 63, 98, 18;
+    --border-nav-selected: 236, 252, 203;
   }
 
   .theme-admin {
-    --color-base: rgb(125, 70, 0);
+    --fill-color-dark: 125, 70, 0;
+    --fill-color-light: 247, 254, 231;
+    --text-color-dark: 00 00 00;
+    --text-color-light: 247, 254, 231;
   }
 
   .theme-assistant {
-    --color-base: rgb(70, 105, 149);
+    --fill-color-dark: 70, 105, 149;
+    --fill-color-light: 247, 254, 231;
+    --text-color-dark: 00 00 00;
+    --text-color-light: 247, 254, 231;
   }
 }
 /*
@@ -73,15 +87,3 @@
   @apply lbl-status text-gray-800 bg-gray-300;
 }
 /* end block */
-
-@layer base {
-  :root {
-    /* colors to form */
-    --COLOR-BG-FORM: #1e293b;
-    --COLOR-BORDER-FORM: #334155;
-
-    /* palette color  */
-    --COLOR-BROWN: #3c322b;
-    --COLOR-BROWN-LIGHT: #f4ebdb;
-  }
-}

@@ -10,13 +10,13 @@ export const Header = () => {
   );
 
   const navbar = (
-    <nav className='flex w-96 tracking-widest max-md:order-last max-md:text-sm max-md:w-full'>
+    <nav className='flex w-96 tracking-wider max-md:order-last max-md:text-sm max-md:w-full'>
       {NAVLINKS.map((item) => (
         <NavLink
           key={item.text}
           to={item.path}
           className={({ isActive }) =>
-            isActive ? 'navlink-active' : 'navlink-inactive'
+            isActive ? 'p-2 text-center flex-1 border-b-4 bg-skin-nav border-skin-nav' : 'p-2 text-center flex-1'
           }
         >
           {item.text}
@@ -26,7 +26,7 @@ export const Header = () => {
   );
 
   return (
-    <header className='bg-skin-base font-medium p-2 flex items-center justify-between gap-2 max-md:flex-wrap max-md:pt-3 max-md:p-0'>
+    <header className='bg-skin-dark text-skin-light font-medium p-2 flex items-center justify-between gap-2 max-md:flex-wrap max-md:pt-3 max-md:p-0'>
       {title}
       {navbar}
       <Link
