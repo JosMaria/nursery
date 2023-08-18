@@ -16,36 +16,28 @@
   }
 
   .theme-admin {
-    --fill-color-dark: 125, 70, 0;
-    --fill-color-light: 247, 254, 231;
-    --text-color-dark: 00 00 00;
-    --text-color-light: 247, 254, 231;
+    /* content */
+    --fill-color-dark: 69, 26, 3;
+    --fill-color-light: 255, 251, 235;
+    /* text */
+    --text-color-dark: 69, 26, 3;
+    --text-color-light: 255, 251, 235;
+    /* navbar */
+    --fill-color-nav-selected: 120, 53, 15;
+    --border-nav-selected: 254, 243, 199;
   }
 
   .theme-assistant {
-    --fill-color-dark: 70, 105, 149;
-    --fill-color-light: 247, 254, 231;
-    --text-color-dark: 00 00 00;
-    --text-color-light: 247, 254, 231;
+    /* content */
+    --fill-color-dark: 12, 74, 110;
+    --fill-color-light: 240, 249, 255;
+    /* text */
+    --text-color-dark: 8, 47, 73;
+    --text-color-light: 240, 249, 255;
+    /* navbar */
+    --fill-color-nav-selected: 7, 89, 133;
+    --border-nav-selected: 224, 242, 254;
   }
-}
-/*
-#7d4600 cafe
-#466995 azul
-*/
-
-/* Header and Footer styles */
-.bg-color-mark {
-  @apply bg-teal-900 text-slate-100;
-}
-
-/* Navlink styles */
-.navlink-active {
-  @apply p-2 text-center flex-1 bg-teal-800 border-b-4;
-}
-
-.navlink-inactive {
-  @apply p-2 text-center flex-1;
 }
 
 /* Form styles */
@@ -58,12 +50,12 @@
 }
 
 .form-btn {
-  @apply bg-color-mark font-medium hover:bg-teal-700 py-1.5 px-4 border border-teal-900 rounded;
+  @apply bg-teal-900 text-slate-100 font-medium hover:bg-teal-700 py-1.5 px-4 border border-teal-900 rounded;
 }
 
 /* Table styles */
 .table-header {
-  @apply bg-color-mark font-medium whitespace-nowrap;
+  @apply bg-teal-900 text-slate-100 font-medium whitespace-nowrap;
 }
 
 .custom-row {

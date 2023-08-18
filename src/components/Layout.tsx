@@ -3,7 +3,7 @@ import { Footer } from './Footer';
 import { Header } from './Header';
 
 export const Layout = () => (
-  <div className='text-skin-base flex flex-col min-h-screen justify-between'>
+  <div className='flex flex-col min-h-screen justify-between'>
     <Header />
     <main className='bg-skin-light flex flex-col items-center justify-center'>
       <Outlet />
