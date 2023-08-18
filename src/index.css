@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --color-base: rgb(19, 78, 74);
+    --color-base: 19, 78, 74;
   }
 
   .theme-admin {

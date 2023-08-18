@@ -1,3 +1,11 @@
+const withOpacity = (variableName) => {
+  return ({ opacityValue }) => {
+    if (opacityValue) return `rgba(var(${variableName}), ${opacityValue})`;
+
+    return `rgb(var(${variableName}))`;
+  };
+};
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
@@ -13,7 +21,7 @@ export default {
     extend: {
       backgroundColor: {
         skin: {
-          base: 'var(--color-base)'
+          base: withOpacity('--color-base'),
         },
       },
     },
