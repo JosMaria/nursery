@@ -16,6 +16,10 @@
     /* card */
     --gradient-from: 236, 252, 203;
     --gradient-to: 247, 254, 231;
+    /* form */
+    --fill-color-form: 236, 252, 203;
+    --fill-color-btn: 63, 98, 18;
+    --fill-color-btn-hover: 77, 124, 15;
   }
 
   .theme-admin {
@@ -31,6 +35,10 @@
     /* card */
     --gradient-from: 254, 243, 199;
     --gradient-to: 255, 251, 235;
+    /* form */
+    --fill-color-form: 254, 243, 199;
+    --fill-color-btn: 146, 64, 14;
+    --fill-color-btn-hover: 180, 83, 9;
   }
 
   .theme-assistant {
@@ -46,20 +54,24 @@
     /* card */
     --gradient-from: 224, 242, 254;
     --gradient-to: 240, 249, 255;
+    /* form */
+    --fill-color-form: 186, 230, 253;
+    --fill-color-btn: 7, 89, 133;
+    --fill-color-btn-hover: 3, 105, 161;
   }
 }
 
-/* Form styles */
-.container-input {
+/* Form styles globals */
+.custom-container-input {
   @apply flex flex-col gap-1;
 }
 
-.form-input {
-  @apply w-72 text-sm px-3 py-2 border rounded-md focus:ring-opacity-40 focus:outline-none focus:ring bg-gray-300 border-gray-400 focus:border-blue-500 focus:ring-blue-400;
+.custom-btn-form {
+  @apply bg-skin-btn text-skin-light hover:bg-skin-btn-hover font-semibold rounded py-2 px-5 text-sm;
 }
 
-.form-btn {
-  @apply bg-teal-900 text-slate-100 font-medium hover:bg-teal-700 py-1.5 px-4 border border-teal-900 rounded;
+.custom-input-form {
+  @apply bg-slate-50 focus:border-skin-focus focus:ring-skin-input focus:ring-opacity-30 focus:outline-none focus:ring w-72 text-sm px-3 py-2 border border-slate-300 rounded-lg;
 }
 
 /* Table styles */

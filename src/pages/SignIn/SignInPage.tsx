@@ -4,12 +4,12 @@ export const SignInPage = () => {
   const id = useId();
 
   const inputUsername = (
-    <div className='container-input'>
-      <label className='font-medium' htmlFor={`${id}-username`}>
+    <div className='custom-container-input'>
+      <label className='font-medium text-sm' htmlFor={`${id}-username`}>
         Nombre de usuario
       </label>
       <input
-        className='form-input'
+        className='custom-input-form'
         type='text'
         id={`${id}-username`}
         placeholder='admin'
@@ -19,12 +19,12 @@ export const SignInPage = () => {
   );
 
   const inputPassword = (
-    <div className='container-input'>
-      <label className='font-medium' htmlFor={`${id}-password`}>
+    <div className='custom-container-input'>
+      <label className='font-medium text-sm' htmlFor={`${id}-password`}>
         Contrase&ntilde;a
       </label>
       <input
-        className='form-input'
+        className='custom-input-form'
         type='password'
         id={`${id}-password`}
         placeholder='••••••••••'
@@ -34,13 +34,15 @@ export const SignInPage = () => {
   );
 
   return (
-    <form className='bg-stone-200 w-96 h-80 max-sm:w-full flex flex-col items-center justify-center gap-5 m-5'>
-      <h1 className='font-medium text-3xl'>Vivero de FDRyT</h1>
-      {inputUsername}
-      {inputPassword}
-      <button type='submit' className='form-btn'>
-        Iniciar Sesi&oacute;n
-      </button>
-    </form>
+    <section className='flex justify-center'>
+      <form className='w-96 h-80 bg-skin-form max-sm:w-full flex flex-col items-center justify-center gap-5 m-5'>
+        <h1 className='font-medium text-2xl'>Vivero de FDRyT</h1>
+        {inputUsername}
+        {inputPassword}
+        <button type='submit' className='custom-btn-form'>
+          Iniciar Sesi&oacute;n
+        </button>
+      </form>
+    </section>
   );
 };

@@ -31,8 +31,7 @@ export const Header = () => {
       {navbar}
       <Link
         to='signin'
-        className='px-2 max-md:text-2xl text-3xl font-medium active:bg-teal-700'
-      >
+        className='px-2 max-md:text-2xl text-3xl font-medium active:bg-skin-btn-hover'>
         &#8677;
       </Link>
     </header>

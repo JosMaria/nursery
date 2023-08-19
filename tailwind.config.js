@@ -23,7 +23,10 @@ export default {
         skin: {
           dark: withOpacity('--fill-color-dark'),
           light: withOpacity('--fill-color-light'),
-          nav: withOpacity('--fill-color-nav-selected')
+          nav: withOpacity('--fill-color-nav-selected'),
+          form: withOpacity('--fill-color-form'),
+          btn: withOpacity('--fill-color-btn'),
+          'btn-hover': withOpacity('--fill-color-btn-hover'),
         },
       },
       textColor: {
@@ -34,15 +37,21 @@ export default {
       },
       borderColor: {
         skin: {
-          nav: withOpacity('--border-nav-selected')
-        }
+          nav: withOpacity('--border-nav-selected'),
+          focus: withOpacity('--fill-color-btn-hover'),
+        },
       },
       gradientColorStops: {
         card: {
           start: withOpacity('--gradient-from'),
           end: withOpacity('--gradient-to'),
-        }
-      }
+        },
+      },
+      ringColor: {
+        skin: {
+          input: withOpacity('--fill-color-btn-hover'),
+        },
+      },
     },
   },
   plugins: [],
