@@ -70,6 +70,10 @@
   @apply bg-skin-btn text-skin-light hover:bg-skin-btn-hover font-semibold rounded py-2 px-5 text-sm;
 }
 
+.custom-lbl-form-error {
+  @apply text-xs text-red-600 font-medium bg-red-100 px-2 rounded-lg w-fit;
+}
+
 /* Table styles */
 .table-header {
   @apply bg-teal-900 text-slate-100 font-medium whitespace-nowrap;

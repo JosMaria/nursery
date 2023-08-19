@@ -33,7 +33,7 @@ export const SignInPage = () => {
         autoComplete='off'
         {...register('username')}
       />
-      <p className='text-xs text-red-600 font-medium bg-red-100 px-2 rounded-lg w-fit'>
+      <p className='custom-lbl-form-error'>
         {errors.username?.message}
       </p>
     </div>
@@ -51,7 +51,7 @@ export const SignInPage = () => {
         placeholder='••••••••••'
         {...register('password')}
       />
-      <p className='text-xs text-red-600 font-medium bg-red-100 px-2 rounded-lg w-fit'>
+      <p className='custom-lbl-form-error'>
         {errors.password?.message}
       </p>
     </div>
