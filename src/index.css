@@ -62,16 +62,12 @@
 }
 
 /* Form styles globals */
-.custom-container-input {
-  @apply flex flex-col gap-1;
+.custom-input-form {
+  @apply bg-slate-50 focus:border-skin-focus focus:ring-skin-input focus:ring-opacity-30 focus:outline-none focus:ring text-sm px-3 py-2 border border-slate-300 rounded-lg;
 }
 
 .custom-btn-form {
   @apply bg-skin-btn text-skin-light hover:bg-skin-btn-hover font-semibold rounded py-2 px-5 text-sm;
-}
-
-.custom-input-form {
-  @apply bg-slate-50 focus:border-skin-focus focus:ring-skin-input focus:ring-opacity-30 focus:outline-none focus:ring w-72 text-sm px-3 py-2 border border-slate-300 rounded-lg;
 }
 
 /* Table styles */
