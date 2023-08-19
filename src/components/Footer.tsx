@@ -27,7 +27,7 @@ export const Footer = () => {
   );
 
   return (
-    <footer className='bg-color-mark font-light max-md:text-xs'>
+    <footer className='bg-skin-dark text-skin-light font-light max-md:text-xs'>
       {sections}
       <hr />
       {copyright}

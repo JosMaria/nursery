@@ -2,82 +2,101 @@
 @tailwind components;
 @tailwind utilities;
 
-.bg-color-mark {
-  @apply bg-teal-900 text-slate-100;
-}
-
-.navlink-active {
-  @apply p-2 text-center flex-1 bg-teal-900 border-b-4;
-}
-
-.navlink-inactive {
-  @apply p-2 text-center flex-1;
-}
-
 @layer base {
   :root {
-    /* colors to form */
-    --COLOR-BG-FORM: #1e293b;
-    --COLOR-BORDER-FORM: #334155;
+    /* content */
+    --fill-color-dark: 54, 83, 20;
+    --fill-color-light: 247, 254, 231;
+    /* text */
+    --text-color-dark: 26, 46, 5;
+    --text-color-light: 247, 254, 231;
+    /* navbar */
+    --fill-color-nav-selected: 63, 98, 18;
+    --border-nav-selected: 236, 252, 203;
+    /* card */
+    --gradient-from: 236, 252, 203;
+    --gradient-to: 247, 254, 231;
+    /* form */
+    --fill-color-form: 236, 252, 203;
+    --fill-color-btn: 63, 98, 18;
+    --fill-color-btn-hover: 77, 124, 15;
+  }
 
-    /* palette color  */
-    --COLOR-BROWN: #3c322b;
-    --COLOR-BROWN-LIGHT: #f4ebdb;
+  .theme-admin {
+    /* content */
+    --fill-color-dark: 69, 26, 3;
+    --fill-color-light: 255, 251, 235;
+    /* text */
+    --text-color-dark: 69, 26, 3;
+    --text-color-light: 255, 251, 235;
+    /* navbar */
+    --fill-color-nav-selected: 120, 53, 15;
+    --border-nav-selected: 254, 243, 199;
+    /* card */
+    --gradient-from: 254, 243, 199;
+    --gradient-to: 255, 251, 235;
+    /* form */
+    --fill-color-form: 254, 243, 199;
+    --fill-color-btn: 146, 64, 14;
+    --fill-color-btn-hover: 180, 83, 9;
+  }
+
+  .theme-assistant {
+    /* content */
+    --fill-color-dark: 12, 74, 110;
+    --fill-color-light: 240, 249, 255;
+    /* text */
+    --text-color-dark: 8, 47, 73;
+    --text-color-light: 240, 249, 255;
+    /* navbar */
+    --fill-color-nav-selected: 7, 89, 133;
+    --border-nav-selected: 224, 242, 254;
+    /* card */
+    --gradient-from: 224, 242, 254;
+    --gradient-to: 240, 249, 255;
+    /* form */
+    --fill-color-form: 186, 230, 253;
+    --fill-color-btn: 7, 89, 133;
+    --fill-color-btn-hover: 3, 105, 161;
   }
 }
 
-@layer components {
-  .active {
-    border-bottom-width: 2px;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-
-  .inactive {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-
-  .pending {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-
-  .label-form {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    font-weight: 500;
-    color: white;
-  }
-
-  .input-form {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    padding: 0.625rem;
-    --tw-bg-opacity: 1;
-    background-color: rgb(51 65 85 / var(--tw-bg-opacity));
-    border-width: 1px;
-    --tw-border-opacity: 1;
-    border-color: rgb(51 65 85 / var(--tw-border-opacity));
-    --tw-placeholder-opacity: 1;
-    color: rgb(148 163 184 / var(--tw-placeholder-opacity));
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity));
-    border-radius: 0.5rem;
-  }
-
-  .button-submit-form {
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity));
-    font-weight: 500;
-    border-radius: 0.5rem;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    padding: 0.875rem;
-    text-align: center;
-    --tw-bg-opacity: 1;
-    background-color: rgb(49 96 41 / var(--tw-bg-opacity));
-    --tw-bg-opacity: 1;
-    background-color: rgb(39 81 33 / var(--tw-bg-opacity));
-  }
+/* Form styles globals */
+.custom-container-input {
+  @apply flex flex-col gap-1;
 }
+
+.custom-btn-form {
+  @apply bg-skin-btn text-skin-light hover:bg-skin-btn-hover font-semibold rounded py-2 px-5 text-sm;
+}
+
+.custom-input-form {
+  @apply bg-slate-50 focus:border-skin-focus focus:ring-skin-input focus:ring-opacity-30 focus:outline-none focus:ring w-72 text-sm px-3 py-2 border border-slate-300 rounded-lg;
+}
+
+/* Table styles */
+.table-header {
+  @apply bg-teal-900 text-slate-100 font-medium whitespace-nowrap;
+}
+
+.custom-row {
+  @apply p-2 first-letter:uppercase;
+}
+
+/* start block - warning - those styles are used by method getStyledGivenStatus of utils folder */
+.lbl-status {
+  @apply font-medium text-xs px-2 rounded-full whitespace-nowrap;
+}
+
+.available-status {
+  @apply lbl-status text-green-800 bg-green-200;
+}
+
+.conservation-status {
+  @apply lbl-status text-yellow-800 bg-yellow-100;
+}
+
+.non-existent-status {
+  @apply lbl-status text-gray-800 bg-gray-300;
+}
+/* end block */
