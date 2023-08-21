@@ -6,6 +6,7 @@ import {
   SingleNews,
   SignInPage,
   CatalogPage,
+  CreatePlantPage,
 } from '../pages';
 import { Layout } from '../components';
 import {
@@ -29,6 +30,7 @@ export const AppRoutes = () => (
         <Route path='news' element={<NewsPage />} />
         <Route path='news/:id' element={<SingleNews />} />
         <Route path='signin' element={<SignInPage />} />
+        <Route path='create-plant' element={<CreatePlantPage />} />
       </Route>
     </Routes>
   </BrowserRouter>

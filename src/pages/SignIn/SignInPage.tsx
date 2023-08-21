@@ -4,12 +4,12 @@ import { Input, minLength, object, string } from 'valibot';
 import { valibotResolver } from '@hookform/resolvers/valibot';
 import { toast } from 'react-hot-toast';
 
-const schema = object({
+const SignInSchema = object({
   username: string([minLength(1, 'Introducir nombre de usuario')]),
   password: string([minLength(1, 'Introducir contraseña')]),
 });
 
-type SignInType = Input<typeof schema>;
+type SignInType = Input<typeof SignInSchema>;
 
 export const SignInPage = () => {
   const id = useId();
@@ -18,7 +18,7 @@ export const SignInPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<SignInType>({
-    resolver: valibotResolver(schema),
+    resolver: valibotResolver(SignInSchema),
   });
 
   const onSubmit = (payload: SignInType) => {
