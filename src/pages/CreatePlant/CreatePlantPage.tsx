@@ -166,7 +166,7 @@ export const CreatePlantPage = () => {
   });
 
   const commonName = (
-    <div className='flex flex-col gap-1'>
+    <div className='flex flex-col gap-1 w-72'>
       <label className='font-medium text-sm'>Nombre com&uacute;n</label>
       <input
         type='text'
@@ -196,7 +196,7 @@ export const CreatePlantPage = () => {
       <label className='font-medium text-sm'>Inicial</label>
       <input
         type='text'
-        className='custom-input-form w-14'
+        className='custom-input-form w-10'
         autoComplete='off'
         {...register('scientistLastnameInitial')}
       />
@@ -207,7 +207,7 @@ export const CreatePlantPage = () => {
   );
 
   const inputFamily = (
-    <div className='flex flex-col gap-1 w-fit'>
+    <div className='flex flex-col gap-1'>
       <label className='font-medium text-sm' htmlFor='family'>
         Familia
       </label>
@@ -227,7 +227,7 @@ export const CreatePlantPage = () => {
   );
 
   const inputStatus = (
-    <div className='flex flex-col gap-1 w-fit'>
+    <div className='flex flex-col gap-1'>
       <label className='font-medium text-sm' htmlFor='status'>
         Estado
       </label>
@@ -246,44 +246,53 @@ export const CreatePlantPage = () => {
   );
 
   const inputClassifications = (
-    <ul>
-      {classificationsData.map((classification, index) => (
-        <li key={index}>
-          <div className='flex gap-3'>
-            <input
-              type='checkbox'
-              id={`classification-${index}`}
-              value={classification}
-              {...register('classifications')}
-            />
-            <label htmlFor={`classification-${index}`}>
-              {traduceClassification(classification)}
-            </label>
-          </div>
-        </li>
-      ))}
-    </ul>
+    <div className='flex flex-col gap-1 col-span-full'>
+      <p className='font-medium text-sm'>Clasificaciones</p>
+      <ul className='flex flex-wrap gap-6 max-w-2xl p-2 bg-skin-light justify-center '>
+        {classificationsData.map((classification, index) => (
+          <li key={index}>
+            <div className='flex gap-1'>
+              <input
+                type='checkbox'
+                id={`classification-${index}`}
+                value={classification}
+                className='w-4'
+                {...register('classifications')}
+              />
+              <label htmlFor={`classification-${index}`} className='text-xs'>
+                {traduceClassification(classification)}
+              </label>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 
   return (
-    <section className='bg-skin-form'>
-      <h1 className='font-medium text-2xl'>Crear Planta</h1>
-      <form
-        className='flex gap-14'
-        onSubmit={handleSubmit((e) => console.log(e))}
-      >
-        {commonName}
-        <div className='flex gap-3'>
-          {scientificName}
-          {initialScientificName}
-        </div>
-        {inputFamily}
-        {inputStatus}
-        {inputClassifications}
-        <button className='custom-btn-form' type='submit'>
-          Crear
-        </button>
-      </form>
+    <section className='w-full bg-skin-form'>
+      <article className='flex flex-col items-center gap-5 p-5'>
+        <h1 className='font-medium text-2xl'>Crear Planta</h1>
+        <form
+          className='flex flex-col items-center gap-5'
+          onSubmit={handleSubmit((e) => console.log(e))}
+        >
+          <div className='grid grid-cols-2 max-md:grid-cols-1 gap-y-5 gap-x-10'>
+            {commonName}
+            <div className='flex justify-between gap-2 w-72'>
+              {scientificName}
+              {initialScientificName}
+            </div>
+            {inputFamily}
+            {inputStatus}
+            {inputClassifications}
+          </div>
+
+          <button className='custom-btn-form w-fit' type='submit'>
+            Crear
+          </button>
+        </form>
+      </article>
     </section>
   );
 };
