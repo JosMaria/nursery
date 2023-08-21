@@ -1,8 +1,9 @@
-import { useForm } from 'react-hook-form';
+import { useFieldArray, useForm } from 'react-hook-form';
 import { Input, array, maxLength, minLength, object, string } from 'valibot';
 import { valibotResolver } from '@hookform/resolvers/valibot';
 import { PlantClassificationType, StatusType } from '../../types';
 import { traduceClassification, traduceStatus } from '../../utils';
+import { DevTool } from '@hookform/devtools';
 
 const familiesData = [
   'asparagaceae',
@@ -31,118 +32,6 @@ const classificationsData: Array<PlantClassificationType> = [
   'FOREST',
 ];
 
-// const status = [
-//   { value: 'AVAILABLE', label: 'DISPONIBLE' },
-//   { value: 'IN_CONSERVATION', label: 'EN CONSERVACIÓN' },
-//   { value: 'NON_EXISTENT', label: 'NO EXISTENTE' }
-// ]
-/*
-const [familiesState, setFamiliesState] = useState<SelectOption | undefined>(families[0])
-  const [statusState, setStatusState] = useState<SelectOption | undefined>(status[0])
-  const [classificationState, setClassificationState] = useState<SelectOption[]>([families[0]])
-
-  const commonNameInput = (
-    <div className='flex flex-col gap-1 w-fit'>
-      <label
-        className='font-medium text-sm'
-        htmlFor='commonName'
-      >
-        Nombre Com&uacute;n
-      </label>
-      <input
-        className='w-64 p-2 text-sm border rounded-md border-gray-200 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:border-blue-400'
-        id='commonName'
-        type='text'
-      />
-    </div>
-  )
-
-  const scientificNameInput = (
-    <div className='flex flex-col gap-1 w-fit'>
-      <label
-        className='font-medium text-sm'
-        htmlFor='scientificName'
-      >
-        Nombre Cientifico
-      </label>
-      <div className='flex gap-3 w-64'>
-        <input
-          className='w-52 p-2 text-sm border rounded-md border-gray-200 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:border-blue-400'
-          id='scientificName'
-          type='text'
-        />
-        <input
-          className='w-8 p-2 text-sm border rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring border-gray-200 focus:border-blue-400'
-          id='scientificName'
-          type='text'
-        />
-      </div>
-    </div>
-  )
-
-  const familyInput = (
-    <div className='flex flex-col gap-1 w-fit'>
-      <label
-        className='font-medium text-sm'
-        htmlFor='family'
-      >
-        Familia
-      </label>
-      <Select
-        options={families}
-        value={familiesState}
-        onChange={option => setFamiliesState(option)}
-      />
-    </div>
-  )
-
-  const statusInput = (
-    <div className='flex flex-col gap-1 w-fit'>
-      <label
-        className='font-medium text-sm'
-        htmlFor='status'
-      >
-        Estado
-      </label>
-      <Select
-        options={status}
-        value={statusState}
-        onChange={option => setStatusState(option)}
-      />
-    </div>
-  )
-
-  const classificationInput = (
-    <div className='flex flex-col gap-1 w-fit'>
-      <label
-        className='font-medium text-sm'
-        htmlFor='classification'
-      >
-        Estado
-      </label>
-      <Select
-        multiple
-        options={families}
-        value={classificationState}
-        onChange={option => setClassificationState(option)}
-      />
-    </div>
-  )
-
-  return (
-    <section className='bg-neutral-300 max-w-screen-xl'>
-      <h1 className='text-4xl indent-10'>Crear Planta</h1>
-      <form className='flex flex-wrap gap-5 p-5'>
-        {commonNameInput}
-        {scientificNameInput}
-        {familyInput}
-        {statusInput}
-        {classificationInput}
-      </form>
-    </section>
-  )
-*/
-
 const CreatePlantSchema = object({
   commonName: string([minLength(1, 'Nombre común obligatorio')]),
   scientificName: string('Se debe agregar caracteres alfanumericos'),
@@ -152,6 +41,7 @@ const CreatePlantSchema = object({
   family: string('Se debe agregar caracteres alfanumericos'),
   status: string('Se debe agregar un estado'),
   classifications: array(string()),
+  details: array(object({ detail: string() })),
 });
 
 type CreatePlantType = Input<typeof CreatePlantSchema>;
@@ -161,8 +51,14 @@ export const CreatePlantPage = () => {
     register,
     handleSubmit,
     formState: { errors },
+    control,
   } = useForm<CreatePlantType>({
     resolver: valibotResolver(CreatePlantSchema),
+  });
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: 'details',
   });
 
   const commonName = (
@@ -269,6 +165,39 @@ export const CreatePlantPage = () => {
     </div>
   );
 
+  const inputDetails = (
+    <div className='flex flex-col gap-2 w-full col-span-full'>
+      <div className='flex items-start gap-5'>
+        <p className='font-medium text-sm'>Detalles</p>
+        <button
+          type='button'
+          onClick={() => append({ detail: '' })}
+          className='bg-blue-600 hover:bg-blue-500 text-white font-medium py-1.5 px-4 text-xs rounded-md '
+        >
+          Agregar
+        </button>
+      </div>
+      <div className='flex flex-col gap-5'>
+        {fields.map((field, index) => (
+          <div key={field.id} className='flex items-baseline gap-1'>
+            <textarea
+              placeholder='Ingresa un detalle a la vez'
+              className='custom-input-form h-20 w-full'
+              {...register(`details.${index}.detail` as const)}
+            ></textarea>
+            <button
+              type='button'
+              onClick={() => remove(index)}
+              className='leading-none px-2 rounded-md bg-red-500 text-2xl text-white'
+            >
+              &#215;
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <section className='w-full bg-skin-form'>
       <article className='flex flex-col items-center gap-5 p-5'>
@@ -277,7 +206,7 @@ export const CreatePlantPage = () => {
           className='flex flex-col items-center gap-5'
           onSubmit={handleSubmit((e) => console.log(e))}
         >
-          <div className='grid grid-cols-2 max-md:grid-cols-1 gap-y-5 gap-x-10'>
+          <div className='grid max-md:place-items-center grid-cols-2 max-md:grid-cols-1 gap-y-5 gap-x-10'>
             {commonName}
             <div className='flex justify-between gap-2 w-72'>
               {scientificName}
@@ -286,12 +215,14 @@ export const CreatePlantPage = () => {
             {inputFamily}
             {inputStatus}
             {inputClassifications}
+            {inputDetails}
           </div>
 
           <button className='custom-btn-form w-fit' type='submit'>
             Crear
           </button>
         </form>
+        <DevTool control={control} />
       </article>
     </section>
   );
