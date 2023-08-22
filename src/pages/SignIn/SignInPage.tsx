@@ -3,13 +3,17 @@ import { useForm } from 'react-hook-form';
 import { Input, minLength, object, string } from 'valibot';
 import { valibotResolver } from '@hookform/resolvers/valibot';
 import { toast } from 'react-hot-toast';
+import { useToken } from '../../store';
+import { authenticate } from './services';
+import { SignInType } from './types';
+import { useNavigate } from 'react-router-dom';
 
 const SignInSchema = object({
   username: string([minLength(1, 'Introducir nombre de usuario')]),
   password: string([minLength(1, 'Introducir contraseña')]),
 });
 
-type SignInType = Input<typeof SignInSchema>;
+type SignInValidationType = Input<typeof SignInSchema>;
 
 export const SignInPage = () => {
   const id = useId();
@@ -17,13 +21,34 @@ export const SignInPage = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SignInType>({
+    reset,
+  } = useForm<SignInValidationType>({
     resolver: valibotResolver(SignInSchema),
   });
 
-  const onSubmit = (payload: SignInType) => {
-    console.log(payload);
-    toast.success('validacion existosa', { className: 'custom-toast-success' });
+  const { changeToken } = useToken();
+  const navigate = useNavigate()
+
+  const startSession = (payload: SignInType) => {
+    authenticate(payload)
+      .then((response) => {
+        changeToken(response.token);
+        toast.success(`validacion existosa`, {
+          className: 'custom-toast-success',
+        });
+        navigate('/')
+      })
+      .catch((error) => {
+        const { response } = error;
+        if (response) {
+          if (response.status) {
+            if (response.status === 403) {
+              reset();
+              toast.error('Datos incorrectos');
+            }
+          }
+        }
+      });
   };
 
   const inputUsername = (
@@ -65,7 +90,7 @@ export const SignInPage = () => {
         <h1 className='font-medium text-2xl text-center'>Vivero de FDRyT</h1>
         <form
           className='flex flex-col items-center justify-center gap-5'
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(startSession)}
         >
           {inputUsername}
           {inputPassword}
