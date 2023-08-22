@@ -42,6 +42,7 @@ const CreatePlantSchema = object({
   status: string('Se debe agregar un estado'),
   classifications: array(string()),
   details: array(object({ detail: string() })),
+  notes: array(object({ note: string() })),
 });
 
 type CreatePlantType = Input<typeof CreatePlantSchema>;
@@ -56,9 +57,22 @@ export const CreatePlantPage = () => {
     resolver: valibotResolver(CreatePlantSchema),
   });
 
-  const { fields, append, remove } = useFieldArray({
+  const {
+    fields: fieldsDetails,
+    append: appendDetail,
+    remove: removeDetail,
+  } = useFieldArray({
     control,
     name: 'details',
+  });
+
+  const {
+    fields: fieldsNotes,
+    append: appendNote,
+    remove: removeNote,
+  } = useFieldArray({
+    control,
+    name: 'notes',
   });
 
   const commonName = (
@@ -167,18 +181,9 @@ export const CreatePlantPage = () => {
 
   const inputDetails = (
     <div className='flex flex-col gap-2 w-full col-span-full'>
-      <div className='flex items-start gap-5'>
-        <p className='font-medium text-sm'>Detalles</p>
-        <button
-          type='button'
-          onClick={() => append({ detail: '' })}
-          className='bg-blue-600 hover:bg-blue-500 text-white font-medium py-1.5 px-4 text-xs rounded-md '
-        >
-          Agregar
-        </button>
-      </div>
+      <p className='font-medium text-sm'>Detalles</p>
       <div className='flex flex-col gap-5'>
-        {fields.map((field, index) => (
+        {fieldsDetails.map((field, index) => (
           <div key={field.id} className='flex items-baseline gap-1'>
             <textarea
               placeholder='Ingresa un detalle a la vez'
@@ -187,7 +192,7 @@ export const CreatePlantPage = () => {
             ></textarea>
             <button
               type='button'
-              onClick={() => remove(index)}
+              onClick={() => removeDetail(index)}
               className='leading-none px-2 rounded-md bg-red-500 text-2xl text-white'
             >
               &#215;
@@ -195,6 +200,44 @@ export const CreatePlantPage = () => {
           </div>
         ))}
       </div>
+      <button
+        type='button'
+        onClick={() => appendDetail({ detail: '' })}
+        className='bg-blue-600 hover:bg-blue-500 text-white font-medium py-1.5 px-4 text-xs rounded-md self-start'
+      >
+        Agregar Detalle
+      </button>
+    </div>
+  );
+
+  const inputNotes = (
+    <div className='flex flex-col gap-2 w-full col-span-full'>
+      <p className='font-medium text-sm'>Notas</p>
+      <div className='flex flex-col gap-5'>
+        {fieldsNotes.map((field, index) => (
+          <div key={field.id} className='flex items-baseline gap-1'>
+            <textarea
+              placeholder='Ingresa una nota a la vez'
+              className='custom-input-form h-20 w-full'
+              {...register(`notes.${index}.note` as const)}
+            ></textarea>
+            <button
+              type='button'
+              onClick={() => removeNote(index)}
+              className='leading-none px-2 rounded-md bg-red-500 text-2xl text-white'
+            >
+              &#215;
+            </button>
+          </div>
+        ))}
+      </div>
+      <button
+        type='button'
+        onClick={() => appendNote({ note: '' })}
+        className='bg-blue-600 hover:bg-blue-500 text-white font-medium py-1.5 px-4 text-xs rounded-md self-start'
+      >
+        Agregar Nota
+      </button>
     </div>
   );
 
@@ -216,8 +259,8 @@ export const CreatePlantPage = () => {
             {inputStatus}
             {inputClassifications}
             {inputDetails}
+            {inputNotes}
           </div>
-
           <button className='custom-btn-form w-fit' type='submit'>
             Crear
           </button>
