@@ -43,6 +43,12 @@ const CreatePlantSchema = object({
   classifications: array(string()),
   details: array(object({ detail: string() })),
   notes: array(object({ note: string() })),
+  dataSheet: array(
+    object({
+      word: string(),
+      value: string(),
+    })
+  ),
 });
 
 type CreatePlantType = Input<typeof CreatePlantSchema>;
@@ -73,6 +79,15 @@ export const CreatePlantPage = () => {
   } = useFieldArray({
     control,
     name: 'notes',
+  });
+
+  const {
+    fields: fieldDataSheet,
+    append: appendContent,
+    remove: removeContent,
+  } = useFieldArray({
+    control,
+    name: 'dataSheet',
   });
 
   const commonName = (
@@ -186,7 +201,7 @@ export const CreatePlantPage = () => {
         {fieldsDetails.map((field, index) => (
           <div key={field.id} className='flex items-baseline gap-1'>
             <textarea
-              placeholder='Ingresa un detalle a la vez'
+              placeholder='Ingrese un detalle a la vez'
               className='custom-input-form h-20 w-full'
               {...register(`details.${index}.detail` as const)}
             ></textarea>
@@ -217,7 +232,7 @@ export const CreatePlantPage = () => {
         {fieldsNotes.map((field, index) => (
           <div key={field.id} className='flex items-baseline gap-1'>
             <textarea
-              placeholder='Ingresa una nota a la vez'
+              placeholder='Ingrese una nota a la vez'
               className='custom-input-form h-20 w-full'
               {...register(`notes.${index}.note` as const)}
             ></textarea>
@@ -241,9 +256,48 @@ export const CreatePlantPage = () => {
     </div>
   );
 
+  const inputDataSheet = (
+    <div className='flex flex-col gap-2 w-full col-span-full'>
+      <p className='font-medium text-sm'>Fichar Tecnica</p>
+      <div className='flex flex-col gap-7'>
+        {fieldDataSheet.map((field, index) => (
+          <div key={field.id} className='flex flex-col gap-2'>
+            <div className='flex items-center gap-3'>
+              <input
+                type='text'
+                placeholder='titulo'
+                className='custom-input-form w-44'
+                {...register(`dataSheet.${index}.word` as const)}
+              />
+              <button
+                type='button'
+                onClick={() => removeContent(index)}
+                className='leading-none px-2 rounded-md bg-red-500 text-2xl text-white'
+              >
+                &#215;
+              </button>
+            </div>
+            <textarea
+              placeholder='Ingrese una nota a la vez'
+              className='custom-input-form h-16 w-full'
+              {...register(`dataSheet.${index}.value` as const)}
+            ></textarea>
+          </div>
+        ))}
+      </div>
+      <button
+        type='button'
+        className='bg-blue-600 hover:bg-blue-500 text-white font-medium py-1.5 px-4 text-xs rounded-md self-start'
+        onClick={() => appendContent({ word: '', value: '' })}
+      >
+        Agregar valor
+      </button>
+    </div>
+  );
+
   return (
-    <section className='w-full bg-skin-form'>
-      <article className='flex flex-col items-center gap-5 p-5'>
+    <section className='w-full bg-skin-light flex justify-center'>
+      <article className='bg-skin-form w-fit flex flex-col items-center gap-5 p-5 my-5'>
         <h1 className='font-medium text-2xl'>Crear Planta</h1>
         <form
           className='flex flex-col items-center gap-5'
@@ -260,6 +314,7 @@ export const CreatePlantPage = () => {
             {inputClassifications}
             {inputDetails}
             {inputNotes}
+            {inputDataSheet}
           </div>
           <button className='custom-btn-form w-fit' type='submit'>
             Crear
