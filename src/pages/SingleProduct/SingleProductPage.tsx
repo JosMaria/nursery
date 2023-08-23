@@ -4,7 +4,7 @@ export const SingleProductPage = () => {
   //  todo: rebajar el tamaño de las letras para mañana, ver el comun denominador
   return (
     <div className='w-full flex p-5 justify-center'>
-      <div className='max-w-7xl w-full flex flex-col items-center gap-10'>
+      <div className='max-w-7xl w-full flex flex-col items-center gap-5'>
         {/* Top page - Container to image and information base */}
         <section className='flex flex-wrap-reverse justify-evenly gap-5 w-full'>
           <article className='w-96'>
@@ -13,22 +13,22 @@ export const SingleProductPage = () => {
               alt='imagen'
             />
           </article>
-          <article className='max-w-2xl w-full flex flex-col items-center gap-5 bg-slate-100 '>
+          <article className='max-w-2xl w-full flex flex-col items-center gap-5 text-sm max-sm:text-xs bg-skin-form px-4 py-2'>
             <h1 className='text-2xl font-medium'>Flor de navidad</h1>
             <div className='grid grid-cols-2 gap-y-1'>
-              <p className='font-medium text-sm'>Nombre Cientifico:</p>
-              <p className='text-sm'>euphorbia pulcherrima</p>
+              <p className='font-medium'>Nombre Cientifico:</p>
+              <p>euphorbia pulcherrima</p>
 
-              <p className='font-medium text-sm'>Familia:</p>
-              <p className='text-sm'>
+              <p className='font-medium'>Familia:</p>
+              <p>
                 <i>euphorbiaceae</i>
               </p>
 
-              <p className='font-medium text-sm'>Estado:</p>
-              <p className='text-sm'>DISPONIBLE</p>
+              <p className='font-medium'>Estado:</p>
+              <p>DISPONIBLE</p>
 
-              <p className='font-medium text-sm'>Classificaciones:</p>
-              <ul className='text-sm'>
+              <p className='font-medium'>Classificaciones:</p>
+              <ul>
                 <li>ORNAMENTAL</li>
                 <li>FORESTAL</li>
               </ul>
@@ -36,7 +36,7 @@ export const SingleProductPage = () => {
 
             <div className='flex flex-col gap-2'>
               <p className='font-medium tracking-wide'>DESCRIPCION</p>
-              <p className=' text-sm'>
+              <p>
                 Planta perennes, herbáceas o leñosas, erectas, rastreras o
                 trepadoras, de hojas muy decorativas. Las hojas son de
                 consistencia y grosor notables, ovales, en forma de corazón o
@@ -47,15 +47,15 @@ export const SingleProductPage = () => {
           </article>
         </section>
         {/* Middle page - Container to NavLinks and subpages */}
-        <section className='w-full'>
-          <nav className='bg-skin-nav bg-opacity-20 flex max-sm:text-xs max-md:text-xs rounded-t-lg text-center'>
+        <section className='w-full text-sm max-sm:text-xs'>
+          <nav className='bg-skin-nav bg-opacity-20 flex font-medium text-base max-md:text-sm max-sm:text-xs text-center'>
             <NavLink
               to='.'
               end
               className={({ isActive }) =>
                 isActive
-                  ? `py-2 px-5 max-sm:px-1 rounded-t-md flex-1 w-full bg-skin-nav hover:bg-skin-btn-hover text-white border-b-4 border-white`
-                  : `py-2 px-5 max-sm:px-1 rounded-t-md flex-1 w-full`
+                  ? `py-2 max-sm:px-1 flex-1 w-full bg-skin-nav text-skin-light`
+                  : `py-2 max-sm:px-1 flex-1 w-full hover:bg-skin-nav hover:text-skin-light`
               }
             >
               Ficha tecnica
@@ -64,8 +64,8 @@ export const SingleProductPage = () => {
               to='details'
               className={({ isActive }) =>
                 isActive
-                  ? `py-2 px-5 max-sm:px-1 rounded-t-md flex-1 w-full bg-skin-nav hover:bg-skin-btn-hover text-white border-b-4 border-white`
-                  : `py-2 px-5 max-sm:px-1 rounded-t-md flex-1 w-full`
+                  ? `py-2 max-sm:px-1 flex-1 w-full bg-skin-nav text-skin-light`
+                  : `py-2 max-sm:px-1 flex-1 w-full hover:bg-skin-nav hover:text-skin-light`
               }
             >
               Detalles
@@ -74,14 +74,16 @@ export const SingleProductPage = () => {
               to='notes'
               className={({ isActive }) =>
                 isActive
-                  ? `py-2 px-5 max-sm:px-1 rounded-t-md flex-1 w-full bg-skin-nav hover:bg-skin-btn-hover text-white border-b-4 border-white`
-                  : `py-2 px-5 max-sm:px-1 rounded-t-md flex-1 w-full`
+                  ? `py-2 max-sm:px-1 flex-1 w-full bg-skin-nav text-skin-light`
+                  : `py-2 max-sm:px-1 flex-1 w-full hover:bg-skin-nav hover:text-skin-light`
               }
             >
               Notas
             </NavLink>
           </nav>
-          <Outlet />
+          <article className='border-2 border-t-0 border-black p-2'>
+            <Outlet />
+          </article>
         </section>
       </div>
     </div>
