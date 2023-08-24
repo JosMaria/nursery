@@ -1,1 +1,2 @@
-export * from './Information'
+export * from './InformationSection';
+export * from './PicturesSection';
