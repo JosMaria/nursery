@@ -1,3 +1,3 @@
-export * from './Information'
-export * from './MoreInformation'
-export * from './Suggestions'
+export * from './InformationSection';
+export * from './PicturesSection';
+export * from './NavbarProduct';

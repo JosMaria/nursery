@@ -1,1 +1,1 @@
-export * from './RepertoryPage'
+export * from './RepertoryPage';

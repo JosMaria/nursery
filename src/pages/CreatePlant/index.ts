@@ -1,1 +1,1 @@
-export * from './CreatePlant'
+export * from './CreatePlantPage';

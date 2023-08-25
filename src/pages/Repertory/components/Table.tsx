@@ -10,10 +10,10 @@ const HEADERS_TITLE = [
 
 export const Table = () => {
   const tableHeader = (
-    <thead className='table-header'>
+    <thead className='bg-skin-dark text-skin-light whitespace-nowrap text-sm max-sm:text-xs'>
       <tr>
         {HEADERS_TITLE.map((title, index) => (
-          <th key={index} className='py-4 px-10 text-sm'>
+          <th key={index} className='py-3 px-10 max-sm:px-7'>
             {title}
           </th>
         ))}
@@ -26,14 +26,14 @@ export const Table = () => {
       {ITEMS.content.map((item) => (
         <tr
           key={item.id}
-          className='text-sm bg-stone-50 [&:nth-child(even)]:bg-stone-300'
+          className='text-sm max-sm:text-xs bg-stone-50 [&:nth-child(even)]:bg-stone-300'
         >
-          <td className='custom-row'>{item.commonName}</td>
-          <td className='custom-row italic'>
+          <td className='p-2 first-letter:uppercase'>{item.commonName}</td>
+          <td className='p-2 first-letter:uppercase italic'>
             {item.scientificName} {item.scientistSurnameInitial?.toUpperCase()}
           </td>
-          <td className='custom-row'>{item.family}</td>
-          <td className='custom-row flex justify-center'>
+          <td className='p-2 first-letter:uppercase'>{item.family}</td>
+          <td className='p-2 first-letter:uppercase flex justify-center'>
             <p className={getStyledGivenStatus(item.status)}>
               {traduceStatus(item.status)}
             </p>
