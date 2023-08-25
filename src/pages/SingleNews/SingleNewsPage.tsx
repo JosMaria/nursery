@@ -1,4 +1,4 @@
-export const SingleNews = () => {
+export const SingleNewsPage = () => {
   // const { id } = useParams();
 
   return (

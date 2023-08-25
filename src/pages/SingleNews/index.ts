@@ -1,1 +1,1 @@
-export * from './SingleNews'
+export * from './SingleNewsPage';
