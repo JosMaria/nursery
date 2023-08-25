@@ -42,7 +42,7 @@ export const NewsPage = () => {
   return (
     <div className='p-4 flex flex-col gap-7 max-w-4xl'>
       {/* Section title and Info to news */}
-      <section className='flex flex-col gap-5'>
+      <section className='flex flex-col gap-3'>
         <h1 className='text-4xl max-md:text-2xl max-xs:text-xl font-semibold tracking-wide'>
           Vivero Novedades
         </h1>

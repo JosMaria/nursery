@@ -2,16 +2,16 @@ export const SingleNewsPage = () => {
   // const { id } = useParams();
 
   return (
-    <section className='flex flex-col lg:w-4/5 xl:w-2/3 2xl:w-1/2 gap-10 p-5'>
+    <section className='flex flex-col lg:w-4/5 xl:w-2/3 2xl:w-1/2 gap-5 p-5'>
       <div className='flex flex-col gap-3'>
         <h1 className='text-4xl font-semibold max-md:text-xl'>
           React Canaries: Enabling Incremental Feature Rollout Outside Meta
         </h1>
-        <p className='text-lg max-md:text-base font-medium text-gray-600'>
+        <p className='text-lg max-md:text-base font-medium text-gray-500'>
           3 de Mayo del 2023
         </p>
       </div>
-      <h2 className='text-xl max-md:text-base font-medium '>
+      <h2 className='text-xl max-sm:text-sm font-medium'>
         We'd like to offer the React community an option to adopt individual new
         features as soon as their design is close to final, before they're
         released in a stable version—similar to how Meta has long used
@@ -20,7 +20,7 @@ export const SingleNewsPage = () => {
         frameworks decouple adoption of individual React features from the React
         release schedule
       </h2>
-      <div className='flex flex-col gap-10 text-lg max-md:text-base'>
+      <div className='flex flex-col gap-5 text-lg max-sm:text-sm'>
         <p>
           However, this isn’t always possible. Sometimes, new features are
           interconnected with other new features which have not yet been fully

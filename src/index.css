@@ -87,15 +87,6 @@
   @apply bg-red-50 border-l-red-600 custom-toast;
 }
 
-/* Table styles */
-.table-header {
-  @apply bg-teal-900 text-slate-100 font-medium whitespace-nowrap;
-}
-
-.custom-row {
-  @apply p-2 first-letter:uppercase;
-}
-
 /* start block - warning - those styles are used by method getStyledGivenStatus of utils folder */
 .lbl-status {
   @apply font-medium text-xs px-2 rounded-full whitespace-nowrap;
