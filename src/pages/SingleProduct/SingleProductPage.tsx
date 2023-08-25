@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import {
   InformationSection,
   NavbarProduct,
@@ -6,10 +6,10 @@ import {
 } from './components';
 
 const URLS = [
-  'https://1.bp.blogspot.com/-Si6dlsgeaPQ/UtAcg7AxF9I/AAAAAAACIdQ/p80ZR0fKgdk/s1600/paisajes-naturales-nueva-colecci%C3%B3n-de-fotos-bonitas-landscape+(3).jpg',
-  'https://i.pinimg.com/originals/c0/9d/f8/c09df8116570b19381b905653bca9341.jpg',
-  'https://2.bp.blogspot.com/-dxvWO1aL3_w/Uetgi0x4SnI/AAAAAAAAJGA/XBIkSeYd8LI/s1600/1002932_FB_Google.jpg',
-  'https://4.bp.blogspot.com/-QMGOoEe7ORo/UictQ1DRsJI/AAAAAAAB4ow/Q3F1jbR67fo/s400/cerca-del-cielo-y-los-planetas-im%C3%A1genes-de-fantas%C3%ADa-close-to-sky-landscape-1920x1200-wallpaper-.jpg',
+  'https://i.pinimg.com/originals/ba/dd/fb/baddfb2632eab21938a54a82d1d6ad98.jpg',
+  'https://i.pinimg.com/originals/5b/24/49/5b2449f21426630200adb3feb934cccd.jpg',
+  'https://1.bp.blogspot.com/-cDvudXGc9Zg/UtAbAPh_e_I/AAAAAAAAM24/ja7S72vK61E/s1600/Dise%C3%B1o+de+jardines+en+macetas+3.+Blog+Vida+a+lo+Verde.jpg',
+  'https://i.pinimg.com/736x/b2/7b/59/b27b59993d8efe9fbf43f205dbc76b43--garden-container-plant-containers.jpg',
 ];
 
 export const SingleProductPage = () => {
@@ -28,6 +28,7 @@ export const SingleProductPage = () => {
             <Outlet />
           </article>
         </section>
+        <Link to='..' relative='route' className='custom-btn-form w-fit flex gap-3 max-sm:text-xsb self-start'>&#10229;<span>Volver</span></Link>
       </div>
     </div>
   );
