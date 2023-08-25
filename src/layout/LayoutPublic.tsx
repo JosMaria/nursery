@@ -6,7 +6,7 @@ export const LayoutPublic = () => (
   <div className='flex flex-col min-h-screen justify-between'>
     <Toaster />
     <Header />
-    <main className='bg-skin-light flex-1 flex'>
+    <main className='bg-skin-light flex-1 flex justify-center'>
       <Outlet />
     </main>
     <Footer />

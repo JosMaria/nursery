@@ -27,7 +27,7 @@ export const Card = ({
     <div>
       <img src={EmptyImage} alt={commonName} />
     </div>
-    <div className='h-24 flex flex-col justify-evenly max-sm:text-sm px-2 max-sm:px-1'>
+    <div className='h-24 max-xs:h-20 flex flex-col justify-evenly max-sm:text-sm px-2 max-sm:px-1'>
       <p className='font-medium max-sm:font-normal whitespace-nowrap overflow-x-auto overflow-y-hidden first-letter:uppercase'>
         {commonName}
       </p>

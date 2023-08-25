@@ -85,8 +85,7 @@ export const SignInPage = () => {
   );
 
   return (
-    <section className='flex flex-col items-center min-h-full w-full justify-center py-5'>
-      <div className='bg-skin-form w-96 max-h-80 max-sm:w-full p-5 flex flex-col gap-5'>
+      <section className='bg-skin-form w-96 max-h-80 max-sm:w-full p-5 flex flex-col gap-5 self-center'>
         <h1 className='font-medium text-2xl text-center'>Vivero de FDRyT</h1>
         <form
           className='flex flex-col items-center justify-center gap-5'
@@ -98,7 +97,6 @@ export const SignInPage = () => {
             Iniciar Sesi&oacute;n
           </button>
         </form>
-      </div>
-    </section>
+      </section>
   );
 };

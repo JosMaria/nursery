@@ -10,7 +10,7 @@ export const Header = () => {
   );
 
   const navbar = (
-    <nav className='flex w-96 tracking-wider max-md:order-last max-md:text-sm max-md:w-full'>
+    <nav className='flex w-96 tracking-wider max-md:order-last max-md:text-sm max-xs:text-xs max-md:w-full'>
       {NAVLINKS.map((item) => (
         <NavLink
           key={item.text}
