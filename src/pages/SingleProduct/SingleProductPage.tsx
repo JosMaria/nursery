@@ -28,7 +28,13 @@ export const SingleProductPage = () => {
             <Outlet />
           </article>
         </section>
-        <Link to='..' relative='route' className='custom-btn-form w-fit flex gap-3 max-sm:text-xsb self-start'>&#10229;<span>Volver</span></Link>
+        <Link
+          to='..'
+          relative='route'
+          className='custom-btn-form w-fit flex gap-3 max-sm:text-xs self-start'
+        >
+          &#10229;<span>Volver</span>
+        </Link>
       </div>
     </div>
   );

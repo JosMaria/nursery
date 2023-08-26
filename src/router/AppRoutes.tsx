@@ -14,11 +14,13 @@ import {
   NotesPage,
   TechnicalSheetPage,
 } from '../pages/SingleProduct/pages';
+import { NotFound } from '../components';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <LayoutPublic />,
+    errorElement: <NotFound />,
     children: [
       { index: true, element: <CatalogPage /> },
       {

@@ -41,6 +41,7 @@ const CreatePlantSchema = object({
   family: string('Se debe agregar caracteres alfanumericos'),
   status: string('Se debe agregar un estado'),
   classifications: array(string()),
+  description: string(),
   details: array(object({ detail: string() })),
   notes: array(object({ note: string() })),
   dataSheet: array(
@@ -51,7 +52,7 @@ const CreatePlantSchema = object({
   ),
 });
 
-type CreatePlantType = Input<typeof CreatePlantSchema>;
+type CreatePlantSchemaType = Input<typeof CreatePlantSchema>;
 
 export const CreatePlantPage = () => {
   const {
@@ -59,7 +60,7 @@ export const CreatePlantPage = () => {
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<CreatePlantType>({
+  } = useForm<CreatePlantSchemaType>({
     resolver: valibotResolver(CreatePlantSchema),
   });
 
@@ -194,6 +195,18 @@ export const CreatePlantPage = () => {
     </div>
   );
 
+  const inputDescription = (
+    <div className='flex flex-col gap-1 col-span-full'>
+      <label className='font-medium text-sm'>Descripci&oacute;n</label>
+      <textarea
+        className='custom-input-form h-20'
+        autoComplete='off'
+        {...register('description')}
+      ></textarea>
+      <p className='custom-lbl-form-error'>{errors.description?.message}</p>
+    </div>
+  );
+
   const inputDetails = (
     <div className='flex flex-col gap-2 w-full col-span-full'>
       <p className='font-medium text-sm'>Detalles</p>
@@ -312,6 +325,7 @@ export const CreatePlantPage = () => {
             {inputFamily}
             {inputStatus}
             {inputClassifications}
+            {inputDescription}
             {inputDetails}
             {inputNotes}
             {inputDataSheet}
