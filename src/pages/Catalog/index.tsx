@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Card, SkeletonCatalog } from './components';
 import { fetchPaginatedProducts } from './services';
 
-export const CatalogPage = () => {
+export const Component = () => {
   const { data: page, status } = useQuery({
     queryFn: fetchPaginatedProducts,
     queryKey: ['products'],
@@ -35,3 +35,5 @@ export const CatalogPage = () => {
     </>
   );
 };
+
+Component.displayName = 'CatalogPage';
