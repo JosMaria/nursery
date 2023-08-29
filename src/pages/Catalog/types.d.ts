@@ -1,4 +1,4 @@
-import { Page, StatusType } from '../../../types';
+import { Page, StatusType } from '../../types';
 
 export interface ProductResponse {
   id: number;
