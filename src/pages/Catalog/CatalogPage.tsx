@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { Card } from './components';
+import { Card, SkeletonCatalog } from './components';
 import { fetchPaginatedProducts } from './services';
 
 export const CatalogPage = () => {
@@ -8,7 +8,10 @@ export const CatalogPage = () => {
     queryKey: ['products'],
   });
 
-  if (status === 'loading') return <p>loading...</p>;
+  if (status === 'loading')
+    return (
+      <SkeletonCatalog />
+    );
 
   return (
     <>
