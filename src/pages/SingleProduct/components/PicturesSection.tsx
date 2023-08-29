@@ -37,7 +37,7 @@ export const PicturesSection = ({ urlPictures }: Props) => {
   );
 
   return (
-    <article className='bg-skin-form flex flex-col items-center gap-3 w-96 max-h-96 p-1 border-4 border-black'>
+    <article className='bg-skin-form flex flex-col items-center justify-evenly gap-3 w-96 max-h-96 p-1 border-4 border-black'>
       <img
         src={urlPictures[selectedIndex]}
         alt={`Image ${selectedIndex}`}

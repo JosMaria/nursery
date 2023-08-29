@@ -10,16 +10,17 @@ export const Component = () => {
 
   if (status === 'loading') return <SkeletonCatalog />;
 
+  if (status === 'error')
+    return (
+      <p>
+        Se obtuvo un error al cargar los productos, Una opcion es la conexion a
+        Internet
+      </p>
+    );
+
   return (
     <>
-      {status === 'success' ? (
-        <ProductList products={page.content} />
-      ) : (
-        <p>
-          Se obtuvo un error al cargar los productos, Una opcion es la conexion
-          a Internet
-        </p>
-      )}
+      <ProductList products={page.content} />
     </>
   );
 };

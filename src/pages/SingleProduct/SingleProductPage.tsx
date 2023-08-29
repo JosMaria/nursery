@@ -1,25 +1,37 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import {
   InformationSection,
   NavbarProduct,
   PicturesSection,
 } from './components';
-
-const URLS = [
-  'https://i.pinimg.com/originals/ba/dd/fb/baddfb2632eab21938a54a82d1d6ad98.jpg',
-  'https://i.pinimg.com/originals/5b/24/49/5b2449f21426630200adb3feb934cccd.jpg',
-  'https://1.bp.blogspot.com/-cDvudXGc9Zg/UtAbAPh_e_I/AAAAAAAAM24/ja7S72vK61E/s1600/Dise%C3%B1o+de+jardines+en+macetas+3.+Blog+Vida+a+lo+Verde.jpg',
-  'https://i.pinimg.com/736x/b2/7b/59/b27b59993d8efe9fbf43f205dbc76b43--garden-container-plant-containers.jpg',
-];
+import { useQuery } from '@tanstack/react-query';
+import { fetchProductByID } from './service';
 
 export const SingleProductPage = () => {
+  const { id } = useParams();
+  const { data: product, status } = useQuery({
+    queryFn: () => fetchProductByID(Number(id)),
+    queryKey: ['products', id],
+  });
+
+  if (status === 'loading') return <p>cargando product: {id}</p>;
+  if (status === 'error') return <p>Error al obtener el producto {id} </p>;
+
   return (
     <div className='w-full flex p-5 justify-center'>
       <div className='max-w-7xl w-full flex flex-col items-center gap-5'>
         {/* Top page - Container to image and information base */}
         <section className='flex flex-wrap-reverse justify-evenly gap-5 w-full'>
-          <PicturesSection urlPictures={URLS} />
-          <InformationSection />
+          <PicturesSection urlPictures={product.photos_URL} />
+          <InformationSection
+            commonName={product.commonName}
+            scientificName={product.scientificName}
+            scientistLastnameInitial={product.scientistLastnameInitial}
+            family={product.family}
+            status={product.status}
+            classifications={product.classifications}
+            description={product.description}
+          />
         </section>
         {/* Middle page - Container to NavLinks and subpages */}
         <section className='w-full text-sm max-sm:text-xs'>
