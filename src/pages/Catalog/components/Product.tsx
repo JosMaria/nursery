@@ -12,7 +12,7 @@ interface Props {
   status: StatusType;
 }
 
-export const Card = ({
+export const Product = ({
   id,
   commonName,
   scientificName,
