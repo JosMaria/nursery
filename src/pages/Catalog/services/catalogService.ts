@@ -22,7 +22,7 @@ import { axiosInstance } from '../../../config/http';
 //   return data
 // }
 
-export const getPaginatedProducts = async (): Promise<PageCatalog> => {
-  const { data } = await axiosInstance.get<PageCatalog>('products');
+export const fetchPaginatedProducts = async (): Promise<PageCatalog> => {
+  const { data } = await axiosInstance.get<PageCatalog>('page');
   return data;
 };

@@ -7,7 +7,7 @@ interface Props {
   id: number;
   commonName: string;
   scientificName: string | null;
-  scientistSurnameInitial: string | null;
+  scientistLastnameInitial: string | null;
   family: string | null;
   status: StatusType;
 }
@@ -16,7 +16,7 @@ export const Card = ({
   id,
   commonName,
   scientificName,
-  scientistSurnameInitial,
+  scientistLastnameInitial,
   family,
   status,
 }: Props) => (
@@ -33,7 +33,7 @@ export const Card = ({
       </p>
       <div className='flex flex-col items-start justify-between text-sm max-sm:text-xs max-xs:text-xs leading-none h-fit overflow-x-auto overflow-y-hidden whitespace-nowrap'>
         <p className='leading-none'>
-          {scientificName} {scientistSurnameInitial}
+          {scientificName} {scientistLastnameInitial}
         </p>
         <p className='leading-none'>{family}</p>
       </div>

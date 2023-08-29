@@ -1,0 +1,122 @@
+{
+  "page": {
+    "content": [
+      {
+        "id": 25,
+        "commonName": "cactu leopardo",
+        "scientificName": null,
+        "scientistLastnameInitial": null,
+        "status": "AVAILABLE",
+        "family": null,
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 26,
+        "commonName": "cactu mamilaria",
+        "scientificName": "mammillaria spinosissima",
+        "scientistLastnameInitial": null,
+        "status": "IN_CONSERVATION",
+        "family": "cactaceae",
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 27,
+        "commonName": "cactu nopal",
+        "scientificName": "opuntia ficus indica",
+        "scientistLastnameInitial": null,
+        "status": "NON_EXISTENT",
+        "family": "cactaceae",
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 28,
+        "commonName": "cactu serrucho",
+        "scientificName": null,
+        "scientistLastnameInitial": null,
+        "status": "AVAILABLE",
+        "family": null,
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 29,
+        "commonName": "cactus variados",
+        "scientificName": null,
+        "scientistLastnameInitial": null,
+        "status": "IN_CONSERVATION",
+        "family": null,
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 30,
+        "commonName": "cafe",
+        "scientificName": "coffea arabica",
+        "scientistLastnameInitial": null,
+        "status": "NON_EXISTENT",
+        "family": "rubiaceae",
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 31,
+        "commonName": "cala",
+        "scientificName": null,
+        "scientistLastnameInitial": null,
+        "status": "AVAILABLE",
+        "family": null,
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 32,
+        "commonName": "calatea larga",
+        "scientificName": "ctenanthe amabilis",
+        "scientistLastnameInitial": null,
+        "status": "IN_CONSERVATION",
+        "family": "marantaceae",
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 33,
+        "commonName": "calatea zebrina",
+        "scientificName": "calathea zebrina",
+        "scientistLastnameInitial": null,
+        "status": "NON_EXISTENT",
+        "family": "marantaceae",
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 34,
+        "commonName": "canela aspidiastra",
+        "scientificName": null,
+        "scientistLastnameInitial": null,
+        "status": "AVAILABLE",
+        "family": null,
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 35,
+        "commonName": "cebollin",
+        "scientificName": null,
+        "scientistLastnameInitial": null,
+        "status": "IN_CONSERVATION",
+        "family": null,
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 36,
+        "commonName": "chacatea",
+        "scientificName": "dodonaea viscosa",
+        "scientistLastnameInitial": null,
+        "status": "NON_EXISTENT",
+        "family": "sapindaceae",
+        "urlPicture": "https://picture-404"
+      }
+    ],
+    "totalElements": 133,
+    "totalPages": 12,
+    "last": true,
+    "size": 12,
+    "number": 0,
+    "numberOfElements": 12,
+    "first": true,
+    "empty": false
+  }
+}

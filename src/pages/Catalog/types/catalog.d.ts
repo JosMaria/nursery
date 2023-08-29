@@ -4,7 +4,7 @@ export interface ProductResponse {
   id: number;
   commonName: string;
   scientificName: string | null;
-  scientistSurnameInitial: string | null;
+  scientistLastnameInitial: string | null;
   family: string | null;
   status: StatusType;
   photo_URL: string;
