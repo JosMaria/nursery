@@ -8,10 +8,7 @@ export const CatalogPage = () => {
     queryKey: ['products'],
   });
 
-  if (status === 'loading')
-    return (
-      <SkeletonCatalog />
-    );
+  if (status === 'loading') return <SkeletonCatalog />;
 
   return (
     <>
@@ -30,7 +27,10 @@ export const CatalogPage = () => {
           ))}
         </section>
       ) : (
-        <p>Se obtuvo un error al cargar los productos</p>
+        <p>
+          Se obtuvo un error al cargar los productos, Una opcion es la conexion
+          a Internet
+        </p>
       )}
     </>
   );
