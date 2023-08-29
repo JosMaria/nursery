@@ -3,16 +3,16 @@ import { Card } from './components';
 import { fetchPaginatedProducts } from './services';
 
 export const CatalogPage = () => {
-  const { data: page } = useQuery({
+  const { data: page, status } = useQuery({
     queryFn: fetchPaginatedProducts,
     queryKey: ['products'],
   });
 
-  console.log(page);
+  if (status === 'loading') return <p>loading...</p>;
 
   return (
     <>
-      {page ? (
+      {status === 'success' ? (
         <section className='grid grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 place-items-center gap-2 xs:gap-3 sm:gap-5 lg:gap-10 w-full py-5'>
           {page.content.map((product) => (
             <Card
@@ -20,14 +20,14 @@ export const CatalogPage = () => {
               id={product.id}
               commonName={product.commonName}
               scientificName={product.scientificName}
-              scientistSurnameInitial={product.scientistSurnameInitial}
+              scientistLastnameInitial={product.scientistLastnameInitial}
               family={product.family}
               status={product.status}
             />
           ))}
         </section>
       ) : (
-        <p>error al cargar</p>
+        <p>Se obtuvo un error al cargar los productos</p>
       )}
     </>
   );
