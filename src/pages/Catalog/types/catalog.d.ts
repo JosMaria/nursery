@@ -1,9 +1,15 @@
-import { ItemResponseDTO, Page, StatusType } from '../../../types';
+import { Page, StatusType } from '../../../types';
 
-interface ProductResponseDTO extends ItemResponseDTO {
+export interface ProductResponse {
+  id: number;
+  commonName: string;
+  scientificName: string | null;
+  scientistSurnameInitial: string | null;
+  family: string | null;
+  status: StatusType;
   photo_URL: string;
 }
 
 export interface PageCatalog extends Page {
-  content: Array<ProductResponseDTO>;
+  content: ProductResponse[];
 }
