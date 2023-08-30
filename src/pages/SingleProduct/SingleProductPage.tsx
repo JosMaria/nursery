@@ -6,32 +6,43 @@ import {
 } from './components';
 import { useQuery } from '@tanstack/react-query';
 import { fetchProductByID } from './service';
+import { PlantContextProvider } from './PlantPageContext';
+import { useChangePlant } from './hooks';
 
 export const SingleProductPage = () => {
   const { id } = useParams();
-  const { data: product, status } = useQuery({
+
+  return (
+    <PlantContextProvider>
+      <PlantContentPage id={Number(id)}/>
+    </PlantContextProvider>
+  );
+};
+
+interface Props {
+  id: number;
+}
+
+export const PlantContentPage = ({ id }: Props) => {
+  const definePlant = useChangePlant();
+  const { data: plant, status } = useQuery({
     queryFn: () => fetchProductByID(Number(id)),
-    queryKey: ['products', id],
-  });
+    queryKey: ['plants', id],
+  });  
 
   if (status === 'loading') return <p>cargando product: {id}</p>;
-  if (status === 'error') return <p>Error al obtener el producto {id} </p>;
+  if (status === 'error') return <p>Error al obtener el producto {id}</p>;
+  if (status === 'success') {
+    definePlant(plant);
+  }
 
   return (
     <div className='w-full flex p-5 justify-center'>
       <div className='max-w-7xl w-full flex flex-col items-center gap-5'>
         {/* Top page - Container to image and information base */}
         <section className='flex flex-wrap-reverse justify-evenly gap-5 w-full'>
-          <PicturesSection urlPictures={product.photos_URL} />
-          <InformationSection
-            commonName={product.commonName}
-            scientificName={product.scientificName}
-            scientistLastnameInitial={product.scientistLastnameInitial}
-            family={product.family}
-            status={product.status}
-            classifications={product.classifications}
-            description={product.description}
-          />
+          <PicturesSection />
+          <InformationSection />
         </section>
         {/* Middle page - Container to NavLinks and subpages */}
         <section className='w-full text-sm max-sm:text-xs'>
