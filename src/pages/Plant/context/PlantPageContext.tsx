@@ -2,6 +2,7 @@ import { createContext, useContext } from 'react';
 import { SingleProductResponse } from '../types';
 import { useQuery } from '@tanstack/react-query';
 import { fetchProductByID } from '../service';
+import { SkeletonPlantPage } from '../components';
 
 type PlantContextType = {
   plant: SingleProductResponse;
@@ -20,7 +21,7 @@ export const PlantContextProvider = ({ children, plantId }: Props) => {
     queryKey: ['plants', plantId],
   });
 
-  if (status === 'loading') return <p>Cargando...</p>;
+  if (status === 'loading') return <SkeletonPlantPage />;
   if (status === 'error') return <p>Error</p>;
 
   return (

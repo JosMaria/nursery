@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { SkeletonCatalog, ProductList } from './components';
+import { SkeletonCatalogPage, ProductList } from './components';
 import { fetchPaginatedProducts } from './service';
 
 export const Component = () => {
@@ -8,7 +8,7 @@ export const Component = () => {
     queryKey: ['products'],
   });
 
-  if (status === 'loading') return <SkeletonCatalog />;
+  if (status === 'loading') return <SkeletonCatalogPage />;
 
   if (status === 'error')
     return (
