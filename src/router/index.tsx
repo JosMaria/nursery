@@ -10,13 +10,12 @@ import {
   RepertoryPage,
   SignInPage,
   SingleNewsPage,
-  SingleProductPage,
 } from '../pages';
 import {
   DetailsPage,
   NotesPage,
   TechnicalSheetPage,
-} from '../pages/SingleProduct/pages';
+} from '../pages/Plant/pages'
 import { NotFound } from '../components';
 
 export const router = createBrowserRouter(
@@ -24,7 +23,7 @@ export const router = createBrowserRouter(
     <Route path='/' element={<LayoutPublic />} errorElement={<NotFound />}>
       <Route index lazy={() => import('../pages/Catalog')} />
 
-      <Route path='products/:id' element={<SingleProductPage />}>
+      <Route path='plants/:id' lazy={() => import('../pages/Plant')}>
         <Route index element={<TechnicalSheetPage />} />
         <Route path='details' element={<DetailsPage />} />
         <Route path='notes' element={<NotesPage />} />

@@ -21,7 +21,7 @@ export const Product = ({
   status,
 }: Props) => (
   <Link
-    to={`products/${id}`}
+    to={`plants/${id}`}
     className='bg-gradient-to-r from-card-start to-card-end shadow-black shadow-sm hover:shadow-black hover:shadow-xl p-1 flex flex-col gap-1 w-80 max-xl:w-72 max-md:w-60 max-sm:w-48 max-xs:w-40 text-center rounded-b-lg'
   >
     <div>
