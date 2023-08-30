@@ -15,7 +15,7 @@ import {
   DetailsPage,
   NotesPage,
   TechnicalSheetPage,
-} from '../pages/Plant/pages'
+} from '../pages/Plant/pages';
 import { NotFound } from '../components';
 
 export const router = createBrowserRouter(

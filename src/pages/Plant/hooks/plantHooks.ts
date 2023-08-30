@@ -1,4 +1,4 @@
-import { usePlantContext } from '../context/';
+import { usePlantContext } from '../context';
 
 export const usePlantPhotos = () => {
   const {
