@@ -8,11 +8,6 @@ export const usePlantPhotos = () => {
   return photos_URL;
 };
 
-export const useChangePlant = () => {
-  const { changePlant } = usePlantContext();
-  return changePlant;
-};
-
 export const useInfoBasePlant = () => {
   const { plant } = usePlantContext();
 

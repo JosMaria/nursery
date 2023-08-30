@@ -1,30 +1,30 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext } from 'react';
 import { SingleProductResponse } from './types';
+import { useQuery } from '@tanstack/react-query';
+import { fetchProductByID } from './service';
 
 type PlantContextType = {
   plant: SingleProductResponse;
-  changePlant: (plant: SingleProductResponse) => void;
 };
 
 const PlantContext = createContext<PlantContextType | null>(null);
 
 type Props = {
+  plantId: number;
   children: JSX.Element | JSX.Element[];
 };
 
-export const PlantContextProvider = ({ children }: Props) => {
-  const [plant, setPlant] = useState<SingleProductResponse>(
-    {} as SingleProductResponse
-  );
+export const PlantContextProvider = ({ children, plantId }: Props) => {
+  const { data: plant, status } = useQuery({
+    queryFn: () => fetchProductByID(plantId),
+    queryKey: ['plants', plantId],
+  });
 
-  const changePlant = (plant: SingleProductResponse) => {
-    setPlant((prev) => plant);
-  };
+  if (status === 'loading') return <p>Cargando...</p>;
+  if (status === 'error') return <p>Error</p>;
 
   return (
-    <PlantContext.Provider value={{ plant, changePlant }}>
-      {children}
-    </PlantContext.Provider>
+    <PlantContext.Provider value={{ plant }}>{children}</PlantContext.Provider>
   );
 };
 

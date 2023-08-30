@@ -4,38 +4,19 @@ import {
   NavbarProduct,
   PicturesSection,
 } from './components';
-import { useQuery } from '@tanstack/react-query';
-import { fetchProductByID } from './service';
 import { PlantContextProvider } from './PlantPageContext';
-import { useChangePlant } from './hooks';
 
 export const SingleProductPage = () => {
   const { id } = useParams();
 
   return (
-    <PlantContextProvider>
-      <PlantContentPage id={Number(id)}/>
+    <PlantContextProvider plantId={Number(id)}>
+      <PlantContentPage />
     </PlantContextProvider>
   );
 };
 
-interface Props {
-  id: number;
-}
-
-export const PlantContentPage = ({ id }: Props) => {
-  const definePlant = useChangePlant();
-  const { data: plant, status } = useQuery({
-    queryFn: () => fetchProductByID(Number(id)),
-    queryKey: ['plants', id],
-  });  
-
-  if (status === 'loading') return <p>cargando product: {id}</p>;
-  if (status === 'error') return <p>Error al obtener el producto {id}</p>;
-  if (status === 'success') {
-    definePlant(plant);
-  }
-
+export const PlantContentPage = () => {
   return (
     <div className='w-full flex p-5 justify-center'>
       <div className='max-w-7xl w-full flex flex-col items-center gap-5'>
