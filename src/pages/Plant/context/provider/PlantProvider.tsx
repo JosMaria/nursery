@@ -5,7 +5,7 @@ import { fetchProductByID } from '../../services';
 
 type Props = {
   plantId: number;
-  children: JSX.Element | JSX.Element[];
+  children: JSX.Element | JSX.Element[]
 };
 
 export const PlantProvider = ({ plantId, children }: Props) => {

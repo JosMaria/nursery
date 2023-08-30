@@ -17,8 +17,7 @@ export const PlantContent = () => (
       </section>
 
       <Link
-        to='..'
-        relative='route'
+        to='/'
         className='custom-btn-form w-fit flex gap-3 max-sm:text-xs self-start'
       >
         &#10229;<span>Volver</span>
