@@ -1,4 +1,4 @@
-import { usePlantContext } from '../PlantPageContext';
+import { usePlantContext } from '../context/';
 
 export const usePlantPhotos = () => {
   const {
@@ -20,4 +20,28 @@ export const useInfoBasePlant = () => {
     classifications: plant.classifications,
     description: plant.description,
   };
+};
+
+export const useTechnicalSheetPlant = () => {
+  const {
+    plant: { technicalSheet },
+  } = usePlantContext();
+
+  return technicalSheet;
+};
+
+export const useDetailsPlant = () => {
+  const {
+    plant: { details },
+  } = usePlantContext();
+
+  return details;
+};
+
+export const useNotesPlant = () => {
+  const {
+    plant: { notes },
+  } = usePlantContext();
+
+  return notes;
 };

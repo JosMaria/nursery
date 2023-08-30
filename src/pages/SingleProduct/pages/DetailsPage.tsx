@@ -1,9 +1,11 @@
-import { DATA_DETAILS } from '../data';
+import { useDetailsPlant } from '../hooks';
 
 export const DetailsPage = () => {
+  const details = useDetailsPlant();
+
   return (
     <ol className='list-decimal list-inside'>
-      {DATA_DETAILS.map((detail, index) => (
+      {details.map((detail, index) => (
         <li key={index}>{detail}</li>
       ))}
     </ol>

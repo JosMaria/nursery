@@ -1,9 +1,11 @@
-import { DATA_NOTES } from '../data';
+import { useNotesPlant } from '../hooks';
 
 export const NotesPage = () => {
+  const notes = useNotesPlant();
+
   return (
     <ul className='list-decimal list-inside'>
-      {DATA_NOTES.map((note, index) => (
+      {notes.map((note, index) => (
         <li key={index}>{note}</li>
       ))}
     </ul>

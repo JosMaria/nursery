@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
-import { SingleProductResponse } from './types';
+import { SingleProductResponse } from '../types';
 import { useQuery } from '@tanstack/react-query';
-import { fetchProductByID } from './service';
+import { fetchProductByID } from '../service';
 
 type PlantContextType = {
   plant: SingleProductResponse;
