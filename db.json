@@ -192,5 +192,122 @@
         }
       ]
     }
-  ]
+  ],
+
+  "pageItems": {
+    "content": [
+      {
+        "id": 121,
+        "commonName": "sedum",
+        "scientificName": "sedum rupestre",
+        "scientistLastnameInitial": null,
+        "status": "IN_CONSERVATION",
+        "family": "crassulaceae"
+      },
+      {
+        "id": 122,
+        "commonName": "sensitiva",
+        "scientificName": "mimosa pudica",
+        "scientistLastnameInitial": "l",
+        "status": "AVAILABLE",
+        "family": "mimosaceae"
+      },
+      {
+        "id": 123,
+        "commonName": "singonio",
+        "scientificName": "syngonium spp",
+        "scientistLastnameInitial": null,
+        "status": "IN_CONSERVATION",
+        "family": null
+      },
+      {
+        "id": 124,
+        "commonName": "tajibo",
+        "scientificName": "handroanthus impetiginosus",
+        "scientistLastnameInitial": null,
+        "status": "NON_EXISTENT",
+        "family": "bignoniaceae"
+      },
+      {
+        "id": 125,
+        "commonName": "tara",
+        "scientificName": "tara spinosa",
+        "scientistLastnameInitial": null,
+        "status": "AVAILABLE",
+        "family": "fabaceae"
+      },
+      {
+        "id": 126,
+        "commonName": "tipa",
+        "scientificName": "tipuana tipu",
+        "scientistLastnameInitial": null,
+        "status": "IN_CONSERVATION",
+        "family": "fabaceae"
+      },
+      {
+        "id": 127,
+        "commonName": "trabajadoras",
+        "scientificName": "impatiens balsamina",
+        "scientistLastnameInitial": null,
+        "status": "NON_EXISTENT",
+        "family": "balsaminaceae"
+      },
+      {
+        "id": 128,
+        "commonName": "tumbo",
+        "scientificName": "passiflora tripartita",
+        "scientistLastnameInitial": null,
+        "status": "AVAILABLE",
+        "family": "passifloraceae"
+      },
+      {
+        "id": 129,
+        "commonName": "ulupica",
+        "scientificName": "capsicum cardenasii",
+        "scientistLastnameInitial": null,
+        "status": "IN_CONSERVATION",
+        "family": "solanaceae"
+      },
+      {
+        "id": 130,
+        "commonName": "uva",
+        "scientificName": "vitis vinifera",
+        "scientistLastnameInitial": null,
+        "status": "NON_EXISTENT",
+        "family": "vitaceae"
+      },
+      {
+        "id": 131,
+        "commonName": "velo de novia",
+        "scientificName": null,
+        "scientistLastnameInitial": null,
+        "status": "AVAILABLE",
+        "family": null
+      },
+      {
+        "id": 132,
+        "commonName": "payasito pringuiadita",
+        "scientificName": "hypoestes phyllostachya bajer",
+        "scientistLastnameInitial": null,
+        "status": "IN_CONSERVATION",
+        "family": "acanthaceae"
+      },
+      {
+        "id": 133,
+        "commonName": "higo",
+        "scientificName": "ficus carica",
+        "scientistLastnameInitial": null,
+        "status": "NON_EXISTENT",
+        "family": "moraceae"
+      }
+    ],
+    "totalElements": 133,
+    "totalPages": 12,
+    "last": true,
+    "size": 12,
+    "number": 0,
+    "numberOfElements": 12,
+    "first": true,
+    "empty": false
+  }   
 }

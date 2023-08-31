@@ -1,5 +1,4 @@
 import { getStyledGivenStatus, traduceStatus } from '../../../utils';
-import { data as ITEMS } from '../data/store';
 
 const HEADERS_TITLE = [
   'Nombre Comun',
@@ -23,7 +22,7 @@ export const Table = () => {
 
   const tableBody = (
     <tbody>
-      {ITEMS.content.map((item) => (
+      {/* {ITEMS.content.map((item) => (
         <tr
           key={item.id}
           className='text-sm max-sm:text-xs bg-stone-50 [&:nth-child(even)]:bg-stone-200'
@@ -39,7 +38,7 @@ export const Table = () => {
             </p>
           </td>
         </tr>
-      ))}
+      ))} */}
     </tbody>
   );
 
