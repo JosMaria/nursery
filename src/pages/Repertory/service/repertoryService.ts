@@ -1,7 +1,7 @@
 import { axiosInstance } from '../../../config/http';
-import { PageRepertory } from '../types';
+import { ItemResponse } from '../types';
 
-export const fetchPaginatedItems = async (): Promise<PageRepertory> => {
-  const { data } = await axiosInstance.get<PageRepertory>('pageItems');
+export const fetchPaginatedItems = async (): Promise<ItemResponse[]> => {
+  const { data } = await axiosInstance.get<ItemResponse[]>('items');
   return data;
 };
