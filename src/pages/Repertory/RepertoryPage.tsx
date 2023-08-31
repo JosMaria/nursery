@@ -1,7 +1,11 @@
-import { Table } from './components';
+import { RepertoryContent } from './content';
 
-export const RepertoryPage = () => (
-  <div className='w-screen flex flex-col justify-center items-center'>
-    <Table />
-  </div>
+export const Component = () => (
+  <>
+    <RepertoryPage />
+  </>
 );
+
+Component.displayName = 'RepertoryPage';
+
+export const RepertoryPage = () => <RepertoryContent />;

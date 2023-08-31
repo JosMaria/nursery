@@ -1,4 +1,5 @@
 import { getStyledGivenStatus, traduceStatus } from '../../../utils';
+import { PageRepertory } from '../types';
 
 const HEADERS_TITLE = [
   'Nombre Comun',
@@ -7,7 +8,11 @@ const HEADERS_TITLE = [
   'Estado',
 ];
 
-export const Table = () => {
+interface Props {
+  items: PageRepertory;
+}
+
+export const Table = ({ items }: Props) => {
   const tableHeader = (
     <thead className='bg-skin-dark text-skin-light whitespace-nowrap text-sm max-sm:text-xs'>
       <tr>
@@ -22,7 +27,7 @@ export const Table = () => {
 
   const tableBody = (
     <tbody>
-      {/* {ITEMS.content.map((item) => (
+      {items.content.map((item) => (
         <tr
           key={item.id}
           className='text-sm max-sm:text-xs bg-stone-50 [&:nth-child(even)]:bg-stone-200'
@@ -38,7 +43,7 @@ export const Table = () => {
             </p>
           </td>
         </tr>
-      ))} */}
+      ))}
     </tbody>
   );
 

@@ -7,7 +7,6 @@ import { LayoutPublic } from '../layout';
 import {
   CreatePlantPage,
   NewsPage,
-  RepertoryPage,
   SignInPage,
   SingleNewsPage,
 } from '../pages';
@@ -18,7 +17,7 @@ export const router = createBrowserRouter(
     <Route path='/' element={<LayoutPublic />} errorElement={<NotFound />}>
       <Route index lazy={() => import('../pages/Catalog')} />
       <Route path='plants/:id/*' lazy={() => import('../pages/Plant')} />
-      <Route path='list' element={<RepertoryPage />} />
+      <Route path='repertory' lazy={() => import('../pages/Repertory')} />
       <Route path='news' element={<NewsPage />} />
       <Route path='news/:id' element={<SingleNewsPage />} />
       <Route path='signin' element={<SignInPage />} />
