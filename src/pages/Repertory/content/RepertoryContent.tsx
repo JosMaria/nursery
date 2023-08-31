@@ -1,6 +1,7 @@
 import { Table } from '../components';
 import { useQuery } from '@tanstack/react-query';
 import { fetchPaginatedItems } from '../service';
+import { Skeleton } from '.';
 
 export const RepertoryContent = () => {
   const { data: items, status } = useQuery({
@@ -8,7 +9,7 @@ export const RepertoryContent = () => {
     queryKey: ['repertory'],
   });
 
-  if (status === 'loading') return <p>Cargando...</p>;
+  if (status === 'loading') return <Skeleton />
   if (status === 'error') return <p>Error al cargar los datos</p>;
 
   return (
