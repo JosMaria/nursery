@@ -16,7 +16,7 @@ export const router = createBrowserRouter(
   createRoutesFromElements([
     <Route path='/' element={<LayoutPublic />} errorElement={<NotFound />}>
       <Route index lazy={() => import('../pages/Catalog')} />
-      <Route path='plants/:id/*' lazy={() => import('../pages/Plant')} />
+      <Route path='plants/:id/*' lazy={() => import('../pages/Plant')} errorElement={<NotFound />} />
       <Route path='repertory' lazy={() => import('../pages/Repertory')} />
       <Route path='news' element={<NewsPage />} />
       <Route path='news/:id' element={<SingleNewsPage />} />
