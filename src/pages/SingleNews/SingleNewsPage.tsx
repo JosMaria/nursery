@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export const SingleNewsPage = () => {
+const SingleNewsPage = () => {
   // const { id } = useParams();
 
   return (
@@ -60,7 +60,15 @@ export const SingleNewsPage = () => {
           coupled to the global React release schedule.
         </p>
       </div>
-      <Link to='..' relative='path' className='custom-btn-form w-fit flex gap-3 max-sm:text-xs'>&#10229;<span>Volver</span></Link>
+      <Link
+        to='..'
+        relative='path'
+        className='custom-btn-form w-fit flex gap-3 max-sm:text-xs'
+      >
+        &#10229;<span>Volver</span>
+      </Link>
     </section>
   );
 };
+
+export default SingleNewsPage;

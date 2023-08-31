@@ -1,11 +1,9 @@
 import { RepertoryContent } from './content';
 
-export const Component = () => (
+const RepertoryPage = () => (
   <>
-    <RepertoryPage />
+    <RepertoryContent />;
   </>
 );
 
-Component.displayName = 'RepertoryPage';
-
-export const RepertoryPage = () => <RepertoryContent />;
+export default RepertoryPage;

@@ -8,10 +8,20 @@ const DetailsPage = lazy(() => import('./pages/DetailsPage'));
 const NotesPage = lazy(() => import('./pages/NotesPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
-export const Component = () => (
+const PlantContentPage = () => {
+  const { id } = useParams();
+
+  return (
+    <PlantProvider plantId={Number(id)}>
+      <PlantContent />
+    </PlantProvider>
+  );
+};
+
+const PlantPage = () => (
   <Suspense fallback={<p>Suspense a nivel de plant page</p>}>
     <Routes>
-      <Route path='/' element={<PlantPage />}>
+      <Route path='/' element={<PlantContentPage />}>
         <Route index element={<TechnicalSheetPage />} />
         <Route path='details' element={<DetailsPage />} />
         <Route path='notes' element={<NotesPage />} />
@@ -21,14 +31,4 @@ export const Component = () => (
   </Suspense>
 );
 
-Component.displayName = 'PlantPage';
-
-export const PlantPage = () => {
-  const { id } = useParams();
-
-  return (
-    <PlantProvider plantId={Number(id)}>
-      <PlantContent />
-    </PlantProvider>
-  );
-};
+export default PlantPage;

@@ -54,7 +54,7 @@ const CreatePlantSchema = object({
 
 type CreatePlantSchemaType = Input<typeof CreatePlantSchema>;
 
-export const CreatePlantPage = () => {
+const CreatePlantPage = () => {
   const {
     register,
     handleSubmit,
@@ -339,3 +339,5 @@ export const CreatePlantPage = () => {
     </section>
   );
 };
+
+export default CreatePlantPage;

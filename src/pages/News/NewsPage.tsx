@@ -25,7 +25,7 @@ const NEWS: Array<NewsType> = [
   },
 ];
 
-export const NewsPage = () => {
+const NewsPage = () => {
   const newsArticles = (
     <section className='flex flex-col gap-10'>
       {NEWS.map((news) => (
@@ -61,3 +61,5 @@ export const NewsPage = () => {
     </div>
   );
 };
+
+export default NewsPage;
