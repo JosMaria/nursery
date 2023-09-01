@@ -1,6 +1,6 @@
 import { useTechnicalSheetPlant } from '../hooks';
 
-const TechnicalSheetTab = () => {
+const TechnicalSheetPlantTab = () => {
   const technicalSheeet = useTechnicalSheetPlant();
 
   return (
@@ -24,4 +24,4 @@ const TechnicalSheetTab = () => {
   );
 };
 
-export default TechnicalSheetTab;
+export default TechnicalSheetPlantTab;

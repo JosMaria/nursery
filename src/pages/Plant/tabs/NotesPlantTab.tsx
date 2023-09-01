@@ -1,6 +1,6 @@
 import { useNotesPlant } from '../hooks';
 
-const NotesTab = () => {
+const NotesPlantTab = () => {
   const notes = useNotesPlant();
 
   return (
@@ -16,4 +16,4 @@ const NotesTab = () => {
   );
 };
 
-export default NotesTab;
+export default NotesPlantTab;

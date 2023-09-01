@@ -1,20 +1,25 @@
+import { Suspense, lazy } from 'react';
 import {
   Route,
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
 
-import { Suspense, lazy } from 'react';
-import { SkeletonTab } from '../pages/Plant/tabs/SkeletonTab';
-
 const LayoutPublic = lazy(() => import('../layout/LayoutPublic'));
 const CatalogPage = lazy(() => import('../pages/Catalog/CatalogPage'));
 
+// start block - Plant Page and its Tabs
+import {
+  ErrorBoundaryPlantTab,
+  NotFoundPlantTab,
+  SkeletonPlantTab,
+} from '../pages/Plant/tabs';
+
 const PlantPage = lazy(() => import('../pages/Plant/PlantPage'));
-const TechnicalSheetTab = lazy(() => import('../pages/Plant/tabs/TechnicalSheetTab'));
-const DetailsTab = lazy(() => import('../pages/Plant/tabs/DetailsTab'));
-const NotesTab = lazy(() => import('../pages/Plant/tabs/NotesTab'));
-const NotFoundTab = lazy(() => import('../pages/Plant/tabs/NotFoundTab'));
+const TechnicalSheetTab = lazy(() => import('../pages/Plant/tabs/TechnicalSheetPlantTab'));
+const DetailsTab = lazy(() => import('../pages/Plant/tabs/DetailsPlantTab'));
+const NotesTab = lazy(() => import('../pages/Plant/tabs/NotesPlantTab'));
+// end block - Plant Page and its Tabs
 
 const RepertoryPage = lazy(() => import('../pages/Repertory/RepertoryPage'));
 const NewsPage = lazy(() => import('../pages/News/NewsPage'));
@@ -32,32 +37,32 @@ export const router = createBrowserRouter(
       <Route path='plants/:id' element={<PlantPage />}>
         <Route
           index
-          errorElement={<p>error fallback por react router en details pages</p>}
+          errorElement={<ErrorBoundaryPlantTab />}
           element={
-            <Suspense fallback={<SkeletonTab />}>
+            <Suspense fallback={<SkeletonPlantTab />}>
               <TechnicalSheetTab />
             </Suspense>
           }
         />
         <Route
           path='details'
-          errorElement={<p>error fallback por react router en details pages</p>}
+          errorElement={<ErrorBoundaryPlantTab />}
           element={
-            <Suspense fallback={<SkeletonTab />}>
+            <Suspense fallback={<SkeletonPlantTab />}>
               <DetailsTab />
             </Suspense>
           }
         />
         <Route
           path='notes'
-          errorElement={<p>error fallback por react router en notes pages</p>}
+          errorElement={<ErrorBoundaryPlantTab />}
           element={
-            <Suspense fallback={<SkeletonTab />}>
+            <Suspense fallback={<SkeletonPlantTab />}>
               <NotesTab />
             </Suspense>
           }
         />
-        <Route path='*' element={<NotFoundTab />} />
+        <Route path='*' element={<NotFoundPlantTab />} />
       </Route>
 
       <Route path='repertory' element={<RepertoryPage />} />
