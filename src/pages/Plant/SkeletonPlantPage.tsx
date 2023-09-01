@@ -1,4 +1,4 @@
-export const Skeleton = () => (
+export const SkeletonPlantPage = () => (
   <div
     role='status'
     className='animate-pulse w-full flex flex-col items-center gap-10 max-sm:gap-5 max-w-7xl p-5'
@@ -37,18 +37,6 @@ export const Skeleton = () => (
         ))}
       </div>
     </div>
-    <span className='sr-only'>Loading...</span>
-  </div>
-);
-
-export const SkeletonTab = () => (
-  <div
-    role='status'
-    className='animate-pulse w-full flex flex-col items-center gap-2 max-sm:gap-1 max-w-7xl'
-  >
-    {[...Array(10).keys()].map((i) => (
-      <div key={i} className='bg-slate-700 h-2 max-sm:h-1 w-full'></div>
-    ))}
     <span className='sr-only'>Loading...</span>
   </div>
 );

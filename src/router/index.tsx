@@ -5,15 +5,13 @@ import {
 } from 'react-router-dom';
 
 import { Suspense, lazy } from 'react';
-import { SkeletonTab } from '../pages/Plant/content';
+import { SkeletonTab } from '../pages/Plant/tabs/SkeletonTab';
 
 const LayoutPublic = lazy(() => import('../layout/LayoutPublic'));
 const CatalogPage = lazy(() => import('../pages/Catalog/CatalogPage'));
 
 const PlantPage = lazy(() => import('../pages/Plant/PlantPage'));
-const TechnicalSheetTab = lazy(
-  () => import('../pages/Plant/tabs/TechnicalSheetTab')
-);
+const TechnicalSheetTab = lazy(() => import('../pages/Plant/tabs/TechnicalSheetTab'));
 const DetailsTab = lazy(() => import('../pages/Plant/tabs/DetailsTab'));
 const NotesTab = lazy(() => import('../pages/Plant/tabs/NotesTab'));
 const NotFoundTab = lazy(() => import('../pages/Plant/tabs/NotFoundTab'));
@@ -34,6 +32,7 @@ export const router = createBrowserRouter(
       <Route path='plants/:id' element={<PlantPage />}>
         <Route
           index
+          errorElement={<p>error fallback por react router en details pages</p>}
           element={
             <Suspense fallback={<SkeletonTab />}>
               <TechnicalSheetTab />
