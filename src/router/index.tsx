@@ -1,4 +1,5 @@
 import { Suspense, lazy } from 'react';
+import { ErrorBoundaryPage } from '../components';
 import {
   Route,
   createBrowserRouter,
@@ -9,6 +10,7 @@ const LayoutPublic = lazy(() => import('../layout/LayoutPublic'));
 const CatalogPage = lazy(() => import('../pages/Catalog/CatalogPage'));
 
 // start block - Plant Page and its Tabs
+import SkeletonPlantPage from '../pages/Plant/SkeletonPlantPage';
 import {
   ErrorBoundaryPlantTab,
   NotFoundPlantTab,
@@ -34,7 +36,15 @@ export const router = createBrowserRouter(
     <Route path='/' element={<LayoutPublic />}>
       <Route index element={<CatalogPage />} />
 
-      <Route path='plants/:id' element={<PlantPage />}>
+      <Route
+        path='plants/:id'
+        errorElement={<ErrorBoundaryPage />}
+        element={
+          <Suspense fallback={<SkeletonPlantPage />}>
+            <PlantPage />
+          </Suspense>
+        }
+      >
         <Route
           index
           errorElement={<ErrorBoundaryPlantTab />}
