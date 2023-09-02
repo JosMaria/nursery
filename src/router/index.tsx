@@ -7,7 +7,12 @@ import {
 } from 'react-router-dom';
 
 const LayoutPublic = lazy(() => import('../layout/LayoutPublic'));
+
+// start block - Catalog Page
+import SkeletonCatalogPage from '../pages/Catalog/SkeletonCatalogPage';
+
 const CatalogPage = lazy(() => import('../pages/Catalog/CatalogPage'));
+// end block - Catalog Page
 
 // start block - Plant Page and its Tabs
 import SkeletonPlantPage from '../pages/Plant/SkeletonPlantPage';
@@ -18,7 +23,9 @@ import {
 } from '../pages/Plant/tabs';
 
 const PlantPage = lazy(() => import('../pages/Plant/PlantPage'));
-const TechnicalSheetTab = lazy(() => import('../pages/Plant/tabs/TechnicalSheetPlantTab'));
+const TechnicalSheetTab = lazy(
+  () => import('../pages/Plant/tabs/TechnicalSheetPlantTab')
+);
 const DetailsTab = lazy(() => import('../pages/Plant/tabs/DetailsPlantTab'));
 const NotesTab = lazy(() => import('../pages/Plant/tabs/NotesPlantTab'));
 // end block - Plant Page and its Tabs
@@ -34,7 +41,15 @@ const CreatePlantPage = lazy(
 export const router = createBrowserRouter(
   createRoutesFromElements([
     <Route path='/' element={<LayoutPublic />}>
-      <Route index element={<CatalogPage />} />
+      <Route
+        index
+        errorElement={<ErrorBoundaryPage />}
+        element={
+          <Suspense fallback={<SkeletonCatalogPage />}>
+            <CatalogPage />
+          </Suspense>
+        }
+      />
 
       <Route
         path='plants/:id'

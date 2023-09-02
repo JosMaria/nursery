@@ -1,4 +1,4 @@
-export const SkeletonCatalogPage = () => (
+const SkeletonCatalogPage = () => (
   <div className='grid grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 place-items-center gap-2 xs:gap-2 sm:gap-5 lg:gap-10 w-full py-5'>
     {[...Array(12).keys()].map((i) => (
       <SkeletonCard key={i} />
@@ -21,3 +21,5 @@ const SkeletonCard = () => (
     <span className='sr-only'>Loading...</span>
   </div>
 );
+
+export default SkeletonCatalogPage;

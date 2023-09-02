@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { SkeletonCatalogPage, ProductList } from './components';
 import { fetchPaginatedProducts } from './service';
+import SkeletonCatalogPage from './SkeletonCatalogPage';
+import { ProductList } from './components';
 
 const CatalogPage = () => {
   const { data: page, status } = useQuery({
@@ -23,4 +24,5 @@ const CatalogPage = () => {
     </>
   );
 };
+
 export default CatalogPage;
