@@ -34,9 +34,14 @@ const RepertoryPage = lazy(() => import('../pages/Repertory/RepertoryPage'));
 const NewsPage = lazy(() => import('../pages/News/NewsPage'));
 const SingleNewsPage = lazy(() => import('../pages/SingleNews/SingleNewsPage'));
 const SignInPage = lazy(() => import('../pages/SignIn/SignInPage'));
+
+// start block - Create Plant Page
+import SkeletonCreatePlantPage from '../pages/CreatePlant/SkeletonCreatePlantPage';
+
 const CreatePlantPage = lazy(
   () => import('../pages/CreatePlant/CreatePlantPage')
 );
+// end block - Create Plant Page
 
 export const router = createBrowserRouter(
   createRoutesFromElements([
@@ -90,11 +95,20 @@ export const router = createBrowserRouter(
         <Route path='*' element={<NotFoundPlantTab />} />
       </Route>
 
+      <Route
+        path='create-plant'
+        errorElement={<ErrorBoundaryPage />}
+        element={
+          <Suspense fallback={<SkeletonCreatePlantPage />}>
+            <CreatePlantPage />
+          </Suspense>
+        }
+      />
+
       <Route path='repertory' element={<RepertoryPage />} />
       <Route path='news' element={<NewsPage />} />
       <Route path='news/:id' element={<SingleNewsPage />} />
       <Route path='signin' element={<SignInPage />} />
-      <Route path='create-plant' element={<CreatePlantPage />} />
     </Route>,
   ])
 );
