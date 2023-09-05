@@ -1,5 +1,5 @@
 export const NAVLINKS = [
   { text: 'Inicio', path: '.' },
-  { text: 'Listado', path: 'list' },
+  { text: 'Listado', path: 'repertory' },
   { text: 'Novedades', path: 'news' },
 ];

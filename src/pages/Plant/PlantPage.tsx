@@ -1,21 +1,8 @@
-import { Route, Routes, useParams } from 'react-router-dom';
-import { PlantProvider } from './context';
+import { useParams } from 'react-router-dom';
 import { PlantContent } from './content';
-import { DetailsPage, NotesPage, TechnicalSheetPage } from './pages';
+import { PlantProvider } from './context';
 
-export const Component = () => (
-  <Routes>
-    <Route path='/' element={<PlantPage />}>
-      <Route index element={<TechnicalSheetPage />} />
-      <Route path='details' element={<DetailsPage />} />
-      <Route path='notes' element={<NotesPage />} />
-    </Route>
-  </Routes>
-);
-
-Component.displayName = 'PlantPage';
-
-export const PlantPage = () => {
+const PlantPage = () => {
   const { id } = useParams();
 
   return (
@@ -24,3 +11,5 @@ export const PlantPage = () => {
     </PlantProvider>
   );
 };
+
+export default PlantPage;

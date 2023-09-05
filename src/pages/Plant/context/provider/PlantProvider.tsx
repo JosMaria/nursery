@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import { Skeleton } from '../../content';
 import { PlantContext } from '..';
 import { fetchProductByID } from '../../services';
+import SkeletonPlantPage from '../../SkeletonPlantPage';
 
 type Props = {
   plantId: number;
-  children: JSX.Element | JSX.Element[]
+  children: JSX.Element | JSX.Element[];
 };
 
 export const PlantProvider = ({ plantId, children }: Props) => {
@@ -14,7 +14,7 @@ export const PlantProvider = ({ plantId, children }: Props) => {
     queryKey: ['plants', plantId],
   });
 
-  if (status === 'loading') return <Skeleton />;
+  if (status === 'loading') return <SkeletonPlantPage />;
   if (status === 'error') return <p>Error</p>;
 
   return (

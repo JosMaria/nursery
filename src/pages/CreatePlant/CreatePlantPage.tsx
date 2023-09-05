@@ -4,6 +4,7 @@ import { valibotResolver } from '@hookform/resolvers/valibot';
 import { PlantClassificationType, StatusType } from '../../types';
 import { traduceClassification, traduceStatus } from '../../utils';
 import { DevTool } from '@hookform/devtools';
+import { UploadFileInput } from './components';
 
 const familiesData = [
   'asparagaceae',
@@ -54,7 +55,7 @@ const CreatePlantSchema = object({
 
 type CreatePlantSchemaType = Input<typeof CreatePlantSchema>;
 
-export const CreatePlantPage = () => {
+const CreatePlantPage = () => {
   const {
     register,
     handleSubmit,
@@ -329,6 +330,7 @@ export const CreatePlantPage = () => {
             {inputDetails}
             {inputNotes}
             {inputDataSheet}
+            <UploadFileInput />
           </div>
           <button className='custom-btn-form w-fit' type='submit'>
             Crear
@@ -339,3 +341,5 @@ export const CreatePlantPage = () => {
     </section>
   );
 };
+
+export default CreatePlantPage;

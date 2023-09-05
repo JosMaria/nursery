@@ -1,15 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
-import { SkeletonCatalogPage, ProductList } from './components';
 import { fetchPaginatedProducts } from './service';
+import SkeletonCatalogPage from './SkeletonCatalogPage';
+import { ProductList } from './components';
 
-export const Component = () => {
+const CatalogPage = () => {
   const { data: page, status } = useQuery({
     queryFn: fetchPaginatedProducts,
     queryKey: ['products'],
   });
 
   if (status === 'loading') return <SkeletonCatalogPage />;
-
   if (status === 'error')
     return (
       <p>
@@ -25,4 +25,4 @@ export const Component = () => {
   );
 };
 
-Component.displayName = 'CatalogPage';
+export default CatalogPage;

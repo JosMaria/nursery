@@ -1,6 +1,6 @@
 import { useNotesPlant } from '../hooks';
 
-export const NotesPage = () => {
+const NotesPlantTab = () => {
   const notes = useNotesPlant();
 
   return (
@@ -15,3 +15,5 @@ export const NotesPage = () => {
     </ul>
   );
 };
+
+export default NotesPlantTab;

@@ -1,4 +1,4 @@
-export const Skeleton = () => (
+const SkeletonPlantPage = () => (
   <div
     role='status'
     className='animate-pulse w-full flex flex-col items-center gap-10 max-sm:gap-5 max-w-7xl p-5'
@@ -40,3 +40,5 @@ export const Skeleton = () => (
     <span className='sr-only'>Loading...</span>
   </div>
 );
+
+export default SkeletonPlantPage;

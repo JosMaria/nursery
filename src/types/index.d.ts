@@ -15,15 +15,6 @@ export type PlantClassificationType =
 	'GRASS' |
 	'SUCCULENT'
 
-export interface ItemResponseDTO {
-	id: number
-	commonName: string
-	scientificName: string | null
-	scientistSurnameInitial: string | null
-	family: string | null
-	status: StatusType
-}
-
 export interface Page {
 	last: boolean
 	totalElements: number
