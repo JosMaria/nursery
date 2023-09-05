@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { PlantContext } from '..';
 import { fetchProductByID } from '../../services';
-import { SkeletonPlantPage } from '../../SkeletonPlantPage';
+import SkeletonPlantPage from '../../SkeletonPlantPage';
 
 type Props = {
   plantId: number;

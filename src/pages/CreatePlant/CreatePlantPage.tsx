@@ -4,6 +4,7 @@ import { valibotResolver } from '@hookform/resolvers/valibot';
 import { PlantClassificationType, StatusType } from '../../types';
 import { traduceClassification, traduceStatus } from '../../utils';
 import { DevTool } from '@hookform/devtools';
+import { UploadFileInput } from './components';
 
 const familiesData = [
   'asparagaceae',
@@ -329,6 +330,7 @@ const CreatePlantPage = () => {
             {inputDetails}
             {inputNotes}
             {inputDataSheet}
+            <UploadFileInput />
           </div>
           <button className='custom-btn-form w-fit' type='submit'>
             Crear
