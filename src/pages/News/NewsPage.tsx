@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Article } from './components';
 import { NewsType } from './types';
 
@@ -25,24 +26,7 @@ const NEWS: Array<NewsType> = [
   },
 ];
 
-export const NewsPage = () => {
-  const newsHeader = (
-    <section className='flex flex-col gap-2'>
-      <h1 className='max-md:text-2xl text-4xl font-semibold tracking-wide'>
-        Vivero Novedades
-      </h1>
-      <p className='max-md:text-sm max-md:text-justify font-normal text-lg'>
-        Esta secci&oacute;n es una mas de las fuentes de informaci&oacute;n
-        sobre el vivero de la Facultad de desarrollo rural y territorial. Se encontrara notas, avisos, noticias y dem&aacute;s.
-        Las publicaciones que se realizan es por parte de la
-        administraci&oacute;n de esta p&aacute;gina. Esta secci&oacute;n es una
-        mas de las fuentes de informaci&oacute;n sobre el vivero. Se encontrara
-        notas, avisos, noticias y dem&aacute;s. Las publicaciones que se
-        realizan es por parte de la administraci&oacute;n de esta p&aacute;gina.
-      </p>
-    </section>
-  );
-
+const NewsPage = () => {
   const newsArticles = (
     <section className='flex flex-col gap-10'>
       {NEWS.map((news) => (
@@ -57,9 +41,29 @@ export const NewsPage = () => {
   );
 
   return (
-    <div className='p-4 w-full md:w-4/5 lg:w-3/5 xl:w-1/2 flex flex-col gap-7'>
-      {newsHeader}
-      {newsArticles}
+    <div className='flex flex-col p-5'>
+      <Link to='/create-plant' className='custom-btn-form w-fit'>Ir al formulario</Link>
+      <div className='p-4 flex flex-col gap-7 max-w-4xl'>
+        {/* Section title and Info to news */}
+        <section className='flex flex-col gap-3'>
+          <h1 className='text-4xl max-md:text-2xl max-xs:text-xl font-semibold tracking-wide'>
+            Vivero Novedades
+          </h1>
+          <p className='text-lg max-md:text-sm max-xs:text-xs max-md:text-justify font-normal'>
+            Esta secci&oacute;n es una mas de las fuentes de informaci&oacute;n
+            sobre el vivero de la Facultad de desarrollo rural y territorial. Se
+            encontrara notas, avisos, noticias y dem&aacute;s. Las publicaciones
+            que se realizan es por parte de la administraci&oacute;n de esta
+            p&aacute;gina. Esta secci&oacute;n es una mas de las fuentes de
+            informaci&oacute;n sobre el vivero. Se encontrara notas, avisos,
+            noticias y dem&aacute;s. Las publicaciones que se realizan es por
+            parte de la administraci&oacute;n de esta p&aacute;gina.
+          </p>
+        </section>
+        {newsArticles}
+      </div>
     </div>
   );
 };
+
+export default NewsPage;

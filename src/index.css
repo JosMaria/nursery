@@ -62,25 +62,29 @@
 }
 
 /* Form styles globals */
-.custom-container-input {
-  @apply flex flex-col gap-1;
+.custom-input-form {
+  @apply bg-slate-50 focus:border-skin-focus focus:ring-skin-input focus:ring-opacity-30 focus:outline-none focus:ring text-sm px-3 py-2 border border-slate-300 rounded-lg;
 }
 
 .custom-btn-form {
   @apply bg-skin-btn text-skin-light hover:bg-skin-btn-hover font-semibold rounded py-2 px-5 text-sm;
 }
 
-.custom-input-form {
-  @apply bg-slate-50 focus:border-skin-focus focus:ring-skin-input focus:ring-opacity-30 focus:outline-none focus:ring w-72 text-sm px-3 py-2 border border-slate-300 rounded-lg;
+.custom-lbl-form-error {
+  @apply text-xs text-red-600 font-medium bg-red-100 px-2 rounded-lg w-fit;
 }
 
-/* Table styles */
-.table-header {
-  @apply bg-teal-900 text-slate-100 font-medium whitespace-nowrap;
+/* toast styles */
+.custom-toast {
+  @apply border-4 border-y-0 border-r-0 p-3 text-sm rounded-none;
 }
 
-.custom-row {
-  @apply p-2 first-letter:uppercase;
+.custom-toast-success {
+  @apply bg-lime-50 border-l-lime-600 custom-toast;
+}
+
+.custom-toast-error {
+  @apply bg-red-50 border-l-red-600 custom-toast;
 }
 
 /* start block - warning - those styles are used by method getStyledGivenStatus of utils folder */

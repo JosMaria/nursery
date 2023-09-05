@@ -1,0 +1,303 @@
+{
+  "page": {
+    "content": [
+      {
+        "id": 25,
+        "commonName": "cactu leopardo",
+        "scientificName": null,
+        "scientistLastnameInitial": null,
+        "status": "AVAILABLE",
+        "family": null,
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 26,
+        "commonName": "cactu mamilaria",
+        "scientificName": "mammillaria spinosissima",
+        "scientistLastnameInitial": null,
+        "status": "IN_CONSERVATION",
+        "family": "cactaceae",
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 27,
+        "commonName": "cactu nopal",
+        "scientificName": "opuntia ficus indica",
+        "scientistLastnameInitial": null,
+        "status": "NON_EXISTENT",
+        "family": "cactaceae",
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 28,
+        "commonName": "cactu serrucho",
+        "scientificName": null,
+        "scientistLastnameInitial": null,
+        "status": "AVAILABLE",
+        "family": null,
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 29,
+        "commonName": "cactus variados",
+        "scientificName": null,
+        "scientistLastnameInitial": null,
+        "status": "IN_CONSERVATION",
+        "family": null,
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 30,
+        "commonName": "cafe",
+        "scientificName": "coffea arabica",
+        "scientistLastnameInitial": null,
+        "status": "NON_EXISTENT",
+        "family": "rubiaceae",
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 31,
+        "commonName": "cala",
+        "scientificName": null,
+        "scientistLastnameInitial": null,
+        "status": "AVAILABLE",
+        "family": null,
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 32,
+        "commonName": "calatea larga",
+        "scientificName": "ctenanthe amabilis",
+        "scientistLastnameInitial": null,
+        "status": "IN_CONSERVATION",
+        "family": "marantaceae",
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 33,
+        "commonName": "calatea zebrina",
+        "scientificName": "calathea zebrina",
+        "scientistLastnameInitial": null,
+        "status": "NON_EXISTENT",
+        "family": "marantaceae",
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 34,
+        "commonName": "canela aspidiastra",
+        "scientificName": null,
+        "scientistLastnameInitial": null,
+        "status": "AVAILABLE",
+        "family": null,
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 35,
+        "commonName": "cebollin",
+        "scientificName": null,
+        "scientistLastnameInitial": null,
+        "status": "IN_CONSERVATION",
+        "family": null,
+        "urlPicture": "https://picture-404"
+      },
+      {
+        "id": 36,
+        "commonName": "chacatea",
+        "scientificName": "dodonaea viscosa",
+        "scientistLastnameInitial": null,
+        "status": "NON_EXISTENT",
+        "family": "sapindaceae",
+        "urlPicture": "https://picture-404"
+      }
+    ],
+    "totalElements": 133,
+    "totalPages": 12,
+    "last": true,
+    "size": 12,
+    "number": 0,
+    "numberOfElements": 12,
+    "first": true,
+    "empty": false
+  },
+
+  "products": [
+    {
+      "id": 25,
+      "commonName": "cactu leopardo",
+      "scientificName": null,
+      "scientistLastnameInitial": null,
+      "family": null,
+      "status": "AVAILABLE",
+      "classifications": ["CACTUS"],
+      "description": "Tristique senectus et netus et malesuada fames ac turpis. Vitae et leo duis ut diam quam. Nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum. Vehicula ipsum a arcu cursus. Massa vitae tortor condimentum lacinia quis vel eros donec ac. Eget nunc lobortis mattis aliquam faucibus purus in massa. Vitae elementum curabitur vitae nunc sed velit dignissim sodales. Tortor at auctor urna nunc id cursus metus. Varius duis at consectetur lorem donec massa sapien. Eget gravida cum sociis natoque penatibus et magnis. Aenean pharetra magna ac placerat vestibulum. Pharetra et ultrices neque ornare aenean. Eget arcu dictum varius duis at consectetur lorem donec. Nullam ac tortor vitae purus faucibus.",
+      "photos_URL": [
+        "https://i.pinimg.com/originals/ba/dd/fb/baddfb2632eab21938a54a82d1d6ad98.jpg",
+        "https://i.pinimg.com/originals/5b/24/49/5b2449f21426630200adb3feb934cccd.jpg",
+        "https://1.bp.blogspot.com/-cDvudXGc9Zg/UtAbAPh_e_I/AAAAAAAAM24/ja7S72vK61E/s1600/Dise%C3%B1o+de+jardines+en+macetas+3.+Blog+Vida+a+lo+Verde.jpg",
+        "https://i.pinimg.com/736x/b2/7b/59/b27b59993d8efe9fbf43f205dbc76b43--garden-container-plant-containers.jpg"
+      ],
+      "notes": [
+        "Purus semper eget duis at. Urna nec tincidunt praesent semper feugiat nibh sed pulvinar. Nisi porta lorem mollis aliquam ut. Sit amet venenatis urna cursus eget nunc. Praesent tristique magna sit amet purus. Purus sit amet luctus venenatis. Leo in vitae turpis massa sed. Ac tortor dignissim convallis aenean. Nibh sed pulvinar proin gravida. Nec sagittis aliquam malesuada bibendum arcu vitae. Sed blandit libero volutpat sed cras ornare. Elit scelerisque mauris pellentesque pulvinar pellentesque habitant. Suspendisse ultrices gravida dictum fusce ut. Facilisi nullam vehicula ipsum a arcu cursus.",
+        "Aliquet bibendum enim facilisis gravida neque. Curabitur vitae nunc sed velit dignissim sodales ut. Vulputate dignissim suspendisse in est ante. Integer feugiat scelerisque varius morbi enim nunc. Amet nulla facilisi morbi tempus iaculis urna id. In aliquam sem fringilla ut morbi tincidunt. Ornare arcu odio ut sem nulla pharetra diam sit amet. Velit euismod in pellentesque massa placerat duis ultricies lacus sed. Pharetra magna ac placerat vestibulum lectus mauris ultrices eros in. Aliquet sagittis id consectetur purus ut faucibus pulvinar.",
+        "Condimentum id venenatis a condimentum vitae sapien pellentesque habitant. Morbi blandit cursus risus at ultrices mi tempus imperdiet. Feugiat pretium nibh ipsum consequat nisl vel. Faucibus ornare suspendisse sed nisi. Eleifend donec pretium vulputate sapien nec sagittis aliquam. Velit sed ullamcorper morbi tincidunt ornare massa eget egestas purus. Lacinia at quis risus sed vulputate odio ut. Vel facilisis volutpat est velit egestas dui id ornare. Egestas integer eget aliquet nibh praesent tristique. Tortor pretium viverra suspendisse potenti nullam ac tortor vitae purus. Augue ut lectus arcu bibendum at varius."
+      ],
+      "details": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Varius quam quisque id diam vel quam elementum pulvinar. Risus at ultrices mi tempus.",
+        "Risus nec feugiat in fermentum posuere urna nec. Tempor commodo ullamcorper a lacus vestibulum sed arcu. Mollis aliquam ut porttitor leo. Egestas purus viverra accumsan in nisl. Integer quis auctor elit sed vulputate mi sit amet. Ipsum nunc aliquet bibendum enim facilisis gravida neque. Odio ut sem nulla pharetra diam sit. Convallis a cras semper auctor neque vitae tempus. Eget aliquet nibh praesent tristique. Auctor elit sed vulputate mi sit."
+      ],
+      "technicalSheet": [
+        {
+          "word": "Origen",
+          "info": "Zonas tropicales y subtropicales de América."
+        },
+        {
+          "word": "Tamaño",
+          "info": "Hasta 0.7 m de altura."
+        },
+        {
+          "word": "Floración",
+          "info": "Las flores insignificantes; el espádice, que a menudo se confunde con la flor, puede ser amarillo, rojo, purpúreo, verde manzana, rosa intenso, casi anaranjado, blancas y negras."
+        },
+        {
+          "word": "Ubicación",
+          "info": "Planta de sombra o media sombra, no resiste los rayos directos del sol, ni los descensos bruscos de temperatura."
+        },
+        {
+          "word": "Suelo",
+          "info": "Bien aireados y drenados, con un pH óptimo en 5.7. Riego: En Verano unas 3 veces a la semana, en invierno 1 vez por semana."
+        },
+        {
+          "word": "Fertilización",
+          "info": "Abonar una vez cada 15 días con un fertilizante líquido para plantas de flor, durante primavera y verano."
+        },
+        {
+          "word": "Poda",
+          "info": "Es de crecimiento compacto, por lo que las podas únicamente se realizan cuando se cosechan las flores. Plagas y enfermedades: Araña roja, Trips, Mosca blanca, orugas, pulgones, nematodos, cochinillas, caracoles. Podredumbre radicular. Antracnosis y Septoria."
+        },
+        {
+          "word": "Enfermedades",
+          "info": "bacterianas y virosis"
+        },
+        {
+          "word": "Tratamientos Fitosanitarios",
+          "info": ""
+        },
+        {
+          "word": "Propagación",
+          "info": "Por semillas, vegetativa y por tejidos vegetales."
+        },
+        {
+          "word": "Otros",
+          "info": "se comercializa por macetas"
+        }
+      ]
+    }
+  ],
+
+  "items": [
+    {
+      "id": 121,
+      "commonName": "sedum",
+      "scientificName": "sedum rupestre",
+      "scientistLastnameInitial": null,
+      "status": "IN_CONSERVATION",
+      "family": "crassulaceae"
+    },
+    {
+      "id": 122,
+      "commonName": "sensitiva",
+      "scientificName": "mimosa pudica",
+      "scientistLastnameInitial": "l",
+      "status": "AVAILABLE",
+      "family": "mimosaceae"
+    },
+    {
+      "id": 123,
+      "commonName": "singonio",
+      "scientificName": "syngonium spp",
+      "scientistLastnameInitial": null,
+      "status": "IN_CONSERVATION",
+      "family": null
+    },
+    {
+      "id": 124,
+      "commonName": "tajibo",
+      "scientificName": "handroanthus impetiginosus",
+      "scientistLastnameInitial": null,
+      "status": "NON_EXISTENT",
+      "family": "bignoniaceae"
+    },
+    {
+      "id": 125,
+      "commonName": "tara",
+      "scientificName": "tara spinosa",
+      "scientistLastnameInitial": null,
+      "status": "AVAILABLE",
+      "family": "fabaceae"
+    },
+    {
+      "id": 126,
+      "commonName": "tipa",
+      "scientificName": "tipuana tipu",
+      "scientistLastnameInitial": null,
+      "status": "IN_CONSERVATION",
+      "family": "fabaceae"
+    },
+    {
+      "id": 127,
+      "commonName": "trabajadoras",
+      "scientificName": "impatiens balsamina",
+      "scientistLastnameInitial": null,
+      "status": "NON_EXISTENT",
+      "family": "balsaminaceae"
+    },
+    {
+      "id": 128,
+      "commonName": "tumbo",
+      "scientificName": "passiflora tripartita",
+      "scientistLastnameInitial": null,
+      "status": "AVAILABLE",
+      "family": "passifloraceae"
+    },
+    {
+      "id": 129,
+      "commonName": "ulupica",
+      "scientificName": "capsicum cardenasii",
+      "scientistLastnameInitial": null,
+      "status": "IN_CONSERVATION",
+      "family": "solanaceae"
+    },
+    {
+      "id": 130,
+      "commonName": "uva",
+      "scientificName": "vitis vinifera",
+      "scientistLastnameInitial": null,
+      "status": "NON_EXISTENT",
+      "family": "vitaceae"
+    },
+    {
+      "id": 131,
+      "commonName": "velo de novia",
+      "scientificName": null,
+      "scientistLastnameInitial": null,
+      "status": "AVAILABLE",
+      "family": null
+    },
+    {
+      "id": 132,
+      "commonName": "payasito pringuiadita",
+      "scientificName": "hypoestes phyllostachya bajer",
+      "scientistLastnameInitial": null,
+      "status": "IN_CONSERVATION",
+      "family": "acanthaceae"
+    },
+    {
+      "id": 133,
+      "commonName": "higo",
+      "scientificName": "ficus carica",
+      "scientistLastnameInitial": null,
+      "status": "NON_EXISTENT",
+      "family": "moraceae"
+    }
+  ]
+}

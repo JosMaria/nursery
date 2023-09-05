@@ -1,7 +1,9 @@
-import { Table } from './components';
+import { RepertoryContent } from './content';
 
-export const RepertoryPage = () => (
-  <div className='w-screen flex flex-col justify-center items-center'>
-    <Table />
-  </div>
+const RepertoryPage = () => (
+  <>
+    <RepertoryContent />;
+  </>
 );
+
+export default RepertoryPage;
