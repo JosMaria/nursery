@@ -38,15 +38,18 @@ const SignInPage = lazy(() => import('../pages/SignIn/SignInPage'));
 // start block - Create Plant Page
 import SkeletonCreatePlantPage from '../pages/CreatePlant/SkeletonCreatePlantPage';
 
-const CreatePlantPage = lazy(
-  () => import('../pages/CreatePlant/CreatePlantPage')
-);
+const CreatePlantPage = lazy(() => import('../pages/CreatePlant/CreatePlantPage'));
 // end block - Create Plant Page
+
+import SkeletonCreateFamilyPage from '../pages/CreateFamily/SkeletonCreateFamilyPage';
+
+import CreateFamilyPage from '../pages/CreateFamily/CreateFamilyPage';
+
 
 export const router = createBrowserRouter(
   createRoutesFromElements([
     <Route path='/' element={<LayoutPublic />}>
-      <Route
+      {/* <Route
         index
         errorElement={<ErrorBoundaryPage />}
         element={
@@ -54,7 +57,7 @@ export const router = createBrowserRouter(
             <CatalogPage />
           </Suspense>
         }
-      />
+      /> */}
 
       <Route
         path='plants/:id'
@@ -101,6 +104,16 @@ export const router = createBrowserRouter(
         element={
           <Suspense fallback={<SkeletonCreatePlantPage />}>
             <CreatePlantPage />
+          </Suspense>
+        }
+      />
+
+      <Route
+        index
+        errorElement={<ErrorBoundaryPage />}
+        element={
+          <Suspense fallback={<SkeletonCreateFamilyPage />}>
+            <CreateFamilyPage />
           </Suspense>
         }
       />

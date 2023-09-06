@@ -61,17 +61,18 @@
   }
 }
 
-/* Form styles globals */
-.custom-input-form {
-  @apply bg-slate-50 focus:border-skin-focus focus:ring-skin-input focus:ring-opacity-30 focus:outline-none focus:ring text-sm px-3 py-2 border border-slate-300 rounded-lg;
-}
+@layer components {
+  .custom-input-form {
+    @apply bg-slate-50 focus:border-skin-focus focus:ring-skin-input focus:ring-opacity-30 focus:outline-none focus:ring text-sm px-3 py-2 border border-slate-300 rounded-lg;
+  }
 
-.custom-btn-form {
-  @apply bg-skin-btn text-skin-light hover:bg-skin-btn-hover font-semibold rounded py-2 px-5 text-sm;
-}
+  .custom-btn-form {
+    @apply bg-skin-btn text-skin-light hover:bg-skin-btn-hover font-semibold rounded py-2 px-5 text-sm cursor-pointer;
+  }
 
-.custom-lbl-form-error {
-  @apply text-xs text-red-600 font-medium bg-red-100 px-2 rounded-lg w-fit;
+  .custom-lbl-form-error {
+    @apply text-xs text-red-600 font-medium bg-red-100 px-2 rounded-lg w-fit;
+  }
 }
 
 /* toast styles */
