@@ -20,6 +20,8 @@
     --fill-color-form: 236, 252, 203;
     --fill-color-btn: 63, 98, 18;
     --fill-color-btn-hover: 77, 124, 15;
+    /* skeleton */
+    --fill-skeleton: 51, 65, 85;
   }
 
   .theme-admin {
@@ -39,6 +41,8 @@
     --fill-color-form: 254, 243, 199;
     --fill-color-btn: 146, 64, 14;
     --fill-color-btn-hover: 180, 83, 9;
+    /* skeleton */
+    --fill-skeleton: 51, 65, 85;
   }
 
   .theme-assistant {
@@ -58,6 +62,8 @@
     --fill-color-form: 186, 230, 253;
     --fill-color-btn: 7, 89, 133;
     --fill-color-btn-hover: 3, 105, 161;
+    /* skeleton */
+    --fill-skeleton: 51, 65, 85;
   }
 }
 
