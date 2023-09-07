@@ -73,19 +73,19 @@
   .custom-lbl-form-error {
     @apply text-xs text-red-600 font-medium bg-red-100 px-2 rounded-lg w-fit;
   }
-}
 
-/* toast styles */
-.custom-toast {
-  @apply border-4 border-y-0 border-r-0 p-3 text-sm rounded-none;
-}
+  .custom-toast {
+    @apply border-l-4 p-2 rounded-none text-sm max-sm:text-xs text-center;
+  }
+  
+  .custom-toast-success {
+    @apply bg-lime-50 border-l-lime-700 custom-toast;
+  }
+  
+  .custom-toast-error {
+    @apply bg-red-50 border-l-red-600 custom-toast;
+  }
 
-.custom-toast-success {
-  @apply bg-lime-50 border-l-lime-600 custom-toast;
-}
-
-.custom-toast-error {
-  @apply bg-red-50 border-l-red-600 custom-toast;
 }
 
 /* start block - warning - those styles are used by method getStyledGivenStatus of utils folder */
