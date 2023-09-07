@@ -85,7 +85,6 @@
   .custom-toast-error {
     @apply bg-red-50 border-l-red-600 custom-toast;
   }
-
 }
 
 /* start block - warning - those styles are used by method getStyledGivenStatus of utils folder */

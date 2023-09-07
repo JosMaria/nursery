@@ -10,3 +10,10 @@ export const createFamilies = async (
   );
   return data;
 };
+
+export const fetchAllFamilies = async (): Promise<CreateFamilyResponse[]> => {
+  const { data } = await axiosInstance.get<CreateFamilyResponse[]>(
+    'families/names'
+  );
+  return data;
+};

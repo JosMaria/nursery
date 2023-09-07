@@ -49,7 +49,7 @@ import CreateFamilyPage from '../pages/CreateFamily/CreateFamilyPage';
 export const router = createBrowserRouter(
   createRoutesFromElements([
     <Route path='/' element={<LayoutPublic />}>
-      {/* <Route
+      <Route
         index
         errorElement={<ErrorBoundaryPage />}
         element={
@@ -57,7 +57,7 @@ export const router = createBrowserRouter(
             <CatalogPage />
           </Suspense>
         }
-      /> */}
+      />
 
       <Route
         path='plants/:id'
@@ -109,7 +109,7 @@ export const router = createBrowserRouter(
       />
 
       <Route
-        index
+        path='create-family'
         errorElement={<ErrorBoundaryPage />}
         element={
           <Suspense fallback={<SkeletonCreateFamilyPage />}>
