@@ -1,5 +1,10 @@
 import { Link, NavLink } from 'react-router-dom';
-import { NAVLINKS } from './constants';
+
+const NAVLINKS = [
+  { text: 'Inicio', path: '.' },
+  { text: 'Listado', path: 'repertory' },
+  { text: 'Novedades', path: 'news' },
+];
 
 export const Header = () => {
   const title = (
