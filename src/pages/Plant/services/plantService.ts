@@ -1,4 +1,4 @@
-import { axiosInstance } from '../../../config/http';
+import { axiosInstance } from '../../../config';
 import { SingleProductResponse } from '../types';
 
 export const fetchProductByID = async (

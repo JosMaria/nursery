@@ -1,4 +1,4 @@
-import { axiosInstance } from '../../../config/http';
+import { axiosInstance } from '../../../config';
 import { ItemResponse } from '../types';
 
 export const fetchPaginatedItems = async (): Promise<ItemResponse[]> => {

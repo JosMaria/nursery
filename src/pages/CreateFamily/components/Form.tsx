@@ -45,7 +45,7 @@ export const Form = ({ createFamilies }: Props) => {
     createFamilies(schema.families)
       .then(() => {
         toast.success('Familias guardadas exitosamente', {
-          className: 'custom-toast-success m-0',
+          className: 'custom-toast-success',
         });
         reset({ families: [{ family_name: '' }] });
       })

@@ -1,4 +1,4 @@
-import { axiosInstance } from '../../../config/http';
+import { axiosInstance } from '../../../config';
 import { PageCatalog } from '../types';
 
 export const fetchPaginatedProducts = async (): Promise<PageCatalog> => {

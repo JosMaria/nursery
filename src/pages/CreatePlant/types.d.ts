@@ -10,10 +10,29 @@ interface CreatePlant {
   scientificName: string;
   scientistLastnameInitial: string;
   family: string;
-  classifications: PlantClassificationType[];
-  status: StatusType;
+  classifications: string[];
+  status: string;
   description: string;
   details: string[];
   notes: string[];
   technicalSheet: TechnicalSheetType[];
+}
+
+interface CreatePlantResponse {
+  id: number;
+  commonName: string;
+  scientificName: string;
+  scientistLastnameInitial: string;
+  family: string;
+  classifications: PlantClassificationType[];
+  status: StatusType;
+  description: string;
+  numberDetails: number;
+  numberNotes: number;
+  technicalSheet: TechnicalSheetType[];
+}
+
+interface FetchFamilyResponse {
+  id: number;
+  name: string;
 }
