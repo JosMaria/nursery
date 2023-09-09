@@ -73,7 +73,7 @@
   }
 
   .custom-btn-form {
-    @apply bg-skin-btn text-skin-light hover:bg-skin-btn-hover font-semibold rounded py-2 px-5 text-sm cursor-pointer;
+    @apply bg-skin-btn text-skin-light hover:bg-skin-btn-hover font-semibold rounded py-2 px-5 text-sm cursor-pointer w-fit;
   }
 
   .custom-lbl-form-error {

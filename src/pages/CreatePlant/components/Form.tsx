@@ -239,7 +239,7 @@ export const FormCreatePlant = ({ families }: Props) => {
       <button
         type='button'
         onClick={() => appendDetail({ detail: '' })}
-        className='bg-blue-600 hover:bg-blue-500 text-white font-medium py-1.5 px-4 text-xs rounded-md self-start'
+        className='custom-btn-form'
       >
         Agregar Detalle
       </button>
@@ -270,7 +270,7 @@ export const FormCreatePlant = ({ families }: Props) => {
       <button
         type='button'
         onClick={() => appendNote({ note: '' })}
-        className='bg-blue-600 hover:bg-blue-500 text-white font-medium py-1.5 px-4 text-xs rounded-md self-start'
+        className='custom-btn-form'
       >
         Agregar Nota
       </button>
@@ -308,7 +308,7 @@ export const FormCreatePlant = ({ families }: Props) => {
       </div>
       <button
         type='button'
-        className='bg-blue-600 hover:bg-blue-500 text-white font-medium py-1.5 px-4 text-xs rounded-md self-start'
+        className='custom-btn-form'
         onClick={() => appendContent({ word: '', value: '' })}
       >
         Agregar valor
