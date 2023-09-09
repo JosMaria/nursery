@@ -6,7 +6,7 @@ const LayoutPublic = () => (
   <div className='theme-admin flex flex-col min-h-screen justify-between'>
     <Toaster />
     <Header />
-    <main className='bg-skin-light flex-1 flex justify-center'>
+    <main className='bg-skin-light flex-1 flex justify-center py-5'>
       <Outlet />
     </main>
     <Footer />

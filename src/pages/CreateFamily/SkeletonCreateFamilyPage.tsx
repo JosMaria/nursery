@@ -1,5 +1,5 @@
 const SkeletonCreateFamilyPage = () => (
-  <section className='flex flex-col item-center gap-5 shadow animate-pulse py-5 px-2 my-2 max-xs:w-screen border-2'>
+  <section className='flex flex-col item-center gap-5 shadow animate-pulse py-5 px-2 max-xs:w-screen border-2'>
     <h1 className='h-8 w-64 bg-skin-skeleton rounded-md self-center'></h1>
 
     <article className='flex flex-col gap-5 border-skin-skeleton w-96 max-xs:w-full'>

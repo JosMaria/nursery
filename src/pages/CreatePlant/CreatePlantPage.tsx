@@ -16,7 +16,7 @@ const CreatePlantPage = () => {
 
   return (
     <section className='w-full bg-skin-light flex justify-center'>
-      <article className='bg-skin-form w-fit flex flex-col items-center gap-5 p-5 my-5'>
+      <article className='bg-skin-form w-fit flex flex-col items-center gap-5 p-5'>
         <h1 className='font-medium text-2xl'>Crear Planta</h1>
         <FormCreatePlant families={families} createPlant={createPlantMutation} />
       </article>

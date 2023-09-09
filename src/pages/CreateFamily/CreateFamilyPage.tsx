@@ -17,7 +17,7 @@ const CreateFamilyPage = () => {
   });
 
   return (
-    <section className='bg-skin-form flex flex-col items-center gap-3 p-2 w-1/2 max-lg:w-2/3 max-md:w-4/5 max-sm:w-full'>
+    <section className='bg-skin-form flex flex-col items-center gap-3 py-5 w-1/3 max-lg:w-2/3 max-md:w-4/5 max-sm:w-full'>
       <FormCreateFamily createFamilies={createFamiliesMutation} />
       {status === 'loading' ? (
         <Spinner />
