@@ -25,7 +25,7 @@ interface Props {
   >;
 }
 
-export const Form = ({ createFamilies }: Props) => {
+export const FormCreateFamily = ({ createFamilies }: Props) => {
   const {
     register,
     handleSubmit,
@@ -64,12 +64,12 @@ export const Form = ({ createFamilies }: Props) => {
 
   return (
     <>
-      <h1 className='text-xl font-medium tracking-wider'>Crear familias</h1>
+      <h1 className='text-2xl font-medium'>Crear familias</h1>
       <form
         className='flex flex-col items-center gap-4 border-4 border-skin-focus border-opacity-10 rounded-md p-2'
         onSubmit={handleSubmit(handleCreateFamily)}
       >
-        <div className='flex flex-col item-center gap-2'>
+        <div className='flex flex-col item-center gap-4'>
           {fields.map((field, index) => (
             <div key={field.id} className='flex flex-col gap-1'>
               <div className='flex gap-3 items-center'>
