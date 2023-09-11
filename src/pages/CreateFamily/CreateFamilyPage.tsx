@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Families, FormCreateFamily } from './components';
+import { Table, FormCreateFamily } from './components';
 import { createFamilies, fetchAllFamilies } from './service';
 import { Spinner } from '../../components';
 
@@ -24,7 +24,7 @@ const CreateFamilyPage = () => {
       ) : status === 'error' ? (
         <p className='text-sm'>Error al obtener familias</p>
       ) : (
-        <Families families={families} />
+        <Table families={families} />
       )}
     </section>
   );
