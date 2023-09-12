@@ -63,10 +63,10 @@ export const FormCreateFamily = ({ createFamilies }: Props) => {
   };
 
   return (
-    <>
-      <h1 className='text-2xl font-medium'>Crear familias</h1>
+    <article className='bg-skin-form w-80 flex flex-col items-center gap-5 p-2 rounded-xl'>
+      <h1 className='text-xl font-medium'>Crear familias</h1>
       <form
-        className='flex flex-col items-center gap-4 border-4 border-skin-focus border-opacity-10 rounded-md p-2'
+        className='flex flex-col items-center gap-4 rounded-md'
         onSubmit={handleSubmit(handleCreateFamily)}
       >
         <div className='flex flex-col item-center gap-4'>
@@ -104,6 +104,6 @@ export const FormCreateFamily = ({ createFamilies }: Props) => {
           Crear
         </button>
       </form>
-    </>
+    </article>
   );
 };

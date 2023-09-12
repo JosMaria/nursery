@@ -41,9 +41,9 @@ import SkeletonCreatePlantPage from '../pages/CreatePlant/SkeletonCreatePlantPag
 const CreatePlantPage = lazy(() => import('../pages/CreatePlant/CreatePlantPage'));
 // end block - Create Plant Page
 
-import SkeletonCreateFamilyPage from '../pages/CreateFamily/SkeletonCreateFamilyPage';
+import SkeletonCreateFamilyPage from '../pages/Family/SkeletonCreateFamilyPage';
 
-import CreateFamilyPage from '../pages/CreateFamily/CreateFamilyPage';
+import FamilyPage from '../pages/Family/FamilyPage';
 
 
 export const router = createBrowserRouter(
@@ -113,7 +113,7 @@ export const router = createBrowserRouter(
         errorElement={<ErrorBoundaryPage />}
         element={
           <Suspense fallback={<SkeletonCreateFamilyPage />}>
-            <CreateFamilyPage />
+            <FamilyPage />
           </Suspense>
         }
       />

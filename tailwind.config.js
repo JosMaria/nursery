@@ -41,6 +41,7 @@ export default {
           nav: withOpacity('--border-nav-selected'),
           focus: withOpacity('--fill-color-btn-hover'),
           skeleton: withOpacity('--fill-skeleton'),
+          list: withOpacity('--fill-color-form')
         },
       },
       gradientColorStops: {
