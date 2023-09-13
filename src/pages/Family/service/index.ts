@@ -1,1 +1,1 @@
-export * from './createFamilyService';
+export * from './familyService';

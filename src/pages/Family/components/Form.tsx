@@ -3,8 +3,10 @@ import { useFieldArray, useForm } from 'react-hook-form';
 import { BsTrashFill } from 'react-icons/bs';
 import { Input, array, minLength, object, string } from 'valibot';
 import { toast } from 'react-hot-toast';
-import { UseMutateAsyncFunction } from '@tanstack/react-query';
-import { CreateFamilyDTO, CreateFamilyResponse } from '../types';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { createFamilies } from '../service';
+import { HttpStatusCode } from 'axios';
+import { ErrorType } from '../../../types';
 
 const CreateFamilySchema = object({
   families: array(
@@ -16,16 +18,9 @@ const CreateFamilySchema = object({
 
 type CreateFamilySchemaType = Input<typeof CreateFamilySchema>;
 
-interface Props {
-  createFamilies: UseMutateAsyncFunction<
-    CreateFamilyResponse[],
-    unknown,
-    CreateFamilyDTO[],
-    unknown
-  >;
-}
+export const FormCreateFamily = () => {
+  const queryClient = useQueryClient();
 
-export const FormCreateFamily = ({ createFamilies }: Props) => {
   const {
     register,
     handleSubmit,
@@ -41,33 +36,30 @@ export const FormCreateFamily = ({ createFamilies }: Props) => {
     name: 'families',
   });
 
-  const handleCreateFamily = (schema: CreateFamilySchemaType) => {
-    createFamilies(schema.families)
-      .then(() => {
-        toast.success('Familias guardadas exitosamente', {
-          className: 'custom-toast-success',
-        });
-        reset({ families: [{ family_name: '' }] });
-      })
-      .catch((error) => {
-        if (error.response) {
-          if (error.response.status === 400) {
-            toast.error(error.response.data.reason, {
-              className: 'custom-toast-error',
-            });
-          }
-        } else {
-          throw new Error(error.message);
-        }
-      });
-  };
+  const { mutate: createFamiliesMutate } = useMutation({
+    mutationFn: createFamilies,
+    onSuccess: (data) => {
+      toast.success(
+        data.length > 1 ? 'Familias guardadas exitosamente' : 'Familia guardada exitosamente',
+        { className: 'custom-toast-success' }
+      );
+      reset({ families: [{ family_name: '' }] });
+      queryClient.invalidateQueries({ queryKey: ['families'] });
+    },
+    onError(error: ErrorType) {
+      const { response } = error;
+      if (response.status === HttpStatusCode.BadRequest) {
+        toast.error(response.data.reason, { className: 'custom-toast-error' });
+      }
+    },
+  });
 
   return (
     <article className='bg-skin-form w-80 flex flex-col items-center gap-5 p-2 rounded-xl'>
       <h1 className='text-xl font-medium'>Crear familias</h1>
       <form
         className='flex flex-col items-center gap-4 rounded-md'
-        onSubmit={handleSubmit(handleCreateFamily)}
+        onSubmit={handleSubmit((schema) => createFamiliesMutate(schema.families))}
       >
         <div className='flex flex-col item-center gap-4'>
           {fields.map((field, index) => (
