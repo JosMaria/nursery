@@ -55,7 +55,7 @@ export const FormCreateFamily = () => {
   });
 
   return (
-    <article className='bg-skin-form w-80 flex flex-col items-center gap-5 p-2 rounded-xl'>
+    <article className='bg-skin-form w-80 flex flex-col items-center gap-5 p-2 rounded-xl h-fit'>
       <h1 className='text-xl font-medium'>Crear familias</h1>
       <form
         className='flex flex-col items-center gap-4 rounded-md'

@@ -13,6 +13,6 @@ export const fetchAllFamilies = async (): Promise<CreateFamilyResponse[]> => {
   return data;
 };
 
-export const deleteFamilyByID = async (id: number): Promise<void> => {
+export const deleteFamilyById = async (id: number): Promise<void> => {
   await axiosInstance.delete<void>(`families/${id}`);
 };

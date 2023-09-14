@@ -1,14 +1,20 @@
 import { BsTrashFill } from 'react-icons/bs';
 import { BiEdit } from 'react-icons/bi';
 import { CreateFamilyResponse } from '../types';
-import { useState } from 'react';
-import { DeleteModal } from '.';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { deleteFamilyById, fetchAllFamilies } from '../service';
+import { toast } from 'react-hot-toast';
+import { ErrorType } from '../../../types';
+import { HttpStatusCode } from 'axios';
 
-interface Props {
-  families: CreateFamilyResponse[];
-}
+export const List = () => {
+  const { data: families } = useQuery({
+    queryKey: ['families'],
+    queryFn: fetchAllFamilies,
+    initialData: [],
+    cacheTime: 3000,
+  });
 
-export const List = ({ families }: Props) => {
   return (
     <article className='bg-skin-form rounded-xl flex flex-col items-center gap-5 w-80 text-sm p-2'>
       <h2 className='font-medium text-xl'>Listado familias</h2>
@@ -23,34 +29,45 @@ const ListEmpty = () => (
   </p>
 );
 
-interface ListWithItemProps {}
+interface ListWithItemsProps {
+  families: CreateFamilyResponse[];
+}
 
-const ListWithItems = ({ families }: Props & ListWithItemProps) => {
-  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
+const ListWithItems = ({ families }: ListWithItemsProps) => {
+  const queryClient = useQueryClient();
 
-  const closeDeleteModal = () => {
-    setIsOpenDeleteModal(false);
-  };
+  const { mutate: deleteFamily } = useMutation({
+    mutationFn: (data: { id: number; name: string }) => deleteFamilyById(data.id),
+    onSuccess: (_, variables) => {
+      toast.success('Familia: ' + variables.name);
+      queryClient.invalidateQueries({ queryKey: ['families'] });
+    },
+    onError(error: ErrorType) {
+      const { response } = error;
+      if (response.status === HttpStatusCode.BadRequest) {
+        toast.error(response.data.reason, { className: 'custom-toast-error' });
+      }
+    },
+  });
 
   return (
-    <li className='flex flex-col cursor-grab w-full bg-skin-light'>
+    <ul className='flex flex-col cursor-grab w-full bg-skin-light'>
       {families.map((family) => (
-        <ul key={family.id} className='py-1.5 px-3 flex justify-between items-center gap-2'>
+        <li key={family.id} className='py-1.5 px-3 flex justify-between items-center gap-2'>
           <p>{family.name}</p>
           <div className='flex gap-3'>
-            {/* <button onClick={}>
+            <button>
               <BiEdit size='2em' className='bg-yellow-400 hover:bg-yellow-500 rounded-md p-0.5' />
-            </button> */}
-            <button onClick={() => setIsOpenDeleteModal(true)}>
+            </button>
+            <button onClick={() => deleteFamily({ id: family.id, name: family.name })}>
               <BsTrashFill
                 size='2em'
                 className='bg-red-500 hover:bg-red-600 text-white p-1.5 rounded-md'
               />
             </button>
           </div>
-          {isOpenDeleteModal && <DeleteModal close={closeDeleteModal} familyId={family.id} />}
-        </ul>
+        </li>
       ))}
-    </li>
+    </ul>
   );
 };
