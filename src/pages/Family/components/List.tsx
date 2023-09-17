@@ -76,21 +76,27 @@ const ListWithItems = ({ families }: ListWithItemsProps) => {
 const ListItem = () => {
   return (
     <div className='flex gap-3'>
-      <button>
-        <BiEdit size='2em' className='bg-yellow-400 hover:bg-yellow-500 rounded-md p-0.5' />
-      </button>
+      <ButtonIconEdit />
       <ButtonIconTrash />
       <DeleteFamilyModal />
     </div>
   );
 };
 
+const ButtonIconEdit = () => {
+  return (
+    <button className='bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-200 rounded p-1'>
+      <BiEdit size='1.4em' />
+    </button>
+  );
+};
+
 const ButtonIconTrash = () => (
   <button
     onClick={openDeleteFamilyModal}
-    className='focus:outline-none focus:ring-2 focus:ring-red-400 bg-red-500 hover:bg-red-600 text-white rounded px-1.5'
+    className='focus:outline-none focus:ring-2 focus:ring-red-400 bg-red-500 hover:bg-red-600 text-white rounded p-1.5'
   >
-    <BsTrashFill size='1.3em' />
+    <BsTrashFill size='1em' />
   </button>
 );
 

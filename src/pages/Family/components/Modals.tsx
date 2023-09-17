@@ -61,6 +61,11 @@ export const EditModalTest = () => {
   );
 };
 
+
+const DeleteFamilyModalTest = () => {
+  return 
+}
+
 interface DeleteModalProps {
   familyId: number;
 }
