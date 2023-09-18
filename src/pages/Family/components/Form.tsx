@@ -33,7 +33,7 @@ export const FormCreateFamily = () => {
   });
 
   return (
-    <article className='bg-skin-form w-80 flex flex-col items-center gap-5 p-2 rounded-xl h-fit'>
+    <article className='bg-skin-form w-80 flex flex-col items-center gap-3 p-2 rounded-xl h-fit'>
       <h1 className='text-xl font-medium'>Crear familias</h1>
       <form
         className='flex flex-col items-center gap-4 rounded-md'
@@ -41,7 +41,7 @@ export const FormCreateFamily = () => {
           insertFamilies(schema.families, () => reset({ families: [{ family_name: '' }] }));
         })}
       >
-        <fieldset className='flex flex-col item-center gap-4'>
+        <fieldset className='flex flex-col item-center gap-2'>
           {fields.map((field, index) => (
             <div key={field.id} className='flex flex-col gap-1'>
               <div className='flex gap-3 items-center'>
@@ -54,7 +54,7 @@ export const FormCreateFamily = () => {
                 <button
                   type='button'
                   onClick={() => remove(index)}
-                  className='bg-red-500 text-white p-2 w-fit rounded-md hover:bg-red-600 cursor-pointer'
+                  className='focus:outline-none focus:ring-2 focus:ring-red-400 bg-red-500 hover:bg-red-600 text-white rounded p-1.5'
                 >
                   <BsTrashFill />
                 </button>

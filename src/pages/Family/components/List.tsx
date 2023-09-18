@@ -7,7 +7,7 @@ export const List = () => {
   const { families } = useFamiliesContext();
 
   return (
-    <article className='bg-skin-form rounded-xl flex flex-col items-center gap-5 w-80 text-sm p-2 text-skin-dark h-fit'>
+    <article className='bg-skin-form rounded-xl flex flex-col items-center gap-3 w-80 text-sm p-2 h-fit'>
       <h2 className='font-medium text-xl'>Listado familias</h2>
       {families.length === 0 ? <ListEmpty /> : <ListWithItems families={families} />}
     </article>
@@ -15,7 +15,7 @@ export const List = () => {
 };
 
 const ListEmpty = () => (
-  <p className='bg-skin-light font-medium text-center px-3 text-lg select-none h-fit'>
+  <p className='bg-skin-light font-medium text-center px-3 text-lg select-none'>
     No hay ninguna familia registrada
   </p>
 );
