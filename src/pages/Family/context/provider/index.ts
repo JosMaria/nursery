@@ -1,2 +1,1 @@
-export * from './EditFamilyProvider';
-export * from './/FamilyProvider'
+export * from './FamilyProvider';
