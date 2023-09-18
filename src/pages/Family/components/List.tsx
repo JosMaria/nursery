@@ -1,19 +1,13 @@
 import { FamilyResponse } from '../types';
-import { useQuery } from '@tanstack/react-query';
-import { fetchAllFamilies } from '../service';
 import { FamilyProvider } from '../context/provider';
 import { ButtonIconEdit, ButtonIconTrash } from '.';
+import { useFamiliesContext } from '../context';
 
 export const List = () => {
-  const { data: families } = useQuery({
-    queryKey: ['families'],
-    queryFn: fetchAllFamilies,
-    initialData: [],
-    cacheTime: 3000,
-  });
+  const { families } = useFamiliesContext();
 
   return (
-    <article className='bg-skin-form rounded-xl flex flex-col items-center gap-5 w-80 text-sm p-2 text-skin-dark'>
+    <article className='bg-skin-form rounded-xl flex flex-col items-center gap-5 w-80 text-sm p-2 text-skin-dark h-fit'>
       <h2 className='font-medium text-xl'>Listado familias</h2>
       {families.length === 0 ? <ListEmpty /> : <ListWithItems families={families} />}
     </article>
@@ -21,7 +15,7 @@ export const List = () => {
 };
 
 const ListEmpty = () => (
-  <p className='bg-skin-light font-medium text-center overflow-y-hidden px-3 text-lg select-none'>
+  <p className='bg-skin-light font-medium text-center px-3 text-lg select-none h-fit'>
     No hay ninguna familia registrada
   </p>
 );
