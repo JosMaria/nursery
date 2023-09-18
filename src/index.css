@@ -63,13 +63,13 @@
     --fill-color-btn: 7, 89, 133;
     --fill-color-btn-hover: 3, 105, 161;
     /* skeleton */
-    --fill-skeleton: 51, 65, 85;    
+    --fill-skeleton: 51, 65, 85;
   }
 }
 
 @layer components {
   .custom-input-form {
-    @apply bg-slate-50 focus:border-skin-focus focus:ring-skin-input focus:ring-opacity-30 focus:outline-none focus:ring text-sm px-3 py-2 border border-slate-300 rounded-lg;
+    @apply bg-slate-50 focus:border-skin-focus focus:ring-skin-input focus:ring-opacity-30 focus:outline-none focus:ring text-sm px-3 py-2 border border-slate-300 rounded-lg selection:bg-skin-btn selection:text-skin-light;
   }
 
   .custom-btn-form {
@@ -83,11 +83,11 @@
   .custom-toast {
     @apply border-l-4 p-2 rounded-none text-sm max-sm:text-xs text-center;
   }
-  
+
   .custom-toast-success {
     @apply bg-lime-50 border-l-lime-700 custom-toast;
   }
-  
+
   .custom-toast-error {
     @apply bg-red-50 border-l-red-600 custom-toast;
   }
