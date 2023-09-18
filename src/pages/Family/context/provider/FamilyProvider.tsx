@@ -1,7 +1,7 @@
 import { HttpStatusCode } from 'axios';
 import { FamilyContext } from '..';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deleteFamilyById } from '../../service';
+import { deleteFamilyById, updateFamilyNameById } from '../../service';
 import { toast } from 'react-hot-toast';
 import { ErrorType } from '../../../../types';
 
@@ -30,8 +30,32 @@ export const FamilyProvider = ({ children, id, name }: Props) => {
     },
   });
 
+  const { mutate: updateFamilyNameByIdMutate } = useMutation({
+    mutationFn: (newName: string) => updateFamilyNameById(id, { name: newName }),
+
+    onSuccess: () => {
+      toast.success(`Familia actualizada.`, {
+        className: 'custom-toast-success',
+      });
+      queryClient.invalidateQueries({ queryKey: ['families'] });
+    },
+
+    onError(error: ErrorType) {
+      const { response } = error;
+      if (response.status === HttpStatusCode.BadRequest) {
+        toast.error(response.data.reason, { className: 'custom-toast-error' });
+      }
+    },
+  });
+
   return (
-    <FamilyContext.Provider value={{ name, deleteFamily: () => deleteFamilyByIdMutate({ id, name }) }}>
+    <FamilyContext.Provider
+      value={{
+        name,
+        deleteFamily: () => deleteFamilyByIdMutate({ id, name }),
+        updateFamily: (newName: string) => updateFamilyNameByIdMutate(newName),
+      }}
+    >
       {children}
     </FamilyContext.Provider>
   );

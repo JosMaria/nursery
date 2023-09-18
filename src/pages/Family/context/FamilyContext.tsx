@@ -3,6 +3,7 @@ import { createContext, useContext } from 'react';
 type FamilyContextType = {
   name: string;
   deleteFamily: () => void;
+  updateFamily: (name: string) => void;
 };
 
 export const FamilyContext = createContext<FamilyContextType | null>(null);
