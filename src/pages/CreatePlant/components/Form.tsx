@@ -50,8 +50,8 @@ export const FormCreatePlant = ({ families }: Props) => {
 
   const { mutate: createPlantMutate } = useMutation({
     mutationFn: createPlant,
-    onSuccess: () => {
-      toast.success('Familias guardadas exitosamente', {
+    onSuccess: (_, variables) => {
+      toast.success(`Planta ${variables.commonName} guardada exitosamente`, {
         className: 'custom-toast-success',
       });
       reset();

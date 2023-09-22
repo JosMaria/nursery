@@ -5,7 +5,7 @@ export const fetchProductByID = async (
   id: number
 ): Promise<SingleProductResponse> => {
   const { data } = await axiosInstance.get<SingleProductResponse>(
-    `products/${id}`
+    `nursery/products/${id}`
   );
   return data;
 };

@@ -7,6 +7,6 @@ export const createPlant = async (payload: CreatePlant): Promise<CreatePlantResp
 };
 
 export const fetchAllFamilies = async (): Promise<FetchFamilyResponse[]> => {
-  const { data } = await axiosInstance.get<FetchFamilyResponse[]>('families/names');
+  const { data } = await axiosInstance.get<FetchFamilyResponse[]>('families');
   return data;
 };
