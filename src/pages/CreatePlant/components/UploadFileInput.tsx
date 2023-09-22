@@ -70,10 +70,10 @@ export const UploadFileInput = () => {
   };
 
   return (
-    <section className='place-self-center col-span-full flex flex-col items-center gap-2 max-w-xl'>
+    <section className='place-self-center col-span-full flex flex-col items-center gap-2 max-w-md w-full'>
       <p className='text-center font-medium text-2xl'>Fotos</p>
       <article
-        className='border-4 border-dashed border-skin-focus bg-skin-light select-none flex justify-center items-center flex-wrap max-w-md w-full h-44'
+        className='border-4 border-dashed border-skin-focus bg-skin-light select-none flex justify-center items-center flex-wrap w-full h-44'
         onDragOver={onDragOver}
         onDragLeave={onDragLeave}
         onDrop={onDrop}
@@ -93,26 +93,26 @@ export const UploadFileInput = () => {
             </button>
           </span>
         )}
-        <input
-          type='file'
-          multiple
-          className='hidden'
-          ref={fileInputRef}
-          onChange={onFileSelect}
-        />
+        <input type='file' multiple className='hidden' ref={fileInputRef} onChange={onFileSelect} />
       </article>
-      <div className='flex flex-wrap justify-evenly gap-4 bg-skin-light p-2 items-center border-4 border-skin-focus'>
-        {images.map((image, index) => (
-          <div className='relative w-28' key={index}>
-            <span
-              className='text-xl absolute right-0 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md leading-3 p-1 cursor-pointer'
-              onClick={() => deleteImage(index)}
-            >
-              &times;
-            </span>
-            <img src={image.url} alt={image.name} />
-          </div>
-        ))}
+      <div className='flex flex-wrap justify-evenly gap-4 bg-skin-light p-2 items-center border-4 border-skin-focus w-full'>
+        {images.length === 0 ? (
+          <p className='text-lg font-medium p-3 text-center'>
+            En esta secci&oacute;n se mostraran las imagenes a subir
+          </p>
+        ) : (
+          images.map((image, index) => (
+            <div className='relative w-28' key={index}>
+              <span
+                className='text-xl absolute right-0 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md leading-3 p-1 cursor-pointer'
+                onClick={() => deleteImage(index)}
+              >
+                &times;
+              </span>
+              <img src={image.url} alt={image.name} />
+            </div>
+          ))
+        )}
       </div>
       <button type='button' onClick={uploadImage}>
         Upload

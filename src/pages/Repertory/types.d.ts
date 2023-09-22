@@ -1,4 +1,4 @@
-import { StatusType } from '../../types';
+import { Page, StatusType } from '../../types';
 
 export interface ItemResponse {
   id: number;
@@ -6,5 +6,8 @@ export interface ItemResponse {
   scientificName: string | null;
   scientistLastnameInitial: string | null;
   family: string | null;
-  status: StatusType;
+}
+
+export interface PageRepertory extends Page {
+  content: ItemResponse[]
 }

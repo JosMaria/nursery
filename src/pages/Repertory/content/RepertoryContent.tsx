@@ -21,7 +21,7 @@ export const RepertoryContent = () => {
         <button className='custom-btn-form'>Descargar PDF&nbsp;&nbsp;📄</button>
       </article>
 
-      <Table items={items} />
+      <Table items={items.content} />
     </section>
   );
 };
