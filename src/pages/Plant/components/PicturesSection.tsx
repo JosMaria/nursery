@@ -2,6 +2,11 @@ import { useState } from 'react';
 import { usePlantPhotos } from '../hooks';
 import EmptyImage from '../../../assets/no-image.png';
 
+const mock_photos_URL = ['https://2.bp.blogspot.com/-l9eR_k0eBJ8/Wbfkgm5KS7I/AAAAAAAAFlA/z5a-50G_i2IwHvtKe3EEh3l9AbqLJ4l8gCLcBGAs/s1600/BROMELIA1.jpg',
+'https://i0.wp.com/ornamentalis.com/wp-content/uploads/2019/09/flores-ornamentales-decorativas.jpg',
+'https://image.slidesharecdn.com/plantasornamentales-120219192812-phpapp01/95/plantas-ornamentales-1-728.jpg?cb=1329679775',
+'https://www.diphuelva.es/export/sites/dph/agricultura/.galleries/imagenes/Plantas_de_temporada.jpg']
+
 export const PicturesSection = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [loaded, setLoaded] = useState(false);
@@ -23,7 +28,7 @@ export const PicturesSection = () => {
 
   return (
     <article className='bg-skin-form flex flex-col items-center justify-evenly gap-3 w-96 max-h-96 p-1 border-4 border-black'>
-      {photos_URL.length > 0 ? (
+      {mock_photos_URL.length > 0 ? (
         <>
           <img
             src={photos_URL[selectedIndex]}
