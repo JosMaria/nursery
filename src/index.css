@@ -20,6 +20,8 @@
     --fill-color-form: 236, 252, 203;
     --fill-color-btn: 63, 98, 18;
     --fill-color-btn-hover: 77, 124, 15;
+    /* skeleton */
+    --fill-skeleton: 51, 65, 85;
   }
 
   .theme-admin {
@@ -39,6 +41,8 @@
     --fill-color-form: 254, 243, 199;
     --fill-color-btn: 146, 64, 14;
     --fill-color-btn-hover: 180, 83, 9;
+    /* skeleton */
+    --fill-skeleton: 51, 65, 85;
   }
 
   .theme-assistant {
@@ -58,33 +62,35 @@
     --fill-color-form: 186, 230, 253;
     --fill-color-btn: 7, 89, 133;
     --fill-color-btn-hover: 3, 105, 161;
+    /* skeleton */
+    --fill-skeleton: 51, 65, 85;
   }
 }
 
-/* Form styles globals */
-.custom-input-form {
-  @apply bg-slate-50 focus:border-skin-focus focus:ring-skin-input focus:ring-opacity-30 focus:outline-none focus:ring text-sm px-3 py-2 border border-slate-300 rounded-lg;
-}
+@layer components {
+  .custom-input-form {
+    @apply bg-slate-50 focus:border-skin-focus focus:ring-skin-input focus:ring-opacity-30 focus:outline-none focus:ring text-sm px-3 py-2 border border-slate-300 rounded-lg selection:bg-skin-btn selection:text-skin-light;
+  }
 
-.custom-btn-form {
-  @apply bg-skin-btn text-skin-light hover:bg-skin-btn-hover font-semibold rounded py-2 px-5 text-sm;
-}
+  .custom-btn-form {
+    @apply bg-skin-btn text-skin-light hover:bg-skin-btn-hover focus:outline-none focus:ring focus:ring-skin-btn font-semibold rounded py-2 px-5 text-sm cursor-pointer w-fit;
+  }
 
-.custom-lbl-form-error {
-  @apply text-xs text-red-600 font-medium bg-red-100 px-2 rounded-lg w-fit;
-}
+  .custom-lbl-form-error {
+    @apply text-xs text-red-600 font-medium bg-red-100 px-2 rounded-lg w-fit;
+  }
 
-/* toast styles */
-.custom-toast {
-  @apply border-4 border-y-0 border-r-0 p-3 text-sm rounded-none;
-}
+  .custom-toast {
+    @apply border-l-4 p-2 rounded-none text-sm max-sm:text-xs text-center;
+  }
 
-.custom-toast-success {
-  @apply bg-lime-50 border-l-lime-600 custom-toast;
-}
+  .custom-toast-success {
+    @apply bg-lime-50 border-l-lime-700 custom-toast;
+  }
 
-.custom-toast-error {
-  @apply bg-red-50 border-l-red-600 custom-toast;
+  .custom-toast-error {
+    @apply bg-red-50 border-l-red-600 custom-toast;
+  }
 }
 
 /* start block - warning - those styles are used by method getStyledGivenStatus of utils folder */

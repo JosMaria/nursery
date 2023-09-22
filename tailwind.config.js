@@ -27,6 +27,7 @@ export default {
           form: withOpacity('--fill-color-form'),
           btn: withOpacity('--fill-color-btn'),
           'btn-hover': withOpacity('--fill-color-btn-hover'),
+          skeleton: withOpacity('--fill-skeleton'),
         },
       },
       textColor: {
@@ -39,6 +40,8 @@ export default {
         skin: {
           nav: withOpacity('--border-nav-selected'),
           focus: withOpacity('--fill-color-btn-hover'),
+          skeleton: withOpacity('--fill-skeleton'),
+          list: withOpacity('--fill-color-form'),
         },
       },
       gradientColorStops: {
@@ -50,6 +53,7 @@ export default {
       ringColor: {
         skin: {
           input: withOpacity('--fill-color-btn-hover'),
+          btn: withOpacity('--fill-color-btn-hover')
         },
       },
     },

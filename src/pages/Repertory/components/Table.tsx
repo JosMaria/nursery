@@ -1,4 +1,3 @@
-import { getStyledGivenStatus, traduceStatus } from '../../../utils';
 import { ItemResponse } from '../types';
 
 interface Props {
@@ -14,19 +13,15 @@ export const Table = ({ items }: Props) => {
           {items.map((item) => (
             <tr
               key={item.id}
-              className='text-sm max-sm:text-xs bg-stone-50 [&:nth-child(even)]:bg-stone-200'
+              className='text-sm max-sm:text-xs bg-stone-50 [&:nth-child(even)]:bg-stone-200 text-center'
             >
+              <td className='p-2'>{item.id}</td>
               <td className='p-2 first-letter:uppercase'>{item.commonName}</td>
               <td className='p-2 first-letter:uppercase italic'>
                 {item.scientificName}{' '}
                 {item.scientistLastnameInitial?.toUpperCase()}
               </td>
               <td className='p-2 first-letter:uppercase'>{item.family}</td>
-              <td className='p-2 first-letter:uppercase flex justify-center'>
-                <p className={getStyledGivenStatus(item.status)}>
-                  {traduceStatus(item.status)}
-                </p>
-              </td>
             </tr>
           ))}
         </tbody>
@@ -36,9 +31,9 @@ export const Table = ({ items }: Props) => {
 };
 
 const TableHeader = () => (
-  <thead className='bg-skin-dark text-skin-light whitespace-nowrap text-sm max-sm:text-xs'>
+  <thead className='bg-skin-nav text-skin-light whitespace-nowrap text-sm max-sm:text-xs'>
     <tr>
-      {['Nombre Comun', 'Nombre Cientifico', 'Familia', 'Estado'].map(
+      {['#', 'Nombre Comun', 'Nombre Cientifico', 'Familia'].map(
         (title, index) => (
           <th key={index} className='py-3 px-10 max-sm:px-7'>
             {title}

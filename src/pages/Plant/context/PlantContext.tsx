@@ -11,7 +11,7 @@ export const usePlantContext = () => {
   const plantContext = useContext(PlantContext);
 
   if (!plantContext)
-    throw new Error('You need to use this context inside PlantContextProvider');
+    throw new Error('You need to use this context inside PlantProvider');
 
   return plantContext;
 };
