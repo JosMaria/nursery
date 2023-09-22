@@ -4,10 +4,12 @@ import { valibotResolver } from '@hookform/resolvers/valibot';
 import { traduceClassification, traduceStatus } from '../../../utils';
 import { ALL_CLASSIFICATIONS, ALL_STATUS } from '../../../constants';
 import { UploadFileInput } from '.';
-import { CreatePlant, CreatePlantResponse, FetchFamilyResponse } from '../types';
-import { UseMutateAsyncFunction } from '@tanstack/react-query';
+import { FetchFamilyResponse } from '../types';
 import { createPlant } from '../service';
 import { toast } from 'react-hot-toast';
+import { useMutation } from '@tanstack/react-query';
+import { HttpStatusCode } from 'axios';
+import { ErrorType } from '../../../types';
 
 const CreatePlantSchema = object({
   commonName: string([minLength(1, 'Nombre común obligatorio')]),
@@ -33,7 +35,6 @@ type CreatePlantSchemaType = Input<typeof CreatePlantSchema>;
 
 interface Props {
   families: FetchFamilyResponse[];
-  createPlant: UseMutateAsyncFunction<CreatePlantResponse, unknown, CreatePlant, unknown>;
 }
 
 export const FormCreatePlant = ({ families }: Props) => {
@@ -47,6 +48,24 @@ export const FormCreatePlant = ({ families }: Props) => {
     resolver: valibotResolver(CreatePlantSchema),
   });
 
+  const { mutate: createPlantMutate } = useMutation({
+    mutationFn: createPlant,
+    onSuccess: () => {
+      toast.success('Familias guardadas exitosamente', {
+        className: 'custom-toast-success',
+      });
+      reset();
+    },
+    onError: (error: ErrorType) => {
+      const { response } = error;
+      if (response.status === HttpStatusCode.BadRequest) {
+        toast.error(error.response.data.reason, {
+          className: 'custom-toast-error',
+        });
+      }
+    },
+  });
+
   const handleCreatePlant = (schema: CreatePlantSchemaType) => {
     const { notes, details, dataSheet, ...newSchema } = schema;
 
@@ -57,29 +76,12 @@ export const FormCreatePlant = ({ families }: Props) => {
       info: item.value,
     }));
 
-    createPlant({
+    createPlantMutate({
       ...newSchema,
       notes: notesConverted,
       details: detailsConverted,
       technicalSheet: technicalSheetConverted,
-    })
-      .then(() => {
-        toast.success('Familias guardadas exitosamente', {
-          className: 'custom-toast-success',
-        });
-        reset();
-      })
-      .catch((error) => {
-        if (error.response) {
-          if (error.response.status === 400) {
-            toast.error(error.response.data.reason, {
-              className: 'custom-toast-error',
-            });
-          }
-        } else {
-          throw new Error(error.message);
-        }
-      });
+    });
   };
 
   const {
@@ -267,11 +269,7 @@ export const FormCreatePlant = ({ families }: Props) => {
           </div>
         ))}
       </div>
-      <button
-        type='button'
-        onClick={() => appendNote({ note: '' })}
-        className='custom-btn-form'
-      >
+      <button type='button' onClick={() => appendNote({ note: '' })} className='custom-btn-form'>
         Agregar Nota
       </button>
     </div>

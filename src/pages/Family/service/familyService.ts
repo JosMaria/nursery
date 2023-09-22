@@ -7,7 +7,7 @@ export const createFamilies = async (families: CreateFamilyDTO[]): Promise<Famil
 };
 
 export const fetchAllFamilies = async (): Promise<FamilyResponse[]> => {
-  const { data } = await axiosInstance.get<FamilyResponse[]>('families/names');
+  const { data } = await axiosInstance.get<FamilyResponse[]>('families');
   return data;
 };
 
