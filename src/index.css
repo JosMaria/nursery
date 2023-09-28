@@ -91,6 +91,18 @@
   .custom-toast-error {
     @apply bg-red-50 border-l-red-600 custom-toast;
   }
+
+  .custom-nav {
+    @apply py-2 max-sm:px-1 flex-1 w-full;
+  }
+
+  .custom-nav-active {
+    @apply custom-nav bg-skin-nav text-skin-light;
+  }
+
+  .custom-nav-inactive {
+    @apply custom-nav hover:bg-skin-nav hover:text-skin-light;
+  }
 }
 
 /* start block - warning - those styles are used by method getStyledGivenStatus of utils folder */

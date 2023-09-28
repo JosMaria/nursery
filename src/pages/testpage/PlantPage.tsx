@@ -1,23 +1,19 @@
 import { NavLink, Outlet } from 'react-router-dom';
 
-const STYLE_NAV = 'py-2 max-sm:px-1 flex-1 w-full';
-const STYLE_NAV_ACTIVE = `${STYLE_NAV} bg-skin-nav text-skin-light`;
-const STYLE_NAV_INACTIVE = `${STYLE_NAV} hover:bg-skin-nav hover:text-skin-light`;
-
 const PlantPage = () => {
   return (
-    <div className='flex flex-col gap-3'>
-      <nav className='bg-skin-nav bg-opacity-20 flex font-medium text-base max-md:text-sm max-sm:text-xs text-center h-fit w-full'>
+    <div className='flex flex-col items-center gap-3 w-full'>
+      <nav className='bg-skin-nav bg-opacity-20 flex font-medium text-base max-md:text-sm max-sm:text-xs text-center max-xs:w-full max-sm:w-3/4 max-lg:w-2/3 max-xl:w-1/2 w-1/3'>
         <NavLink
           to='.'
           end
-          className={({ isActive }) => (isActive ? STYLE_NAV_ACTIVE : STYLE_NAV_INACTIVE)}
+          className={({ isActive }) => (isActive ? 'custom-nav-active' : 'custom-nav-inactive')}
         >
           Crear Planta
         </NavLink>
         <NavLink
-          to='plant-list'
-          className={({ isActive }) => (isActive ? STYLE_NAV_ACTIVE : STYLE_NAV_INACTIVE)}
+          to='list'
+          className={({ isActive }) => (isActive ? 'custom-nav-active' : 'custom-nav-inactive')}
         >
           Listado
         </NavLink>

@@ -1,5 +1,5 @@
 const ListPlantsView = () => {
-  return <div>ListPlantsView</div>;
+  return <div>Listado de plantas</div>;
 };
 
 export default ListPlantsView;

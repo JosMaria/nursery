@@ -118,9 +118,9 @@ export const router = createBrowserRouter(
       <Route path='news/:id' element={<SingleNewsPage />} />
       <Route path='signin' element={<SignInPage />} />
 
-      <Route path='create-plant' errorElement={<ErrorBoundaryPage />} element={<TestPlantPage />}>
+      <Route path='plants' errorElement={<ErrorBoundaryPage />} element={<TestPlantPage />}>
         <Route index element={<CreatePlantView />} />
-        <Route path='list-plants' element={<ListPlantsView />} />
+        <Route path='list' element={<ListPlantsView />} />
       </Route>
     </Route>,
   ])
