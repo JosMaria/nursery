@@ -1,10 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { ErrorBoundaryPage } from '../components';
-import {
-  Route,
-  createBrowserRouter,
-  createRoutesFromElements,
-} from 'react-router-dom';
+import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 
 const LayoutPublic = lazy(() => import('../layout/LayoutPublic'));
 
@@ -16,16 +12,10 @@ const CatalogPage = lazy(() => import('../pages/Catalog/CatalogPage'));
 
 // start block - Plant Page and its Tabs
 import SkeletonPlantPage from '../pages/Plant/SkeletonPlantPage';
-import {
-  ErrorBoundaryPlantTab,
-  NotFoundPlantTab,
-  SkeletonPlantTab,
-} from '../pages/Plant/tabs';
+import { ErrorBoundaryPlantTab, NotFoundPlantTab, SkeletonPlantTab } from '../pages/Plant/tabs';
 
 const PlantPage = lazy(() => import('../pages/Plant/PlantPage'));
-const TechnicalSheetTab = lazy(
-  () => import('../pages/Plant/tabs/TechnicalSheetPlantTab')
-);
+const TechnicalSheetTab = lazy(() => import('../pages/Plant/tabs/TechnicalSheetPlantTab'));
 const DetailsTab = lazy(() => import('../pages/Plant/tabs/DetailsPlantTab'));
 const NotesTab = lazy(() => import('../pages/Plant/tabs/NotesPlantTab'));
 // end block - Plant Page and its Tabs
@@ -45,6 +35,11 @@ import SkeletonCreateFamilyPage from '../pages/Family/SkeletonCreateFamilyPage';
 
 import FamilyPage from '../pages/Family/FamilyPage';
 
+const TestPlantPage = lazy(() => import('../pages/testpage/PlantPage'));
+import { SkeletonPlantPage as TestSkeletonPlantPage } from '../pages/testpage/SkeletonPlantPage';
+
+import CreatePlantView from '../pages/testpage/views/CreatePlant/CreatePlantView';
+import ListPlantsView from '../pages/testpage/views/ListPlants/ListPlantsView';
 
 export const router = createBrowserRouter(
   createRoutesFromElements([
@@ -98,7 +93,7 @@ export const router = createBrowserRouter(
         <Route path='*' element={<NotFoundPlantTab />} />
       </Route>
 
-      <Route
+      {/* <Route
         path='create-plant'
         errorElement={<ErrorBoundaryPage />}
         element={
@@ -106,7 +101,7 @@ export const router = createBrowserRouter(
             <CreatePlantPage />
           </Suspense>
         }
-      />
+      /> */}
 
       <Route
         path='create-family'
@@ -122,6 +117,11 @@ export const router = createBrowserRouter(
       <Route path='news' element={<NewsPage />} />
       <Route path='news/:id' element={<SingleNewsPage />} />
       <Route path='signin' element={<SignInPage />} />
+
+      <Route path='create-plant' errorElement={<ErrorBoundaryPage />} element={<TestPlantPage />}>
+        <Route index element={<CreatePlantView />} />
+        <Route path='list-plants' element={<ListPlantsView />} />
+      </Route>
     </Route>,
   ])
 );
