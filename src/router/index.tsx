@@ -36,7 +36,6 @@ import SkeletonCreateFamilyPage from '../pages/Family/SkeletonCreateFamilyPage';
 import FamilyPage from '../pages/Family/FamilyPage';
 
 const TestPlantPage = lazy(() => import('../pages/testpage/PlantPage'));
-import { SkeletonPlantPage as TestSkeletonPlantPage } from '../pages/testpage/SkeletonPlantPage';
 
 import CreatePlantView from '../pages/testpage/views/CreatePlant/CreatePlantView';
 import ListPlantsView from '../pages/testpage/views/ListPlants/ListPlantsView';
