@@ -24,10 +24,7 @@ const SkeletonPlantPage = () => (
     <div className='flex flex-col w-full gap-5'>
       <div className='flex gap-5 max-sm:gap-2'>
         {[...Array(3).keys()].map((i) => (
-          <div
-            key={i}
-            className='flex bg-skin-skeleton h-10 max-sm:h-8 flex-1'
-          ></div>
+          <div key={i} className='flex bg-skin-skeleton h-10 max-sm:h-8 flex-1'></div>
         ))}
       </div>
 

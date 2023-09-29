@@ -1,6 +1,6 @@
-import { useDetailsPlant } from '../hooks';
+import { useDetailsPlant } from '../../hooks';
 
-const DetailsPlantTab = () => {
+const DetailsView = () => {
   const details = useDetailsPlant();
 
   return (
@@ -16,4 +16,4 @@ const DetailsPlantTab = () => {
   );
 };
 
-export default DetailsPlantTab;
+export default DetailsView;

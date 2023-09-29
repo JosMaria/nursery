@@ -1,6 +1,6 @@
-import { useNotesPlant } from '../hooks';
+import { useNotesPlant } from '../../hooks';
 
-const NotesPlantTab = () => {
+const NotesView = () => {
   const notes = useNotesPlant();
 
   return (
@@ -16,4 +16,4 @@ const NotesPlantTab = () => {
   );
 };
 
-export default NotesPlantTab;
+export default NotesView;

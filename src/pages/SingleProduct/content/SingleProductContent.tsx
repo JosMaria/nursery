@@ -1,7 +1,7 @@
 import { Link, Outlet } from 'react-router-dom';
 import { InformationSection, Navbar, PicturesSection } from '../components';
 
-export const PlantContent = () => (
+export const SingleProductContent = () => (
   <div className='w-full flex p-5 justify-center'>
     <div className='max-w-7xl w-full flex flex-col items-center gap-5'>
       <section className='flex flex-wrap-reverse justify-evenly gap-5 w-full'>
@@ -16,10 +16,7 @@ export const PlantContent = () => (
         </article>
       </section>
 
-      <Link
-        to='/'
-        className='custom-btn-form w-fit flex gap-3 max-sm:text-xs self-start'
-      >
+      <Link to='/' className='custom-btn-form w-fit flex gap-3 max-sm:text-xs self-start'>
         &#10229;<span>Volver</span>
       </Link>
     </div>

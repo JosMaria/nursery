@@ -11,13 +11,13 @@ const CatalogPage = lazy(() => import('../pages/Catalog/CatalogPage'));
 // end block - Catalog Page
 
 // start block - Plant Page and its Tabs
-import SkeletonPlantPage from '../pages/Plant/SkeletonPlantPage';
-import { ErrorBoundaryPlantTab, NotFoundPlantTab, SkeletonPlantTab } from '../pages/Plant/tabs';
+import SkeletonPlantPage from '../pages/SingleProduct/SkeletonSingleProductPage';
+import { ErrorBoundaryPlantTab, NotFoundPlantTab, SkeletonPlantTab } from '../pages/SingleProduct/views';
 
-const PlantPage = lazy(() => import('../pages/Plant/PlantPage'));
-const TechnicalSheetTab = lazy(() => import('../pages/Plant/tabs/TechnicalSheetPlantTab'));
-const DetailsTab = lazy(() => import('../pages/Plant/tabs/DetailsPlantTab'));
-const NotesTab = lazy(() => import('../pages/Plant/tabs/NotesPlantTab'));
+const PlantPage = lazy(() => import('../pages/SingleProduct/SingleProductPage'));
+const TechnicalSheetTab = lazy(() => import('../pages/SingleProduct/views/TechnicalSheeet/TechnicalSheetPlantTab'));
+const DetailsTab = lazy(() => import('../pages/SingleProduct/views/Details/DetailsView'));
+const NotesTab = lazy(() => import('../pages/SingleProduct/views/Notes/NotesView'));
 // end block - Plant Page and its Tabs
 
 const RepertoryPage = lazy(() => import('../pages/Repertory/RepertoryPage'));
