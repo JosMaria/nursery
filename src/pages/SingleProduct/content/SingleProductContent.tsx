@@ -2,9 +2,9 @@ import { Link, Outlet } from 'react-router-dom';
 import { InformationSection, Navbar, PicturesSection } from '../components';
 
 export const SingleProductContent = () => (
-  <div className='w-full flex p-5 justify-center'>
+  <div className='w-full flex p-5 max-md:p-3 max-sm:p-1 justify-center'>
     <div className='max-w-7xl w-full flex flex-col items-center gap-5'>
-      <section className='flex flex-wrap-reverse justify-evenly gap-5 w-full'>
+      <section className='flex justify-evenly max-lg:flex-wrap-reverse gap-5 w-full'>
         <PicturesSection />
         <InformationSection />
       </section>

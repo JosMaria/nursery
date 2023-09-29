@@ -7,7 +7,7 @@ export const Navbar = () => (
       end
       className={({ isActive }) => (isActive ? 'custom-nav-active' : 'custom-nav-inactive')}
     >
-      Ficha tecnica
+      Ficha Tecnica
     </NavLink>
     <NavLink
       to='details'

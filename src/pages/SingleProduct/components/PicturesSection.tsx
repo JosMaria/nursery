@@ -22,21 +22,21 @@ export const PicturesSection = () => {
   };
 
   const nextPicture = () => {
-    if (selectedIndex < photos_URL.length - 1) {
+    if (selectedIndex < mock_photos_URL.length - 1) {
       setLoaded(false);
       setSelectedIndex((prev) => prev + 1);
     }
   };
 
   return (
-    <article className='bg-skin-form flex flex-col items-center justify-evenly gap-3 w-96 max-h-96 p-1 border-4 border-black'>
+    <article className='bg-skin-form flex flex-col items-center justify-evenly gap-3 w-96 max-h-96 p-1 border-4 border-skin-focus rounded'>
       {mock_photos_URL.length > 0 ? (
         <>
           <img
-            src={photos_URL[selectedIndex]}
+            src={mock_photos_URL[selectedIndex]}
             alt={`Image ${selectedIndex}`}
             onLoad={() => setLoaded(true)}
-            className={`h-72 ${loaded ? 'opacity-100 transition-opacity' : 'opacity-0'}`}
+            className={`h-72 max-xs:h-60 ${loaded ? 'opacity-100 transition-opacity' : 'opacity-0'}`}
           />
 
           <div className='flex justify-evenly w-full items-center text-skin-light font-semibold'>
