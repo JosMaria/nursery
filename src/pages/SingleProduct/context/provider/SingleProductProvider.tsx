@@ -5,7 +5,7 @@ import SkeletonPlantPage from '../../SkeletonSingleProductPage';
 
 type Props = {
   singleProductId: number;
-  children: JSX.Element | JSX.Element[];
+  children: JSX.Element | JSX.Element[] | React.ReactNode[];
 };
 
 export const SingleProductProvider = ({ singleProductId, children }: Props) => {

@@ -7,7 +7,7 @@ export const router = createBrowserRouter(
   createRoutesFromElements([
     <Route path='/' element={<LayoutPublic />}>
       <Route index element={<CatalogPage />} />
-      <SingleProductRoutes />
+      <Route path='product/:id/*' element={<SingleProductRoutes />} />
       <Route path='*' element={<p>Ruta no encontrada</p>} />
     </Route>,
   ])

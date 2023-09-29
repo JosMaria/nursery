@@ -1,16 +1,17 @@
 import { Route, Routes } from 'react-router-dom';
 import TechnicalSheetView from './views/TechnicalSheeet/TechnicalSheetPlantTab';
-import SingleProductPage from './SingleProductPage';
 import DetailsView from './views/Details/DetailsView';
 import NotesView from './views/Notes/NotesView';
+import SingleProductPage from './SingleProductPage';
+import { NotFoundView } from './views/shared';
 
 export const SingleProductRoutes = () => (
   <Routes>
-    <Route path='product/:id' element={<SingleProductPage />}>
+    <Route element={<SingleProductPage />}>
       <Route index element={<TechnicalSheetView />} />
       <Route path='details' element={<DetailsView />} />
       <Route path='notes' element={<NotesView />} />
-      <Route path='*' element={<p>mmo encontardo desde single product page</p>} />
+      <Route path='*' element={<NotFoundView />} />
     </Route>
   </Routes>
 );
