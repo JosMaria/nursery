@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSingleProductPhotos } from '../hooks';
+import { usePhotos } from '../hooks';
 import EmptyImage from '../../../assets/no-image.png';
 
 const mock_photos_URL = [
@@ -12,7 +12,7 @@ const mock_photos_URL = [
 export const PicturesSection = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [loaded, setLoaded] = useState(false);
-  const photos_URL = useSingleProductPhotos();
+  const photos_URL = usePhotos();
 
   const previousPicture = () => {
     if (selectedIndex > 0) {

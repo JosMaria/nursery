@@ -1,7 +1,7 @@
-import { useNotesPlant } from '../../hooks';
+import { useNotes } from '../../hooks';
 
 const NotesView = () => {
-  const notes = useNotesPlant();
+  const notes = useNotes();
 
   return (
     <ul className='list-decimal list-inside flex flex-col gap-3'>

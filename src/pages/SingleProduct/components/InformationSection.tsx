@@ -1,4 +1,4 @@
-import { useInfoBaseSingleProduct } from '../hooks';
+import { useInfoBase } from '../hooks';
 
 export const InformationSection = () => {
   const {
@@ -9,7 +9,7 @@ export const InformationSection = () => {
     status,
     classifications,
     description,
-  } = useInfoBaseSingleProduct();
+  } = useInfoBase();
 
   return (
     <article className='max-w-2xl w-full flex flex-col items-center gap-5 text-sm max-sm:text-xs bg-skin-form px-4 py-2'>

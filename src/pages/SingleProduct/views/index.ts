@@ -1,3 +1,3 @@
-export * from './NotFoundPlantTab';
-export * from './ErrorBoundaryPlantTab';
-export * from './SkeletonPlantTab';
+export * from './NotFoundView';
+export * from './ErrorBoundaryView';
+export * from './SkeletonView';

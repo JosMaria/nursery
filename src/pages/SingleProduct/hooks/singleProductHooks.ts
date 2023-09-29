@@ -1,6 +1,6 @@
 import { useSingleProductContext } from '../context';
 
-export const useSingleProductPhotos = () => {
+export const usePhotos = () => {
   const {
     singleProduct: { photos_URL },
   } = useSingleProductContext();
@@ -8,7 +8,7 @@ export const useSingleProductPhotos = () => {
   return photos_URL;
 };
 
-export const useInfoBaseSingleProduct = () => {
+export const useInfoBase = () => {
   const { singleProduct } = useSingleProductContext();
 
   return {
@@ -22,7 +22,7 @@ export const useInfoBaseSingleProduct = () => {
   };
 };
 
-export const useTechnicalSheetSingleProduct = () => {
+export const useTechnicalSheet = () => {
   const {
     singleProduct: { technicalSheet },
   } = useSingleProductContext();
@@ -30,7 +30,7 @@ export const useTechnicalSheetSingleProduct = () => {
   return technicalSheet;
 };
 
-export const useDetailsSingleProduct = () => {
+export const useDetails = () => {
   const {
     singleProduct: { details },
   } = useSingleProductContext();
@@ -38,7 +38,7 @@ export const useDetailsSingleProduct = () => {
   return details;
 };
 
-export const useNotesSingleProduct = () => {
+export const useNotes = () => {
   const {
     singleProduct: { notes },
   } = useSingleProductContext();

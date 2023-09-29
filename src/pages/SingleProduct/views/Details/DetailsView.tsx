@@ -1,7 +1,7 @@
-import { useDetailsPlant } from '../../hooks';
+import { useDetails } from '../../hooks';
 
 const DetailsView = () => {
-  const details = useDetailsPlant();
+  const details = useDetails();
 
   return (
     <ol className='list-decimal list-inside flex flex-col gap-3'>

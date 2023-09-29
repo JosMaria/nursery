@@ -1,7 +1,7 @@
-import { useTechnicalSheetPlant } from '../../hooks';
+import { useTechnicalSheet } from '../../hooks';
 
 const TechnicalSheetView = () => {
-  const technicalSheet = useTechnicalSheetPlant();
+  const technicalSheet = useTechnicalSheet();
 
   return (
     <div className='flex flex-col gap-2'>

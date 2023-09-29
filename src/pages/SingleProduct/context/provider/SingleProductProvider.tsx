@@ -15,7 +15,7 @@ export const SingleProductProvider = ({ singleProductId, children }: Props) => {
   });
 
   if (status === 'loading') return <SkeletonPlantPage />;
-  if (status === 'error') return <p>Status Error FetchSingleProduct with ID: {singleProductId}</p>;
+  if (status === 'error') return <p>Error FetchSingleProduct with ID: {singleProductId}</p>;
 
   return (
     <SingleProductContext.Provider value={{ singleProduct }}>
