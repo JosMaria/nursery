@@ -1,5 +1,5 @@
-const ListPlantsView = () => {
+const ListView = () => {
   return <div>Listado de plantas</div>;
 };
 
-export default ListPlantsView;
+export default ListView;

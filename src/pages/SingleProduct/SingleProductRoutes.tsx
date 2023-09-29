@@ -3,7 +3,7 @@ import TechnicalSheetView from './views/TechnicalSheeet/TechnicalSheetPlantTab';
 import DetailsView from './views/Details/DetailsView';
 import NotesView from './views/Notes/NotesView';
 import SingleProductPage from './SingleProductPage';
-import { NotFoundView } from './views/shared';
+import { NotFoundView } from './views/Shared';
 
 export const SingleProductRoutes = () => (
   <Routes>
