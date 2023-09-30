@@ -1,12 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
 import FamilyPage from './FamilyPage';
+import CreateFamilyView from './views/CreateFamily/CreateFamilyView';
+import { ListView } from './views/List/ListView';
 
 export const FamilyRoutes = () => {
   return (
     <Routes>
       <Route element={<FamilyPage />}>
-        <Route index element={<p>crear familia</p>} />
-        <Route path='list' element={<p>Listar y modificar</p>} />
+        <Route index element={<CreateFamilyView />} />
+        <Route path='list' element={<ListView />} />
       </Route>
     </Routes>
   );

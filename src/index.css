@@ -93,7 +93,7 @@
   }
 
   .custom-nav {
-    @apply py-2 max-sm:px-1 flex-1 w-full;
+    @apply py-2 max-sm:px-1 flex-1;
   }
 
   .custom-nav-active {
