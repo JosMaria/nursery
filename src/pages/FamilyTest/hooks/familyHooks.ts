@@ -3,9 +3,13 @@ import { ContextType } from '../context';
 
 export const useFamilies = () => {
   const { families } = useOutletContext<ContextType>();
-  
   return {
     families,
     isEmpty: families.length === 0 ? true : false,
   };
+};
+
+export const useMutateAsyncFamilies = () => {
+  const { createFamiliesMutation } = useOutletContext<ContextType>();
+  return { createFamiliesMutation };
 };

@@ -2,6 +2,10 @@ import { useFieldArray, useForm } from 'react-hook-form';
 import { CreateFamilySchema, CreateFamilySchemaType } from './validations';
 import { valibotResolver } from '@hookform/resolvers/valibot';
 import { BsTrashFill } from 'react-icons/bs';
+import { useMutateAsyncFamilies } from '../../hooks';
+import toast from 'react-hot-toast';
+import { ErrorType } from '../../../../types';
+import { HttpStatusCode } from 'axios';
 
 const CreateFamilyView = () => {
   const {
@@ -19,13 +23,29 @@ const CreateFamilyView = () => {
     name: 'families',
   });
 
+  const { createFamiliesMutation } = useMutateAsyncFamilies();
+
   return (
     <article className='bg-skin-form w-full p-2'>
       <form
         className='flex flex-col items-center gap-2 rounded-md text-xl'
-        onSubmit={handleSubmit((schema) => {
+        onSubmit={handleSubmit(async (schema) => {
           console.log(schema);
-          //insertFamilies(schema.families, () => reset({ families: [{ family_name: '' }] }));
+          try {
+            const response = await createFamiliesMutation(schema.families);
+            toast.success(
+              response.length > 1
+                ? 'Familias guardadas exitosamente'
+                : 'Familia guardada exitosamente',
+              { className: 'custom-toast-success' }
+            );
+            reset();
+          } catch (error) {
+            const { response } = error as ErrorType;
+            if (response.status === HttpStatusCode.BadRequest) {
+              toast.error(response.data.reason, { className: 'custom-toast-error' });
+            }
+          }
         })}
       >
         <h2 className='font-medium text-xl'>Familias para crear</h2>

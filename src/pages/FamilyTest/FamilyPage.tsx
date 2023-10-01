@@ -1,17 +1,22 @@
 import { Outlet } from 'react-router-dom';
 import { Navbar } from './components';
-import { useQuery } from '@tanstack/react-query';
-import { fetchAllFamilies } from './services';
-import { FamilyResponse } from './types';
-
-type ContextType = {
-  families: FamilyResponse[];
-};
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { fetchAllFamilies, createFamilies } from './services';
+import { ContextType } from './context';
 
 const FamilyPage = () => {
+  const queryClient = useQueryClient();
+
   const { data: families, status } = useQuery({
     queryKey: ['families'],
     queryFn: fetchAllFamilies,
+  });
+
+  const { mutateAsync: createFamiliesMutation } = useMutation({
+    mutationFn: createFamilies,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['families'] });
+    },
   });
 
   if (status === 'loading') return 'loading families';
@@ -19,6 +24,7 @@ const FamilyPage = () => {
 
   const context: ContextType = {
     families,
+    createFamiliesMutation: createFamiliesMutation
   };
 
   return (
