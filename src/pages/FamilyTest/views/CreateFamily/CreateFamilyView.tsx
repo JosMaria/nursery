@@ -29,11 +29,11 @@ const CreateFamilyView = () => {
   const handleCreateFamilies = async (payload: CreateFamilyDTO[]) => {
     try {
       const response = await createFamiliesMutation(payload);
+      reset();
       toast.success(
         response.length > 1 ? 'Familias guardadas exitosamente' : 'Familia guardada exitosamente',
         { className: 'custom-toast-success' }
       );
-      reset();
     } catch (error) {
       const { response } = error as ErrorType;
       if (response.status === HttpStatusCode.BadRequest) {

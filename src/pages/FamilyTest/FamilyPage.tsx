@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { Navbar } from './components';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { fetchAllFamilies, createFamilies } from './services';
+import { fetchAllFamilies, createFamilies, deleteFamilyById } from './services';
 import { ContextType } from './context';
 
 const FamilyPage = () => {
@@ -19,12 +19,20 @@ const FamilyPage = () => {
     },
   });
 
+  const { mutateAsync: deleteFamilyMutation } = useMutation({
+    mutationFn: deleteFamilyById,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['families'] });
+    },
+  });
+
   if (status === 'loading') return 'loading families';
   if (status === 'error') return 'error families';
 
   const context: ContextType = {
     families,
-    createFamiliesMutation: createFamiliesMutation
+    createFamiliesMutation: createFamiliesMutation,
+    deleteFamilyByIdMutation: deleteFamilyMutation
   };
 
   return (
