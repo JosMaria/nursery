@@ -6,6 +6,7 @@ import { useMutateAsyncFamilies } from '../../hooks';
 import toast from 'react-hot-toast';
 import { ErrorType } from '../../../../types';
 import { HttpStatusCode } from 'axios';
+import { CreateFamilyDTO } from '../../types';
 
 const CreateFamilyView = () => {
   const {
@@ -25,28 +26,27 @@ const CreateFamilyView = () => {
 
   const { createFamiliesMutation } = useMutateAsyncFamilies();
 
+  const handleCreateFamilies = async (payload: CreateFamilyDTO[]) => {
+    try {
+      const response = await createFamiliesMutation(payload);
+      toast.success(
+        response.length > 1 ? 'Familias guardadas exitosamente' : 'Familia guardada exitosamente',
+        { className: 'custom-toast-success' }
+      );
+      reset();
+    } catch (error) {
+      const { response } = error as ErrorType;
+      if (response.status === HttpStatusCode.BadRequest) {
+        toast.error(response.data.reason, { className: 'custom-toast-error' });
+      }
+    }
+  };
+
   return (
     <article className='bg-skin-form w-full p-2'>
       <form
         className='flex flex-col items-center gap-2 rounded-md text-xl'
-        onSubmit={handleSubmit(async (schema) => {
-          console.log(schema);
-          try {
-            const response = await createFamiliesMutation(schema.families);
-            toast.success(
-              response.length > 1
-                ? 'Familias guardadas exitosamente'
-                : 'Familia guardada exitosamente',
-              { className: 'custom-toast-success' }
-            );
-            reset();
-          } catch (error) {
-            const { response } = error as ErrorType;
-            if (response.status === HttpStatusCode.BadRequest) {
-              toast.error(response.data.reason, { className: 'custom-toast-error' });
-            }
-          }
-        })}
+        onSubmit={handleSubmit((schema) => handleCreateFamilies(schema.families))}
       >
         <h2 className='font-medium text-xl'>Familias para crear</h2>
 
@@ -60,13 +60,7 @@ const CreateFamilyView = () => {
                   className='custom-input-form'
                   {...register(`families.${index}.family_name` as const)}
                 />
-                <button
-                  type='button'
-                  onClick={() => remove(index)}
-                  className='focus:outline-none focus:ring-2 focus:ring-red-400 bg-red-500 hover:bg-red-600 text-white rounded p-1.5'
-                >
-                  <BsTrashFill />
-                </button>
+                <ButtonTrash action={() => remove(index)} />
               </div>
               <p className='custom-lbl-form-error'>
                 {errors.families?.[index]?.family_name?.message}
@@ -89,5 +83,18 @@ const CreateFamilyView = () => {
     </article>
   );
 };
+
+interface ButtonTrashProps {
+  action: () => void;
+}
+const ButtonTrash = ({ action }: ButtonTrashProps) => (
+  <button
+    type='button'
+    onClick={action}
+    className='focus:outline-none focus:ring-2 focus:ring-red-400 bg-red-500 hover:bg-red-600 text-white rounded p-1.5'
+  >
+    <BsTrashFill />
+  </button>
+);
 
 export default CreateFamilyView;
