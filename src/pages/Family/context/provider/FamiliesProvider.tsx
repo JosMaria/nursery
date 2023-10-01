@@ -13,11 +13,6 @@ interface Props {
 export const FamiliesProvider = ({ children }: Props) => {
   const queryClient = useQueryClient();
 
-  const { data: families } = useQuery({
-    queryKey: ['families'],
-    queryFn: fetchAllFamilies,
-    initialData: [],
-  });
 
   const { mutate: createFamiliesMutate } = useMutation({
     mutationFn: (data: { families: CreateFamilyDTO[]; resetField: () => void }) =>
@@ -43,7 +38,7 @@ export const FamiliesProvider = ({ children }: Props) => {
   return (
     <FamiliesContext.Provider
       value={{
-        families: families,
+        families: [],
         insertFamilies: (families: CreateFamilyDTO[], resetField: () => void) =>
           createFamiliesMutate({ families, resetField }),
       }}

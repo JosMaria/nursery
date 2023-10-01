@@ -20,15 +20,16 @@ const CreateFamilyView = () => {
   });
 
   return (
-    <article className='bg-skin-form w-full p-3'>
+    <article className='bg-skin-form w-full p-2'>
       <form
-        className='flex flex-col items-center gap-2 rounded-md'
+        className='flex flex-col items-center gap-2 rounded-md text-xl'
         onSubmit={handleSubmit((schema) => {
           console.log(schema);
           //insertFamilies(schema.families, () => reset({ families: [{ family_name: '' }] }));
         })}
       >
-        <h2>Familias para crear</h2>
+        <h2 className='font-medium text-xl'>Familias para crear</h2>
+
         <fieldset className='flex flex-col item-center gap-2'>
           {fields.map((field, index) => (
             <div key={field.id} className='flex flex-col gap-1'>
