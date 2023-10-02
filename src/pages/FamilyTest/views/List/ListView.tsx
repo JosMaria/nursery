@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { valibotResolver } from '@hookform/resolvers/valibot';
 import { UpdateFamilyType } from '../../types';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { updateFamilyNameById } from '../../services';
+import { deleteFamilyById, updateFamilyNameById } from '../../services';
 import toast from 'react-hot-toast';
 import { HttpStatusCode } from 'axios';
 import { ErrorType } from '../../../../types';
@@ -47,13 +47,15 @@ interface ItemProps {
 }
 const Item = ({ id, name }: ItemProps) => {
   const [showFormEdit, setShowFormEdit] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
   return (
     <>
       <li className='w-72 py-1.5 px-3 flex justify-between items-center gap-2'>
         <p>{name}</p>
         <div className='flex gap-3'>
           <ButtonIconEdit isShow={showFormEdit} action={() => setShowFormEdit((prev) => !prev)} />
-          <ButtonIconTrash />
+          <ButtonIconTrash action={() => setShowDeleteModal(true)} />
         </div>
       </li>
       <FormEditFamily
@@ -62,6 +64,13 @@ const Item = ({ id, name }: ItemProps) => {
         close={() => setShowFormEdit(false)}
         actualName={name}
       />
+      {showDeleteModal && (
+        <DeleteFamilyModal
+          familyId={id}
+          familyName={name}
+          close={() => setShowDeleteModal(false)}
+        />
+      )}
     </>
   );
 };
@@ -150,8 +159,62 @@ const FormEditFamily = ({ familyId, isShow, actualName, close }: FormEditFamily)
   );
 };
 
-const ButtonIconTrash = () => (
-  <button className='focus:outline-none focus:ring-2 focus:ring-red-400 bg-red-500 hover:bg-red-600 text-white rounded p-1.5'>
+interface ButtonIconTrashProps {
+  action: () => void;
+}
+
+const ButtonIconTrash = ({ action }: ButtonIconTrashProps) => (
+  <button
+    className='focus:outline-none focus:ring-2 focus:ring-red-400 bg-red-500 hover:bg-red-600 text-white rounded p-1.5'
+    onClick={action}
+  >
     <BsTrashFill size='1em' />
   </button>
 );
+
+interface DeleteFamilyModalProps {
+  familyId: number;
+  familyName: string;
+  close: () => void;
+}
+
+const DeleteFamilyModal = ({ familyId, familyName, close }: DeleteFamilyModalProps) => {
+  const queryClient = useQueryClient();
+
+  const { mutate: deleteFamilyMutate } = useMutation({
+    mutationFn: (data: { id: number; name: string }) => deleteFamilyById(data.id),
+    onSuccess(_, variables) {
+      toast.success(`Familia: ${variables.name} eliminada.`, { className: 'custom-toast-success' });
+      queryClient.invalidateQueries({ queryKey: ['families'] });
+    },
+    onError(error: ErrorType) {
+      const { response } = error;
+      if (response.status === HttpStatusCode.BadRequest) {
+        toast.error(response.data.reason, { className: 'custom-toast-error' });
+      }
+    },
+  });
+
+  return (
+    <dialog className='fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm shadow-xl flex justify-center items-center select-none w-full h-screen text-skin-dark'>
+      <div className=' bg-skin-light p-4 rounded flex flex-col justify-center items-center gap-3 relative w-80'>
+        <button
+          onClick={close}
+          className='absolute right-0.5 top-0.5 cursor-pointer bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-1 focus:ring-red-400 text-white font-bold text-lg leading-none px-1 rounded'
+        >
+          &times;
+        </button>
+        <h3 className='text-center'>
+          Seguro que quiere eliminar la familia: <span className='font-medium'>{familyName}</span>
+        </h3>
+
+        <button
+          className='custom-btn-form'
+          onClick={() => deleteFamilyMutate({ id: familyId, name: familyName })}
+        >
+          Eliminar
+        </button>
+      </div>
+    </dialog>
+  );
+};
