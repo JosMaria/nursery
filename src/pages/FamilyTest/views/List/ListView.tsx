@@ -1,11 +1,16 @@
 import { BsTrashFill } from 'react-icons/bs';
-import { useFamilies, useMutateAsyncFamilies } from '../../hooks';
+import { useFamilies } from '../../hooks';
 import { BiEdit } from 'react-icons/bi';
 import { useState } from 'react';
 import { Input, object, regex, string } from 'valibot';
 import { useForm } from 'react-hook-form';
 import { valibotResolver } from '@hookform/resolvers/valibot';
 import { UpdateFamilyType } from '../../types';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { updateFamilyNameById } from '../../services';
+import toast from 'react-hot-toast';
+import { HttpStatusCode } from 'axios';
+import { ErrorType } from '../../../../types';
 
 export const ListView = () => {
   const { isEmpty } = useFamilies();
@@ -51,7 +56,12 @@ const Item = ({ id, name }: ItemProps) => {
           <ButtonIconTrash />
         </div>
       </li>
-      <FormEditFamily familyId={id} isShow={showFormEdit} actualName={name} />
+      <FormEditFamily
+        familyId={id}
+        isShow={showFormEdit}
+        close={() => setShowFormEdit(false)}
+        actualName={name}
+      />
     </>
   );
 };
@@ -82,9 +92,10 @@ interface FormEditFamily {
   familyId: number;
   isShow: boolean;
   actualName: string;
+  close: () => void;
 }
 
-const FormEditFamily = ({ familyId, isShow, actualName }: FormEditFamily) => {
+const FormEditFamily = ({ familyId, isShow, actualName, close }: FormEditFamily) => {
   const {
     register,
     handleSubmit,
@@ -93,17 +104,33 @@ const FormEditFamily = ({ familyId, isShow, actualName }: FormEditFamily) => {
     resolver: valibotResolver(UpdateFamilySchema),
   });
 
-  const { updateFamilyMutation } = useMutateAsyncFamilies();
+  const queryClient = useQueryClient();
+
+  const { mutate: updateFamilyMutate } = useMutation({
+    mutationFn: ({ id, payload }: UpdateFamilyType) => updateFamilyNameById(id, payload),
+    onSuccess(response) {
+      toast.success(`Familia actualizada a ${response.name}.`, {
+        className: 'custom-toast-success',
+      });
+      queryClient.invalidateQueries({ queryKey: ['families'] });
+      close();
+    },
+    onError(error: ErrorType) {
+      const { response } = error;
+      if (response.status === HttpStatusCode.BadRequest) {
+        toast.error(response.data.reason, { className: 'custom-toast-error' });
+      }
+    },
+  });
 
   return (
     <form
       className={`${
         !isShow && 'hidden'
       } bg-skin-form flex flex-col gap-1 px-2 pb-5 border-t-4 border-skin-focus`}
-      onSubmit={handleSubmit(async (schema) => {
-        
-        const x = await updateFamilyMutation({ id: familyId, payload: { name: schema.newName } });
-      })}
+      onSubmit={handleSubmit((schema) =>
+        updateFamilyMutate({ id: familyId, payload: { family_name: schema.newName } })
+      )}
     >
       <h2 className='font-medium'>Introduzcar nuevo nombre</h2>
       <fieldset className='flex flex-col gap-1'>
@@ -128,10 +155,3 @@ const ButtonIconTrash = () => (
     <BsTrashFill size='1em' />
   </button>
 );
-
-/*
-onSubmit={handleSubmit((data) => {
-          updateFamily(data.newName);
-          close();
-        })}
-*/

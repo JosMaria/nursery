@@ -8,7 +8,7 @@ export interface FamilyResponse {
 }
 
 export interface UpdateFamilyDTO {
-  name: string;
+  family_name: string;
 }
 
 export type UpdateFamilyType = {

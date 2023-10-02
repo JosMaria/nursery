@@ -2,11 +2,9 @@ import { Outlet } from 'react-router-dom';
 import { Navbar } from './components';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { ContextType } from './context';
-import { UpdateFamilyType } from './types';
 import {
   fetchAllFamilies,
   deleteFamilyById,
-  updateFamilyNameById,
 } from './services';
 
 const FamilyPage = () => {
@@ -24,18 +22,12 @@ const FamilyPage = () => {
     },
   });
 
-  const { mutateAsync: updateFamilyMutation } = useMutation({
-    mutationFn: ({ id, payload }: UpdateFamilyType) => updateFamilyNameById(id, payload),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['families'] }),
-  });
-
   if (status === 'loading') return 'loading families';
   if (status === 'error') return 'error families';
 
   const context: ContextType = {
     families,
     deleteFamilyByIdMutation: deleteFamilyMutation,
-    updateFamilyMutation,
   };
 
   return (
