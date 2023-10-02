@@ -8,11 +8,3 @@ export const useFamilies = () => {
     isEmpty: families.length === 0 ? true : false,
   };
 };
-
-export const useMutateAsyncFamilies = () => {
-  const { deleteFamilyByIdMutation } = useOutletContext<ContextType>();
-
-  return {
-    deleteFamilyByIdMutation,
-  };
-};

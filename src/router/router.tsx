@@ -3,7 +3,7 @@ import { Route, createBrowserRouter, createRoutesFromElements } from 'react-rout
 import { LayoutPublic } from '../layout';
 import { SingleProductRoutes } from '../pages/SingleProduct/SingleProductRoutes';
 import { PlantRoutes } from '../pages/Plant/PlantRoutes';
-import { FamilyRoutes } from '../pages/FamilyTest/FamilyRoutes';
+import { FamilyRoutes } from '../pages/Family/FamilyRoutes';
 
 import CatalogPage from '../pages/Catalog/CatalogPage';
 import RepertoryPage from '../pages/Repertory/RepertoryPage';
