@@ -5,7 +5,6 @@ import { ContextType } from './context';
 import { UpdateFamilyType } from './types';
 import {
   fetchAllFamilies,
-  createFamilies,
   deleteFamilyById,
   updateFamilyNameById,
 } from './services';
@@ -16,13 +15,6 @@ const FamilyPage = () => {
   const { data: families, status } = useQuery({
     queryKey: ['families'],
     queryFn: fetchAllFamilies,
-  });
-
-  const { mutateAsync: createFamiliesMutation } = useMutation({
-    mutationFn: createFamilies,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['families'] });
-    },
   });
 
   const { mutateAsync: deleteFamilyMutation } = useMutation({
@@ -42,7 +34,6 @@ const FamilyPage = () => {
 
   const context: ContextType = {
     families,
-    createFamiliesMutation: createFamiliesMutation,
     deleteFamilyByIdMutation: deleteFamilyMutation,
     updateFamilyMutation,
   };

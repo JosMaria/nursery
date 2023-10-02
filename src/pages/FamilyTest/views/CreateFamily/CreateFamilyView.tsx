@@ -2,11 +2,11 @@ import { useFieldArray, useForm } from 'react-hook-form';
 import { CreateFamilySchema, CreateFamilySchemaType } from './validations';
 import { valibotResolver } from '@hookform/resolvers/valibot';
 import { BsTrashFill } from 'react-icons/bs';
-import { useMutateAsyncFamilies } from '../../hooks';
 import toast from 'react-hot-toast';
 import { ErrorType } from '../../../../types';
 import { HttpStatusCode } from 'axios';
-import { CreateFamilyDTO } from '../../types';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { createFamilies } from '../../services';
 
 const CreateFamilyView = () => {
   const {
@@ -24,29 +24,31 @@ const CreateFamilyView = () => {
     name: 'families',
   });
 
-  const { createFamiliesMutation } = useMutateAsyncFamilies();
+  const queryClient = useQueryClient();
 
-  const handleCreateFamilies = async (payload: CreateFamilyDTO[]) => {
-    try {
-      const response = await createFamiliesMutation(payload);
+  const { mutate: createFamilyMutate } = useMutation({
+    mutationFn: createFamilies,
+    onSuccess(response) {
+      queryClient.invalidateQueries({ queryKey: ['families'] });
       reset();
       toast.success(
         response.length > 1 ? 'Familias guardadas exitosamente' : 'Familia guardada exitosamente',
         { className: 'custom-toast-success' }
       );
-    } catch (error) {
-      const { response } = error as ErrorType;
+    },
+    onError(error: ErrorType) {
+      const { response } = error;
       if (response.status === HttpStatusCode.BadRequest) {
         toast.error(response.data.reason, { className: 'custom-toast-error' });
       }
-    }
-  };
+    },
+  });
 
   return (
     <article className='bg-skin-form w-full p-2'>
       <form
         className='flex flex-col items-center gap-2 rounded-md text-xl'
-        onSubmit={handleSubmit((schema) => handleCreateFamilies(schema.families))}
+        onSubmit={handleSubmit((schema) => createFamilyMutate(schema.families))}
       >
         <h2 className='font-medium text-xl'>Familias para crear</h2>
 
