@@ -10,6 +10,15 @@ export const useFamilies = () => {
 };
 
 export const useMutateAsyncFamilies = () => {
-  const { createFamiliesMutation, deleteFamilyByIdMutation } = useOutletContext<ContextType>();
-  return { createFamiliesMutation, deleteFamilyByIdMutation };
+  const { 
+    createFamiliesMutation, 
+    deleteFamilyByIdMutation, 
+    updateFamilyMutation 
+  } = useOutletContext<ContextType>();
+
+  return {
+    createFamiliesMutation,
+    deleteFamilyByIdMutation,
+    updateFamilyMutation,
+  };
 };

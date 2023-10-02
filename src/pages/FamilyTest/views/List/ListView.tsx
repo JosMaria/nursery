@@ -1,8 +1,11 @@
 import { BsTrashFill } from 'react-icons/bs';
-import { useFamilies } from '../../hooks';
+import { useFamilies, useMutateAsyncFamilies } from '../../hooks';
 import { BiEdit } from 'react-icons/bi';
-import { Fragment, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { useState } from 'react';
+import { Input, object, regex, string } from 'valibot';
+import { useForm } from 'react-hook-form';
+import { valibotResolver } from '@hookform/resolvers/valibot';
+import { UpdateFamilyType } from '../../types';
 
 export const ListView = () => {
   const { isEmpty } = useFamilies();
@@ -27,16 +30,17 @@ const ListWithItems = () => {
   return (
     <ul className='flex flex-col cursor-grab bg-skin-light'>
       {families.map((family) => (
-        <Item key={family.id} name={family.name} />
+        <Item key={family.id} id={family.id} name={family.name} />
       ))}
     </ul>
   );
 };
 
 interface ItemProps {
+  id: number;
   name: string;
 }
-const Item = ({ name }: ItemProps) => {
+const Item = ({ id, name }: ItemProps) => {
   const [showFormEdit, setShowFormEdit] = useState(false);
   return (
     <>
@@ -47,16 +51,10 @@ const Item = ({ name }: ItemProps) => {
           <ButtonIconTrash />
         </div>
       </li>
-      <p className={`${!showFormEdit && 'hidden'}`}>Nuevo nombre</p>
+      <FormEditFamily familyId={id} isShow={showFormEdit} actualName={name} />
     </>
   );
 };
-
-const ButtonIconTrash = () => (
-  <button className='focus:outline-none focus:ring-2 focus:ring-red-400 bg-red-500 hover:bg-red-600 text-white rounded p-1.5'>
-    <BsTrashFill size='1em' />
-  </button>
-);
 
 interface ButtonIconEditProps {
   isShow: boolean;
@@ -66,11 +64,68 @@ interface ButtonIconEditProps {
 const ButtonIconEdit = ({ isShow, action }: ButtonIconEditProps) => (
   <button
     className={`bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-200 rounded p-1 ${
-      isShow && 'opacity-80'
+      isShow && 'opacity-60'
     }`}
     onClick={action}
   >
     <BiEdit size='1.4em' />
+  </button>
+);
+
+const UpdateFamilySchema = object({
+  newName: string([regex(/^[a-z]+$/, 'Introduzca la palabra en minuscula.')]),
+});
+
+type UpdateFamilySchemaType = Input<typeof UpdateFamilySchema>;
+
+interface FormEditFamily {
+  familyId: number;
+  isShow: boolean;
+  actualName: string;
+}
+
+const FormEditFamily = ({ familyId, isShow, actualName }: FormEditFamily) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<UpdateFamilySchemaType>({
+    resolver: valibotResolver(UpdateFamilySchema),
+  });
+
+  const { updateFamilyMutation } = useMutateAsyncFamilies();
+
+  return (
+    <form
+      className={`${
+        !isShow && 'hidden'
+      } bg-skin-form flex flex-col gap-1 px-2 pb-5 border-t-4 border-skin-focus`}
+      onSubmit={handleSubmit(async (schema) => {
+        
+        const x = await updateFamilyMutation({ id: familyId, payload: { name: schema.newName } });
+      })}
+    >
+      <h2 className='font-medium'>Introduzcar nuevo nombre</h2>
+      <fieldset className='flex flex-col gap-1'>
+        <input
+          type='text'
+          className='custom-input-form p-1.5'
+          placeholder={actualName}
+          autoComplete='off'
+          {...register('newName')}
+        />
+        <p className='custom-lbl-form-error'>{errors.newName?.message}</p>
+      </fieldset>
+      <button className='custom-btn-form py-1.5 px-4' type='submit'>
+        Cambiar
+      </button>
+    </form>
+  );
+};
+
+const ButtonIconTrash = () => (
+  <button className='focus:outline-none focus:ring-2 focus:ring-red-400 bg-red-500 hover:bg-red-600 text-white rounded p-1.5'>
+    <BsTrashFill size='1em' />
   </button>
 );
 
@@ -80,30 +135,3 @@ onSubmit={handleSubmit((data) => {
           close();
         })}
 */
-
-const EditFamilyModal = () => (
-  <dialog className='fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm shadow-xl flex justify-center items-center select-none w-full h-screen text-skin-dark'>
-    <form className=' bg-skin-light p-4 rounded flex flex-col justify-center items-center gap-5 relative'>
-      <button
-        onClick={close}
-        className='absolute right-0.5 top-0.5 cursor-pointer bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-1 focus:ring-red-400 text-white font-bold text-lg leading-none px-1 rounded'
-      >
-        &times;
-      </button>
-      <h2 className='font-medium text-base'>Introduzca nuevo nombre</h2>
-      <div className='flex flex-col gap-1'>
-        <input
-          type='text'
-          className='custom-input-form'
-          //placeholder={oldName}
-          autoComplete='off'
-          //{...register('newName')}
-        />
-        {/* <p className='custom-lbl-form-error'>{errors.newName?.message}</p> */}
-      </div>
-      <button className='custom-btn-form' type='submit'>
-        Cambiar
-      </button>
-    </form>
-  </dialog>
-);

@@ -10,3 +10,8 @@ export interface FamilyResponse {
 export interface UpdateFamilyDTO {
   name: string;
 }
+
+export type UpdateFamilyType = {
+  id: number;
+  payload: UpdateFamilyDTO;
+};

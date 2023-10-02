@@ -1,8 +1,14 @@
 import { Outlet } from 'react-router-dom';
 import { Navbar } from './components';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { fetchAllFamilies, createFamilies, deleteFamilyById } from './services';
 import { ContextType } from './context';
+import { UpdateFamilyType } from './types';
+import {
+  fetchAllFamilies,
+  createFamilies,
+  deleteFamilyById,
+  updateFamilyNameById,
+} from './services';
 
 const FamilyPage = () => {
   const queryClient = useQueryClient();
@@ -26,13 +32,19 @@ const FamilyPage = () => {
     },
   });
 
+  const { mutateAsync: updateFamilyMutation } = useMutation({
+    mutationFn: ({ id, payload }: UpdateFamilyType) => updateFamilyNameById(id, payload),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['families'] }),
+  });
+
   if (status === 'loading') return 'loading families';
   if (status === 'error') return 'error families';
 
   const context: ContextType = {
     families,
     createFamiliesMutation: createFamiliesMutation,
-    deleteFamilyByIdMutation: deleteFamilyMutation
+    deleteFamilyByIdMutation: deleteFamilyMutation,
+    updateFamilyMutation,
   };
 
   return (
