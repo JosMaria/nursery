@@ -53,7 +53,7 @@ export default {
       ringColor: {
         skin: {
           input: withOpacity('--fill-color-btn-hover'),
-          btn: withOpacity('--fill-color-btn-hover')
+          btn: withOpacity('--fill-color-btn-hover'),
         },
       },
     },

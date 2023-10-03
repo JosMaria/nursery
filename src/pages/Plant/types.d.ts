@@ -1,21 +1,38 @@
 import { PlantClassificationType, StatusType } from '../../types';
 
-export interface SheetProperty {
+type TechnicalSheetType = {
   word: string;
   info: string;
+};
+
+interface CreatePlant {
+  commonName: string;
+  scientificName: string;
+  scientistLastnameInitial: string;
+  family: string;
+  classifications: string[];
+  status: string;
+  description: string;
+  details: string[];
+  notes: string[];
+  technicalSheet: TechnicalSheetType[];
 }
 
-export interface SingleProductResponse {
+interface CreatePlantResponse {
   id: number;
   commonName: string;
-  scientificName: string | null;
-  scientistLastnameInitial: string | null;
-  family: string | null;
-  status: StatusType;
+  scientificName: string;
+  scientistLastnameInitial: string;
+  family: string;
   classifications: PlantClassificationType[];
+  status: StatusType;
   description: string;
-  photos_URL: string[];
-  notes: string[];
-  details: string[];
-  technicalSheet: SheetProperty[];
+  numberDetails: number;
+  numberNotes: number;
+  technicalSheet: TechnicalSheetType[];
+}
+
+interface FetchFamilyResponse {
+  id: number;
+  name: string;
 }

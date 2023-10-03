@@ -33,13 +33,11 @@ export const Table = ({ items }: Props) => {
 const TableHeader = () => (
   <thead className='bg-skin-nav text-skin-light whitespace-nowrap text-sm max-sm:text-xs'>
     <tr>
-      {['#', 'Nombre Comun', 'Nombre Cientifico', 'Familia'].map(
-        (title, index) => (
-          <th key={index} className='py-3 px-10 max-sm:px-7'>
-            {title}
-          </th>
-        )
-      )}
+      {['#', 'Nombre Comun', 'Nombre Cientifico', 'Familia'].map((title, index) => (
+        <th key={index} className='py-3 px-10 max-sm:px-7'>
+          {title}
+        </th>
+      ))}
     </tr>
   </thead>
 );
