@@ -1,8 +1,9 @@
 import { createContext, useContext } from 'react';
-import { SingleProductResponse } from '../types';
+import { FetchFamilyResponse } from '../types';
 
 type PlantContextType = {
-  plant: SingleProductResponse;
+  families: FetchFamilyResponse[];
+  createPlant: () => void;
 };
 
 export const PlantContext = createContext<PlantContextType | null>(null);
@@ -10,8 +11,7 @@ export const PlantContext = createContext<PlantContextType | null>(null);
 export const usePlantContext = () => {
   const plantContext = useContext(PlantContext);
 
-  if (!plantContext)
-    throw new Error('You need to use this context inside PlantProvider');
+  if (!plantContext) throw new Error('You need to use this context inside PlantProvider');
 
   return plantContext;
 };

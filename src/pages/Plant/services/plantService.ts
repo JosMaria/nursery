@@ -1,11 +1,12 @@
 import { axiosInstance } from '../../../config';
-import { SingleProductResponse } from '../types';
+import { CreatePlant, CreatePlantResponse, FetchFamilyResponse } from '../types';
 
-export const fetchProductByID = async (
-  id: number
-): Promise<SingleProductResponse> => {
-  const { data } = await axiosInstance.get<SingleProductResponse>(
-    `nursery/products/${id}`
-  );
+export const createPlant = async (payload: CreatePlant): Promise<CreatePlantResponse> => {
+  const { data } = await axiosInstance.post<CreatePlantResponse>('plants', payload);
+  return data;
+};
+
+export const fetchAllFamilies = async (): Promise<FetchFamilyResponse[]> => {
+  const { data } = await axiosInstance.get<FetchFamilyResponse[]>('families');
   return data;
 };

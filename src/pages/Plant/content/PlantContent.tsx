@@ -1,27 +1,22 @@
-import { Link, Outlet } from 'react-router-dom';
-import { InformationSection, Navbar, PicturesSection } from '../components';
+import { NavLink, Outlet } from 'react-router-dom';
 
 export const PlantContent = () => (
-  <div className='w-full flex p-5 justify-center'>
-    <div className='max-w-7xl w-full flex flex-col items-center gap-5'>
-      <section className='flex flex-wrap-reverse justify-evenly gap-5 w-full'>
-        <PicturesSection />
-        <InformationSection />
-      </section>
-
-      <section className='w-full text-sm max-sm:text-xs'>
-        <Navbar />
-        <article className='border-2 border-t-0 border-black p-2'>
-          <Outlet />
-        </article>
-      </section>
-
-      <Link
-        to='/'
-        className='custom-btn-form w-fit flex gap-3 max-sm:text-xs self-start'
+  <div className='flex flex-col items-center gap-3 w-full'>
+    <nav className='bg-skin-nav bg-opacity-20 flex font-medium text-base max-md:text-sm max-sm:text-xs text-center max-xs:w-full max-sm:w-3/4 max-lg:w-2/3 max-xl:w-1/2 w-1/3'>
+      <NavLink
+        to='.'
+        end
+        className={({ isActive }) => (isActive ? 'custom-nav-active' : 'custom-nav-inactive')}
       >
-        &#10229;<span>Volver</span>
-      </Link>
-    </div>
+        Crear Planta
+      </NavLink>
+      <NavLink
+        to='list'
+        className={({ isActive }) => (isActive ? 'custom-nav-active' : 'custom-nav-inactive')}
+      >
+        Listado
+      </NavLink>
+    </nav>
+    <Outlet />
   </div>
 );
