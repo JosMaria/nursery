@@ -1,8 +1,8 @@
-import { CreateFamilyForm } from '../../components';
+import { CreateForm } from '../../components';
 
 const Create = () => (
   <article className='bg-skin-form w-full p-2'>
-    <CreateFamilyForm />
+    <CreateForm />
   </article>
 );
 

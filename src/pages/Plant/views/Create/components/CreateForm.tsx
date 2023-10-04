@@ -1,10 +1,10 @@
 import { useFieldArray, useForm } from 'react-hook-form';
-import { CreatePlantSchema, CreatePlantSchemaType } from '../validations';
+import { CreatePlantSchema, CreatePlantSchemaType } from '../../../validations';
 import { valibotResolver } from '@hookform/resolvers/valibot';
 import { ALL_CLASSIFICATIONS, ALL_STATUS } from '../../../../../constants';
 import { traduceClassification, traduceStatus } from '../../../../../utils';
 
-export const FormCreatePlant = () => {
+export const CreateForm = () => {
   const {
     register,
     handleSubmit,
@@ -14,50 +14,47 @@ export const FormCreatePlant = () => {
     resolver: valibotResolver(CreatePlantSchema),
   });
 
-  const {
-    fields: fieldsDetails,
-    append: appendDetail,
-    remove: removeDetail,
-  } = useFieldArray({
-    control,
-    name: 'details',
-  });
+  // const {
+  //   fields: fieldsDetails,
+  //   append: appendDetail,
+  //   remove: removeDetail,
+  // } = useFieldArray({
+  //   control,
+  //   name: 'details',
+  // });
 
-  const {
-    fields: fieldsNotes,
-    append: appendNote,
-    remove: removeNote,
-  } = useFieldArray({
-    control,
-    name: 'notes',
-  });
+  // const {
+  //   fields: fieldsNotes,
+  //   append: appendNote,
+  //   remove: removeNote,
+  // } = useFieldArray({
+  //   control,
+  //   name: 'notes',
+  // });
 
-  const {
-    fields: fieldDataSheet,
-    append: appendContent,
-    remove: removeContent,
-  } = useFieldArray({
-    control,
-    name: 'dataSheet',
-  });
+  // const {
+  //   fields: fieldDataSheet,
+  //   append: appendContent,
+  //   remove: removeContent,
+  // } = useFieldArray({
+  //   control,
+  //   name: 'dataSheet',
+  // });
 
   return (
     <form
       className='flex flex-col items-center gap-5'
-      onSubmit={handleSubmit((e) => console.log(e))}
+      onSubmit={handleSubmit((schema) =>
+        console.log({ commonName: schema.commonName.trim().toLowerCase() })
+      )}
     >
       <div className='grid max-md:place-items-center grid-cols-2 max-md:grid-cols-1 gap-y-5 gap-x-10'>
         <fieldset className='flex flex-col gap-1 w-72'>
           <label className='font-medium text-sm'>Nombre com&uacute;n</label>
-          <input
-            type='text'
-            className='custom-input-form'
-            autoComplete='off'
-            {...register('commonName')}
-          />
+          <input className='custom-input-form' autoComplete='off' {...register('commonName')} />
           <p className='custom-lbl-form-error'>{errors.commonName?.message}</p>
         </fieldset>
-
+        {/*
         <section className='flex justify-between gap-2 w-72'>
           <fieldset className='flex flex-col gap-1'>
             <label className='font-medium text-sm'>Nombre cientifico</label>
@@ -233,7 +230,7 @@ export const FormCreatePlant = () => {
           >
             Agregar valor
           </button>
-        </fieldset>
+        </fieldset> */}
       </div>
 
       <button className='custom-btn-form w-fit' type='submit'>

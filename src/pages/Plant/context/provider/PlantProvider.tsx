@@ -30,14 +30,14 @@ export const PlantProvider = ({ children }: Props) => {
     },
   });
 
-  const { data: families } = useQuery({
-    queryKey: ['families'],
-    queryFn: fetchAllFamilies,
-    initialData: [],
-  });
+  // const { data: families } = useQuery({
+  //   queryKey: ['families'],
+  //   queryFn: fetchAllFamilies,
+  //   initialData: [],
+  // });
 
   return (
-    <PlantContext.Provider value={{ families, createPlant: () => createPlantMutate }}>
+    <PlantContext.Provider value={{ families: [], createPlant: () => createPlantMutate }}>
       {children}
     </PlantContext.Provider>
   );

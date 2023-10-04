@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import PlantPage from './PlantPage';
-import CreatePlantView from './views/CreatePlant/CreatePlantView';
+import CreatePlantView from './views/Create/CreateView';
 import ListView from './views/List/ListView';
 
 export const PlantRoutes = () => (
