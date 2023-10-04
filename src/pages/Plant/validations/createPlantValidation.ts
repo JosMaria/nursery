@@ -1,24 +1,48 @@
-import { Output, array, maxLength, minLength, object, regex, required, string } from 'valibot';
+// import {
+//   Output,
+//   maxLength,
+//   minLength,
+//   object,
+//   regex,
+//   string,
+//   optional,
+// } from 'valibot';
 
-export const CreatePlantSchema = object({
-  commonName: string([
-    minLength(2, 'Minimo dos caracteres'),
-    regex(/^[^\s].*[^\s]$/, 'Revise espacio en blanco al inicio y final'),
-  ]),
-  //scientificName: string([regex(/^[a-z]+(?: [a-z]+)*$/, 'Revise minusculas y espacios en blanco.')]),
-  //scientistLastnameInitial: string([regex(/^[a-z]$/, 'solo una letra')]),
-  // family: string('Se debe agregar caracteres alfabeticos'),
-  // status: string('Se debe agregar un estado'),
-  // classifications: array(string()),
-  // description: string(),
-  // details: array(object({ detail: string() })),
-  // notes: array(object({ note: string() })),
-  // dataSheet: array(
-  //   object({
-  //     word: string(),
-  //     value: string(),
-  //   })
-  // ),
+import { InferType, object, string } from 'yup';
+
+// const scientificNameValidation = optional(
+//   string([
+//     minLength(2, 'Minimo 2 caracteres'),
+//     regex(/^[^\s].*[^\s]$/, 'Revise espacio en blanco al inicio y final'),
+//   ])
+// );
+
+// export const CreatePlantSchema = object({
+//   commonName: string([
+//     minLength(2, 'Minimo 2 caracteres'),
+//     regex(/^[^\s].*[^\s]$/, 'Revise espacio en blanco al inicio y final'),
+//   ]),
+//   ...(scientificNameValidation && { scientificName: scientificNameValidation }),
+
+//   scientistLastnameInitial: string([maxLength(1, '1')]),
+//   // family: string('Se debe agregar caracteres alfabeticos'),
+//   // status: string('Se debe agregar un estado'),
+//   // classifications: array(string()),
+//   // description: string(),
+//   // details: array(object({ detail: string() })),
+//   // notes: array(object({ note: string() })),
+//   // dataSheet: array(
+//   //   object({
+//   //     word: string(),
+//   //     value: string(),
+//   //   })
+//   // ),
+// });
+
+//export type CreatePlantSchemaType = Output<typeof CreatePlantSchema>;
+
+export const createPlantSchema = object().shape({
+  commonName: string().required(),
 });
 
-export type CreatePlantSchemaType = Output<typeof CreatePlantSchema>;
+export type CreatePlantSchemaType = InferType<typeof createPlantSchema>;

@@ -1,8 +1,26 @@
 import { useFieldArray, useForm } from 'react-hook-form';
-import { CreatePlantSchema, CreatePlantSchemaType } from '../../../validations';
-import { valibotResolver } from '@hookform/resolvers/valibot';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { ALL_CLASSIFICATIONS, ALL_STATUS } from '../../../../../constants';
 import { traduceClassification, traduceStatus } from '../../../../../utils';
+
+import { InferType, array, object, string } from 'yup';
+import { CloseButton } from '../../../components';
+
+export const createPlantSchema = object({
+  commonName: string()
+    .matches(/^(?!\s*$).+/, 'Nombre común obligatorio')
+    .required('Nombre común requerido'),
+  scientificName: string().notRequired(),
+  scientistLastnameInitial: string().max(1, 'Max 1 letra').notRequired(),
+  family: string().notRequired(),
+  status: string().required(),
+  classifications: array().min(1, 'Minimo escoger 1 clasificación').of(string()),
+  description: string().notRequired(),
+  details: array().of(object({ detail: string() })),
+  notes: array().of(object({ note: string() })),
+});
+
+type CreatePlantSchemaType = InferType<typeof createPlantSchema>;
 
 export const CreateForm = () => {
   const {
@@ -10,27 +28,27 @@ export const CreateForm = () => {
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<CreatePlantSchemaType>({
-    resolver: valibotResolver(CreatePlantSchema),
+  } = useForm({
+    resolver: yupResolver<CreatePlantSchemaType>(createPlantSchema),
   });
 
-  // const {
-  //   fields: fieldsDetails,
-  //   append: appendDetail,
-  //   remove: removeDetail,
-  // } = useFieldArray({
-  //   control,
-  //   name: 'details',
-  // });
+  const {
+    fields: fieldsDetails,
+    append: appendDetail,
+    remove: removeDetail,
+  } = useFieldArray({
+    control,
+    name: 'details',
+  });
 
-  // const {
-  //   fields: fieldsNotes,
-  //   append: appendNote,
-  //   remove: removeNote,
-  // } = useFieldArray({
-  //   control,
-  //   name: 'notes',
-  // });
+  const {
+    fields: fieldsNotes,
+    append: appendNote,
+    remove: removeNote,
+  } = useFieldArray({
+    control,
+    name: 'notes',
+  });
 
   // const {
   //   fields: fieldDataSheet,
@@ -43,24 +61,25 @@ export const CreateForm = () => {
 
   return (
     <form
-      className='flex flex-col items-center gap-5'
-      onSubmit={handleSubmit((schema) =>
-        console.log({ commonName: schema.commonName.trim().toLowerCase() })
-      )}
+      className='flex flex-col items-center gap-5 w-full'
+      onSubmit={handleSubmit((schema) => {
+        console.log(schema);
+        console.log('es valido');
+      })}
     >
-      <div className='grid max-md:place-items-center grid-cols-2 max-md:grid-cols-1 gap-y-5 gap-x-10'>
-        <fieldset className='flex flex-col gap-1 w-72'>
+      <div className='grid max-md:place-items-center justify-items-center grid-cols-2 max-md:grid-cols-1 gap-y-3 gap-x-10 w-full'>
+        <fieldset className='flex flex-col gap-1 w-60'>
           <label className='font-medium text-sm'>Nombre com&uacute;n</label>
           <input className='custom-input-form' autoComplete='off' {...register('commonName')} />
           <p className='custom-lbl-form-error'>{errors.commonName?.message}</p>
         </fieldset>
-        {/*
-        <section className='flex justify-between gap-2 w-72'>
+
+        <section className='flex gap-3'>
           <fieldset className='flex flex-col gap-1'>
-            <label className='font-medium text-sm'>Nombre cientifico</label>
+            <label className='font-medium text-sm'>(*) Nombre cientifico</label>
             <input
               type='text'
-              className='custom-input-form'
+              className='custom-input-form w-52'
               autoComplete='off'
               {...register('scientificName')}
             />
@@ -74,13 +93,13 @@ export const CreateForm = () => {
               autoComplete='off'
               {...register('scientistLastnameInitial')}
             />
-            <p className='custom-lbl-form-error'>{errors.scientistLastnameInitial?.message}</p>
+            <p className='custom-lbl-form-error whitespace-nowrap'>{errors.scientistLastnameInitial?.message}</p>
           </fieldset>
         </section>
 
         <fieldset className='flex flex-col gap-1'>
           <label className='font-medium text-sm' htmlFor='family'>
-            Familia
+          (*) Familia
           </label>
           <select id='family' className='custom-input-form w-52' {...register('family')}>
             <option value=''>sin familia</option>
@@ -103,6 +122,7 @@ export const CreateForm = () => {
               </option>
             ))}
           </select>
+          <p className='custom-lbl-form-error'>{errors.status?.message}</p>
         </fieldset>
 
         <fieldset className='flex flex-col gap-1 col-span-full'>
@@ -118,17 +138,18 @@ export const CreateForm = () => {
                     className='w-4'
                     {...register('classifications')}
                   />
-                  <label htmlFor={`classification-${index}`} className='text-xs'>
+                  <label htmlFor={`classification-${index}`} className='text-xs sm:text-sm'>
                     {traduceClassification(classification)}
                   </label>
                 </div>
               </li>
             ))}
           </ul>
+          <p className='custom-lbl-form-error'>{errors.classifications?.message}</p>
         </fieldset>
 
         <fieldset className='flex flex-col gap-1 col-span-full w-full'>
-          <label className='font-medium text-sm'>Descripci&oacute;n</label>
+          <label className='font-medium text-sm'>(*) Descripci&oacute;n</label>
           <textarea
             className='custom-input-form h-20'
             autoComplete='off'
@@ -138,22 +159,16 @@ export const CreateForm = () => {
         </fieldset>
 
         <fieldset className='flex flex-col gap-2 w-full col-span-full'>
-          <p className='font-medium text-sm'>Detalles</p>
+          <p className='font-medium text-sm'>(*) Detalles</p>
           <div className='flex flex-col gap-5'>
             {fieldsDetails.map((field, index) => (
-              <div key={field.id} className='flex items-baseline gap-1'>
+              <div key={field.id} className='flex items-baseline gap-0.5'>
                 <textarea
                   placeholder='Ingrese un detalle a la vez'
                   className='custom-input-form h-20 w-full'
                   {...register(`details.${index}.detail` as const)}
                 ></textarea>
-                <button
-                  type='button'
-                  onClick={() => removeDetail(index)}
-                  className='leading-none px-2 rounded-md bg-red-500 text-2xl text-white'
-                >
-                  &#215;
-                </button>
+                <CloseButton action={() => removeDetail(index)} />
               </div>
             ))}
           </div>
@@ -167,7 +182,7 @@ export const CreateForm = () => {
         </fieldset>
 
         <fieldset className='flex flex-col gap-2 w-full col-span-full'>
-          <p className='font-medium text-sm'>Notas</p>
+          <p className='font-medium text-sm'>(*) Notas</p>
           <div className='flex flex-col gap-5'>
             {fieldsNotes.map((field, index) => (
               <div key={field.id} className='flex items-baseline gap-1'>
@@ -176,13 +191,7 @@ export const CreateForm = () => {
                   className='custom-input-form h-20 w-full'
                   {...register(`notes.${index}.note` as const)}
                 ></textarea>
-                <button
-                  type='button'
-                  onClick={() => removeNote(index)}
-                  className='leading-none px-2 rounded-md bg-red-500 text-2xl text-white'
-                >
-                  &#215;
-                </button>
+                <CloseButton action={() => removeNote(index)} />
               </div>
             ))}
           </div>
@@ -194,7 +203,7 @@ export const CreateForm = () => {
             Agregar Nota
           </button>
         </fieldset>
-
+        {/*
         <fieldset className='flex flex-col gap-2 w-full col-span-full'>
           <p className='font-medium text-sm'>Fichar Tecnica</p>
           <div className='flex flex-col gap-7'>
