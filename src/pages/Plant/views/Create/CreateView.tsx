@@ -1,4 +1,4 @@
-import { CreateForm } from './components';
+import { CreateForm } from '../../components';
 
 const CreateView = () => (
   <article className='bg-skin-form w-full flex flex-col items-center gap-5 p-4'>

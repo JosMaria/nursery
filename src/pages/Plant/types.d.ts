@@ -36,3 +36,8 @@ interface FetchFamilyResponse {
   id: number;
   name: string;
 }
+
+type ImageUploadType = {
+  name: string;
+  url: string;
+};

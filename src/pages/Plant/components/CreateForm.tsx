@@ -1,26 +1,11 @@
 import { useFieldArray, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { ALL_CLASSIFICATIONS, ALL_STATUS } from '../../../../../constants';
-import { traduceClassification, traduceStatus } from '../../../../../utils';
+import { ALL_CLASSIFICATIONS, ALL_STATUS } from '../../../constants';
+import { traduceClassification, traduceStatus } from '../../../utils';
+import { CloseButton, UploadFileInput } from '.';
+import { CreatePlantSchemaType, createPlantSchema } from '../validations';
+import { DevTool } from "@hookform/devtools";
 
-import { InferType, array, object, string } from 'yup';
-import { CloseButton } from '../../../components';
-
-export const createPlantSchema = object({
-  commonName: string()
-    .matches(/^(?!\s*$).+/, 'Nombre común obligatorio')
-    .required('Nombre común requerido'),
-  scientificName: string().notRequired(),
-  scientistLastnameInitial: string().max(1, 'Max 1 letra').notRequired(),
-  family: string().notRequired(),
-  status: string().required(),
-  classifications: array().min(1, 'Minimo escoger 1 clasificación').of(string()),
-  description: string().notRequired(),
-  details: array().of(object({ detail: string() })),
-  notes: array().of(object({ note: string() })),
-});
-
-type CreatePlantSchemaType = InferType<typeof createPlantSchema>;
 
 export const CreateForm = () => {
   const {
@@ -50,16 +35,17 @@ export const CreateForm = () => {
     name: 'notes',
   });
 
-  // const {
-  //   fields: fieldDataSheet,
-  //   append: appendContent,
-  //   remove: removeContent,
-  // } = useFieldArray({
-  //   control,
-  //   name: 'dataSheet',
-  // });
+  const {
+    fields: fieldDataSheet,
+    append: appendContent,
+    remove: removeContent,
+  } = useFieldArray({
+    control,
+    name: 'dataSheet',
+  });
 
   return (
+    <>
     <form
       className='flex flex-col items-center gap-5 w-full'
       onSubmit={handleSubmit((schema) => {
@@ -93,13 +79,15 @@ export const CreateForm = () => {
               autoComplete='off'
               {...register('scientistLastnameInitial')}
             />
-            <p className='custom-lbl-form-error whitespace-nowrap'>{errors.scientistLastnameInitial?.message}</p>
+            <p className='custom-lbl-form-error whitespace-nowrap'>
+              {errors.scientistLastnameInitial?.message}
+            </p>
           </fieldset>
         </section>
 
         <fieldset className='flex flex-col gap-1'>
           <label className='font-medium text-sm' htmlFor='family'>
-          (*) Familia
+            (*) Familia
           </label>
           <select id='family' className='custom-input-form w-52' {...register('family')}>
             <option value=''>sin familia</option>
@@ -166,6 +154,7 @@ export const CreateForm = () => {
                 <textarea
                   placeholder='Ingrese un detalle a la vez'
                   className='custom-input-form h-20 w-full'
+                  autoComplete='off'
                   {...register(`details.${index}.detail` as const)}
                 ></textarea>
                 <CloseButton action={() => removeDetail(index)} />
@@ -189,6 +178,7 @@ export const CreateForm = () => {
                 <textarea
                   placeholder='Ingrese una nota a la vez'
                   className='custom-input-form h-20 w-full'
+                  autoComplete='off'
                   {...register(`notes.${index}.note` as const)}
                 ></textarea>
                 <CloseButton action={() => removeNote(index)} />
@@ -203,29 +193,25 @@ export const CreateForm = () => {
             Agregar Nota
           </button>
         </fieldset>
-        {/*
+
         <fieldset className='flex flex-col gap-2 w-full col-span-full'>
-          <p className='font-medium text-sm'>Fichar Tecnica</p>
+          <p className='font-medium text-sm'>(*) Ficha Tecnica</p>
           <div className='flex flex-col gap-7'>
             {fieldDataSheet.map((field, index) => (
               <div key={field.id} className='flex flex-col gap-2'>
-                <div className='flex items-center gap-3'>
+                <div className='flex items-center gap-2'>
                   <input
                     type='text'
                     placeholder='titulo'
+                    autoComplete='off'
                     className='custom-input-form w-44'
                     {...register(`dataSheet.${index}.word` as const)}
                   />
-                  <button
-                    type='button'
-                    onClick={() => removeContent(index)}
-                    className='leading-none px-2 rounded-md bg-red-500 text-2xl text-white'
-                  >
-                    &#215;
-                  </button>
+                  <CloseButton action={() => removeContent(index)} />
                 </div>
                 <textarea
-                  placeholder='Ingrese una nota a la vez'
+                  placeholder='Ingrese la definición'
+                  autoComplete='off'
                   className='custom-input-form h-16 w-full'
                   {...register(`dataSheet.${index}.value` as const)}
                 ></textarea>
@@ -239,12 +225,14 @@ export const CreateForm = () => {
           >
             Agregar valor
           </button>
-        </fieldset> */}
+        </fieldset>
+        <UploadFileInput register={register} />
       </div>
-
       <button className='custom-btn-form w-fit' type='submit'>
         Crear
       </button>
     </form>
+          <DevTool control={control} /> </>
+
   );
 };
