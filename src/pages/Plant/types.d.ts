@@ -46,3 +46,7 @@ interface SimpleInfoPlantResponseDTO {
   id: number;
   commonName: string;
 }
+
+type PlantContextType = {
+  simpleInfo: SimpleInfoPlantResponseDTO[];
+};
