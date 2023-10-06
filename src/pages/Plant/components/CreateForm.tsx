@@ -2,10 +2,13 @@ import { useFieldArray, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ALL_CLASSIFICATIONS, ALL_STATUS } from '../../../constants';
 import { traduceClassification, traduceStatus } from '../../../utils';
-import { CloseButton, UploadFileInput } from '.';
+import { CloseButton } from '.';
 import { CreatePlantSchemaType, createPlantSchema } from '../validations';
-import { DevTool } from "@hookform/devtools";
-
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { createPlant, fetchAllFamilies } from '../services';
+import toast from 'react-hot-toast';
+import { ErrorType } from '../../../types';
+import { HttpStatusCode } from 'axios';
 
 export const CreateForm = () => {
   const {
@@ -13,6 +16,7 @@ export const CreateForm = () => {
     handleSubmit,
     formState: { errors },
     control,
+    reset,
   } = useForm({
     resolver: yupResolver<CreatePlantSchemaType>(createPlantSchema),
   });
@@ -44,13 +48,49 @@ export const CreateForm = () => {
     name: 'dataSheet',
   });
 
+  const queryClient = useQueryClient();
+
+  const { mutate: createPlantMutation } = useMutation({
+    mutationFn: createPlant,
+    onSuccess(data) {
+      queryClient.invalidateQueries({ queryKey: ['common-names'] });
+      reset();
+      toast.success(`Planta ${data.commonName} guardada existosamente`, {
+        className: 'custom-toast-success w-fit',
+      });
+    },
+    onError(error: ErrorType) {
+      const { response } = error;
+      if (response.status === HttpStatusCode.BadRequest) {
+        toast.error(response.data.reason, { className: 'custom-toast-error' });
+      }
+    },
+  });
+
+  const {data: families} = useQuery({
+    queryKey: ['families'],
+    queryFn: fetchAllFamilies,
+    initialData: []
+  })
+
   return (
-    <>
     <form
       className='flex flex-col items-center gap-5 w-full'
       onSubmit={handleSubmit((schema) => {
-        console.log(schema);
-        console.log('es valido');
+        const { notes, details, dataSheet, ...schemaConverted } = schema;
+        const notesConverted: string[] = schema.notes.map((item) => item.note);
+        const detailsConverted = schema.details.map((item) => item.detail);
+        const technicalSheetConverted = schema.dataSheet.map((item) => ({
+          word: item.word,
+          info: item.value,
+        }));
+
+        createPlantMutation({
+          ...schemaConverted,
+          details: detailsConverted,
+          notes: notesConverted,
+          technicalSheet: technicalSheetConverted,
+        });
       })}
     >
       <div className='grid max-md:place-items-center justify-items-center grid-cols-2 max-md:grid-cols-1 gap-y-3 gap-x-10 w-full'>
@@ -91,7 +131,7 @@ export const CreateForm = () => {
           </label>
           <select id='family' className='custom-input-form w-52' {...register('family')}>
             <option value=''>sin familia</option>
-            {[{ id: 1, name: 'family' }].map((family) => (
+            {families.map((family) => (
               <option key={family.id} value={family.name}>
                 {family.name}
               </option>
@@ -226,13 +266,10 @@ export const CreateForm = () => {
             Agregar valor
           </button>
         </fieldset>
-        <UploadFileInput register={register} />
       </div>
       <button className='custom-btn-form w-fit' type='submit'>
         Crear
       </button>
     </form>
-          <DevTool control={control} /> </>
-
   );
 };

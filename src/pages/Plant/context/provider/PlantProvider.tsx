@@ -1,9 +1,9 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { PlantContext } from '..';
 import toast from 'react-hot-toast';
 import { HttpStatusCode } from 'axios';
 import { ErrorType } from '../../../../types';
-import { createPlant, fetchAllFamilies } from '../../services';
+import { createPlant } from '../../services';
 
 type Props = {
   children: JSX.Element | JSX.Element[];

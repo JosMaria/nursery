@@ -41,3 +41,8 @@ type ImageUploadType = {
   name: string;
   url: string;
 };
+
+interface SimpleInfoPlantResponseDTO {
+  id: number;
+  commonName: string;
+}

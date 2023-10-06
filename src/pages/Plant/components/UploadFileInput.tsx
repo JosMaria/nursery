@@ -1,13 +1,8 @@
 import { useRef, useState } from 'react';
 import { ImageUploadType } from '../types';
-import { useForm } from 'react-hook-form';
-import { CreatePlantSchemaType } from '../validations';
 
-interface UploadFileInputProps {
-  register: ReturnType<typeof useForm<CreatePlantSchemaType>>['register'];
-}
 
-export const UploadFileInput = ({ register }: UploadFileInputProps) => {
+export const UploadFileInput = () => {
   const [images, setImages] = useState<ImageUploadType[]>([]);
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -87,7 +82,6 @@ export const UploadFileInput = ({ register }: UploadFileInputProps) => {
           </span>
         )}
         <input
-          {...register('images')}
           type='file'
           multiple
           className='hidden'
