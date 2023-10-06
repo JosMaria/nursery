@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import FamilyPage from './FamilyPage';
-import CreateView from './views/Create/CreateView';
-import ListView from './views/List/ListView';
+import CreateView from './views/CreateView';
+import ListView from './views/ListView';
 
 export const FamilyRoutes = () => (
   <Routes>

@@ -1,6 +1,6 @@
-import { useFamilies } from '../../hooks';
+import { useFamilies } from '../hooks';
 import { useState } from 'react';
-import { DeleteModal, EditButton, TrashButton, EditForm } from '../../components';
+import { DeleteModal, EditButton, TrashButton, EditForm } from '../components';
 
 const ListView = () => {
   const { isEmpty } = useFamilies();
