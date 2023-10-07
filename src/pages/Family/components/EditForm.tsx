@@ -2,11 +2,11 @@ import { valibotResolver } from '@hookform/resolvers/valibot';
 import { UpdateFamilySchema, UpdateFamilySchemaType } from '../validations';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { updateFamilyNameById } from '../services';
-import { UpdateFamilyType } from '../types';
 import { useForm } from 'react-hook-form';
 import { HttpStatusCode } from 'axios';
 import toast from 'react-hot-toast';
 import { ErrorType } from '../../../types';
+import { UpdateFamilyType } from '../types';
 
 interface EditFormProps {
   familyId: number;
@@ -29,10 +29,10 @@ export const EditForm = ({ familyId, isShow, actualName, close }: EditFormProps)
   const { mutate: updateFamilyMutate } = useMutation({
     mutationFn: ({ id, payload }: UpdateFamilyType) => updateFamilyNameById(id, payload),
     onSuccess(response) {
+      queryClient.invalidateQueries({ queryKey: ['families'] });
       toast.success(`Familia actualizada a ${response.name}.`, {
         className: 'custom-toast-success',
       });
-      queryClient.invalidateQueries({ queryKey: ['families'] });
       close();
     },
     onError(error: ErrorType) {

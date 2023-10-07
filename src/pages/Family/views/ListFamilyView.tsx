@@ -2,22 +2,22 @@ import { useFamilies } from '../hooks';
 import { useState } from 'react';
 import { DeleteModal, EditButton, TrashButton, EditForm } from '../components';
 
-const ListView = () => {
+const ListFamilyView = () => {
   const { isEmpty } = useFamilies();
 
   return (
     <article className='w-full bg-skin-form rounded-xl flex flex-col items-center gap-3 text-sm p-2 h-fit'>
       <h2 className='font-medium text-xl'>Listado familias</h2>
-      {isEmpty ? (
-        <p className='bg-skin-light font-medium text-center px-3 text-lg select-none'>
-          No hay ninguna familia registrada
-        </p>
-      ) : (
-        <ListWithItems />
-      )}
+      {isEmpty ? <ListWithoutItems /> : <ListWithItems />}
     </article>
   );
 };
+
+const ListWithoutItems = () => (
+  <p className='bg-skin-light font-medium text-center px-3 text-lg select-none'>
+    No hay ninguna familia registrada
+  </p>
+);
 
 const ListWithItems = () => {
   const { families } = useFamilies();
@@ -35,6 +35,7 @@ interface ItemProps {
   id: number;
   name: string;
 }
+
 const Item = ({ id, name }: ItemProps) => {
   const [showFormEdit, setShowFormEdit] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -61,4 +62,4 @@ const Item = ({ id, name }: ItemProps) => {
   );
 };
 
-export default ListView;
+export default ListFamilyView;
