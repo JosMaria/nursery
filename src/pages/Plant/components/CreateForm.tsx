@@ -53,7 +53,7 @@ export const CreateForm = () => {
   const { mutate: createPlantMutation } = useMutation({
     mutationFn: createPlant,
     onSuccess(data) {
-      queryClient.invalidateQueries({ queryKey: ['common-names'] });
+      queryClient.invalidateQueries({ queryKey: ['info-simple'] });
       reset();
       toast.success(`Planta ${data.commonName} guardada existosamente`, {
         className: 'custom-toast-success w-fit',
