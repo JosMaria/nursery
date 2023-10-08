@@ -1,6 +1,6 @@
 import { useFamilies } from '../hooks';
 import { useState } from 'react';
-import { DeleteModal, EditButton, TrashButton, EditForm } from '../components';
+import { DeleteModal, EditButton, TrashButton, EditFamilyForm } from '../components';
 
 const ListFamilyView = () => {
   const { isEmpty } = useFamilies();
@@ -8,18 +8,18 @@ const ListFamilyView = () => {
   return (
     <article className='w-full bg-skin-form rounded-xl flex flex-col items-center gap-3 text-sm p-2 h-fit'>
       <h2 className='font-medium text-xl'>Listado familias</h2>
-      {isEmpty ? <ListWithoutItems /> : <ListWithItems />}
+      {isEmpty ? <ListWithoutFamilies /> : <ListWithFamilies />}
     </article>
   );
 };
 
-const ListWithoutItems = () => (
+const ListWithoutFamilies = () => (
   <p className='bg-skin-light font-medium text-center px-3 text-lg select-none'>
     No hay ninguna familia registrada
   </p>
 );
 
-const ListWithItems = () => {
+const ListWithFamilies = () => {
   const { families } = useFamilies();
 
   return (
@@ -49,7 +49,7 @@ const Item = ({ id, name }: ItemProps) => {
           <TrashButton action={() => setShowDeleteModal(true)} />
         </div>
       </li>
-      <EditForm
+      <EditFamilyForm
         familyId={id}
         isShow={showFormEdit}
         close={() => setShowFormEdit(false)}

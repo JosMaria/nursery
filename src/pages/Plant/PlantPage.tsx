@@ -1,27 +1,30 @@
 import { Navbar } from './components';
 import { Outlet } from 'react-router-dom';
-import { fetchAllCommonNamesPlants } from './services';
+import { fetchAllCommonNamesPlants, fetchAllFamilies } from './services';
 import { useQuery } from '@tanstack/react-query';
-import { PlantContextType } from './types';
 
 const PlantPage = () => {
   const { data: simpleInfo, status } = useQuery({
-    queryKey: ['info-simple'],
+    queryKey: ['simple-info'],
     queryFn: fetchAllCommonNamesPlants,
-    refetchOnWindowFocus: false,
   });
 
-  if (status === 'loading') return 'loading common names';
-  if (status === 'error') return 'error common names';
+  const { data: families, status: statusFamilies } = useQuery({
+    queryKey: ['families'],
+    queryFn: fetchAllFamilies,
+  });
 
-  const context: PlantContextType = {
-    simpleInfo,
-  };
+
+  if (status === 'loading') return 'loading families';
+  if (status === 'error') return 'error families';
+
+  if (statusFamilies === 'loading') return 'loading simple info';
+  if (statusFamilies === 'error') return 'error simple info';
 
   return (
     <div className='flex flex-col items-center max-w-3xl w-full'>
       <Navbar />
-      <Outlet context={context} />
+      <Outlet context={{ simpleInfo, families }} />
     </div>
   );
 };

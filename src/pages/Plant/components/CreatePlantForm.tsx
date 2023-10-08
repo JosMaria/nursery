@@ -4,13 +4,16 @@ import { ALL_CLASSIFICATIONS, ALL_STATUS } from '../../../constants';
 import { traduceClassification, traduceStatus } from '../../../utils';
 import { CloseButton } from '.';
 import { CreatePlantSchemaType, createPlantSchema } from '../validations';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { createPlant, fetchAllFamilies } from '../services';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { createPlant } from '../services';
 import toast from 'react-hot-toast';
 import { ErrorType } from '../../../types';
 import { HttpStatusCode } from 'axios';
+import { useFamiliesLoaded } from '../hooks';
 
-export const CreateForm = () => {
+export const CreatePlantForm = () => {
+  const familiesLoaded = useFamiliesLoaded();
+
   const {
     register,
     handleSubmit,
@@ -53,7 +56,7 @@ export const CreateForm = () => {
   const { mutate: createPlantMutation } = useMutation({
     mutationFn: createPlant,
     onSuccess(data) {
-      queryClient.invalidateQueries({ queryKey: ['info-simple'] });
+      queryClient.invalidateQueries({ queryKey: ['simple-info'] });
       reset();
       toast.success(`Planta ${data.commonName} guardada existosamente`, {
         className: 'custom-toast-success w-fit',
@@ -66,12 +69,6 @@ export const CreateForm = () => {
       }
     },
   });
-
-  const {data: families} = useQuery({
-    queryKey: ['families'],
-    queryFn: fetchAllFamilies,
-    initialData: []
-  })
 
   return (
     <form
@@ -131,7 +128,7 @@ export const CreateForm = () => {
           </label>
           <select id='family' className='custom-input-form w-52' {...register('family')}>
             <option value=''>sin familia</option>
-            {families.map((family) => (
+            {familiesLoaded.map((family) => (
               <option key={family.id} value={family.name}>
                 {family.name}
               </option>

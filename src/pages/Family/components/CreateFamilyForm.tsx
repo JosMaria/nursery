@@ -8,7 +8,7 @@ import { ErrorType } from '../../../types';
 import { CreateFamilySchema, CreateFamilySchemaType } from '../validations';
 import { TrashButton } from '.';
 
-export const CreateForm = () => {
+export const CreateFamilyForm = () => {
   const {
     register,
     handleSubmit,

@@ -10,7 +10,7 @@ const FamilyPage = () => {
     queryFn: fetchAllFamilies,
   });
 
-  if (status === 'loading') return 'loading families';
+  if (status === 'loading') return 'loading families';  
   if (status === 'error') return 'error families';
 
   const context: ContextType = {

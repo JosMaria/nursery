@@ -1,9 +1,10 @@
-import { useQuery } from '@tanstack/react-query';
-import { fetchProductByID } from '../services';
 import { useParams } from 'react-router-dom';
+import { fetchProductByID } from './services';
+import { useQuery } from '@tanstack/react-query';
 
-export const ModifyPlantView = () => {
+const ModifyPlantPage = () => {
   const { id } = useParams();
+
   const { data: plantToModify, status } = useQuery({
     queryKey: ['plant-to-modify'],
     queryFn: () => fetchProductByID(Number(id)),
@@ -61,3 +62,5 @@ export const ModifyPlantView = () => {
     </section>
   );
 };
+
+export default ModifyPlantPage;

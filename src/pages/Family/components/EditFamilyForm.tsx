@@ -8,14 +8,14 @@ import toast from 'react-hot-toast';
 import { ErrorType } from '../../../types';
 import { UpdateFamilyType } from '../types';
 
-interface EditFormProps {
+interface EditFamilyFormProps {
   familyId: number;
   isShow: boolean;
   actualName: string;
   close: () => void;
 }
 
-export const EditForm = ({ familyId, isShow, actualName, close }: EditFormProps) => {
+export const EditFamilyForm = ({ familyId, isShow, actualName, close }: EditFamilyFormProps) => {
   const {
     register,
     handleSubmit,

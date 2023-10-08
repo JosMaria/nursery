@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react';
 import { ImageUploadType } from '../types';
 
-
 export const UploadFileInput = () => {
   const [images, setImages] = useState<ImageUploadType[]>([]);
   const [isDragging, setIsDragging] = useState(false);
@@ -81,13 +80,7 @@ export const UploadFileInput = () => {
             </button>
           </span>
         )}
-        <input
-          type='file'
-          multiple
-          className='hidden'
-          ref={fileInputRef}
-          onChange={onFileSelect}
-        />
+        <input type='file' multiple className='hidden' ref={fileInputRef} onChange={onFileSelect} />
       </article>
       <ImagesToUpload images={images} deleteImage={(index) => deleteImage(index)} />
       <button type='button' onClick={uploadImage}>
