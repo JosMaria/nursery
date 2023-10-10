@@ -7,11 +7,8 @@ interface Props {
 export const DeletePlantModal = ({ close }: Props) => {
   const { commonName, scientificName, scientistLastnameInitial, family } = useInfoToDeletePlant();
 
-  if (!family) {
-    return 'sin valor';
-  }
   return (
-    <div className='inset-0 fixed backdrop-blur-sm bg-black bg-opacity-40 shadow-xl h-screen w-full flex items-center justify-center'>
+    <dialog className='inset-0 fixed backdrop-blur-sm bg-black bg-opacity-40 shadow-xl h-screen w-full flex items-center justify-center'>
       <div className='p-2 max-sm:p-1 bg-skin-light rounded flex flex-col justify-center items-center gap-1 relative w-full max-w-lg'>
         <div className='flex justify-between items-center w-full px-1'>
           <h3 className='text-sm'>
@@ -37,7 +34,7 @@ export const DeletePlantModal = ({ close }: Props) => {
           Quiero eliminar la planta
         </button>
       </div>
-    </div>
+    </dialog>
   );
 };
 

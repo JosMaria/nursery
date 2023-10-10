@@ -1,10 +1,7 @@
 import { useParams } from 'react-router-dom';
-import { fetchProductByID } from './services';
-import { useQuery } from '@tanstack/react-query';
-import { EditButton, DangerZone } from './components';
+import { EditButton, DangerZone,InfoBaseZone } from './components';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { DevTool } from '@hookform/devtools';
 import { InferType, array, object, string } from 'yup';
 import { PlantToModifyProvider } from './context';
 
@@ -13,11 +10,11 @@ const ModifyPlantPage = () => {
 
   return (
     <PlantToModifyProvider plantId={Number(id)}>
-      <section className='w-full'>
+      <section className='max-w-3xl w-full flex flex-col gap-5'>
         {/* <h1 className='text-2xl font-medium'>Configuraci&oacute;n de la planta</h1> */}
+        <InfoBaseZone />
         <DangerZone />
 
-        {/* <SectionInfoBase commonName={plantToModify.}classifications={plantToModify.classifications}/> */}
         {/*           
       <details>
         <summary className='text-lg font-mono'>INFORMACI&Oacute;N BASICA</summary>

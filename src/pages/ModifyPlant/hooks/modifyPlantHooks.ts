@@ -1,12 +1,36 @@
 import { usePlantToModifyContext } from '../context';
 
 export const useInfoToDeletePlant = () => {
-  const { plantToModify } = usePlantToModifyContext();
+  const {
+    plantToModify: { commonName, scientificName, scientistLastnameInitial, family },
+  } = usePlantToModifyContext();
 
   return {
-    commonName: plantToModify.commonName,
-    scientificName: plantToModify.scientificName,
-    scientistLastnameInitial: plantToModify.scientistLastnameInitial,
-    family: plantToModify.family,
+    commonName,
+    scientificName,
+    scientistLastnameInitial,
+    family,
+  };
+};
+
+export const useInfoBase = () => {
+  const {
+    plantToModify: {
+      commonName,
+      scientificName,
+      scientistLastnameInitial,
+      family,
+      status,
+      classifications,
+    },
+  } = usePlantToModifyContext();
+
+  return {
+    commonName,
+    scientificName,
+    scientistLastnameInitial,
+    family,
+    status,
+    classifications,
   };
 };
