@@ -6,26 +6,19 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { DevTool } from '@hookform/devtools';
 import { InferType, array, object, string } from 'yup';
+import { PlantToModifyProvider } from './context';
 
 const ModifyPlantPage = () => {
   const { id } = useParams();
 
-  const { data: plantToModify, status } = useQuery({
-    queryKey: ['plant-to-modify'],
-    queryFn: () => fetchProductByID(Number(id)),
-    refetchOnWindowFocus: false,
-  });
-
-  if (status === 'loading') return 'loading plant to modify';
-  if (status === 'error') return 'error plant to modify';
-
   return (
-    <section>
-      {/* <h1 className='text-2xl font-medium'>Configuraci&oacute;n de la planta</h1> */}
-      <DangerZone />
+    <PlantToModifyProvider plantId={Number(id)}>
+      <section className='w-full'>
+        {/* <h1 className='text-2xl font-medium'>Configuraci&oacute;n de la planta</h1> */}
+        <DangerZone />
 
-      {/* <SectionInfoBase commonName={plantToModify.}classifications={plantToModify.classifications}/> */}
-      {/*           
+        {/* <SectionInfoBase commonName={plantToModify.}classifications={plantToModify.classifications}/> */}
+        {/*           
       <details>
         <summary className='text-lg font-mono'>INFORMACI&Oacute;N BASICA</summary>
         <div className='flex flex-col gap-5'>
@@ -66,7 +59,8 @@ const ModifyPlantPage = () => {
           ))}
         </ul>
       </details> */}
-    </section>
+      </section>
+    </PlantToModifyProvider>
   );
 };
 const infoBaseSchema = object({
