@@ -10,7 +10,6 @@ import RepertoryPage from '../pages/Repertory/RepertoryPage';
 import NewsPage from '../pages/News/NewsPage';
 import SingleNewsPage from '../pages/SingleNews/SingleNewsPage';
 import SignInPage from '../pages/SignIn/SignInPage';
-import ModifyPlantPage from '../pages/ModifyPlant/ModifyPlantPage';
 
 export const router = createBrowserRouter(
   createRoutesFromElements([
@@ -24,7 +23,6 @@ export const router = createBrowserRouter(
 
       <Route path='plant/*' element={<PlantRoutes />} />        
       <Route path='family/*' element={<FamilyRoutes />} />
-      <Route path='setting/plant/:id' element={<ModifyPlantPage />} />
 
       <Route path='*' element={<p>Ruta no encontrada</p>} />
     </Route>,
