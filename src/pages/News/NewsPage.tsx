@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Article } from './components';
 import { NewsType } from './types';
 
@@ -28,6 +29,10 @@ const NEWS: Array<NewsType> = [
 const NewsPage = () => {
   const newsArticles = (
     <section className='flex flex-col gap-10'>
+      <article className='flex gap-5'>
+        <Link to='/plant' className='custom-btn-form'>Crear Planta</Link>
+        <Link to='/family' className='custom-btn-form'>Crear Familia</Link>
+      </article>
       {NEWS.map((news) => (
         <Article
           key={news.id}

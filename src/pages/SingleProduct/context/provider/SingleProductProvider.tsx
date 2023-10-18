@@ -3,9 +3,9 @@ import { SingleProductContext } from '..';
 import { fetchProductByID } from '../../services';
 import SkeletonPlantPage from '../../SkeletonSingleProductPage';
 
-type Props = {
+interface Props {
   singleProductId: number;
-  children: JSX.Element | JSX.Element[] | React.ReactNode[];
+  children: JSX.Element | JSX.Element[];
 };
 
 export const SingleProductProvider = ({ singleProductId, children }: Props) => {

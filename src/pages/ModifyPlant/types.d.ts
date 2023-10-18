@@ -1,9 +1,7 @@
-import { PlantClassificationType, StatusType } from '../../types';
-
-export interface TechnicalSheetType {
+export type TechnicalSheetType = {
   word: string;
   info: string;
-}
+};
 
 export interface SingleProductResponse {
   id: number;

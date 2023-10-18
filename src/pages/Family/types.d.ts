@@ -1,13 +1,13 @@
-export interface CreateFamilyDTO {
+interface CreateFamilyDTO {
   family_name: string;
 }
 
-export interface FamilyResponse {
+interface FamilyResponse {
   id: number;
   name: string;
 }
 
-export interface UpdateFamilyDTO {
+interface UpdateFamilyDTO {
   family_name: string;
 }
 
