@@ -32,7 +32,7 @@ const SignInPage = () => {
     onError(error) {
       const { response } = error as ErrorType;
       if (response) {
-        toast.error('Datos icorrectos', { className: 'custom-toast-error' });
+        toast.error('Datos incorrectos', { className: 'custom-toast-error' });
       }
     },
   });
@@ -52,7 +52,7 @@ const SignInPage = () => {
             className='custom-input-form'
             type='text'
             id={`${id}-username`}
-            placeholder='admin'
+            placeholder='usuario'
             autoComplete='off'
             {...register('username')}
           />
