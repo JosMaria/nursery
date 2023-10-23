@@ -1,20 +1,13 @@
 import { useId } from 'react';
 import { useForm } from 'react-hook-form';
-import { Input, minLength, object, string } from 'valibot';
-import { valibotResolver } from '@hookform/resolvers/valibot';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-hot-toast';
 import { useToken } from '../../store';
 import { authenticate } from './services';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import { ErrorType } from '../../types';
-
-const SignInSchema = object({
-  username: string([minLength(1, 'Introducir nombre de usuario')]),
-  password: string([minLength(1, 'Introducir contraseña')]),
-});
-
-type SignInValidationType = Input<typeof SignInSchema>;
+import { SignInSchemaType, signInValidation } from './validations';
 
 const SignInPage = () => {
   const id = useId();
@@ -25,8 +18,8 @@ const SignInPage = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SignInValidationType>({
-    resolver: valibotResolver(SignInSchema),
+  } = useForm<SignInSchemaType>({
+    resolver: yupResolver(signInValidation),
   });
 
   const { mutateAsync: authenticateMutateAsync } = useMutation({
