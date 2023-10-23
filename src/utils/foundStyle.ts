@@ -10,11 +10,9 @@ export const getStyledGivenStatus = (status: StatusType): string => {
   }
 };
 
-export const getThemeByRole = (role: RoleType): string => {
-  if (role === 'ADMINISTRATOR') {
-    return 'theme-admin';
-  } else if (role === 'ASSISTANT') {
-    return 'theme-assistant';
+export const getThemeByRole = (role: RoleType | null): string => {
+  if (role) {
+    return role === 'ADMINISTRATOR' ? 'theme-admin' : 'theme-assistant';
   } else {
     return '';
   }

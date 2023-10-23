@@ -2,7 +2,7 @@ import { useId } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-hot-toast';
-import { useToken } from '../../store';
+import { useTokenStore } from '../../store';
 import { authenticate } from './services';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
@@ -12,7 +12,7 @@ import { SignInSchemaType, signInValidation } from './validations';
 const SignInPage = () => {
   const id = useId();
   const navigate = useNavigate();
-  const { changeToken } = useToken();
+  const { updateToken } = useTokenStore();
 
   const {
     register,
@@ -25,7 +25,7 @@ const SignInPage = () => {
   const { mutateAsync: authenticateMutateAsync } = useMutation({
     mutationFn: authenticate,
     onSuccess(data, variables) {
-      changeToken(data.token);
+      updateToken(data.token);
       toast.success(`Bienvenido ${variables.username}`, { className: 'custom-toast-success' });
       navigate('/');
     },

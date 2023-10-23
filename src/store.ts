@@ -1,28 +1,42 @@
 import { create } from 'zustand';
-import jwt_decode, { JwtPayload } from 'jwt-decode';
+import jwt_decode from 'jwt-decode';
 import { RoleType } from './types';
+import { devtools, persist } from 'zustand/middleware';
 
-type TokenStateType = {
-  token: string;
+type State = { token: string };
+type Action = { updateToken: (token: State['token']) => void };
+
+export const useTokenStore = create<State & Action>()(
+  devtools(
+    persist(
+      (set) => ({
+        token: '',
+        updateToken: (tokenUpdated) => set(() => ({ token: tokenUpdated })),
+      }),
+      { name: 'tokenStore' }
+    )
+  )
+);
+
+type ProfileBaseType = {
+  username: string | null;
+  role: RoleType | null;
 };
 
-type TokenActionType = {
-  changeToken: (token: string) => void;
+type ClaimsType = {
+  role: RoleType;
+  sub: string;
+  iat: number;
+  exp: number;
 };
 
-export const useToken = create<TokenStateType & TokenActionType>((set) => ({
-  token: '',
-  changeToken: (token) => set(() => ({ token })),
-}));
+export const useProfileBase = (): ProfileBaseType => {
+  const { token } = useTokenStore();
 
-export const useUserRole = (): RoleType => {
-  const { token } = useToken();
-  
   if (token.length === 0) {
-    return 'USER';
-  
+    return { username: null, role: null };
   } else {
-    const { role } = jwt_decode<JwtPayload & { role: RoleType }>(token);
-    return role;
+    const { sub, role } = jwt_decode<ClaimsType>(token);
+    return { username: sub, role };
   }
 };

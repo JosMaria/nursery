@@ -38,4 +38,4 @@ export type ErrorType = {
   response: ResponseErrorType;
 };
 
-export type RoleType = 'ADMINISTRATOR' | 'ASSISTANT' | 'USER';
+export type RoleType = 'ADMINISTRATOR' | 'ASSISTANT';
