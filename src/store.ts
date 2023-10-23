@@ -1,13 +1,14 @@
 import { create } from 'zustand';
 
-type TokenStoreType = {
+type TokenStateType = {
   token: string;
-  changeToken: (newToken: string) => void;
-  removeToken: () => void;
 };
 
-export const useToken = create<TokenStoreType>((set) => ({
+type TokenActionType = {
+  changeToken: (token: string) => void;
+};
+
+export const useToken = create<TokenStateType & TokenActionType>((set) => ({
   token: '',
-  changeToken: (newToken) => set(() => ({ token: newToken })),
-  removeToken: () => set({ token: '' }),
+  changeToken: (token) => set(() => ({ token })),
 }));
