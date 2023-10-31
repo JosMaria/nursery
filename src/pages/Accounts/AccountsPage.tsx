@@ -74,7 +74,7 @@ const TableBody = () => (
         <td className='py-1.5 px-4'>{user.lastname}</td>
         <td className='py-1.5 px-4'>{user.username}</td>
         <td className='py-1.5 px-4'>{user.role}</td>
-        <td className='py-1.5 px-2 flex justify-start items-center '>
+        <td className='py-1.5 px-2 flex justify-start items-center'>
           <Link
             className='bg-teal-700 hover:bg-teal-600 focus:ring-2 focus:ring-teal-500 focus:outline-none rounded-md text-white px-1.5 py-1'
             to='/'
