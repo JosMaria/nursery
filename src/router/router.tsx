@@ -16,7 +16,10 @@ import { LayoutPrivate } from '../layout/LayoutPrivate';
 export const router = createBrowserRouter(
   createRoutesFromElements([
     <Route path='/' element={<LayoutPrivate />}>
-      <Route index element={<p>estoy en la raiz de una pagina privada</p>} />
+      <Route path='create-plant' element={<p>Pagina para crear planta</p>} />
+      <Route path='list-plant' element={<p>Pagina para crear planta</p>} />
+      <Route path='create-family' element={<p>Pagina para crear planta</p>} />
+      <Route path='list-family' element={<p>Pagina para crear planta</p>} />
     </Route>,
   ])
 );
