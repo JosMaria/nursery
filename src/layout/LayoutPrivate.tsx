@@ -4,6 +4,7 @@ import { SidebarData } from './SidebarData';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
 import { BiLogOut } from 'react-icons/bi';
+import { BiChevronDown } from 'react-icons/bi';
 
 const GroupNavLinks = () => {
   const [active, setActive] = useState(false);
@@ -41,15 +42,39 @@ export const LayoutPrivate = () => {
 
   return (
     <>
-      <header className='px-5 navbar bg-slate-400 flex justify-between items-center'>
-        <button className='text-3xl active:bg-pink-400 ' onClick={showSidebar}>
+      <header className='px-5 py-2 bg-sky-700 text-sky-100 font-bold flex justify-between items-center'>
+        {/* <button className='text-3xl active:bg-pink-400 ' onClick={showSidebar}>
           &equiv;
-        </button>
-        <BiLogOut className='text-2xl' />
+        </button> */}
+        <h1 className='text-2xl flex items-center gap-2'>
+          <span>🪴</span>
+          <p className='text-xl max-sm:text-base'>VIVERO</p>
+        </h1>
+        <BiLogOut className='text-2xl font-semibold cursor-pointer hover:text-sky-200' />
       </header>
 
-      <IconContext.Provider value={{ color: 'undefined' }}>
-        <aside
+      <main className='flex bg-pink-300'>
+        
+        <aside className='bg-sky-700 max-w-sm w-full h-screen text-sky-100'>
+          <div className='flex justify-between px-6 py-2 hover:bg-sky-800'>
+            <p className='text-lg font-medium'>Planta</p>
+            <BiChevronDown size='1.8em' />
+          </div>
+          <NavLink to='create-plant' className={({ isActive }) => isActive ? 'bg-sky-900 px-10 py-2 flex text-sm' : 'px-10 py-2 flex hover:bg-sky-800 text-sm'}>
+            Crear Planta
+          </NavLink>
+          <NavLink to='list-plants' className={({ isActive }) => isActive ? 'bg-sky-900 px-10 py-2 flex text-sm' : 'px-10 py-2 flex hover:bg-sky-800 text-sm'}>
+            Listado de Plantas
+          </NavLink>
+          <NavLink to='create-family' className={({ isActive }) => isActive ? 'bg-sky-900 px-10 py-2 flex text-sm' : 'px-10 py-2 flex hover:bg-sky-800 text-sm'}>
+            Crear Planta
+          </NavLink>
+          <NavLink to='list-families' className={({ isActive }) => isActive ? 'bg-sky-900 px-10 py-2 flex text-sm' : 'px-10 py-2 flex hover:bg-sky-800 text-sm'}>
+            Listado de Familias
+          </NavLink>
+        </aside>
+        <Outlet />
+        {/* <aside
           className={
             sidebar
               ? 'bg-red-500 max-w-xs w-full h-screen overflow-y-scroll fixed left-0 duration-200'
@@ -60,8 +85,8 @@ export const LayoutPrivate = () => {
             <GroupNavLinks />
           </div>
         </aside>
-      </IconContext.Provider>
-      <Outlet />
+        <Outlet /> */}
+      </main>
     </>
   );
 };
