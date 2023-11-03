@@ -11,10 +11,18 @@ import NewsPage from '../pages/News/NewsPage';
 import SingleNewsPage from '../pages/SingleNews/SingleNewsPage';
 import SignInPage from '../pages/SignIn/SignInPage';
 import { AccountsRoutes } from '../pages/Accounts/AccountsRoutes';
+import { LayoutPrivate } from '../layout/LayoutPrivate';
 
 export const router = createBrowserRouter(
   createRoutesFromElements([
-    <Route path='/' element={<LayoutPublic />}>
+    <Route path='/' element={<LayoutPrivate />}>
+      <Route index element={<p>estoy en la raiz de una pagina privada</p>} />
+    </Route>,
+  ])
+);
+
+/*
+<Route path='/' element={<LayoutPublic />}>
       <Route index element={<CatalogPage />} />
       <Route path='product/:id/*' element={<SingleProductRoutes />} />
       <Route path='repertory' element={<RepertoryPage />} />
@@ -29,5 +37,4 @@ export const router = createBrowserRouter(
 
       <Route path='*' element={<p>Ruta no encontrada</p>} />
     </Route>,
-  ])
-);
+*/
