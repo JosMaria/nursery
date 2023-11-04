@@ -24,7 +24,7 @@ export const LayoutPrivate = () => {
 
       <main className='flex bg-pink-300'>
         <aside className='bg-sky-700 max-w-sm w-full h-screen text-sky-100'>
-          <Test />
+          <ItemsWithContent />
         </aside>
         <Outlet />
       </main>
@@ -32,7 +32,78 @@ export const LayoutPrivate = () => {
   );
 };
 
-const Test = () => {
+const ITEMS_WITH_CONTENT_LINKS = [
+  {
+    text: 'Plantas',
+    content: [
+      { title: 'Crear Planta', path: 'create-plant' },
+      { title: 'Listado de Plantas', path: 'list-plants' },
+      { title: 'Crear Familia', path: 'create-family' },
+      { title: 'Listado de Familias', path: 'list-families' },
+    ],
+  },
+  {
+    text: 'Usuarios',
+    content: [
+      { title: 'Crear Usuario', path: 'create-user' },
+      { title: 'Listado de Usuarios', path: 'list-users' },
+    ],
+  },
+];
+
+const ITEMS_WITHOUT_CONTENT_LINKS = [
+  { title: 'Catalogo', path: 'catalog' },
+  { title: 'Repertorio', path: 'repertory' },
+  { title: 'Reportes', path: 'repertory' },
+  { title: 'Inventario', path: 'inventory' },
+];
+
+const PLANT_ITEMS = [
+  { title: 'Crear Planta', path: 'create-plant' },
+  { title: 'Listado de Plantas', path: 'list-plants' },
+  { title: 'Crear Familia', path: 'create-family' },
+  { title: 'Listado de Familias', path: 'list-families' },
+];
+
+const ItemsWithContent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      {ITEMS_WITH_CONTENT_LINKS.map((item) => (
+        <>
+          <div
+            className='hover:bg-sky-800 px-6 py-2 flex justify-between text-sm'
+            onClick={() => setIsOpen((prev) => !prev)}
+          >
+            <p className='text-lg font-medium'>{item.text}</p>
+            <BiChevronDown size='1.9em' className={`${!isOpen && '-rotate-90'} duration-300`} />
+          </div>
+          <div className={`${!isOpen && 'hidden'}`}>
+            {item.content.map((item, index) => (
+              <NavLink
+                key={index}
+                to={item.path}
+                className={({ isActive }) =>
+                  `${isActive ? 'bg-sky-900' : 'hover:bg-sky-800'} px-10 py-2 flex text-sm`
+                }
+              >
+                {item.title}
+              </NavLink>
+            ))}
+          </div>
+        </>
+      ))}
+    </>
+  );
+};
+
+const USER_ITEMS = [
+  { title: 'Crear Usuario', path: 'create-user' },
+  { title: 'Listado de Usuarios', path: 'list-users' },
+];
+
+const NavbarUsers = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -41,11 +112,11 @@ const Test = () => {
         className='hover:bg-sky-800 px-6 py-2 flex justify-between text-sm'
         onClick={() => setIsOpen((prev) => !prev)}
       >
-        <p className='text-lg font-medium'>Planta</p>
+        <p className='text-lg font-medium'>Usuarios</p>
         <BiChevronDown size='1.9em' className={`${!isOpen && '-rotate-90'} duration-300`} />
       </div>
       <div className={`${!isOpen && 'hidden'}`}>
-        {PLANT_ITEMS.map((item, index) => (
+        {USER_ITEMS.map((item, index) => (
           <NavLink
             key={index}
             to={item.path}
@@ -60,10 +131,3 @@ const Test = () => {
     </>
   );
 };
-
-const PLANT_ITEMS = [
-  { title: 'Crear Planta', path: 'create-plant' },
-  { title: 'Listado de Plantas', path: 'list-plants' },
-  { title: 'Crear Familia', path: 'create-family' },
-  { title: 'Listado de Familias', path: 'list-families' },
-];
