@@ -24,7 +24,9 @@ export const LayoutPrivate = () => {
 
       <main className='flex bg-pink-300'>
         <aside className='bg-sky-700 max-w-sm w-full h-screen text-sky-100'>
-          <ItemsWithContent />
+          {SIDEBAR_DATA.map((item, index) => (
+            <NavLinkSection key={index} section={item} />
+          ))}
         </aside>
         <Outlet />
       </main>
@@ -32,9 +34,17 @@ export const LayoutPrivate = () => {
   );
 };
 
-const ITEMS_WITH_CONTENT_LINKS = [
+const SIDEBAR_DATA: SidebarDataType[] = [
   {
-    text: 'Plantas',
+    header: 'Publico',
+    content: [
+      { title: 'Categorias', path: 'category' },
+      { title: 'Repertorio', path: 'repertory' },
+      { title: 'Novedades', path: 'news' },
+    ],
+  },
+  {
+    header: 'Plantas',
     content: [
       { title: 'Crear Planta', path: 'create-plant' },
       { title: 'Listado de Plantas', path: 'list-plants' },
@@ -43,85 +53,56 @@ const ITEMS_WITH_CONTENT_LINKS = [
     ],
   },
   {
-    text: 'Usuarios',
+    header: 'Usuarios',
     content: [
       { title: 'Crear Usuario', path: 'create-user' },
       { title: 'Listado de Usuarios', path: 'list-users' },
     ],
   },
+  {
+    header: 'Reportes',
+    content: [{ title: 'Ver Reportes', path: 'reports' }],
+  },
+  {
+    header: 'Inventario',
+    content: [{ title: 'Ver Inventario', path: 'inventory' }],
+  },
 ];
 
-const ITEMS_WITHOUT_CONTENT_LINKS = [
-  { title: 'Catalogo', path: 'catalog' },
-  { title: 'Repertorio', path: 'repertory' },
-  { title: 'Reportes', path: 'repertory' },
-  { title: 'Inventario', path: 'inventory' },
-];
-
-const PLANT_ITEMS = [
-  { title: 'Crear Planta', path: 'create-plant' },
-  { title: 'Listado de Plantas', path: 'list-plants' },
-  { title: 'Crear Familia', path: 'create-family' },
-  { title: 'Listado de Familias', path: 'list-families' },
-];
-
-const ItemsWithContent = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <>
-      {ITEMS_WITH_CONTENT_LINKS.map((item) => (
-        <>
-          <div
-            className='hover:bg-sky-800 px-6 py-2 flex justify-between text-sm'
-            onClick={() => setIsOpen((prev) => !prev)}
-          >
-            <p className='text-lg font-medium'>{item.text}</p>
-            <BiChevronDown size='1.9em' className={`${!isOpen && '-rotate-90'} duration-300`} />
-          </div>
-          <div className={`${!isOpen && 'hidden'}`}>
-            {item.content.map((item, index) => (
-              <NavLink
-                key={index}
-                to={item.path}
-                className={({ isActive }) =>
-                  `${isActive ? 'bg-sky-900' : 'hover:bg-sky-800'} px-10 py-2 flex text-sm`
-                }
-              >
-                {item.title}
-              </NavLink>
-            ))}
-          </div>
-        </>
-      ))}
-    </>
-  );
+type NavLinkItemType = {
+  title: string;
+  path: string;
 };
 
-const USER_ITEMS = [
-  { title: 'Crear Usuario', path: 'create-user' },
-  { title: 'Listado de Usuarios', path: 'list-users' },
-];
+type SidebarDataType = {
+  header: string;
+  content: NavLinkItemType[];
+};
 
-const NavbarUsers = () => {
+interface NavLinkSectionProps {
+  section: SidebarDataType;
+}
+
+const NavLinkSection = ({ section }: NavLinkSectionProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
       <div
-        className='hover:bg-sky-800 px-6 py-2 flex justify-between text-sm'
+        className='hover:bg-sky-800 px-6 py-2 flex justify-between text-sm cursor-pointer'
         onClick={() => setIsOpen((prev) => !prev)}
       >
-        <p className='text-lg font-medium'>Usuarios</p>
-        <BiChevronDown size='1.9em' className={`${!isOpen && '-rotate-90'} duration-300`} />
+        <p className='text-lg font-medium'>{section.header}</p>
+        <BiChevronDown size='1.9em' className={`${!isOpen && '-rotate-90'} ${isOpen && 'bg-sky-800'} duration-300 rounded-full`} />
       </div>
-      <div className={`${!isOpen && 'hidden'}`}>
-        {USER_ITEMS.map((item, index) => (
+
+      <div className={`${!isOpen && 'hidden'} text-sm font-medium`}>
+        {section.content.map((item, index) => (
           <NavLink
             key={index}
             to={item.path}
             className={({ isActive }) =>
-              `${isActive ? 'bg-sky-900' : 'hover:bg-sky-800'} px-10 py-2 flex text-sm`
+              `${isActive ? 'bg-sky-900' : 'hover:bg-sky-800'} px-10 py-2 flex`
             }
           >
             {item.title}
