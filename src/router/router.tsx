@@ -11,7 +11,7 @@ import NewsPage from '../pages/News/NewsPage';
 import SingleNewsPage from '../pages/SingleNews/SingleNewsPage';
 import SignInPage from '../pages/SignIn/SignInPage';
 import { AccountsRoutes } from '../pages/Accounts/AccountsRoutes';
-import { LayoutPrivate } from '../layout/LayoutPrivate';
+import { LayoutPrivate } from '../layout/LayoutPrivate/LayoutPrivate';
 
 export const router = createBrowserRouter(
   createRoutesFromElements([
