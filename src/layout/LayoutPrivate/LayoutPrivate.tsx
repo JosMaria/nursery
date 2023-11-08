@@ -17,7 +17,7 @@ export const LayoutPrivate = () => {
         {isOpenSidebar ? (
           <SidebarToDeviceSmall closeSidebar={() => setIsOpenSidebar(false)} />
         ) : (
-          <main className='bg-pink-600 w-full h-screen'>
+          <main className='bg-custom-light w-full h-screen'>
             <Outlet />
           </main>
         )}
@@ -25,7 +25,7 @@ export const LayoutPrivate = () => {
 
       <div className='flex max-lg:hidden'>
         <SidebarToDeviceLarge />
-        <main className='bg-pink-600 w-full h-screen'>
+        <main className='bg-custom-light w-full h-screen'>
           <Outlet />
         </main>
       </div>

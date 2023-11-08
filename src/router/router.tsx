@@ -1,4 +1,4 @@
-import { Route, Routes, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 
 import { LayoutPublic } from '../layout';
 import { SingleProductRoutes } from '../pages/SingleProduct/SingleProductRoutes';
@@ -14,7 +14,7 @@ import { AccountsRoutes } from '../pages/Accounts/AccountsRoutes';
 import { LayoutPrivate } from '../layout/LayoutPrivate/LayoutPrivate';
 import { ProtectedRoute } from '../utils';
 
-const isAuthenticate = false;
+const isAuthenticate = true;
 
 export const router = createBrowserRouter(
   createRoutesFromElements(

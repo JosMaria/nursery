@@ -9,7 +9,7 @@ interface SidebarToDeviceSmallProps {
 }
 
 export const SidebarToDeviceSmall = ({ closeSidebar }: SidebarToDeviceSmallProps) => (
-  <aside className='w-full bg-sky-700 text-sky-100'>
+  <aside className='w-full bg-custom-dark text-custom-light'>
     {SIDEBAR_DATA.map((item, index) => (
       <Fragment key={index}>
         <div className='flex flex-col'>
@@ -20,9 +20,9 @@ export const SidebarToDeviceSmall = ({ closeSidebar }: SidebarToDeviceSmallProps
               to={navlinkItem.path}
               onClick={closeSidebar}
               className={({ isActive }) =>
-                `${
-                  isActive ? 'bg-sky-950' : 'hover:bg-sky-800'
-                } px-10 py-2 max-sm:py-1.5 flex text-sm max-sm:text-xs`
+                `hover:bg-custom-dark-hover px-10 py-2 max-sm:py-1.5 flex text-sm max-sm:text-xs ${
+                  isActive && 'bg-custom-dark-hover'
+                }`
               }
             >
               {navlinkItem.title}
@@ -35,7 +35,7 @@ export const SidebarToDeviceSmall = ({ closeSidebar }: SidebarToDeviceSmallProps
 );
 
 export const SidebarToDeviceLarge = () => (
-  <aside className='bg-sky-700 max-w-xs w-full h-screen text-sky-100'>
+  <aside className='bg-custom-dark text-custom-light max-w-xs w-full h-screen'>
     {SIDEBAR_DATA.map((item, index) => (
       <NavLinkSection key={index} section={item} />
     ))}
@@ -52,14 +52,14 @@ const NavLinkSection = ({ section }: NavLinkSectionProps) => {
   return (
     <>
       <div
-        className='hover:bg-sky-800 px-6 py-2 flex justify-between text-sm cursor-pointer'
+        className='hover:bg-custom-dark-hover px-6 py-2 flex justify-between text-sm cursor-pointer'
         onClick={() => setIsOpen((prev) => !prev)}
       >
         <p className='text-lg font-medium'>{section.header}</p>
         <BiChevronDown
           size='1.9em'
           className={`${!isOpen && '-rotate-90'} ${
-            isOpen && 'bg-sky-800'
+            isOpen && 'bg-custom-dark-hover'
           } duration-300 rounded-full`}
         />
       </div>
@@ -70,7 +70,7 @@ const NavLinkSection = ({ section }: NavLinkSectionProps) => {
             key={index}
             to={item.path}
             className={({ isActive }) =>
-              `${isActive ? 'bg-sky-900' : 'hover:bg-sky-800'} px-10 py-2 flex`
+              `hover:bg-custom-dark-hover px-10 py-2 flex ${isActive && 'bg-custom-dark-hover'}`
             }
           >
             {item.title}

@@ -6,7 +6,7 @@ interface ButtonProps {
 
 export const CloseButton = ({ action }: ButtonProps) => (
   <button
-    className='leading-none rounded-md text-2xl active:bg-sky-900 lg:hidden w-8 h-8'
+    className='leading-none rounded-md text-2xl active:bg-custom-dark-hover lg:hidden w-8 h-8'
     onClick={action}
   >
     &times;
@@ -15,7 +15,7 @@ export const CloseButton = ({ action }: ButtonProps) => (
 
 export const HambuguerButton = ({ action }: ButtonProps) => (
   <button
-    className='leading-none rounded-md text-3xl active:bg-sky-900 lg:hidden w-8 h-8'
+    className='leading-none rounded-md text-3xl active:bg-custom-dark-hover lg:hidden w-8 h-8'
     onClick={action}
   >
     &equiv;
@@ -23,7 +23,7 @@ export const HambuguerButton = ({ action }: ButtonProps) => (
 );
 
 export const LogoutButton = ({}: ButtonProps) => (
-  <button className='flex justify-center items-center font-semibold text-2xl rounded-md hover:bg-sky-900 leading-none w-8 h-8'>
+  <button className='flex justify-center items-center font-semibold text-2xl rounded-md hover:bg-custom-dark-hover leading-none p-2'>
     <BiLogOut />
   </button>
 );
