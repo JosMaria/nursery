@@ -4,6 +4,9 @@
 
 @layer base {
   :root {
+    --color-dark: 7, 89, 133;
+    --color-dark-hover: 8, 47, 73;
+    --color-light: 224, 242, 254;
     
 
     /* content */

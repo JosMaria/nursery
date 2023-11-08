@@ -14,7 +14,7 @@ import { AccountsRoutes } from '../pages/Accounts/AccountsRoutes';
 import { LayoutPrivate } from '../layout/LayoutPrivate/LayoutPrivate';
 import { ProtectedRoute } from '../utils';
 
-const isAuthenticate = true;
+const isAuthenticate = false;
 
 export const router = createBrowserRouter(
   createRoutesFromElements(

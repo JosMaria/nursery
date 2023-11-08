@@ -8,8 +8,8 @@ export const Navbar = () => (
         key={item.text}
         to={item.path}
         className={({ isActive }) =>
-          `py-2 max-md:py-1.5 grid place-content-center flex-1 ${
-            isActive && 'border-b-2 border-sky-100 bg-sky-950'
+          `py-2 max-md:py-1.5 text-center flex-1 hover:bg-custom-dark-hover ${
+            isActive && 'border-b-2 border-custom-light bg-custom-dark-hover'
           }`
         }
       >

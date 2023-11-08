@@ -9,7 +9,7 @@ const withOpacity = (variableName) => {
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  
+
   theme: {
     screens: {
       xs: '420px',
@@ -19,10 +19,14 @@ export default {
       xl: '1280px',
       '2xl': '1536px',
     },
-  
+
     extend: {
-      
       backgroundColor: {
+        custom: {
+          dark: withOpacity('--color-dark'),
+          light: withOpacity('--color-light'),
+          'dark-hover': withOpacity('--color-dark-hover'),
+        },
         skin: {
           dark: withOpacity('--fill-color-dark'),
           light: withOpacity('--fill-color-light'),
@@ -34,12 +38,19 @@ export default {
         },
       },
       textColor: {
+        custom: {
+          light: withOpacity('--color-light'),
+          dark: withOpacity('--color-dark-hover')
+        },
         skin: {
           dark: withOpacity('--text-color-dark'),
           light: withOpacity('--text-color-light'),
         },
       },
       borderColor: {
+        custom: {
+          light: withOpacity('--color-light'),
+        },
         skin: {
           nav: withOpacity('--border-nav-selected'),
           focus: withOpacity('--fill-color-btn-hover'),
