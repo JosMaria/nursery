@@ -9,6 +9,7 @@ const withOpacity = (variableName) => {
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  
   theme: {
     screens: {
       xs: '420px',
@@ -18,7 +19,9 @@ export default {
       xl: '1280px',
       '2xl': '1536px',
     },
+  
     extend: {
+      
       backgroundColor: {
         skin: {
           dark: withOpacity('--fill-color-dark'),

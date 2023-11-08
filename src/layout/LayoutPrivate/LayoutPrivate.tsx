@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header, SidebarToDeviceLarge, SidebarToDeviceSmall } from './components';
+import { Footer } from '../../components';
 
 export const LayoutPrivate = () => {
   const [isOpenSidebar, setIsOpenSidebar] = useState(false);
@@ -28,6 +29,7 @@ export const LayoutPrivate = () => {
           <Outlet />
         </main>
       </div>
+      <Footer />
     </>
   );
 };

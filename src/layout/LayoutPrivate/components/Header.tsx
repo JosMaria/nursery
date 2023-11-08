@@ -1,4 +1,5 @@
 import { CloseButton, HambuguerButton, LogoutButton } from '.';
+import { TitleHeader } from '../../../components';
 
 interface HeaderProps {
   isOpenSidebar: boolean;
@@ -8,17 +9,14 @@ interface HeaderProps {
 
 export const Header = ({ isOpenSidebar, closeSidebar, openSidebar }: HeaderProps) => (
   <header className='h-14 px-3 max-sm:px-1 bg-sky-700 text-sky-100 font-bold flex justify-between items-center'>
-    <div className='flex'>
+    <div className='flex items-center'>
       {isOpenSidebar ? (
         <CloseButton action={closeSidebar} />
       ) : (
         <HambuguerButton action={openSidebar} />
       )}
 
-      <h1 className='text-2xl flex items-end'>
-        <span>🪴</span>
-        <p className='text-xl max-sm:text-base'>VIVERO</p>
-      </h1>
+      <TitleHeader />
     </div>
 
     <div className='flex items-center gap-3'>

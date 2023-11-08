@@ -1,4 +1,4 @@
-import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import { Route, Routes, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 
 import { LayoutPublic } from '../layout';
 import { SingleProductRoutes } from '../pages/SingleProduct/SingleProductRoutes';
@@ -12,33 +12,32 @@ import SingleNewsPage from '../pages/SingleNews/SingleNewsPage';
 import SignInPage from '../pages/SignIn/SignInPage';
 import { AccountsRoutes } from '../pages/Accounts/AccountsRoutes';
 import { LayoutPrivate } from '../layout/LayoutPrivate/LayoutPrivate';
+import { ProtectedRoute } from '../utils';
+
+const isAuthenticate = true;
 
 export const router = createBrowserRouter(
-  createRoutesFromElements([
-    <Route path='/' element={<LayoutPrivate />}>
-      <Route path='manual-plant' element={<p>Aqui estara el manual para las funcionalidades</p>} />
-      <Route path='create-plant' element={<p>Pagina para Crear Planta</p>} />
-      <Route path='list-plants' element={<p>Listado de Plantas</p>} />
-      <Route path='create-family' element={<p>Pagina para Crear Familia</p>} />
-      <Route path='list-families' element={<p>Listado de Familias</p>} />
-    </Route>,
-  ])
+  createRoutesFromElements(
+    <Route path='/' element={isAuthenticate ? <LayoutPrivate /> : <LayoutPublic />}>
+      <Route index element={<p>Pagina para el catalogo</p>} />
+      <Route element={<ProtectedRoute canActivate={false} />}>
+        <Route path='plants/*' element={<p>sub rutas para las plantas page</p>} />
+        <Route path='families/*' element={<p>sub rutas para las familias page</p>} />
+        <Route path='accounts/*' element={<p>sub rutas para las accounts page</p>} />
+        <Route path='inventory' element={<p>pagina para el inventario</p>} />
+        <Route path='reports' element={<p>pagina para los reportes</p>} />
+      </Route>
+
+      <Route path='repertory' element={<p>Pagina para el repertorio</p>} />
+      <Route path='news' element={<p>Pagina para las novedades</p>} />
+      <Route path='signin' element={<p>pagina para iniciar sesion</p>} />
+      <Route path='*' element={<p>ruta no encontrada desde App routes main</p>} />
+    </Route>
+  )
 );
 
 /*
 <Route path='/' element={<LayoutPublic />}>
-      <Route index element={<CatalogPage />} />
       <Route path='product/:id/*' element={<SingleProductRoutes />} />
-      <Route path='repertory' element={<RepertoryPage />} />
-      <Route path='news' element={<NewsPage />} />
-      <Route path='news/:id' element={<SingleNewsPage />} />
-      <Route path='signin' element={<SignInPage />} />
-
-      <Route path='plant/*' element={<PlantRoutes />} />
-      <Route path='family/*' element={<FamilyRoutes />} />
-
-      <Route path='accounts/*' element={<AccountsRoutes />} />
-
-      <Route path='*' element={<p>Ruta no encontrada</p>} />
-    </Route>,
+      
 */
