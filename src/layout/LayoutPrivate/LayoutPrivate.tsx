@@ -23,7 +23,7 @@ export const LayoutPrivate = () => {
         )}
       </div>
 
-      <div className='flex max-lg:hidden'>
+      <div className='flex-1 flex max-lg:hidden'>
         <SidebarToDeviceLarge />
         <main className='flex-1 bg-custom-light'>
           <Outlet />

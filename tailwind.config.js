@@ -26,6 +26,7 @@ export default {
           dark: withOpacity('--color-dark'),
           light: withOpacity('--color-light'),
           'dark-hover': withOpacity('--color-dark-hover'),
+          medium: withOpacity('--color-medium'),
         },
         skin: {
           dark: withOpacity('--fill-color-dark'),
@@ -40,7 +41,7 @@ export default {
       textColor: {
         custom: {
           light: withOpacity('--color-light'),
-          dark: withOpacity('--color-dark-hover')
+          dark: withOpacity('--color-dark-hover'),
         },
         skin: {
           dark: withOpacity('--text-color-dark'),

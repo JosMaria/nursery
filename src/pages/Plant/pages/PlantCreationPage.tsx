@@ -61,7 +61,7 @@ const PlantCreationPage = () => {
     <section className='w-full flex flex-col items-center gap-2 select-none'>
       <h1 className='h1-custom'>Crear Planta</h1>
       <form
-        className='p-3 bg-sky-200 max-w-4xl w-full flex flex-col items-center gap-4 text-sm max-xs:text-xs'
+        className='p-3 bg-custom-medium max-w-4xl w-full flex flex-col items-center gap-4 text-sm max-xs:text-xs'
         onSubmit={handleSubmit((e) => {
           console.log(e);
           reset();
