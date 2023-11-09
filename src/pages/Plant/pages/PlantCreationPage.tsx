@@ -58,7 +58,7 @@ const PlantCreationPage = () => {
   });
 
   return (
-    <section className='w-full flex flex-col items-center gap-2 p-5 select-none'>
+    <section className='w-full flex flex-col items-center gap-2 select-none'>
       <h1 className='h1-custom'>Crear Planta</h1>
       <form
         className='p-3 bg-sky-200 max-w-4xl w-full flex flex-col items-center gap-4 text-sm max-xs:text-xs'
@@ -145,8 +145,8 @@ const PlantCreationPage = () => {
             <p className='msg-error-validation-custom'>{errors.status?.message}</p>
           </fieldset>
 
-          <fieldset className='col-span-full flex flex-col gap-1'>
-            <p className='font-medium'>Clasificaciones</p>
+          <fieldset className='col-span-full flex flex-col gap-1 font-medium'>
+            <p>Clasificaciones</p>
             <ul className='flex flex-wrap gap-5 max-sm:gap-4 max-w-2xl p-3 bg-custom-light text-custom-dark justify-center '>
               {[
                 'ORNAMENTAL',
@@ -161,7 +161,7 @@ const PlantCreationPage = () => {
                 'SUCCULENT',
               ].map((classification, index) => (
                 <li key={index}>
-                  <div className='flex items-center gap-1'>
+                  <div className='flex items-start gap-1'>
                     <input
                       id={`${id}-classification-${index}`}
                       type='checkbox'
@@ -180,17 +180,17 @@ const PlantCreationPage = () => {
             <p className='msg-error-validation-custom'>{errors.classifications?.message}</p>
           </fieldset>
 
-          <fieldset className='col-span-full w-3/4 flex flex-col gap-1'>
+          <fieldset className='col-span-full w-3/4 max-sm:w-4/5 max-xs:w-full flex flex-col gap-1'>
             <label className='font-medium'>(*) Descripci&oacute;n</label>
             <textarea
-              className='input-custom h-20'
+              className='input-custom'
               autoComplete='off'
               {...register('description')}
             ></textarea>
             <p className='msg-error-validation-custom'>{errors.description?.message}</p>
           </fieldset>
 
-          <fieldset className='col-span-full w-3/4 flex flex-col gap-2'>
+          <fieldset className='col-span-full w-3/4 max-sm:w-4/5 max-xs:w-full flex flex-col gap-2'>
             <p className='font-medium'>(*) Detalles</p>
             <div className='flex flex-col gap-5'>
               {fieldsDetails.map((field, index) => (
@@ -202,7 +202,7 @@ const PlantCreationPage = () => {
                     {...register(`details.${index}.detail` as const)}
                   ></textarea>
                   <button
-                    className='bg-red-500 hover:bg-red-600 border focus:border-white focus:outline-none focus:ring focus:ring-red-400 text-white font-bold text-xl leading-3 p-1.5 rounded'
+                    className='bg-red-500 hover:bg-red-600 border focus:border-white focus:outline-none focus:ring focus:ring-red-400 text-white font-bold text-xl leading-3 p-1 rounded'
                     type='button'
                     onClick={() => removeDetail(index)}
                   >
@@ -220,7 +220,7 @@ const PlantCreationPage = () => {
             </button>
           </fieldset>
 
-          <fieldset className='col-span-full w-3/4 flex flex-col gap-2'>
+          <fieldset className='col-span-full w-3/4 max-sm:w-4/5 max-xs:w-full flex flex-col gap-2'>
             <p className='font-medium'>(*) Ficha Tecnica</p>
             <div className='flex flex-col gap-7'>
               {fieldTechnicalSheet.map((field, index) => (
@@ -234,7 +234,7 @@ const PlantCreationPage = () => {
                       {...register(`technicalSheet.${index}.word` as const)}
                     />
                     <button
-                      className='bg-red-500 hover:bg-red-600 border focus:border-white focus:outline-none focus:ring focus:ring-red-400 text-white font-bold text-xl leading-3 p-1.5 rounded'
+                      className='bg-red-500 hover:bg-red-600 border focus:border-white focus:outline-none focus:ring focus:ring-red-400 text-white font-bold text-xl leading-3 p-1 rounded'
                       type='button'
                       onClick={() => removeContent(index)}
                     >

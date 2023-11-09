@@ -77,7 +77,7 @@
   }
 
   .h1-custom {
-    @apply font-medium text-2xl text-custom-dark max-sm:text-base select-none;
+    @apply font-medium text-2xl text-custom-dark max-sm:text-xl max-xs:text-lg select-none;
   }
 
   .input-custom {

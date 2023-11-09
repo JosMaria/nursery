@@ -6,7 +6,7 @@ interface ButtonProps {
 
 export const CloseButton = ({ action }: ButtonProps) => (
   <button
-    className='leading-none rounded-md text-2xl active:bg-custom-dark-hover lg:hidden w-8 h-8'
+    className='leading-none rounded-md text-2xl hover:bg-custom-dark-hover lg:hidden w-8 h-8'
     onClick={action}
   >
     &times;
@@ -15,7 +15,7 @@ export const CloseButton = ({ action }: ButtonProps) => (
 
 export const HambuguerButton = ({ action }: ButtonProps) => (
   <button
-    className='leading-none rounded-md text-3xl active:bg-custom-dark-hover lg:hidden w-8 h-8'
+    className='leading-none rounded-md text-3xl hover:bg-custom-dark-hover lg:hidden w-8 h-8'
     onClick={action}
   >
     &equiv;
