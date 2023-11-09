@@ -12,10 +12,10 @@ export const SIDEBAR_DATA: SidebarDataType[] = [
   {
     header: 'Plantas',
     content: [
-      { title: 'Crear Planta', path: 'create-plant' },
-      { title: 'Listado de Plantas', path: 'list-plants' },
-      { title: 'Crear Familia', path: 'create-family' },
-      { title: 'Listado de Familias', path: 'list-families' },
+      { title: 'Crear Planta', path: 'plants/creation' },
+      { title: 'Listado de Plantas', path: 'plants' },
+      { title: 'Crear Familia', path: 'families/creation' },
+      { title: 'Listado de Familias', path: 'families' },
     ],
   },
   {

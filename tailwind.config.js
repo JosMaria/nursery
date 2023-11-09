@@ -65,6 +65,9 @@ export default {
         },
       },
       ringColor: {
+        custom: {
+          dark: withOpacity('--color-dark'),
+        },
         skin: {
           input: withOpacity('--fill-color-btn-hover'),
           btn: withOpacity('--fill-color-btn-hover'),

@@ -7,7 +7,6 @@
     --color-dark: 7, 89, 133;
     --color-dark-hover: 8, 47, 73;
     --color-light: 224, 242, 254;
-    
 
     /* content */
     --fill-color-dark: 54, 83, 20;
@@ -73,6 +72,22 @@
 }
 
 @layer components {
+  .button-custom {
+    @apply focus:ring focus:ring-custom-dark focus:border focus:border-custom-light focus:outline-none bg-custom-dark hover:bg-custom-dark-hover text-custom-light max-xs:text-sm py-1.5 max-xs:py-1 px-6 max-xs:px-5 rounded font-medium select-none;
+  }
+
+  .h1-custom {
+    @apply font-medium text-2xl text-custom-dark max-sm:text-base select-none;
+  }
+
+  .input-custom {
+    @apply bg-slate-50 p-1.5 rounded-md selection:bg-custom-dark selection:text-custom-light focus:outline-none focus:ring focus:ring-custom-dark focus:ring-opacity-50;
+  }
+
+  .msg-error-validation-custom {
+    @apply text-xs text-red-600 bg-red-100 px-1.5 rounded-md w-fit;
+  }
+
   .custom-input-form {
     @apply w-full bg-slate-50 focus:border-skin-focus focus:ring-skin-input focus:ring-opacity-30 focus:outline-none focus:ring text-sm p-1.5 border border-slate-300 rounded-lg selection:bg-skin-btn selection:text-skin-light;
   }

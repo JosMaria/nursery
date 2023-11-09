@@ -18,7 +18,7 @@ const TEXT_COPYRIGHT = {
 
 //TODO: do i change <a> by <Link>?
 export const Footer = () => (
-  <footer className='max-sm:text-sm max-xs:text-xs'>
+  <footer className='max-sm:text-sm max-xs:text-xs bg-custom-dark text-custom-light'>
     <div className='flex flex-wrap justify-around content-center p-2 gap-10 max-sm:gap-3'>
       <FooterSection title={TEXT_INFORMATION.title} content={TEXT_INFORMATION.content} />
       <FooterSection title={TEXT_ABOUT.title} content={TEXT_ABOUT.content} />

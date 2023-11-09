@@ -7,7 +7,7 @@ export const LayoutPrivate = () => {
   const [isOpenSidebar, setIsOpenSidebar] = useState(false);
 
   return (
-    <>
+    <div className='min-h-screen flex flex-col justify-between'>
       <Header
         isOpenSidebar={isOpenSidebar}
         closeSidebar={() => setIsOpenSidebar(false)}
@@ -23,13 +23,13 @@ export const LayoutPrivate = () => {
         )}
       </div>
 
-      <div className='flex max-lg:hidden'>
+      <div className='flex-1 flex max-lg:hidden'>
         <SidebarToDeviceLarge />
-        <main className='bg-custom-light w-full h-screen'>
+        <main className='flex-1 bg-custom-light'>
           <Outlet />
         </main>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };

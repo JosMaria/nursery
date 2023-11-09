@@ -35,7 +35,7 @@ export const SidebarToDeviceSmall = ({ closeSidebar }: SidebarToDeviceSmallProps
 );
 
 export const SidebarToDeviceLarge = () => (
-  <aside className='bg-custom-dark text-custom-light max-w-xs w-full h-screen'>
+  <aside className='bg-custom-dark text-custom-light max-w-xs w-full'>
     {SIDEBAR_DATA.map((item, index) => (
       <NavLinkSection key={index} section={item} />
     ))}
@@ -72,6 +72,7 @@ const NavLinkSection = ({ section }: NavLinkSectionProps) => {
             className={({ isActive }) =>
               `hover:bg-custom-dark-hover px-10 py-2 flex ${isActive && 'bg-custom-dark-hover'}`
             }
+            end
           >
             {item.title}
           </NavLink>
