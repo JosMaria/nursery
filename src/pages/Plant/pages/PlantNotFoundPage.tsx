@@ -11,7 +11,7 @@ const PlantNotFoundPage = () => (
         temporalmente esta indisponible
       </p>
       <Link to='..' className='button-custom' relative='route'>
-        Ir al listado
+        Ir al listado de plantas
       </Link>
     </article>
   </section>

@@ -14,7 +14,6 @@ export interface CreatePlant {
   status: string;
   description: string;
   details: string[];
-  notes: string[];
   technicalSheet: TechnicalSheetType[];
 }
 

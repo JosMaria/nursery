@@ -1,12 +1,13 @@
-//import { StatusType } from '../../../types';
-//import { traduceStatus } from '../../../utils';
-
 import { useId } from 'react';
 import { traduceClassification, traduceStatus } from '../../../utils';
-import { PlantClassificationType, StatusType } from '../../../types';
+import { ErrorType, PlantClassificationType, StatusType } from '../../../types';
 import { InferType, array, object, string } from 'yup';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
+import { HttpStatusCode } from 'axios';
+import { createPlant } from '../services';
 
 export const createPlantSchema = object({
   commonName: string()
@@ -28,6 +29,24 @@ export type CreatePlantSchemaType = InferType<typeof createPlantSchema>;
 
 const PlantCreationPage = () => {
   const id = useId();
+  const queryClient = useQueryClient();
+
+  const { mutateAsync: createPlantMutationAsync } = useMutation({
+    mutationFn: createPlant,
+    onSuccess(data) {
+      queryClient.invalidateQueries({ queryKey: ['plants'] });
+      reset();
+      toast.success(`Planta ${data.commonName} guardada existosamente guardada existosamente`, {
+        className: 'successfully-alert-custom',
+      });
+    },
+    onError(error: ErrorType) {
+      const { response } = error;
+      if (response.status === HttpStatusCode.BadRequest) {
+        toast.error(response.data.reason, { className: 'error-alert-custom' });
+      }
+    },
+  });
 
   const {
     register,
@@ -60,11 +79,22 @@ const PlantCreationPage = () => {
   return (
     <section className='w-full flex flex-col items-center gap-2 select-none'>
       <h1 className='h1-custom'>Crear Planta</h1>
+
       <form
         className='p-3 bg-custom-medium max-w-4xl w-full flex flex-col items-center gap-4 text-sm max-xs:text-xs'
-        onSubmit={handleSubmit((e) => {
-          console.log(e);
-          reset();
+        onSubmit={handleSubmit((schema) => {
+          const { details, technicalSheet, ...schemaConverted } = schema;
+          const detailsConverted = schema.details.map((item) => item.detail);
+          const technicalSheetConverted = schema.technicalSheet.map((item) => ({
+            word: item.word,
+            info: item.value,
+          }));
+
+          createPlantMutationAsync({
+            ...schemaConverted,
+            details: detailsConverted,
+            technicalSheet: technicalSheetConverted,
+          });
         })}
       >
         <div className='w-full grid grid-cols-2 max-sm:grid-cols-1 justify-items-center gap-4'>
@@ -161,7 +191,7 @@ const PlantCreationPage = () => {
                 'SUCCULENT',
               ].map((classification, index) => (
                 <li key={index}>
-                  <div className='flex items-start gap-1'>
+                  <div className='flex items-center gap-1'>
                     <input
                       id={`${id}-classification-${index}`}
                       type='checkbox'
