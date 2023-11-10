@@ -2,14 +2,16 @@ import { Route, Routes } from 'react-router-dom';
 import PlantCreationPage from './pages/PlantCreationPage';
 import PlantListPage from './pages/PlantListPage';
 import PlantNotFoundPage from './pages/PlantNotFoundPage';
+import FamilyCreationPage from './pages/FamilyCreationPage';
+import FamilyListPage from './pages/FamilyListPage';
 
 export const PlantRoutes = () => (
   <Routes>
     <Route index element={<PlantListPage />} />
     <Route path='creation' element={<PlantCreationPage />} />
     <Route path='families'>
-      <Route index element={<p>Listado de familias</p>} />
-      <Route path='creation' element={<p>Pagina para crear familias</p>} />
+      <Route index element={<FamilyCreationPage />} />
+      <Route path='creation' element={<FamilyListPage />} />
     </Route>
     <Route path='*' element={<PlantNotFoundPage />} />
   </Routes>

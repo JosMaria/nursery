@@ -1,11 +1,11 @@
-import { PlantClassificationType, StatusType } from '../../types';
+import { PlantClassificationType } from '../../../types';
 
 export type TechnicalSheetType = {
   word: string;
   info: string;
 };
 
-export interface CreatePlant {
+export interface PlantCreationDTO {
   commonName: string;
   scientificName: string;
   scientistLastnameInitial: string;
@@ -17,7 +17,7 @@ export interface CreatePlant {
   technicalSheet: TechnicalSheetType[];
 }
 
-export interface CreatePlantResponse {
+export interface PlantResponseDTO {
   id: number;
   commonName: string;
   scientificName: string;
@@ -31,17 +31,30 @@ export interface CreatePlantResponse {
   technicalSheet: TechnicalSheetType[];
 }
 
-export interface FetchFamilyResponse {
-  id: number;
-  name: string;
-}
-
 export type ImageUploadType = {
   name: string;
   url: string;
 };
 
-export interface SimpleInfoPlantResponseDTO {
+export interface PlantInfoSimpleResponseDTO {
   id: number;
   commonName: string;
+}
+
+export interface FamilyFetchResponseDTO {
+  id: number;
+  name: string;
+}
+
+export interface FamilyCreationDTO {
+  family_name: string;
+}
+
+export interface FamilyUpdateDTO extends FamilyCreationDTO {
+  id: number;
+}
+
+export interface FamilyResponseDTO {
+  id: number;
+  name: string;
 }
