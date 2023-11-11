@@ -14,7 +14,7 @@ import { AccountsRoutes } from '../pages/Accounts/AccountsRoutes';
 import { LayoutPrivate } from '../layout/LayoutPrivate/LayoutPrivate';
 import { ProtectedRoute } from '../utils';
 
-const isAuthenticate = true;
+const isAuthenticate = false;
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,7 +29,7 @@ export const router = createBrowserRouter(
 
       <Route path='repertory' element={<p>Pagina para el repertorio</p>} />
       <Route path='news' element={<p>Pagina para las novedades</p>} />
-      <Route path='signin' element={<p>pagina para iniciar sesion</p>} />
+      <Route path='signin' element={<SignInPage />} />
       <Route path='*' element={<p>ruta no encontrada desde App routes main</p>} />
     </Route>
   )

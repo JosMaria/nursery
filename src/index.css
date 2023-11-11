@@ -90,7 +90,7 @@
   }
 
   .alert-custom {
-    @apply border-b-4 p-2 text-sm max-sm:text-xs text-center max-w-xs w-full rounded-t rounded-none select-none;
+    @apply border-b-4 p-2 text-sm max-sm:text-xs text-center max-w-xs rounded-t rounded-none select-none;
   }
 
   .successfully-alert-custom {
@@ -100,7 +100,7 @@
   .error-alert-custom {
     @apply bg-red-50 border-b-red-600 alert-custom;
   }
-
+/**/
   .custom-input-form {
     @apply w-full bg-slate-50 focus:border-skin-focus focus:ring-skin-input focus:ring-opacity-30 focus:outline-none focus:ring text-sm p-1.5 border border-slate-300 rounded-lg selection:bg-skin-btn selection:text-skin-light;
   }

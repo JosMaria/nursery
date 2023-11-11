@@ -1,7 +1,7 @@
 import { BiSolidShow } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 
-const simpleInfo = [
+const plantsInfoSimple = [
   { id: 0, commonName: 'zero' },
   { id: 1, commonName: 'one' },
   { id: 2, commonName: 'two' },
@@ -17,7 +17,7 @@ const PlantListPage = () => {
         <p className='font-medium text-center text-lg'>No hay ninguna planta registrada</p>
       ) : (
         <ul className='bg-custom-medium flex flex-col gap-2 p-5 rounded'>
-          {simpleInfo.map((info) => (
+          {plantsInfoSimple.map((info) => (
             <li
               key={info.id}
               className='bg-custom-light w-72 py-1 px-3 flex justify-between items-center gap-2'
