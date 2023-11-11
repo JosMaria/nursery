@@ -74,7 +74,7 @@
 
 @layer components {
   .button-custom {
-    @apply focus:ring focus:ring-custom-dark focus:border focus:border-custom-light focus:outline-none bg-custom-dark hover:bg-custom-dark-hover text-custom-light max-xs:text-sm py-1.5 max-xs:py-1 px-6 max-xs:px-5 rounded font-medium select-none;
+    @apply w-fit text-sm font-medium focus:ring focus:ring-custom-dark focus:border focus:border-custom-light focus:outline-none bg-custom-dark hover:bg-custom-dark-hover text-custom-light max-xs:text-sm py-1.5 max-xs:py-1 px-6 max-xs:px-5 rounded select-none;
   }
 
   .h1-custom {
@@ -82,7 +82,7 @@
   }
 
   .input-custom {
-    @apply bg-slate-50 p-1.5 rounded-md selection:bg-custom-dark selection:text-custom-light focus:outline-none focus:ring focus:ring-custom-dark focus:ring-opacity-50;
+    @apply text-sm bg-slate-50 p-1.5 rounded-md selection:bg-custom-dark selection:text-custom-light focus:outline-none focus:ring focus:ring-custom-dark focus:ring-opacity-50;
   }
 
   .msg-error-validation-custom {

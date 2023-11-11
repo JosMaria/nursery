@@ -14,7 +14,7 @@ export const SIDEBAR_DATA: SidebarDataType[] = [
     content: [
       { title: 'Crear Planta', path: 'plants/creation' },
       { title: 'Listado de Plantas', path: 'plants' },
-      { title: 'Crear Familia', path: 'families/creation' },
+      { title: 'Crear Familia', path: 'plants/families/creation' },
       { title: 'Listado de Familias', path: 'families' },
     ],
   },

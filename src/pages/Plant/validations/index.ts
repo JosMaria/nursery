@@ -1,1 +1,1 @@
-export * from './createPlantValidation';
+export * from './validations';

@@ -1,31 +1,14 @@
 import { useId } from 'react';
 import { traduceClassification, traduceStatus } from '../../../utils';
 import { ErrorType, PlantClassificationType, StatusType } from '../../../types';
-import { InferType, array, object, string } from 'yup';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import { HttpStatusCode } from 'axios';
 import { createPlant } from '../services';
-
-export const createPlantSchema = object({
-  commonName: string()
-    .matches(/^(?!\s*$).+/, 'Nombre común obligatorio')
-    .required('Nombre común requerido'),
-  scientificName: string().default(''),
-  scientistLastnameInitial: string().max(1, 'Max 1 letra').default(''),
-  family: string().default(''),
-  status: string().required(),
-  classifications: array(string().required()).default([]),
-  description: string().default(''),
-  details: array(object({ detail: string().required() })).default([]),
-  technicalSheet: array(object({ word: string().required(), value: string().required() })).default(
-    []
-  ),
-});
-
-export type CreatePlantSchemaType = InferType<typeof createPlantSchema>;
+import { PlantCreationSchemaType, plantCreationSchema } from '../validations';
+import { CloseButton } from '../components';
 
 const PlantCreationPage = () => {
   const id = useId();
@@ -55,7 +38,7 @@ const PlantCreationPage = () => {
     control,
     reset,
   } = useForm({
-    resolver: yupResolver<CreatePlantSchemaType>(createPlantSchema),
+    resolver: yupResolver<PlantCreationSchemaType>(plantCreationSchema),
   });
 
   const {
@@ -79,7 +62,6 @@ const PlantCreationPage = () => {
   return (
     <section className='w-full flex flex-col items-center gap-2 select-none'>
       <h1 className='h1-custom'>Crear Planta</h1>
-
       <form
         className='p-3 bg-custom-medium max-w-4xl w-full flex flex-col items-center gap-4 text-sm max-xs:text-xs'
         onSubmit={handleSubmit((schema) => {
@@ -196,7 +178,6 @@ const PlantCreationPage = () => {
                       id={`${id}-classification-${index}`}
                       type='checkbox'
                       value={classification}
-                      defaultValue={[]}
                       className='input-custom accent-sky-800 h-fit'
                       {...register('classifications')}
                     />
@@ -231,20 +212,14 @@ const PlantCreationPage = () => {
                     autoComplete='off'
                     {...register(`details.${index}.detail` as const)}
                   ></textarea>
-                  <button
-                    className='bg-red-500 hover:bg-red-600 border focus:border-white focus:outline-none focus:ring focus:ring-red-400 text-white font-bold text-xl leading-3 p-1 rounded'
-                    type='button'
-                    onClick={() => removeDetail(index)}
-                  >
-                    &times;
-                  </button>
+                  <CloseButton action={() => removeDetail(index)} />
                 </div>
               ))}
             </div>
             <button
               type='button'
               onClick={() => appendDetail({ detail: '' })}
-              className='button-custom w-fit'
+              className='button-custom'
             >
               {fieldsDetails.length === 0 ? 'Agregar Detalle' : '+1 Detalle'}
             </button>
@@ -263,13 +238,7 @@ const PlantCreationPage = () => {
                       className='input-custom w-44'
                       {...register(`technicalSheet.${index}.word` as const)}
                     />
-                    <button
-                      className='bg-red-500 hover:bg-red-600 border focus:border-white focus:outline-none focus:ring focus:ring-red-400 text-white font-bold text-xl leading-3 p-1 rounded'
-                      type='button'
-                      onClick={() => removeContent(index)}
-                    >
-                      &times;
-                    </button>
+                    <CloseButton action={() => removeContent(index)} />
                   </div>
                   <textarea
                     placeholder='Ingrese la definición'

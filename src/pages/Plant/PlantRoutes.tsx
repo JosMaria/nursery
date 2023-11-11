@@ -10,8 +10,8 @@ export const PlantRoutes = () => (
     <Route index element={<PlantListPage />} />
     <Route path='creation' element={<PlantCreationPage />} />
     <Route path='families'>
-      <Route index element={<FamilyCreationPage />} />
-      <Route path='creation' element={<FamilyListPage />} />
+      <Route index element={<FamilyListPage />} />
+      <Route path='creation' element={<FamilyCreationPage />} />
     </Route>
     <Route path='*' element={<PlantNotFoundPage />} />
   </Routes>
