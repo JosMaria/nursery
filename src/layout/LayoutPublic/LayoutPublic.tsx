@@ -9,7 +9,7 @@ export const LayoutPublic = () => {
   return (
     <div className='bg-custom-dark text-custom-light flex flex-col justify-between min-h-screen'>
       <Header />
-      <main className='flex-1 bg-custom-light text-custom-dark w-full'>
+      <main className='flex-1 bg-custom-light text-custom-dark w-full py-4 flex'>
         <Outlet />
       </main>
       <Footer />

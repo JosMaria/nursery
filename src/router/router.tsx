@@ -13,23 +13,24 @@ import SignInPage from '../pages/SignIn/SignInPage';
 import { AccountsRoutes } from '../pages/Accounts/AccountsRoutes';
 import { LayoutPrivate } from '../layout/LayoutPrivate/LayoutPrivate';
 import { ProtectedRoute } from '../utils';
+import ReportsPage from '../pages/Reports/ReportsPage';
+import InventoryPage from '../pages/Inventory/InventoryPage';
 
 const isAuthenticate = false;
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={isAuthenticate ? <LayoutPrivate /> : <LayoutPublic />}>
-      <Route index element={<p>Pagina para el catalogo</p>} />
+      <Route index element={<CatalogPage />} />
+      <Route path='repertory' element={<RepertoryPage />} />
+      <Route path='news' element={<NewsPage />} />
+      <Route path='signin' element={<SignInPage />} />
       <Route element={<ProtectedRoute canActivate={isAuthenticate} />}>
         <Route path='plants/*' element={<PlantRoutes />} />
         <Route path='accounts/*' element={<p>sub rutas para las accounts page</p>} />
-        <Route path='inventory' element={<p>pagina para el inventario</p>} />
-        <Route path='reports' element={<p>pagina para los reportes</p>} />
+        <Route path='inventory' element={<InventoryPage />} />
+        <Route path='reports' element={<ReportsPage />} />
       </Route>
-
-      <Route path='repertory' element={<p>Pagina para el repertorio</p>} />
-      <Route path='news' element={<p>Pagina para las novedades</p>} />
-      <Route path='signin' element={<SignInPage />} />
       <Route path='*' element={<p>ruta no encontrada desde App routes main</p>} />
     </Route>
   )
