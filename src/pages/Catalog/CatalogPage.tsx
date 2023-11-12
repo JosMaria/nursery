@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { fetchPaginatedProducts } from './service';
-import { ProductList } from './components';
+import { PlantCard } from './components';
 import ImageEmptyPage from '../../assets/catalog-empty.png';
 
 const CatalogPage = () => {
@@ -13,9 +13,10 @@ const CatalogPage = () => {
   if (status === 'error') return <p>Error de en el catalogo</p>;
 
   return (
-    <>
+    <section className='flex flex-col items-center gap-5'>
+      <h1 className='h1-custom'>Catalogo de plantas</h1>
       {page.content.length === 0 ? (
-        <section className='w-full flex justify-center items-center'>
+        <article className='w-full flex justify-center items-center'>
           <figure className='flex flex-col items-center max-w-xs'>
             <img src={ImageEmptyPage} alt='Empty Catalog' className='w-36 p-3' />
             <figcaption className='font-medium'>Catalogo Vac&iacute;o</figcaption>
@@ -24,11 +25,25 @@ const CatalogPage = () => {
               más tarde.
             </p>
           </figure>
-        </section>
+        </article>
       ) : (
-        <ProductList products={page.content} />
+        <article className='flex flex-wrap justify-evenly gap-5'>
+          {page.content.map((product) => (
+            <PlantCard
+              key={product.id}
+              content={{
+                id: product.id,
+                commonName: product.commonName,
+                scientificName: product.scientificName ?? '',
+                scientistLastnameInitial: product.scientistLastnameInitial ?? '',
+                family: product.family ?? '',
+                status: product.status,
+              }}
+            />
+          ))}
+        </article>
       )}
-    </>
+    </section>
   );
 };
 

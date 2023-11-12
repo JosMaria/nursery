@@ -16,7 +16,7 @@ import { ProtectedRoute } from '../utils';
 import ReportsPage from '../pages/Reports/ReportsPage';
 import InventoryPage from '../pages/Inventory/InventoryPage';
 
-const isAuthenticate = false;
+const isAuthenticate = true;
 
 export const router = createBrowserRouter(
   createRoutesFromElements(

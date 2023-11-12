@@ -1,2 +1,1 @@
-export * from './ProductList';
-export * from './Product';
+export * from './PlantCard';
