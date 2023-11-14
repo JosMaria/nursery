@@ -100,6 +100,24 @@
   .error-alert-custom {
     @apply bg-red-50 border-b-red-600 alert-custom;
   }
+
+  .status {
+    @apply self-end px-2 rounded-lg font-medium text-xs border-2;
+  }
+
+  .status-available {
+    @apply bg-green-200 text-green-900 border-green-700 status;
+  }
+
+  .status-in-conservation {
+    @apply bg-red-200 text-red-900 border-red-700 status;
+  }
+
+  .status-non-existent {
+    @apply bg-yellow-200 text-yellow-900 border-yellow-700 status;
+  }
+
+
 /**/
   .custom-input-form {
     @apply w-full bg-slate-50 focus:border-skin-focus focus:ring-skin-input focus:ring-opacity-30 focus:outline-none focus:ring text-sm p-1.5 border border-slate-300 rounded-lg selection:bg-skin-btn selection:text-skin-light;
