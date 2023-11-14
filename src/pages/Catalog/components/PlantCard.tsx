@@ -24,12 +24,12 @@ export const PlantCard = ({ content }: PlantCardProps) => (
       alt={content.commonName}
       className='h-28 xs:h-32 sm:h-40 md:h-44 lg:h-48 xl:h-56 2xl:h-60'
     />
-    <div className='flex flex-col gap-1 text-sm max-lg:text-xs bg-custom-light px-2 max-md:px-1 py-1.5 max-md:py-1 max-xs:py-0.5'>
+    <div className='m-0 flex flex-col gap-1 text-sm max-lg:text-xs bg-custom-light px-2 max-md:px-1 py-1.5 max-md:py-1 max-xs:py-0.5'>
       <div className='flex flex-col whitespace-nowrap max-md:overflow-x-scroll'>
         <p className='text-center text-lg max-sm:text-sm max-lg:text-base font-medium first-letter:uppercase leading-none'>
           {content.commonName}
         </p>
-        <p>
+        <p className=''>
           <i>
             {content.scientificName} {content.scientistLastnameInitial}
           </i>
@@ -38,14 +38,14 @@ export const PlantCard = ({ content }: PlantCardProps) => (
       </div>
 
       <p className={`${styleGivenStatus(content.status)} self-end`}>
-        {traduceStatus(content.status)}
+        {traduceStatus(content.status).toLowerCase()}
       </p>
     </div>
   </Link>
 );
 
 const styleGivenStatus = (status: StatusType): string => {
-  const styleGeneral = 'px-2 rounded-lg font-medium text-xs border-2';
+  const styleGeneral = 'px-1.5 rounded-lg font-medium text-xs border-2';
 
   if (status === 'AVAILABLE') {
     return `${styleGeneral} bg-green-200 text-green-800 border-green-800`;
