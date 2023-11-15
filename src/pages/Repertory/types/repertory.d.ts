@@ -1,4 +1,4 @@
-import { Page, StatusType } from '../../types';
+import { Page, StatusType } from '../../../types';
 
 export interface ItemResponse {
   id: number;
@@ -9,5 +9,5 @@ export interface ItemResponse {
 }
 
 export interface PageRepertory extends Page {
-  content: ItemResponse[]
+  content: ItemResponse[];
 }
