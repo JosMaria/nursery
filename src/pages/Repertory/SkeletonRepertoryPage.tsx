@@ -1,4 +1,4 @@
-export const Skeleton = () => (
+export const SkeletonRepertoryPage = () => (
   <div
     role='status'
     className='animate-pulse w-full flex flex-col items-center gap-5 max-sm:gap-3 max-w-2xl p-5'
@@ -11,10 +11,7 @@ export const Skeleton = () => (
     <div className='flex flex-col gap-3 w-full'>
       <div className='flex gap-2'>
         {[...Array(4).keys()].map((i) => (
-          <div
-            key={i}
-            className='bg-slate-700 w-32 h-10 max-sm:h-6 flex-1 rounded-sm'
-          ></div>
+          <div key={i} className='bg-slate-700 w-32 h-10 max-sm:h-6 flex-1 rounded-sm'></div>
         ))}
       </div>
 

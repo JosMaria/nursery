@@ -13,7 +13,7 @@ const RepertoryPage = () => {
   if (status === 'error') return <p>Error al cargar los datos</p>;
 
   return (
-    <section className='w-full flex justify-center px-1'>
+    <section className='w-full flex justify-center h-full'>
       {items.content.length === 0 ? (
         <figure className='self-center flex flex-col items-center gap-1 w-80 p-5'>
           <img src={RepertoryEmptyImage} alt='Empty Catalog' className='w-28 p-1' />

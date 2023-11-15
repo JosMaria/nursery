@@ -13,8 +13,7 @@ const CatalogPage = () => {
   if (status === 'error') return <p>Error de en el catalogo</p>;
 
   return (
-    <section className='flex flex-col items-center gap-3 lg:gap-5'>
-      <h1 className='h1-custom'>Catalogo de plantas</h1>
+    <section className='h-full flex flex-col items-center justify-center gap-3 lg:gap-4'>
       {page.content.length === 0 ? (
         <article className='w-full flex justify-center items-center'>
           <figure className='flex flex-col items-center max-w-xs'>
@@ -27,21 +26,24 @@ const CatalogPage = () => {
           </figure>
         </article>
       ) : (
-        <article className='flex flex-wrap justify-evenly gap-2 sm:gap-3 md:gap-5 xl:gap-10 2xl:gap-16'>
-          {page.content.map((product) => (
-            <PlantCard
-              key={product.id}
-              content={{
-                id: product.id,
-                commonName: product.commonName,
-                scientificName: product.scientificName ?? '',
-                scientistLastnameInitial: product.scientistLastnameInitial ?? '',
-                family: product.family ?? '',
-                status: product.status,
-              }}
-            />
-          ))}
-        </article>
+        <>
+          <h1 className='h1-custom'>Catalogo de plantas</h1>
+          <article className='flex flex-wrap justify-evenly gap-2 sm:gap-3 md:gap-5 xl:gap-10 2xl:gap-16'>
+            {page.content.map((product) => (
+              <PlantCard
+                key={product.id}
+                content={{
+                  id: product.id,
+                  commonName: product.commonName,
+                  scientificName: product.scientificName ?? '',
+                  scientistLastnameInitial: product.scientistLastnameInitial ?? '',
+                  family: product.family ?? '',
+                  status: product.status,
+                }}
+              />
+            ))}
+          </article>
+        </>
       )}
     </section>
   );
