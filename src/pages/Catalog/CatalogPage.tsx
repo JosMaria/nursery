@@ -13,7 +13,7 @@ const CatalogPage = () => {
   if (status === 'error') return <p>Error de en el catalogo</p>;
 
   return (
-    <section className='h-full flex flex-col items-center justify-center gap-3 lg:gap-4'>
+    <section className='w-full h-full flex flex-col items-center justify-center gap-3 lg:gap-4'>
       {page.content.length === 0 ? (
         <article className='w-full flex justify-center items-center'>
           <figure className='flex flex-col items-center max-w-xs'>
@@ -28,7 +28,7 @@ const CatalogPage = () => {
       ) : (
         <>
           <h1 className='h1-custom'>Catalogo de plantas</h1>
-          <article className='flex flex-wrap justify-evenly gap-2 sm:gap-3 md:gap-5 xl:gap-10 2xl:gap-16'>
+          <article className='w-full flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-5 xl:gap-10 2xl:gap-16'>
             {page.content.map((product) => (
               <PlantCard
                 key={product.id}

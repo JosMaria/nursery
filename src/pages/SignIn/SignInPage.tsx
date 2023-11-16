@@ -38,10 +38,10 @@ const SignInPage = () => {
   });
 
   return (
-    <section className='w-full flex flex-col items-center gap-3 p-5'>
+    <section className='w-full flex flex-col items-center gap-3'>
       <h1 className='h1-custom'>Inicio de Sesi&oacute;n</h1>
       <form
-        className='bg-custom-medium py-5 max-w-sm w-full flex flex-col items-center gap-4'
+        className='bg-custom-medium py-5 max-w-xs w-full flex flex-col items-center gap-4'
         onSubmit={handleSubmit((payload) => authenticateMutateAsync(payload))}
       >
         <fieldset className='flex flex-col gap-1'>

@@ -16,7 +16,7 @@ interface PlantCardProps {
 
 export const PlantCard = ({ content }: PlantCardProps) => (
   <Link
-    className='w-36 xs:w-40 sm:w-48 md:w-56 lg:w-60 xl:w-72 2xl:w-80 hover:shadow-xl hover:shadow-custom flex flex-col gap-1 bg-custom-dark p-1 lg:p-1.5 rounded-md'
+    className='w-36 xs:w-40 sm:w-48 md:w-56 lg:w-60 xl:w-72 2xl:w-80 focus:outline-none focus:shadow-2xl focus:shadow-custom hover:shadow-2xl hover:shadow-custom flex flex-col gap-1 bg-custom-dark p-1 lg:p-1.5 rounded-md'
     to='#'
   >
     <img
