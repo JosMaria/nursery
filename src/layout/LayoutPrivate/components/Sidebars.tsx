@@ -9,7 +9,7 @@ interface SidebarToDeviceSmallProps {
 }
 
 export const SidebarToDeviceSmall = ({ closeSidebar }: SidebarToDeviceSmallProps) => (
-  <aside className='w-full bg-custom-dark text-custom-light'>
+  <aside className='w-full bg-custom-dark text-custom-light border-custom-light border-y-2'>
     {SIDEBAR_DATA.map((item, index) => (
       <Fragment key={index}>
         <div className='flex flex-col'>
@@ -35,7 +35,7 @@ export const SidebarToDeviceSmall = ({ closeSidebar }: SidebarToDeviceSmallProps
 );
 
 export const SidebarToDeviceLarge = () => (
-  <aside className='bg-custom-dark text-custom-light max-w-xs w-full'>
+  <aside className='bg-custom-dark text-custom-light max-w-xs w-full border-custom-light border-y-2'>
     {SIDEBAR_DATA.map((item, index) => (
       <NavLinkSection key={index} section={item} />
     ))}

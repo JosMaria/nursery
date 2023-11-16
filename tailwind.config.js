@@ -1,9 +1,6 @@
 const withOpacity = (variableName) => {
-  return ({ opacityValue }) => {
-    if (opacityValue) return `rgba(var(${variableName}), ${opacityValue})`;
-
-    return `rgb(var(${variableName}))`;
-  };
+  return ({ opacityValue }) =>
+    opacityValue ? `rgba(var(${variableName}), ${opacityValue})` : `rgb(var(${variableName}))`;
 };
 
 /** @type {import('tailwindcss').Config} */
@@ -59,11 +56,8 @@ export default {
           list: withOpacity('--fill-color-form'),
         },
       },
-      gradientColorStops: {
-        card: {
-          start: withOpacity('--gradient-from'),
-          end: withOpacity('--gradient-to'),
-        },
+      colors: {
+        custom: withOpacity('--color-dark'),
       },
       ringColor: {
         custom: {

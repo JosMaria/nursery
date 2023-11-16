@@ -24,7 +24,7 @@ export const Footer = () => (
       <FooterSection title={TEXT_ABOUT.title} content={TEXT_ABOUT.content} />
     </div>
     <hr />
-    <section className='py-2 flex text-center justify-center text-sm max-sm:text-xs'>
+    <section className='py-0.5 flex text-center justify-center text-sm max-sm:text-xs'>
       <p className='flex flex-wrap justify-center'>
         <span>{TEXT_COPYRIGHT.title}&nbsp;-&nbsp;</span>
         <a className='underline font-medium' href={TEXT_COPYRIGHT.linkReference}>

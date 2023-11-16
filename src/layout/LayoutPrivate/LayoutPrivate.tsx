@@ -7,7 +7,7 @@ export const LayoutPrivate = () => {
   const [isOpenSidebar, setIsOpenSidebar] = useState(false);
 
   return (
-    <div className='h-screen flex flex-col justify-between'>
+    <div className='theme-admin h-screen flex flex-col justify-between'>
       <Header
         isOpenSidebar={isOpenSidebar}
         closeSidebar={() => setIsOpenSidebar(false)}

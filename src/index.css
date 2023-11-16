@@ -4,71 +4,24 @@
 
 @layer base {
   :root {
+    --color-dark: 17, 94, 89;
+    --color-dark-hover: 19, 78, 74;
+    --color-light: 240, 253, 250;
+    --color-medium: 204, 251, 241;
+  }
+
+  .theme-admin {
+    --color-dark: 133, 77, 14;
+    --color-dark-hover: 113, 63, 18;
+    --color-light: 254, 252, 232;
+    --color-medium: 254, 249, 195;
+  }
+
+  .theme-assistant {
     --color-dark: 7, 89, 133;
     --color-dark-hover: 8, 47, 73;
     --color-light: 224, 242, 254;
     --color-medium: 186, 230, 253;
-
-    /* content */
-    --fill-color-dark: 54, 83, 20;
-    --fill-color-light: 247, 254, 231;
-    /* text */
-    --text-color-dark: 26, 46, 5;
-    --text-color-light: 247, 254, 231;
-    /* navbar */
-    --fill-color-nav-selected: 63, 98, 18;
-    --border-nav-selected: 236, 252, 203;
-    /* card */
-    --gradient-from: 236, 252, 203;
-    --gradient-to: 247, 254, 231;
-    /* form */
-    --fill-color-form: 236, 252, 203;
-    --fill-color-btn: 63, 98, 18;
-    --fill-color-btn-hover: 77, 124, 15;
-    /* skeleton */
-    --fill-skeleton: 51, 65, 85;
-  }
-
-  .theme-admin {
-    /* content */
-    --fill-color-dark: 69, 26, 3;
-    --fill-color-light: 255, 251, 235;
-    /* text */
-    --text-color-dark: 69, 26, 3;
-    --text-color-light: 255, 251, 235;
-    /* navbar */
-    --fill-color-nav-selected: 120, 53, 15;
-    --border-nav-selected: 254, 243, 199;
-    /* card */
-    --gradient-from: 254, 243, 199;
-    --gradient-to: 255, 251, 235;
-    /* form */
-    --fill-color-form: 254, 243, 199;
-    --fill-color-btn: 146, 64, 14;
-    --fill-color-btn-hover: 180, 83, 9;
-    /* skeleton */
-    --fill-skeleton: 51, 65, 85;
-  }
-
-  .theme-assistant {
-    /* content */
-    --fill-color-dark: 12, 74, 110;
-    --fill-color-light: 240, 249, 255;
-    /* text */
-    --text-color-dark: 8, 47, 73;
-    --text-color-light: 240, 249, 255;
-    /* navbar */
-    --fill-color-nav-selected: 7, 89, 133;
-    --border-nav-selected: 224, 242, 254;
-    /* card */
-    --gradient-from: 224, 242, 254;
-    --gradient-to: 240, 249, 255;
-    /* form */
-    --fill-color-form: 186, 230, 253;
-    --fill-color-btn: 7, 89, 133;
-    --fill-color-btn-hover: 3, 105, 161;
-    /* skeleton */
-    --fill-skeleton: 51, 65, 85;
   }
 }
 

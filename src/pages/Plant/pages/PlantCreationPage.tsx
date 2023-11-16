@@ -157,9 +157,9 @@ const PlantCreationPage = () => {
             <p className='msg-error-validation-custom'>{errors.status?.message}</p>
           </fieldset>
 
-          <fieldset className='col-span-full flex flex-col gap-1 font-medium'>
+          <fieldset className='col-span-full flex flex-col gap-1'>
             <p>Clasificaciones</p>
-            <ul className='flex flex-wrap gap-5 max-sm:gap-4 max-w-2xl p-3 bg-custom-light text-custom-dark justify-center '>
+            <ul className='flex flex-wrap gap-5 max-sm:gap-4 max-w-2xl p-3 bg-custom-light justify-center'>
               {[
                 'ORNAMENTAL',
                 'FOREST',
