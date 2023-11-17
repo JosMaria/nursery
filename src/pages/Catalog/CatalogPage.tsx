@@ -13,9 +13,9 @@ const CatalogPage = () => {
   if (status === 'error') return <p>Error de en el catalogo</p>;
 
   return (
-    <section className='w-full h-full flex flex-col items-center justify-center gap-3 lg:gap-4'>
+    <section className='w-full min-h-full'>
       {page.content.length === 0 ? (
-        <article className='w-full flex justify-center items-center'>
+        <article className='h-full flex justify-center items-center'>
           <figure className='flex flex-col items-center max-w-xs'>
             <img src={ImageEmptyPage} alt='Empty Catalog' className='w-36 p-3' />
             <figcaption className='font-medium'>Catalogo Vac&iacute;o</figcaption>
@@ -26,7 +26,7 @@ const CatalogPage = () => {
           </figure>
         </article>
       ) : (
-        <>
+        <div className='flex flex-col justify-evenly items-center'>
           <h1 className='h1-custom'>Catalogo de plantas</h1>
           <article className='w-full flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-5 xl:gap-10 2xl:gap-16'>
             {page.content.map((product) => (
@@ -43,7 +43,7 @@ const CatalogPage = () => {
               />
             ))}
           </article>
-        </>
+        </div>
       )}
     </section>
   );
