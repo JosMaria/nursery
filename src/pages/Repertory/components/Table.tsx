@@ -5,7 +5,7 @@ interface Props {
 }
 
 export const Table = ({ items }: Props) => (
-  <table className='min-w-[28rem] w-full  whitespace-nowrap'>
+  <table className='min-w-[28rem] w-full whitespace-nowrap'>
     <thead className='bg-custom-dark text-custom-light whitespace-nowrap text-sm max-sm:text-xs'>
       <tr className=''>
         <th className='py-2'>ID</th>
