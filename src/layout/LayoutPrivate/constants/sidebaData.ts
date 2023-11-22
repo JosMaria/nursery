@@ -21,8 +21,8 @@ export const SIDEBAR_DATA: SidebarDataType[] = [
   {
     header: 'Usuarios',
     content: [
-      { title: 'Crear Usuario', path: 'create-user' },
-      { title: 'Listado de Usuarios', path: 'list-users' },
+      { title: 'Crear Usuario', path: 'accounts/creation' },
+      { title: 'Listado de Usuarios', path: 'accounts' },
     ],
   },
   {

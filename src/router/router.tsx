@@ -16,7 +16,7 @@ import { ProtectedRoute } from '../utils';
 import ReportsPage from '../pages/Reports/ReportsPage';
 import InventoryPage from '../pages/Inventory/InventoryPage';
 
-const isAuthenticate = false;
+const isAuthenticate = true;
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,7 +27,7 @@ export const router = createBrowserRouter(
       <Route path='signin' element={<SignInPage />} />
       <Route element={<ProtectedRoute canActivate={isAuthenticate} />}>
         <Route path='plants/*' element={<PlantRoutes />} />
-        <Route path='accounts/*' element={<p>sub rutas para las accounts page</p>} />
+        <Route path='accounts/*' element={<AccountsRoutes />} />
         <Route path='inventory' element={<InventoryPage />} />
         <Route path='reports' element={<ReportsPage />} />
       </Route>
