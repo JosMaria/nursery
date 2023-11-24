@@ -13,11 +13,11 @@ export const LayoutPrivate = () => {
         closeSidebar={() => setIsOpenSidebar(false)}
         openSidebar={() => setIsOpenSidebar(true)}
       />
-      <div className='lg:hidden h-full'>
+      <div className='lg:hidden'>
         {isOpenSidebar ? (
           <SidebarToDeviceSmall closeSidebar={() => setIsOpenSidebar(false)} />
         ) : (
-          <main className='bg-custom-light h-full py-3'>
+          <main className='flex-1 bg-custom-light py-3'>
             <Outlet />
           </main>
         )}
