@@ -32,7 +32,7 @@ const AccountsPage = () => {
                 key={account.id}
                 className='text-center max-sm:text-sm even:bg-slate-200 bg-slate-50 whitespace-nowrap'
               >
-                <td className='py-1 px-3'>{account.firstname}</td>
+                <td className='py-1 px-3'>{account.name}</td>
                 <td className='py-1 px-3'>{account.lastname}</td>
                 <td className='py-1 px-3'>{account.username}</td>
                 <td className='py-1 px-3'>{account.role}</td>

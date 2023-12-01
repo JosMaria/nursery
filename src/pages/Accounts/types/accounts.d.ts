@@ -1,13 +1,13 @@
 export interface AccountResponse {
   id: number;
-  firstname: string;
+  name: string;
   lastname: string;
   username: string;
   role: 'ADMINISTRATOR' | 'ASSISTANT';
 }
 
 export interface AccountCreationDTO {
-  firstname: string;
+  name: string;
   lastname: string;
   username: string;
   password: string;

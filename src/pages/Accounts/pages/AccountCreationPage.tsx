@@ -1,7 +1,9 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useMutation } from '@tanstack/react-query';
 import { useId } from 'react';
 import { useForm } from 'react-hook-form';
 import { InferType, object, string } from 'yup';
+import { createAccount } from '../services';
 
 const accountCreationSchema = object({
   name: string().required('El nombre es requerido'),
@@ -17,19 +19,26 @@ const AccountCreationPage = () => {
 
   const {
     register,
-    resetField,
     reset,
-    control,
     handleSubmit,
     formState: { errors },
   } = useForm<AccountCreateionSchemaType>({ resolver: yupResolver(accountCreationSchema) });
+
+  const { mutateAsync: createAccountMutateAsync } = useMutation({
+    mutationFn: createAccount,
+    onSuccess: () => {
+      reset();
+      alert('Creado exitosamente');
+    },
+    onError: () => alert('No se puedo crear la cuenta'),
+  });
 
   return (
     <section className='flex flex-col items-center gap-2 select-none'>
       <h1 className='h1-custom'>Crear Usuario</h1>
       <form
         className='bg-custom-medium max-w-sm w-full flex flex-col items-center gap-5 py-3 px-5'
-        onSubmit={handleSubmit((e) => console.log(e))}
+        onSubmit={handleSubmit((data) => createAccountMutateAsync(data))}
       >
         <div className='flex flex-col items-center gap-3 text-sm'>
           <fieldset className='flex flex-col gap-1'>
