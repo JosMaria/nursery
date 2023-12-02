@@ -13,13 +13,11 @@ const queryClient = new QueryClient({
 });
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <Suspense fallback={<p>Cargando pagina principal</p>}>
-        <RouterProvider router={router} />
-        <Toaster />
-      </Suspense>
-      <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
-  </React.StrictMode>
+  <QueryClientProvider client={queryClient}>
+    <Suspense fallback={<p>Cargando pagina principal</p>}>
+      <RouterProvider router={router} />
+      <Toaster />
+    </Suspense>
+    <ReactQueryDevtools initialIsOpen={false} />
+  </QueryClientProvider>
 );
