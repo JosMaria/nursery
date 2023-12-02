@@ -37,4 +37,3 @@ export const SkeletonProductPage = () => (
     <span className='sr-only'>Loading...</span>
   </div>
 );
-

@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.2.0",
-    "@tanstack/react-query": "^4.33.0",
-    "@tanstack/react-query-devtools": "^4.33.0",
+    "@tanstack/react-query": "^5.12.1",
+    "@tanstack/react-query-devtools": "^5.12.1",
     "axios": "^1.4.0",
     "csstype": "^3.1.2",
     "jwt-decode": "^3.1.2",
@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@hookform/devtools": "^4.3.1",
-    "@tanstack/eslint-plugin-query": "^4.34.1",
+    "@tanstack/eslint-plugin-query": "^5.12.1",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "@typescript-eslint/eslint-plugin": "^5.61.0",

@@ -14,11 +14,13 @@ import ReportsPage from '../pages/Reports/ReportsPage';
 import InventoryPage from '../pages/Inventory/InventoryPage';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Suspense, lazy } from 'react';
-import { SkeletonProductPage } from '../pages/Product/SkeletonProductPage';
+import { SkeletonProductPage } from '../skeletons';
 
 const ProductRouter = lazy(() => import('../pages/Product/routes/ProductRouter'));
 
 const isAuthenticate = true;
+
+// TODO: test with errorElement
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<LayoutPublic />}>
@@ -48,9 +50,3 @@ export const router = createBrowserRouter(
     </Route>
   )
 );
-
-/*
-<Route path='/' element={<LayoutPublic />}>
-      <Route path='product/:id/*' element={<SingleProductRoutes />} />
-      
-*/
