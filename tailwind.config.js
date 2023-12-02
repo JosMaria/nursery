@@ -25,35 +25,17 @@ export default {
           'dark-hover': withOpacity('--color-dark-hover'),
           medium: withOpacity('--color-medium'),
         },
-        skin: {
-          dark: withOpacity('--fill-color-dark'),
-          light: withOpacity('--fill-color-light'),
-          nav: withOpacity('--fill-color-nav-selected'),
-          form: withOpacity('--fill-color-form'),
-          btn: withOpacity('--fill-color-btn'),
-          'btn-hover': withOpacity('--fill-color-btn-hover'),
-          skeleton: withOpacity('--fill-skeleton'),
-        },
       },
       textColor: {
         custom: {
           light: withOpacity('--color-light'),
           dark: withOpacity('--color-dark-hover'),
         },
-        skin: {
-          dark: withOpacity('--text-color-dark'),
-          light: withOpacity('--text-color-light'),
-        },
       },
       borderColor: {
         custom: {
           light: withOpacity('--color-light'),
-        },
-        skin: {
-          nav: withOpacity('--border-nav-selected'),
-          focus: withOpacity('--fill-color-btn-hover'),
-          skeleton: withOpacity('--fill-skeleton'),
-          list: withOpacity('--fill-color-form'),
+          dark: withOpacity('--color-dark')
         },
       },
       colors: {
@@ -62,10 +44,6 @@ export default {
       ringColor: {
         custom: {
           dark: withOpacity('--color-dark'),
-        },
-        skin: {
-          input: withOpacity('--fill-color-btn-hover'),
-          btn: withOpacity('--fill-color-btn-hover'),
         },
       },
     },

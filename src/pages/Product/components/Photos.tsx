@@ -14,7 +14,7 @@ export const Photos = () => {
   );
 
   return (
-    <article className='bg-custom-medium flex flex-col items-center justify-evenly gap-1.5 w-96 max-h-96 p-0.5 border-4 border-skin-focus rounded'>
+    <article className='col-span-2 bg-custom-medium flex flex-col items-center justify-evenly gap-1.5 max-w-[24rem] w-full max-h-96 p-0.5 border-4 border-custom-dark rounded'>
       {mock_photos_URL.length === 0 ? (
         <img src={EmptyImage} alt='Empty Image' />
       ) : (
@@ -28,11 +28,13 @@ export const Photos = () => {
             }`}
           />
 
-          <div className='flex justify-evenly w-full items-center text-skin-light font-semibold'>
+          <div className='flex justify-evenly w-full items-center'>
             <button
               onClick={previousPhoto}
               disabled={selectedIndex === 0}
-              className={`button-custom py-1.5 font-bold ${selectedIndex === 0 && 'invisible'}`}
+              className={`button-custom py-1.5 font-bold ${
+                selectedIndex === 0 && 'opacity-40 hover:bg-custom-dark cursor-not-allowed'
+              }`}
             >
               &#10229;
             </button>
@@ -40,7 +42,8 @@ export const Photos = () => {
               onClick={nextPhoto}
               disabled={selectedIndex >= mock_photos_URL.length - 1}
               className={`button-custom py-1.5 font-bold ${
-                selectedIndex >= mock_photos_URL.length - 1 && 'invisible'
+                selectedIndex >= mock_photos_URL.length - 1 &&
+                'opacity-40 hover:bg-custom-dark cursor-not-allowed'
               }`}
             >
               &#10230;
