@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
 export const Navbar = () => (
-  <nav className='bg-custom-dark text-custom-light flex text-center  h-10'>
+  <nav className='bg-custom-dark text-custom-light max-sm:text-sm font-medium flex text-center h-10'>
     <NavLink
       to='.'
       end
