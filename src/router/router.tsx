@@ -29,7 +29,7 @@ export const router = createBrowserRouter(
       <Route
         path='product/:id/*'
         element={
-          <ErrorBoundary fallback={<p>error bpoundary product page</p>}>
+          <ErrorBoundary fallback={<p>error boundary product page</p>}>
             <Suspense fallback={<SkeletonProductPage />}>
               <ProductRouter />
             </Suspense>

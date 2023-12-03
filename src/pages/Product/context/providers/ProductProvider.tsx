@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { ProductContext } from './ProductContext';
-import { fetchProductByID } from '../services/productService';
+import { ProductContext } from '../ProductContext';
+import { fetchProductByID } from '../../services/productService';
 
 type ProductContextProviderProps = {
   children: JSX.Element;
@@ -12,7 +12,6 @@ export const ProductContextProvider = ({ children, productId }: ProductContextPr
     data: product,
     status,
     fetchStatus,
-
   } = useQuery({
     queryKey: ['product', productId],
     queryFn: () => fetchProductByID(productId),
