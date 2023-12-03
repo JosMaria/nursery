@@ -3,7 +3,6 @@ import { Route, createBrowserRouter, createRoutesFromElements } from 'react-rout
 import { LayoutPublic } from '../layout';
 import { PlantRoutes } from '../pages/Plant/PlantRoutes';
 
-import CatalogPage from '../pages/Catalog/CatalogPage';
 import RepertoryPage from '../pages/Repertory/RepertoryPage';
 import NewsPage from '../pages/News/NewsPage';
 import SignInPage from '../pages/SignIn/SignInPage';
@@ -14,17 +13,25 @@ import ReportsPage from '../pages/Reports/ReportsPage';
 import InventoryPage from '../pages/Inventory/InventoryPage';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Suspense, lazy } from 'react';
-import { SkeletonProductPage } from '../skeletons';
+import { SkeletonCatalogPage, SkeletonProductPage } from '../skeletons';
 
 const ProductRouter = lazy(() => import('../pages/Product/routes/ProductRouter'));
+const CatalogPage = lazy(() => import('../pages/Catalog/CatalogPage'));
 
 const isAuthenticate = true;
 
-// TODO: test with errorElement
+// TODO: test with errorElement en vez de usar error boundary
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<LayoutPublic />}>
-      <Route index element={<CatalogPage />} />
+      <Route
+        index
+        element={
+          <Suspense fallback={<SkeletonCatalogPage />}>
+            <SkeletonCatalogPage />
+          </Suspense>
+        }
+      />
 
       <Route
         path='product/:id/*'
