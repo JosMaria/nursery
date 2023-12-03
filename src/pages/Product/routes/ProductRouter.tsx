@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import ProductPage from '../ProductPage';
-import TechnicalSheetView from '../views/DetailsView';
+import TechnicalSheetView from '../views/TechnicalSheetView';
 import DetailsView from '../views/DetailsView';
 
 const ProductRouter = () => (

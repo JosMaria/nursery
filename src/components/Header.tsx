@@ -26,7 +26,7 @@ const Navbar = () => (
 );
 
 export const Header = () => (
-  <header className='bg-skin-dark text-skin-light font-medium grid grid-cols-3 max-sm:grid-cols-2 max-sm:grid-rows-2 items-center max-sm:items-end gap-1'>
+  <header className=' font-medium grid grid-cols-3 max-sm:grid-cols-2 max-sm:grid-rows-2 items-center max-sm:items-end gap-1'>
     <h1 className='ml-2 text-2xl flex items-end gap-2'>
       <span>🪴</span>
       <p className='text-xl max-sm:text-base'>VIVERO</p>

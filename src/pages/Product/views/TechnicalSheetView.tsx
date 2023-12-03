@@ -1,7 +1,5 @@
 const TechnicalSheetView = () => {
-  return (
-    <div>TechnicalSheetView</div>
-  )
-}
+  return <div>TechnicalSheetView</div>;
+};
 
-export default TechnicalSheetView
+export default TechnicalSheetView;

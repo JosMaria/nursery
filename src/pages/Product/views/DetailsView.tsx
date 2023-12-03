@@ -1,6 +1,6 @@
 const DetailsView = () => {
   return (
-    <div>DetailsView</div>
+    <div></div>
   )
 }
 export default DetailsView

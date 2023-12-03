@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import EmptyImage from '../../../assets/no-image.png';
 import { StatusType } from '../../../types';
 import { traduceStatus } from '../../../utils';
 
@@ -38,7 +37,7 @@ export const PlantCard = ({ content }: PlantCardProps) => (
       </div>
 
       <p className={`${styleGivenStatus(content.status)} self-end`}>
-        {traduceStatus(content.status).toLowerCase()}
+        {traduceStatus(content.status)}
       </p>
     </div>
   </Link>

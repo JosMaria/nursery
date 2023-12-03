@@ -21,7 +21,7 @@ export const Information = () => {
           </i>
         </p>
         <p className='flex gap-2'>
-          <span className='font-medium'>Familia:</span> {family}
+          <span className='font-medium'>Familia:</span> <span className='first-letter:uppercase'>{family}</span>
         </p>
         <p className='flex gap-2'>
           <span className='font-medium'>Estado:</span> {traduceStatus(status)}
