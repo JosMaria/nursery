@@ -1,5 +1,17 @@
 import { Page, StatusType } from '../../../types';
 
+export interface Page {
+  totalElements: number;
+  totalPages: number;
+  last: boolean;
+  size: number;
+  number: number;
+  numberOfElements: number;
+  first: boolean;
+  empty: boolean;
+  content: ProductResponse[];
+}
+
 export interface ProductResponse {
   id: number;
   commonName: string;
@@ -8,8 +20,4 @@ export interface ProductResponse {
   family: string | null;
   status: StatusType;
   photo_URL: string;
-}
-
-export interface PageCatalog extends Page {
-  content: ProductResponse[];
 }

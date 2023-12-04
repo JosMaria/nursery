@@ -1,33 +1,42 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchPaginatedProducts } from './service';
+import { fetchPaginatedProducts } from './service/catalogService';
 import { PlantCard } from './components';
-import ImageEmptyPage from '../../assets/catalog-empty.png';
+import CatalogEmptyImage from '../../assets/catalog-empty.png';
 
 const CatalogPage = () => {
-  const { data: page, status } = useQuery({
+  const {
+    data: page,
+    status,
+    fetchStatus,
+  } = useQuery({
     queryFn: fetchPaginatedProducts,
     queryKey: ['products'],
   });
 
-  if (status === 'loading') return <p>Cargando</p>;
-  if (status === 'error') return <p>Error de en el catalogo</p>;
+  console.log('catalog', Math.random());
+
+  if (fetchStatus === 'fetching') return <p>Fetching catalog page data... </p>;
+  if (fetchStatus === 'paused') return <p>paused catalog page </p>;
+
+  if (status === 'pending') return <p>Pending status...</p>;
+  if (status === 'error') return <p>Error catalog page</p>;
 
   return (
     <section className='w-full min-h-full'>
       {page.content.length === 0 ? (
         <article className='h-full flex justify-center items-center'>
           <figure className='flex flex-col items-center max-w-xs'>
-            <img src={ImageEmptyPage} alt='Empty Catalog' className='w-36 p-3' />
-            <figcaption className='font-medium'>Catalogo Vac&iacute;o</figcaption>
+            <img src={CatalogEmptyImage} alt='Empty Catalog' className='w-36 p-3' />
+            <figcaption className='font-medium'>C&aacute;talogo Vac&iacute;o</figcaption>
             <p className='text-sm max-sm:text-xs text-center font-light'>
-              Lo sentimos, actualmente no tenemos productos en nuestro catálogo. Por favor, regresa
-              más tarde.
+              Lo sentimos, actualmente no tenemos productos en nuestro cat&aacute;logo. Por favor,
+              regresa m&aacute;s tarde.
             </p>
           </figure>
         </article>
       ) : (
         <div className='flex flex-col justify-evenly items-center'>
-          <h1 className='h1-custom'>Catalogo de plantas</h1>
+          <h1 className='h1-custom'>C&aacute;talogo de plantas</h1>
           <article className='w-full flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-5 xl:gap-10 2xl:gap-16'>
             {page.content.map((product) => (
               <PlantCard

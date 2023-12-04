@@ -28,7 +28,7 @@ export const router = createBrowserRouter(
         index
         element={
           <Suspense fallback={<SkeletonCatalogPage />}>
-            <SkeletonCatalogPage />
+            <CatalogPage />
           </Suspense>
         }
       />
