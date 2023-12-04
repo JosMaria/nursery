@@ -1,7 +1,6 @@
-import { PlantCard } from './components';
+import { ClassificationsFilter, EmptyContent, PlantCard } from './components';
 import { CatalogContextProvider } from './context/providers/CatalogProvider';
-import { useCatalogContext } from './context/CatalogContext';
-import CatalogEmptyImage from '../../assets/catalog-empty.png';
+import { useCatalogProducts } from './hooks';
 
 const CatalogPage = () => {
   console.log('Catalog Page', Math.random());
@@ -12,20 +11,19 @@ const CatalogPage = () => {
   );
 };
 
-export default CatalogPage;
-
 const CatalogContent = () => {
-  const { catalog } = useCatalogContext();
+  const { products, isEmpty } = useCatalogProducts();
 
   return (
     <section className='w-full min-h-full'>
-      {catalog.content.length === 0 ? (
+      {isEmpty ? (
         <EmptyContent />
       ) : (
-        <div className='flex flex-col justify-evenly items-center'>
+        <section className='flex flex-col justify-evenly items-center'>
           <h1 className='h1-custom'>C&aacute;talogo de plantas</h1>
+          <ClassificationsFilter />
           <article className='w-full flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-5 xl:gap-10 2xl:gap-16'>
-            {catalog.content.map((product) => (
+            {products.map((product) => (
               <PlantCard
                 key={product.id}
                 content={{
@@ -39,21 +37,10 @@ const CatalogContent = () => {
               />
             ))}
           </article>
-        </div>
+        </section>
       )}
     </section>
   );
 };
 
-const EmptyContent = () => (
-  <article className='h-full flex justify-center items-center'>
-    <figure className='flex flex-col items-center max-w-xs'>
-      <img src={CatalogEmptyImage} alt='Empty Catalog' className='w-36 p-3' />
-      <figcaption className='font-medium'>C&aacute;talogo Vac&iacute;o</figcaption>
-      <p className='text-sm max-sm:text-xs text-center font-light'>
-        Lo sentimos, actualmente no tenemos productos en nuestro cat&aacute;logo. Por favor, regresa
-        m&aacute;s tarde.
-      </p>
-    </figure>
-  </article>
-);
+export default CatalogPage;
