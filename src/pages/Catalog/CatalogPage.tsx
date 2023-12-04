@@ -1,44 +1,31 @@
-import { useQuery } from '@tanstack/react-query';
-import { fetchPaginatedProducts } from './service/catalogService';
 import { PlantCard } from './components';
+import { CatalogContextProvider } from './context/providers/CatalogProvider';
+import { useCatalogContext } from './context/CatalogContext';
 import CatalogEmptyImage from '../../assets/catalog-empty.png';
 
 const CatalogPage = () => {
-  const {
-    data: page,
-    status,
-    fetchStatus,
-  } = useQuery({
-    queryFn: fetchPaginatedProducts,
-    queryKey: ['products'],
-  });
+  console.log('Catalog Page', Math.random());
+  return (
+    <CatalogContextProvider>
+      <CatalogContent />
+    </CatalogContextProvider>
+  );
+};
 
-  console.log('catalog', Math.random());
+export default CatalogPage;
 
-  if (fetchStatus === 'fetching') return <p>Fetching catalog page data... </p>;
-  if (fetchStatus === 'paused') return <p>paused catalog page </p>;
-
-  if (status === 'pending') return <p>Pending status...</p>;
-  if (status === 'error') return <p>Error catalog page</p>;
+const CatalogContent = () => {
+  const { catalog } = useCatalogContext();
 
   return (
     <section className='w-full min-h-full'>
-      {page.content.length === 0 ? (
-        <article className='h-full flex justify-center items-center'>
-          <figure className='flex flex-col items-center max-w-xs'>
-            <img src={CatalogEmptyImage} alt='Empty Catalog' className='w-36 p-3' />
-            <figcaption className='font-medium'>C&aacute;talogo Vac&iacute;o</figcaption>
-            <p className='text-sm max-sm:text-xs text-center font-light'>
-              Lo sentimos, actualmente no tenemos productos en nuestro cat&aacute;logo. Por favor,
-              regresa m&aacute;s tarde.
-            </p>
-          </figure>
-        </article>
+      {catalog.content.length === 0 ? (
+        <EmptyContent />
       ) : (
         <div className='flex flex-col justify-evenly items-center'>
           <h1 className='h1-custom'>C&aacute;talogo de plantas</h1>
           <article className='w-full flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-5 xl:gap-10 2xl:gap-16'>
-            {page.content.map((product) => (
+            {catalog.content.map((product) => (
               <PlantCard
                 key={product.id}
                 content={{
@@ -58,4 +45,15 @@ const CatalogPage = () => {
   );
 };
 
-export default CatalogPage;
+const EmptyContent = () => (
+  <article className='h-full flex justify-center items-center'>
+    <figure className='flex flex-col items-center max-w-xs'>
+      <img src={CatalogEmptyImage} alt='Empty Catalog' className='w-36 p-3' />
+      <figcaption className='font-medium'>C&aacute;talogo Vac&iacute;o</figcaption>
+      <p className='text-sm max-sm:text-xs text-center font-light'>
+        Lo sentimos, actualmente no tenemos productos en nuestro cat&aacute;logo. Por favor, regresa
+        m&aacute;s tarde.
+      </p>
+    </figure>
+  </article>
+);
