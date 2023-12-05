@@ -20,9 +20,9 @@ export const ClassificationsFilter = () => {
   const classificationSearched = searchParams.get('q');
 
   return (
-    <article className='flex items-baseline gap-3 bg-custom-medium px-5 py-2 h-fit rounded-md'>
-      <label htmlFor='classifications' className='font-medium'>
-        Clasificaci&oacute;n
+    <article className='self-start flex items-baseline gap-3 bg-custom-medium p-2 max-sm:p-1 h-fit rounded-md'>
+      <label htmlFor='classifications' className='font-medium max-sm:text-sm'>
+        Filtrar por
       </label>
       <select
         className='input-custom w-44 border-custom-dark border'
