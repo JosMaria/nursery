@@ -4,6 +4,7 @@ import { PlantClassificationType } from '../../types';
 import { traduceClassification } from '../../utils';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { fetchPaginatedProducts } from './service/catalogService';
+import { MdFirstPage, MdLastPage } from 'react-icons/md';
 
 const CLASSIFICATIONS: PlantClassificationType[] = [
   'ALIMENTARY',
@@ -97,6 +98,16 @@ const CatalogPage = () => {
             products={page.content}
           />
         )}
+        <article className='max-xs:overflow-x-scroll w-full flex justify-center gap-3'>
+          <button className='button-custom px-2' disabled={true}>
+            <MdFirstPage size='1.4em'/>
+          </button>
+          <button className='button-custom'>Anterior</button>
+          <button className='button-custom'>Siguiente</button>
+          <button className='button-custom px-2'>
+            <MdLastPage size='1.4em' />
+          </button>
+        </article>
       </article>
     </section>
   );
