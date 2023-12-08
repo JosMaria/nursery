@@ -27,7 +27,7 @@ export const router = createBrowserRouter(
       <Route
         index
         element={
-          <Suspense fallback={<SkeletonCatalogPage />}>
+          <Suspense fallback={<p>cargando CATALOG PAGE...</p>}>
             <CatalogPage />
           </Suspense>
         }

@@ -1,6 +1,6 @@
-import { useSearchParams } from 'react-router-dom';
 import { PlantClassificationType } from '../../../types';
 import { traduceClassification } from '../../../utils';
+import { useClassificationFilter } from '../hooks';
 
 const CLASSIFICATIONS: PlantClassificationType[] = [
   'ALIMENTARY',
@@ -16,9 +16,7 @@ const CLASSIFICATIONS: PlantClassificationType[] = [
 ];
 
 export const ClassificationsFilter = () => {
-  const [searchParams, setSearchParams] = useSearchParams({ q: '' });
-  const classificationSearched = searchParams.get('q');
-
+  const { classificationFilter, changeClassificationFilter } = useClassificationFilter();
   return (
     <article className='self-start flex items-baseline gap-3 bg-custom-medium p-2 max-sm:p-1 h-fit rounded-md'>
       <label htmlFor='classifications' className='font-medium max-sm:text-sm'>
@@ -29,15 +27,9 @@ export const ClassificationsFilter = () => {
         name='classifications'
         id='classifications'
         onChange={(e) =>
-          setSearchParams(
-            (prev) => {
-              prev.set('q', e.currentTarget.value);
-              return prev;
-            },
-            { replace: true }
-          )
+          changeClassificationFilter(e.currentTarget.value as PlantClassificationType)
         }
-        value={classificationSearched ?? ''}
+        value={classificationFilter ?? ''}
       >
         <option value=''>Sin Filtro</option>
         {CLASSIFICATIONS.map((classification, index) => (

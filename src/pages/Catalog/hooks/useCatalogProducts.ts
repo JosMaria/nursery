@@ -1,10 +1,10 @@
 import { useCatalogContext } from '../context/CatalogContext';
 
 export const useCatalogProducts = () => {
-  const { catalog } = useCatalogContext();
+  const { page } = useCatalogContext();
 
   return {
-    isEmpty: catalog.content.length === 0,
-    products: catalog.content,
+    isEmpty: page.content.length === 0,
+    products: page.content,
   };
 };
