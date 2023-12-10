@@ -98,7 +98,7 @@ export const Products = ({ classificationSelected, isEmpty, products }: Props) =
       {isEmpty ? (
         <EmptyContent classificationSelected={classificationSelected} />
       ) : (
-        <article className='w-full flex flex-wrap justify-evenly gap-2 sm:gap-3 md:gap-5 xl:gap-10 2xl:gap-20'>
+        <article className='w-full grid max-md:grid-cols-2 max-xl:grid-cols-3 grid-cols-4 justify-items-center max-md:gap-y-5 max-lg:gap-y-10 gap-y-16'>
           {products.map((product) => (
             <PlantCard
               key={product.id}
@@ -117,5 +117,3 @@ export const Products = ({ classificationSelected, isEmpty, products }: Props) =
     </>
   );
 };
-
-// TODO: article do with css grid

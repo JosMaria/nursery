@@ -16,7 +16,7 @@ export const Photos = () => {
   return (
     <article className='flex flex-col gap-2 max-w-sm w-full max-h-96 p-1 border-4 border-custom-dark rounded-md'>
       {mock_photos_URL.length === 0 ? (
-        <img src={EmptyImage} alt='Empty Image' />
+        <img src={EmptyImage} alt='Empty Image' loading='lazy' />
       ) : (
         <>
           <img

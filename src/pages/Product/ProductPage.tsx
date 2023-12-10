@@ -21,3 +21,5 @@ const ProductPage = () => (
 );
 
 export default ProductPage;
+
+// TODO: ver las renderizaciones en los cambios de tabs que renderizan toda la pagina y no deberia ser asi, colocar un random en el product provider

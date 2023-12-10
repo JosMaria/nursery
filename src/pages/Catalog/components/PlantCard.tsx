@@ -15,20 +15,21 @@ interface PlantCardProps {
 
 export const PlantCard = ({ content }: PlantCardProps) => (
   <Link
-    className='w-36 xs:w-40 sm:w-48 md:w-56 lg:w-60 xl:w-72 2xl:w-80 focus:outline-none focus:shadow-2xl focus:shadow-custom hover:shadow-2xl hover:shadow-custom flex flex-col gap-1 bg-custom-dark p-1 lg:p-1.5 rounded-md'
+    className='w-36 xs:w-48 sm:w-60 lg:w-72 xl:w-80 2xl:w-96 focus:outline-none focus:shadow-2xl focus:shadow-custom hover:shadow-2xl hover:shadow-custom flex flex-col gap-1 bg-custom-dark p-1 lg:p-1.5 rounded-md'
     to={`product/${content.id}`}
   >
     <img
-      className='h-28 xs:h-32 sm:h-40 md:h-44 lg:h-48 xl:h-56 2xl:h-60'
+      className='h-28 xs:h-32 sm:h-40 md:h-44 lg:h-56 xl:h-60 2xl:h-72'
       src='https://paisajismodigital.com/blog/wp-content/uploads/2020/08/plantas-carnivoras-ornamentales-paisajismo-digital-dionaea-muscipula.jpg'
       alt={content.commonName}
+      loading='lazy'
     />
-    <div className='m-0 flex flex-col gap-1 text-sm max-lg:text-xs bg-custom-light px-2 max-md:px-1 py-1.5 max-md:py-1 max-xs:py-0.5'>
-      <div className='flex flex-col whitespace-nowrap max-md:overflow-x-scroll'>
-        <p className='text-center text-lg max-sm:text-sm max-lg:text-base font-medium first-letter:uppercase leading-none'>
+    <div className='flex flex-col text-sm max-lg:text-xs bg-custom-light px-2 max-md:px-1 py-1.5 max-md:py-1 max-xs:py-0.5'>
+      <div className='leading-tight flex flex-col whitespace-nowrap max-md:overflow-x-scroll'>
+        <p className='md:pb-1 text-center text-lg max-sm:text-sm max-lg:text-base font-medium first-letter:uppercase leading-none'>
           {content.commonName}
         </p>
-        <p className=''>
+        <p>
           <i>
             {content.scientificName} {content.scientistLastnameInitial}
           </i>
