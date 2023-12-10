@@ -1,20 +1,22 @@
-import { useQuery } from '@tanstack/react-query';
 import { ProductContext } from '../ProductContext';
+import { useQuery } from '@tanstack/react-query';
+import { useParams } from 'react-router-dom';
 import { fetchProductByID } from '../../services/productService';
 
 type ProductContextProviderProps = {
   children: JSX.Element;
-  productId: number;
 };
 
-export const ProductContextProvider = ({ children, productId }: ProductContextProviderProps) => {
+export const ProductContextProvider = ({ children }: ProductContextProviderProps) => {
+  const { id: productId } = useParams();
+
   const {
     data: product,
     status,
     fetchStatus,
   } = useQuery({
     queryKey: ['product', productId],
-    queryFn: () => fetchProductByID(productId),
+    queryFn: () => fetchProductByID(Number(productId)),
   });
 
   if (fetchStatus === 'fetching') return <p>Fetch Status fething...</p>;
