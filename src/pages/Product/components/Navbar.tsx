@@ -7,7 +7,7 @@ export const Navbar = () => (
       end
       className={({ isActive }) =>
         `flex-1 flex flex-col justify-center hover:bg-custom-dark-hover h-full ${
-          isActive && 'border-b-2 border-custom-light bg-custom-dark-hover'
+          isActive && 'border-b-4 border-custom-light bg-custom-dark-hover'
         }`
       }
     >
@@ -17,7 +17,7 @@ export const Navbar = () => (
       to='details'
       className={({ isActive }) =>
         `flex-1 flex flex-col justify-center hover:bg-custom-dark-hover h-full ${
-          isActive && 'border-b-2 border-custom-light bg-custom-dark-hover'
+          isActive && 'border-b-4 border-custom-light bg-custom-dark-hover'
         }`
       }
     >

@@ -14,7 +14,7 @@ export const Photos = () => {
   );
 
   return (
-    <article className='col-span-2 bg-custom-medium flex flex-col items-center justify-evenly gap-1.5 max-w-[24rem] w-full max-h-96 p-0.5 border-4 border-custom-dark rounded'>
+    <article className='flex flex-col gap-2 max-w-sm w-full max-h-96 p-1 border-4 border-custom-dark rounded-md'>
       {mock_photos_URL.length === 0 ? (
         <img src={EmptyImage} alt='Empty Image' />
       ) : (

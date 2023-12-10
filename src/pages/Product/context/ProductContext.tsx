@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
-import { SingleProductResponse } from '../types/productTypes';
+import { SingleProductResponseType } from '../types/productTypes';
 
-const initialState: SingleProductResponse = {
+const initialState: SingleProductResponseType = {
   id: 0,
   commonName: '',
   scientificName: '',

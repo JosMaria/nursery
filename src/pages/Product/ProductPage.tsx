@@ -7,12 +7,12 @@ const ProductPage = () => {
 
   return (
     <ProductContextProvider productId={Number(id)}>
-      <div className='flex flex-col items-center gap-4 w-full'>
-        <section className='w-full max-w-5xl bg-custom-medium grid grid-cols-5 max-md:grid-cols-1 justify-items-center gap-1 p-1 rounded-md'>
+      <div className='flex flex-col items-center gap-4 w-full max-w-5xl'>
+        <section className='w-full bg-custom-medium flex max-md:flex-wrap justify-evenly items-center px-5 max-lg:px-3 max-sm:px-1'>
           <Information />
           <Photos />
         </section>
-        <section className='w-full max-w-5xl flex flex-col px-1'>
+        <section className='w-full flex flex-col'>
           <Navbar />
           <Outlet />
         </section>

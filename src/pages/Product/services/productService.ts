@@ -1,7 +1,7 @@
 import { axiosInstance } from '../../../config';
-import { SingleProductResponse } from '../types/productTypes';
+import { SingleProductResponseType } from '../types/productTypes';
 
-export const fetchProductByID = async (id: number): Promise<SingleProductResponse> => {
-  const { data } = await axiosInstance.get<SingleProductResponse>(`nursery/product/${id}`);
+export const fetchProductByID = async (id: number): Promise<SingleProductResponseType> => {
+  const { data } = await axiosInstance.get<SingleProductResponseType>(`nursery/product/${id}`);
   return data;
 };

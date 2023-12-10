@@ -1,4 +1,4 @@
-export interface SingleProductResponse {
+export type SingleProductResponseType = {
   id: number;
   commonName: string;
   scientificName: string | null;

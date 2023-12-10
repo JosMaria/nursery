@@ -1,11 +1,11 @@
-import { traduceStatus } from '../../../utils';
+import { traduceClassification, traduceStatus } from '../../../utils';
 import { useProductInformation } from '../hooks';
 
 export const Information = () => {
   const productInfo = useProductInformation();
 
   return (
-    <article className='col-span-3 max-w-lg w-full flex flex-col items-center gap-1 max-sm:text-xs p-2 max-md:pt-0 h-fit'>
+    <article className='w-full flex flex-col items-center gap-1 max-sm:text-xs p-2 max-md:pt-0'>
       <h1 className='text-2xl max-sm:text-xl font-medium first-letter:uppercase'>
         {productInfo.commonName}
       </h1>
@@ -28,7 +28,7 @@ export const Information = () => {
           <ul className='self-center'>
             {productInfo.classifications.map((classification, index) => (
               <li key={index} className='list-inside list-disc'>
-                {classification}
+                {traduceClassification(classification)}
               </li>
             ))}
           </ul>

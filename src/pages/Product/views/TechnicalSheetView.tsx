@@ -11,9 +11,9 @@ const TechnicalSheetView = () => {
         </p>
       ) : (
         technicalSheet.map((data, index) => (
-          <div key={index} className='flex items-baseline max-md:flex-col md:gap-2'>
+          <div key={index} className='flex items-baseline max-md:flex-col md:gap-2 leading-tight'>
             <b>{data.word}</b>
-            <p className='leading-tight'>{data.info}</p>
+            <p>{data.info}</p>
           </div>
         ))
       )}
