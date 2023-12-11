@@ -1,11 +1,8 @@
-import { useSearchParams } from 'react-router-dom';
-import { PaginationSection, Products } from './components';
-import { PlantClassificationType } from '../../types';
-import { traduceClassification } from '../../utils';
-import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { Products } from './components';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { fetchPaginatedProducts } from './service/catalogService';
-import { MdFirstPage, MdLastPage } from 'react-icons/md';
 import { useState } from 'react';
+import { SkeletonProducts } from './skeletons';
 
 const VALUE_ALL_CLASSIFICATION = 'ALL';
 export type AllClassificationType = typeof VALUE_ALL_CLASSIFICATION;
@@ -16,41 +13,65 @@ export type AllClassificationType = typeof VALUE_ALL_CLASSIFICATION;
 // };
 
 const CatalogPage = () => {
-  //const [pageNumber, setPageNumber] = useState(1);
+  const [page, setPage] = useState(0);
 
   const {
-    data: page,
+    data: pageContent,
     status,
     fetchStatus,
+    isPlaceholderData,
   } = useQuery({
-    queryKey: ['products'],
-    queryFn: () => fetchPaginatedProducts(),
+    queryKey: ['products', page],
+    queryFn: () => fetchPaginatedProducts(page),
     placeholderData: keepPreviousData,
-    staleTime: 5000,
   });
 
-  console.log('Catalog render', page);
+  console.log('Catalog render', pageContent);
 
-  if (fetchStatus === 'fetching') return 'fetchign catalog';
-  if (fetchStatus === 'paused') return 'catalog paused';
+  if (status === 'error') return <p>status error</p>;
+  // if (status === 'pending') return <p>status pending</p>;
+  // if (fetchStatus === 'fetching') return 'catalog fetching';
+  // if (fetchStatus === 'paused') return 'catalog paused';
 
   return (
     <section className='w-full min-h-full'>
-      <article className='flex flex-col justify-evenly items-center px-0.5 gap-2'>
+      <article className='flex flex-col justify-between h-full items-center px-0.5 gap-2'>
         <h1 className='h1-custom'>C&aacute;talogo de plantas</h1>
-        {/* {fetchContent} */}
-        {status === 'pending' ? (
-          <p>Status pending product</p>
-        ) : status === 'error' ? (
-          <p>Status error product</p>
+
+        {fetchStatus === 'fetching' ? (
+          <SkeletonProducts />
+        ) : fetchStatus === 'paused' ? (
+          <p>fetch status paused</p>
+        ) : status === 'pending' ? (
+          <SkeletonProducts />
         ) : (
           <Products
             classificationSelected={'ALL'}
-            isEmpty={page.content.length === 0}
-            products={page.content}
+            isEmpty={pageContent.content.length === 0}
+            products={pageContent.content}
           />
         )}
-        <PaginationSection />
+
+        <article className='max-xs:overflow-x-scroll w-full flex justify-center gap-3'>
+          <button
+            className={`button-custom ${pageContent?.first && 'invisible'}`}
+            onClick={() => setPage((prev) => prev - 1)}
+            disabled={pageContent?.first}
+          >
+            Anterior
+          </button>
+          <button
+            className={`button-custom ${(isPlaceholderData || pageContent?.last) && 'invisible'}`}
+            onClick={() => {
+              if (!isPlaceholderData && !pageContent?.last) {
+                setPage((prev) => prev + 1);
+              }
+            }}
+            disabled={isPlaceholderData || pageContent?.last}
+          >
+            Siguiente
+          </button>
+        </article>
       </article>
     </section>
   );

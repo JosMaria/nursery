@@ -7,13 +7,13 @@ import RepertoryPage from '../pages/Repertory/RepertoryPage';
 import NewsPage from '../pages/News/NewsPage';
 import SignInPage from '../pages/SignIn/SignInPage';
 import { AccountsRoutes } from '../pages/Accounts/AccountsRoutes';
-import { LayoutPrivate } from '../layout/LayoutPrivate/LayoutPrivate';
 import { ProtectedRoute } from '../utils';
 import ReportsPage from '../pages/Reports/ReportsPage';
 import InventoryPage from '../pages/Inventory/InventoryPage';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Suspense, lazy } from 'react';
-import { SkeletonCatalogPage, SkeletonProductPage } from '../skeletons';
+import { SkeletonProductPage } from '../skeletons';
+import { SkeletonCatalogPage } from '../pages/Catalog/skeletons';
 
 const ProductRouter = lazy(() => import('../pages/Product/routes/ProductRouter'));
 const CatalogPage = lazy(() => import('../pages/Catalog/CatalogPage'));
@@ -27,7 +27,7 @@ export const router = createBrowserRouter(
       <Route
         index
         element={
-          <Suspense fallback={<p>cargando CATALOG PAGE...</p>}>
+          <Suspense fallback={<SkeletonCatalogPage />}>
             <CatalogPage />
           </Suspense>
         }
