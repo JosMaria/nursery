@@ -1,4 +1,6 @@
 import { axiosInstance } from '../../../config';
+import { PlantClassificationType } from '../../../types';
+import { AllClassificationType } from '../CatalogPage';
 // import { PlantClassificationType } from '../../../types';
 // import { AllClassificationType } from '../CatalogPage';
 import { Page } from '../types/catalogTypes';
@@ -16,7 +18,14 @@ import { Page } from '../types/catalogTypes';
 //   return data;
 // };
 
-export const fetchPaginatedProducts = async (page = 0): Promise<Page> => {
-  const { data } = await axiosInstance.get<Page>(`nursery/product?page=${page}`);
+export const fetchPaginatedProducts = async (
+  page = 0,
+  classification: PlantClassificationType | AllClassificationType
+): Promise<Page> => {
+  const endpoint =
+    classification === 'ALL'
+      ? 'nursery/product'
+      : `nursery/product/classification/${classification}`;
+  const { data } = await axiosInstance.get<Page>(`${endpoint}?page=${page}`);
   return data;
 };
