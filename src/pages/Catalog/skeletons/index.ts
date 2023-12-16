@@ -1,2 +1,2 @@
-export * from './SkeletonCatogPage';
+export * from './SkeletonCatalogPage';
 export * from './SkeletonProducts';

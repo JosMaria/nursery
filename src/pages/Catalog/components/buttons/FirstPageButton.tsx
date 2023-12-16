@@ -1,16 +1,20 @@
 import { MdFirstPage } from 'react-icons/md';
+import { useProductsContext } from '../../context/ProductsContext';
 
-type Props = {
-  moveToFirstPage: () => void;
-  isDisabled: boolean;
+export const FirstPageButton = () => {
+  const {
+    actions: {
+      firstPage: { move: moveToFirstPage, isDisabled },
+    },
+  } = useProductsContext();
+
+  return (
+    <button
+      className={`button-custom px-2 ${isDisabled && 'invisible'}`}
+      onClick={moveToFirstPage}
+      disabled={isDisabled}
+    >
+      <MdFirstPage size='1.4em' />
+    </button>
+  );
 };
-
-export const FirstPageButton = ({ moveToFirstPage, isDisabled }: Props) => (
-  <button
-    className={`button-custom px-2 ${isDisabled && 'invisible'}`}
-    onClick={moveToFirstPage}
-    disabled={isDisabled}
-  >
-    <MdFirstPage size='1.4em' />
-  </button>
-);

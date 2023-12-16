@@ -1,4 +1,5 @@
 import { Page, StatusType } from '../../../types';
+import { VALUE_ALL_CLASSIFICATION } from '../constants/classifications';
 
 export interface Page {
   totalElements: number;
@@ -21,3 +22,5 @@ export interface ProductResponse {
   status: StatusType;
   photo_URL: string;
 }
+
+export type AllClassificationType = typeof VALUE_ALL_CLASSIFICATION;

@@ -1,14 +1,19 @@
-type Props = {
-  moveToPreviousPage: () => void;
-  isDisabled: boolean;
-};
+import { useProductsContext } from '../../context/ProductsContext';
 
-export const PreviousPageButton = ({ moveToPreviousPage, isDisabled }: Props) => (
-  <button
-    className={`button-custom ${isDisabled && 'invisible'}`}
-    onClick={moveToPreviousPage}
-    disabled={isDisabled}
-  >
-    Anterior
-  </button>
-);
+export const PreviousPageButton = () => {
+  const {
+    actions: {
+      previousPage: { move: moveToPreviousPage, isDisabled },
+    },
+  } = useProductsContext();
+
+  return (
+    <button
+      className={`button-custom ${isDisabled && 'invisible'}`}
+      onClick={moveToPreviousPage}
+      disabled={isDisabled}
+    >
+      Anterior
+    </button>
+  );
+};
