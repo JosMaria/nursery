@@ -1,6 +1,6 @@
-import { createContext, useContext } from 'react';
 import { AllClassificationType, Page } from '../types/catalogTypes';
 import { PlantClassificationType } from '../../../types';
+import { createContext, useContext } from 'react';
 
 type ProductsContextType = {
   content: Page;

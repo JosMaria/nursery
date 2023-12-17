@@ -1,13 +1,8 @@
+import { useLastPageAction } from '../../hooks/useActionsPagination';
 import { MdLastPage } from 'react-icons/md';
-import { useProductsContext } from '../../context/ProductsContext';
 
 export const LastPageButton = () => {
-  const {
-    actions: {
-      lastPage: { move: moveToLastPage, isDisabled },
-    },
-  } = useProductsContext();
-
+  const { moveToLastPage, isDisabled } = useLastPageAction();
   return (
     <button
       className={`button-custom px-2 ${isDisabled && 'invisible'}`}

@@ -1,12 +1,8 @@
+import { useFirstPageAction } from '../../hooks/useActionsPagination';
 import { MdFirstPage } from 'react-icons/md';
-import { useProductsContext } from '../../context/ProductsContext';
 
 export const FirstPageButton = () => {
-  const {
-    actions: {
-      firstPage: { move: moveToFirstPage, isDisabled },
-    },
-  } = useProductsContext();
+  const { moveToFirstPage, isDisabled } = useFirstPageAction();
 
   return (
     <button

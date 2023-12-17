@@ -1,7 +1,7 @@
-import { useCatalogContext } from '../context/CatalogContext';
+import { useProductsContext } from '../context/ProductsContext';
 
 export const useCatalogProducts = () => {
-  const { page } = useCatalogContext();
+  const { content: page } = useProductsContext();
 
   return {
     isEmpty: page.content.length === 0,

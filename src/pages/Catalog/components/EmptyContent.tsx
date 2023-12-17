@@ -1,9 +1,9 @@
 import CatalogEmptyImage from '../../../assets/catalog-empty.png';
 import { traduceClassification } from '../../../utils';
-import { useProductsContext } from '../context/ProductsContext';
+import { useClassificationFilter } from '../hooks';
 
 export const EmptyContent = () => {
-  const { classificationSelected } = useProductsContext();
+  const { classificationSelected } = useClassificationFilter();
 
   return (
     <article className='h-full flex justify-center items-center'>

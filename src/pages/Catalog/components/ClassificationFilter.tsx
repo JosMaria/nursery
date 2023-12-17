@@ -1,12 +1,9 @@
-import { traduceClassification } from '../../../utils';
 import { CLASSIFICATIONS, VALUE_ALL_CLASSIFICATION } from '../constants/classifications';
-import { useProductsContext } from '../context/ProductsContext';
+import { traduceClassification } from '../../../utils';
+import { useClassificationFilter } from '../hooks';
 
 export const ClassificationsFilter = () => {
-  const {
-    classificationSelected,
-    actions: { changeClassification },
-  } = useProductsContext();
+  const { classificationSelected, changeClassification } = useClassificationFilter();
 
   return (
     <article className='self-start flex items-baseline gap-3 bg-custom-medium p-2 max-sm:p-1 h-fit rounded-md'>

@@ -1,11 +1,7 @@
-import { useProductsContext } from '../../context/ProductsContext';
+import { useNextPageAction } from '../../hooks/useActionsPagination';
 
 export const NextPageButton = () => {
-  const {
-    actions: {
-      nextPage: { move: moveToNextPage, isDisabled },
-    },
-  } = useProductsContext();
+  const { moveToNextPage, isDisabled } = useNextPageAction();
 
   return (
     <button

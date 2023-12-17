@@ -1,19 +1,13 @@
-import { Link } from 'react-router-dom';
-import { StatusType } from '../../../types';
+import { ProductResponseType } from '../types/catalogTypes';
 import { traduceStatus } from '../../../utils';
+import { styleGivenStatus } from '../utils';
+import { Link } from 'react-router-dom';
 
-interface PlantCardProps {
-  content: {
-    id: number;
-    commonName: string;
-    scientificName: string;
-    scientistLastnameInitial: string;
-    family: string;
-    status: StatusType;
-  };
-}
+type Props = {
+  content: Omit<ProductResponseType, 'photo_URL'>;
+};
 
-export const PlantCard = ({ content }: PlantCardProps) => (
+export const PlantCard = ({ content }: Props) => (
   <Link
     className='w-36 xs:w-48 sm:w-60 lg:w-72 xl:w-80 2xl:w-96 focus:outline-none focus:shadow-2xl focus:shadow-custom hover:shadow-2xl hover:shadow-custom flex flex-col gap-1 bg-custom-dark p-1 lg:p-1.5 rounded'
     to={`product/${content.id}`}
@@ -36,22 +30,9 @@ export const PlantCard = ({ content }: PlantCardProps) => (
         </p>
         <p>{content.family}</p>
       </div>
-
       <p className={`${styleGivenStatus(content.status)} self-end`}>
         {traduceStatus(content.status)}
       </p>
     </div>
   </Link>
 );
-
-const styleGivenStatus = (status: StatusType): string => {
-  const styleGeneral = 'px-1.5 rounded-lg font-medium text-xs border-2';
-
-  if (status === 'AVAILABLE') {
-    return `${styleGeneral} bg-green-200 text-green-800 border-green-800`;
-  } else if (status === 'NON_EXISTENT') {
-    return `${styleGeneral} bg-purple-200 text-purple-800 border-purple-800`;
-  } else if (status === 'IN_CONSERVATION') {
-    return `${styleGeneral} bg-amber-200 text-amber-800 border-amber-800`;
-  } else return '';
-};

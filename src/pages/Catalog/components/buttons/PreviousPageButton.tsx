@@ -1,11 +1,7 @@
-import { useProductsContext } from '../../context/ProductsContext';
+import { usePreviousPageAction } from '../../hooks/useActionsPagination';
 
 export const PreviousPageButton = () => {
-  const {
-    actions: {
-      previousPage: { move: moveToPreviousPage, isDisabled },
-    },
-  } = useProductsContext();
+  const { moveToPreviousPage, isDisabled } = usePreviousPageAction();
 
   return (
     <button

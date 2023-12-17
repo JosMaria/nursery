@@ -1,8 +1,8 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { fetchPaginatedProducts } from '../../service/catalogService';
-import { ProductsContext } from '../ProductsContext';
 import { VALUE_ALL_CLASSIFICATION } from '../../constants/classifications';
 import { classificationTyped } from '../../utils/classificationTyped';
+import { ProductsContext } from '../ProductsContext';
 import { useSearchParams } from 'react-router-dom';
 import { SkeletonProducts } from '../../skeletons';
 

@@ -1,11 +1,13 @@
-import { PlantClassificationType } from '../../../types';
-import { useCatalogContext } from '../context/CatalogContext';
+import { useProductsContext } from '../context/ProductsContext';
 
 export const useClassificationFilter = () => {
-  const { classificationFilter, changeClassificationFilter } = useCatalogContext();
+  const {
+    classificationSelected,
+    actions: { changeClassification },
+  } = useProductsContext();
 
   return {
-    classificationFilter: classificationFilter as PlantClassificationType,
-    changeClassificationFilter,
+    classificationSelected,
+    changeClassification,
   };
 };

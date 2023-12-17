@@ -1,16 +1,16 @@
-import { useProductsContext } from '../context/ProductsContext';
+import { useCatalogProducts } from '../hooks';
 import { EmptyContent, PlantCard } from '.';
 
 export const Products = () => {
-  const { content } = useProductsContext();
+  const { isEmpty, products } = useCatalogProducts();
 
   return (
     <>
-      {content.empty ? (
+      {isEmpty ? (
         <EmptyContent />
       ) : (
         <article className='w-full grid max-md:grid-cols-2 max-xl:grid-cols-3 grid-cols-4 justify-items-center max-md:gap-y-5 max-lg:gap-y-10 gap-y-16'>
-          {content.content.map((product) => (
+          {products.map((product) => (
             <PlantCard
               key={product.id}
               content={{
