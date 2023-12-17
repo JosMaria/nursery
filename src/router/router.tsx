@@ -12,8 +12,8 @@ import ReportsPage from '../pages/Reports/ReportsPage';
 import InventoryPage from '../pages/Inventory/InventoryPage';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Suspense, lazy } from 'react';
-import { SkeletonProductPage } from '../skeletons';
 import { SkeletonCatalogPage } from '../pages/Catalog/skeletons';
+import { SkeletonProductPage } from '../pages/Product/skeletons';
 
 const ProductRouter = lazy(() => import('../pages/Product/routes/ProductRouter'));
 const CatalogPage = lazy(() => import('../pages/Catalog/CatalogPage'));

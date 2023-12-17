@@ -1,6 +1,6 @@
-import { Link, Outlet } from 'react-router-dom';
-import { Information, Navbar, Photos } from './components';
 import { ProductContextProvider } from './context/providers/ProductProvider';
+import { Information, Navbar, Photos } from './components';
+import { Link, Outlet } from 'react-router-dom';
 
 const ProductPage = () => (
   <ProductContextProvider>

@@ -1,7 +1,7 @@
-import { Route, Routes } from 'react-router-dom';
-import ProductPage from '../ProductPage';
 import TechnicalSheetView from '../views/TechnicalSheetView';
 import DetailsView from '../views/DetailsView';
+import { Route, Routes } from 'react-router-dom';
+import ProductPage from '../ProductPage';
 
 const ProductRouter = () => (
   <Routes>
