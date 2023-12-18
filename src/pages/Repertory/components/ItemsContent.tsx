@@ -1,4 +1,4 @@
-import RepertoryEmptyImage from '../../assets/list-empty.png';
+import RepertoryEmptyImage from '../../../assets/list-empty.png';
 import { useRepertoryItems } from '../hooks';
 import { Table } from '.';
 
