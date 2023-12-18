@@ -1,13 +1,13 @@
-import { ItemResponse } from '../types';
+import { ItemResponseType } from '../types/repertoryTypes';
 
 interface Props {
-  items: ItemResponse[];
+  items: ItemResponseType[];
 }
 
 export const Table = ({ items }: Props) => (
   <table className='min-w-[28rem] w-full whitespace-nowrap'>
     <thead className='bg-custom-dark text-custom-light whitespace-nowrap text-sm max-sm:text-xs'>
-      <tr className=''>
+      <tr>
         <th className='py-2'>ID</th>
         <th className='py-2'>Nombre Comun</th>
         <th className='py-2'>Nombre Cientifico</th>
@@ -18,7 +18,7 @@ export const Table = ({ items }: Props) => (
       {items.map((item) => (
         <tr
           key={item.id}
-          className='text-sm max-sm:text-xs bg-slate-100 even:bg-slate-200 text-center'
+          className='text-sm max-sm:text-xs odd:bg-slate-100 even:bg-slate-200 text-center'
         >
           <td className='p-1.5'>{item.id}</td>
           <td className='p-1.5 first-letter:uppercase'>{item.commonName}</td>

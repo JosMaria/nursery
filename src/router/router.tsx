@@ -3,20 +3,23 @@ import { Route, createBrowserRouter, createRoutesFromElements } from 'react-rout
 import { LayoutPublic } from '../layout';
 import { PlantRoutes } from '../pages/Plant/PlantRoutes';
 
-import RepertoryPage from '../pages/Repertory/RepertoryPage';
-import NewsPage from '../pages/News/NewsPage';
 import SignInPage from '../pages/SignIn/SignInPage';
 import { AccountsRoutes } from '../pages/Accounts/AccountsRoutes';
 import { ProtectedRoute } from '../utils';
 import ReportsPage from '../pages/Reports/ReportsPage';
 import InventoryPage from '../pages/Inventory/InventoryPage';
-import { ErrorBoundary } from 'react-error-boundary';
 import { Suspense, lazy } from 'react';
+
 import { SkeletonCatalogPage } from '../pages/Catalog/skeletons';
 import { SkeletonProductPage } from '../pages/Product/skeletons';
+import { SkeletonRepertoryPage } from '../pages/Repertory/skeletons';
+
+import { ErrorBoundary } from '../components';
 
 const ProductRouter = lazy(() => import('../pages/Product/routes/ProductRouter'));
 const CatalogPage = lazy(() => import('../pages/Catalog/CatalogPage'));
+const RepertoryPage = lazy(() => import('../pages/Repertory/RepertoryPage'));
+const NewsPage = lazy(() => import('../pages/News/NewsPage'));
 
 const isAuthenticate = true;
 
@@ -26,6 +29,7 @@ export const router = createBrowserRouter(
     <Route path='/' element={<LayoutPublic />}>
       <Route
         index
+        errorElement={<ErrorBoundary />}
         element={
           <Suspense fallback={<SkeletonCatalogPage />}>
             <CatalogPage />
@@ -35,17 +39,34 @@ export const router = createBrowserRouter(
 
       <Route
         path='product/:id/*'
+        errorElement={<ErrorBoundary />}
         element={
-          <ErrorBoundary fallback={<p>error boundary product page</p>}>
-            <Suspense fallback={<SkeletonProductPage />}>
-              <ProductRouter />
-            </Suspense>
-          </ErrorBoundary>
+          <Suspense fallback={<SkeletonProductPage />}>
+            <ProductRouter />
+          </Suspense>
         }
       />
 
-      <Route path='repertory' element={<RepertoryPage />} />
-      <Route path='news' element={<NewsPage />} />
+      <Route
+        path='repertory'
+        errorElement={<ErrorBoundary />}
+        element={
+          <Suspense fallback={<SkeletonRepertoryPage />}>
+            <RepertoryPage />
+          </Suspense>
+        }
+      />
+
+      <Route
+        path='news'
+        errorElement={<ErrorBoundary />}
+        element={
+          <Suspense fallback={<p>suspense news page</p>}>
+            <NewsPage />
+          </Suspense>
+        }
+      />
+
       <Route path='signin' element={<SignInPage />} />
       <Route element={<ProtectedRoute canActivate={isAuthenticate} />}>
         <Route path='plants/*' element={<PlantRoutes />} />

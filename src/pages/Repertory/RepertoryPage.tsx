@@ -1,15 +1,22 @@
-import { useQuery } from '@tanstack/react-query';
+import { fetchPaginatedItems } from './service/repertoryService';
 import RepertoryEmptyImage from '../../assets/list-empty.png';
-import { fetchPaginatedItems } from './service';
+import { useQuery } from '@tanstack/react-query';
 import { Table } from './components';
 
 const RepertoryPage = () => {
-  const { data: items, status } = useQuery({
+  const {
+    data: items,
+    status,
+    fetchStatus,
+  } = useQuery({
     queryFn: fetchPaginatedItems,
     queryKey: ['repertory'],
   });
 
-  if (status === 'loading') return <p>Cargando listado</p>;
+  if (fetchStatus === 'fetching') return <p>fetching list</p>;
+  if (fetchStatus === 'paused') return <p>fetching paused</p>;
+
+  if (status === 'pending') return <p>Cargando listado</p>;
   if (status === 'error') return <p>Error al cargar los datos</p>;
 
   return (
@@ -24,7 +31,7 @@ const RepertoryPage = () => {
           </p>
         </figure>
       ) : (
-        <div className='max-w-2xl w-full flex flex-col gap-3'>
+        <div className='max-w-2xl w-full flex flex-col gap-3 p-1'>
           <h1 className='h1-custom text-center'>Listado</h1>
           <button className='button-custom'>Descargar PDF&nbsp;&nbsp;📄</button>
           <article className='max-sm:overflow-x-scroll'>
