@@ -9,7 +9,7 @@ const AccountsPage = () => {
     queryFn: fetchAllAccounts,
   });
 
-  if (status === 'loading') return <p>cargando usuarios</p>;
+  if (status === 'pending') return <p>cargando usuarios</p>;
   if (status === 'error') return <p>error al cargar usuarios</p>;
 
   return (

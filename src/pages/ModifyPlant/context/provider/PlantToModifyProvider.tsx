@@ -14,7 +14,7 @@ export const PlantToModifyProvider = ({ children, plantId }: Props) => {
     refetchOnWindowFocus: false,
   });
 
-  if (status === 'loading') return 'loading plant to modify';
+  if (status === 'pending') return 'loading plant to modify';
   if (status === 'error') return 'error plant to modify';
 
   return (

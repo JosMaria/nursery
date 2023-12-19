@@ -8,17 +8,6 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import { SignInSchemaType, signInValidation } from './validations';
 
-const getErrorMessage = (error: unknown): string => {
-  let message: string;
-  if (error instanceof Error) {
-    message = error.message;
-  } else {
-    message = 'Something went wrong.';
-  }
-
-  return message;
-};
-
 const SignInPage = () => {
   const id = useId();
   const navigate = useNavigate();
@@ -39,9 +28,7 @@ const SignInPage = () => {
       toast.success(`Bienvenido ${variables.username}`, { className: 'successfully-alert-custom' });
       navigate('/');
     },
-    onError() {
-      
-    },
+    onError() {},
   });
 
   return (
