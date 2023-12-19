@@ -2,11 +2,11 @@ import { PlantClassificationType, StatusType } from '../types';
 
 export const traduceStatus = (status: StatusType): string => {
   if (status === 'IN_CONSERVATION') {
-    return 'EN CONSERVACIÓN';
+    return 'en conservacion';
   } else if (status === 'AVAILABLE') {
-    return 'DISPONIBLE';
+    return 'disponible';
   } else {
-    return 'NO EXISTENTE';
+    return 'no existente';
   }
 };
 

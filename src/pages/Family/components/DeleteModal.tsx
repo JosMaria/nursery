@@ -45,4 +45,3 @@ export const DeleteModal = ({ familyId, familyName, close }: DeleteModalProps) =
     </dialog>
   );
 };
-

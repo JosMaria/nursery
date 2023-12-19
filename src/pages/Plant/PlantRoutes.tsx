@@ -1,13 +1,18 @@
 import { Route, Routes } from 'react-router-dom';
-import PlantPage from './PlantPage';
-import CreatePlantView from './views/CreatePlant/CreatePlantView';
-import ListView from './views/List/ListView';
+import PlantCreationPage from './pages/PlantCreationPage';
+import PlantListPage from './pages/PlantListPage';
+import PlantNotFoundPage from './pages/PlantNotFoundPage';
+import FamilyCreationPage from './pages/FamilyCreationPage';
+import FamilyListPage from './pages/FamilyListPage';
 
 export const PlantRoutes = () => (
   <Routes>
-    <Route element={<PlantPage />}>
-      <Route index element={<CreatePlantView />} />
-      <Route path='list' element={<ListView />} />
+    <Route index element={<PlantListPage />} />
+    <Route path='creation' element={<PlantCreationPage />} />
+    <Route path='families'>
+      <Route index element={<FamilyListPage />} />
+      <Route path='creation' element={<FamilyCreationPage />} />
     </Route>
+    <Route path='*' element={<PlantNotFoundPage />} />
   </Routes>
 );

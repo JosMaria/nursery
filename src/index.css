@@ -4,121 +4,49 @@
 
 @layer base {
   :root {
-    /* content */
-    --fill-color-dark: 54, 83, 20;
-    --fill-color-light: 247, 254, 231;
-    /* text */
-    --text-color-dark: 26, 46, 5;
-    --text-color-light: 247, 254, 231;
-    /* navbar */
-    --fill-color-nav-selected: 63, 98, 18;
-    --border-nav-selected: 236, 252, 203;
-    /* card */
-    --gradient-from: 236, 252, 203;
-    --gradient-to: 247, 254, 231;
-    /* form */
-    --fill-color-form: 236, 252, 203;
-    --fill-color-btn: 63, 98, 18;
-    --fill-color-btn-hover: 77, 124, 15;
-    /* skeleton */
-    --fill-skeleton: 51, 65, 85;
+    --color-dark: 17, 94, 89;
+    --color-dark-hover: 19, 78, 74;
+    --color-light: 240, 253, 250;
+    --color-medium: 204, 251, 241;
   }
 
   .theme-admin {
-    /* content */
-    --fill-color-dark: 69, 26, 3;
-    --fill-color-light: 255, 251, 235;
-    /* text */
-    --text-color-dark: 69, 26, 3;
-    --text-color-light: 255, 251, 235;
-    /* navbar */
-    --fill-color-nav-selected: 120, 53, 15;
-    --border-nav-selected: 254, 243, 199;
-    /* card */
-    --gradient-from: 254, 243, 199;
-    --gradient-to: 255, 251, 235;
-    /* form */
-    --fill-color-form: 254, 243, 199;
-    --fill-color-btn: 146, 64, 14;
-    --fill-color-btn-hover: 180, 83, 9;
-    /* skeleton */
-    --fill-skeleton: 51, 65, 85;
+    --color-dark: 133, 77, 14;
+    --color-dark-hover: 113, 63, 18;
+    --color-light: 254, 252, 232;
+    --color-medium: 254, 249, 195;
   }
 
   .theme-assistant {
-    /* content */
-    --fill-color-dark: 12, 74, 110;
-    --fill-color-light: 240, 249, 255;
-    /* text */
-    --text-color-dark: 8, 47, 73;
-    --text-color-light: 240, 249, 255;
-    /* navbar */
-    --fill-color-nav-selected: 7, 89, 133;
-    --border-nav-selected: 224, 242, 254;
-    /* card */
-    --gradient-from: 224, 242, 254;
-    --gradient-to: 240, 249, 255;
-    /* form */
-    --fill-color-form: 186, 230, 253;
-    --fill-color-btn: 7, 89, 133;
-    --fill-color-btn-hover: 3, 105, 161;
-    /* skeleton */
-    --fill-skeleton: 51, 65, 85;
+    --color-dark: 7, 89, 133;
+    --color-dark-hover: 8, 47, 73;
+    --color-light: 224, 242, 254;
+    --color-medium: 186, 230, 253;
   }
 }
 
 @layer components {
-  .custom-input-form {
-    @apply bg-slate-50 focus:border-skin-focus focus:ring-skin-input focus:ring-opacity-30 focus:outline-none focus:ring text-sm px-3 py-2 border border-slate-300 rounded-lg selection:bg-skin-btn selection:text-skin-light;
+  .button-custom {
+    @apply w-fit text-sm font-medium focus:ring focus:ring-custom-dark focus:border focus:border-custom-light focus:outline-none bg-custom-dark hover:bg-custom-dark-hover text-custom-light max-xs:text-sm py-1.5 max-xs:py-1 px-6 max-xs:px-5 rounded select-none;
   }
 
-  .custom-btn-form {
-    @apply bg-skin-btn text-skin-light hover:bg-skin-btn-hover focus:outline-none focus:ring focus:ring-skin-btn font-semibold rounded py-2 px-5 text-sm max-sm:text-xs max-sm:font-medium cursor-pointer w-fit;
+  .h1-custom {
+    @apply font-medium text-2xl max-sm:text-xl max-xs:text-lg select-none;
   }
 
-  .custom-lbl-form-error {
-    @apply text-xs text-red-600 font-medium bg-red-100 px-2 rounded-lg w-fit;
+  .input-custom {
+    @apply text-sm bg-slate-50 p-1.5 rounded-md selection:bg-custom-dark selection:text-custom-light focus:outline-none focus:ring focus:ring-custom-dark focus:ring-opacity-50;
   }
 
-  .custom-toast {
-    @apply border-l-4 p-2 rounded-none text-sm max-sm:text-xs text-center;
+  .msg-error-validation-custom {
+    @apply text-xs text-red-600 bg-red-100 px-1.5 rounded-md w-fit;
   }
 
-  .custom-toast-success {
-    @apply bg-lime-50 border-l-lime-700 custom-toast;
+  .successfully-alert-custom {
+    @apply bg-lime-50 border-b-lime-600 border-b-4 p-2 text-sm max-sm:text-xs text-center max-w-xs rounded-t rounded-none select-none;
   }
 
-  .custom-toast-error {
-    @apply bg-red-50 border-l-red-600 custom-toast;
-  }
-
-  .custom-nav {
-    @apply py-2 max-sm:px-1 flex-1;
-  }
-
-  .custom-nav-active {
-    @apply custom-nav bg-skin-nav text-skin-light;
-  }
-
-  .custom-nav-inactive {
-    @apply custom-nav hover:bg-skin-nav hover:text-skin-light;
+  .error-alert-custom {
+    @apply bg-red-50 border-b-red-600 border-b-4 p-2 text-sm max-sm:text-xs text-center max-w-xs rounded-t rounded-none select-none;
   }
 }
-
-/* start block - warning - those styles are used by method getStyledGivenStatus of utils folder */
-.lbl-status {
-  @apply font-medium text-xs px-2 rounded-full whitespace-nowrap;
-}
-
-.available-status {
-  @apply lbl-status text-green-800 bg-green-200;
-}
-
-.conservation-status {
-  @apply lbl-status text-yellow-800 bg-yellow-100;
-}
-
-.non-existent-status {
-  @apply lbl-status text-gray-800 bg-gray-300;
-}
-/* end block */

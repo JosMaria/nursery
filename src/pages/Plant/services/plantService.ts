@@ -1,12 +1,19 @@
 import { axiosInstance } from '../../../config';
-import { CreatePlant, CreatePlantResponse, FetchFamilyResponse } from '../types';
+import { useTokenStore } from '../../../store';
+import { PlantCreationDTO, PlantInfoSimpleResponseDTO, PlantResponseDTO } from '../types';
 
-export const createPlant = async (payload: CreatePlant): Promise<CreatePlantResponse> => {
-  const { data } = await axiosInstance.post<CreatePlantResponse>('plants', payload);
+export const createPlant = async (payload: PlantCreationDTO): Promise<PlantResponseDTO> => {
+  const token = useTokenStore.getState().token;
+  const { data } = await axiosInstance.post<PlantResponseDTO>('plants', payload, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
   return data;
 };
 
-export const fetchAllFamilies = async (): Promise<FetchFamilyResponse[]> => {
-  const { data } = await axiosInstance.get<FetchFamilyResponse[]>('families');
+export const fetchAllCommonNamesPlants = async (): Promise<PlantInfoSimpleResponseDTO[]> => {
+  const token = useTokenStore.getState().token;
+  const { data } = await axiosInstance.get<PlantInfoSimpleResponseDTO[]>('plants/simple-info', {
+    headers: { Authorization: `Bearer ${token}` },
+  });
   return data;
 };

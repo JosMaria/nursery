@@ -1,14 +1,12 @@
 const withOpacity = (variableName) => {
-  return ({ opacityValue }) => {
-    if (opacityValue) return `rgba(var(${variableName}), ${opacityValue})`;
-
-    return `rgb(var(${variableName}))`;
-  };
+  return ({ opacityValue }) =>
+    opacityValue ? `rgba(var(${variableName}), ${opacityValue})` : `rgb(var(${variableName}))`;
 };
 
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+
   theme: {
     screens: {
       xs: '420px',
@@ -18,42 +16,34 @@ export default {
       xl: '1280px',
       '2xl': '1536px',
     },
+
     extend: {
       backgroundColor: {
-        skin: {
-          dark: withOpacity('--fill-color-dark'),
-          light: withOpacity('--fill-color-light'),
-          nav: withOpacity('--fill-color-nav-selected'),
-          form: withOpacity('--fill-color-form'),
-          btn: withOpacity('--fill-color-btn'),
-          'btn-hover': withOpacity('--fill-color-btn-hover'),
-          skeleton: withOpacity('--fill-skeleton'),
+        custom: {
+          dark: withOpacity('--color-dark'),
+          light: withOpacity('--color-light'),
+          'dark-hover': withOpacity('--color-dark-hover'),
+          medium: withOpacity('--color-medium'),
         },
       },
       textColor: {
-        skin: {
-          dark: withOpacity('--text-color-dark'),
-          light: withOpacity('--text-color-light'),
+        custom: {
+          light: withOpacity('--color-light'),
+          dark: withOpacity('--color-dark-hover'),
         },
       },
       borderColor: {
-        skin: {
-          nav: withOpacity('--border-nav-selected'),
-          focus: withOpacity('--fill-color-btn-hover'),
-          skeleton: withOpacity('--fill-skeleton'),
-          list: withOpacity('--fill-color-form'),
+        custom: {
+          light: withOpacity('--color-light'),
+          dark: withOpacity('--color-dark')
         },
       },
-      gradientColorStops: {
-        card: {
-          start: withOpacity('--gradient-from'),
-          end: withOpacity('--gradient-to'),
-        },
+      colors: {
+        custom: withOpacity('--color-dark'),
       },
       ringColor: {
-        skin: {
-          input: withOpacity('--fill-color-btn-hover'),
-          btn: withOpacity('--fill-color-btn-hover'),
+        custom: {
+          dark: withOpacity('--color-dark'),
         },
       },
     },
