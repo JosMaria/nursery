@@ -1,2 +1,2 @@
 export * from './Table';
-export * from './EmptyRepertory';
+export * from './ItemsContent';

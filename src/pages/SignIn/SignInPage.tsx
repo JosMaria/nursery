@@ -3,10 +3,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-hot-toast';
 import { useTokenStore } from '../../store';
-import { authenticate } from './services';
+import { authenticate } from './services/signInService';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
-import { ErrorType } from '../../types';
 import { SignInSchemaType, signInValidation } from './validations';
 
 const SignInPage = () => {
@@ -26,22 +25,17 @@ const SignInPage = () => {
     mutationFn: authenticate,
     onSuccess(data, variables) {
       updateToken(data.token);
-      toast.success(`Bienvenido ${variables.username}`, { className: 'custom-toast-success' });
+      toast.success(`Bienvenido ${variables.username}`, { className: 'successfully-alert-custom' });
       navigate('/');
     },
-    onError(error) {
-      const { response } = error as ErrorType;
-      if (response) {
-        toast.error('Datos incorrectos', { className: 'custom-toast-error' });
-      }
-    },
+    onError() {},
   });
 
   return (
-    <section className='bg-skin-form w-96 max-h-80 max-sm:w-full p-5 flex flex-col gap-5 self-center'>
-      <h1 className='font-medium text-2xl text-center'>Inicio de Sesi&oacute;n</h1>
+    <section className='w-full flex flex-col items-center gap-2'>
+      <h1 className='h1-custom'>Inicio de Sesi&oacute;n</h1>
       <form
-        className='flex flex-col items-center justify-center gap-5'
+        className='bg-custom-medium py-5 max-w-sm w-full flex flex-col items-center gap-4'
         onSubmit={handleSubmit((payload) => authenticateMutateAsync(payload))}
       >
         <fieldset className='flex flex-col gap-1'>
@@ -49,14 +43,14 @@ const SignInPage = () => {
             Nombre de usuario
           </label>
           <input
-            className='custom-input-form'
+            className='input-custom w-72'
             type='text'
             id={`${id}-username`}
             placeholder='usuario'
             autoComplete='off'
             {...register('username')}
           />
-          <p className='custom-lbl-form-error'>{errors.username?.message}</p>
+          <p className='msg-error-validation-custom'>{errors.username?.message}</p>
         </fieldset>
 
         <fieldset className='flex flex-col gap-1'>
@@ -64,15 +58,16 @@ const SignInPage = () => {
             Contrase&ntilde;a
           </label>
           <input
-            className='custom-input-form w-full'
+            className='input-custom w-72'
             type='password'
             id={`${id}-password`}
             placeholder='••••••••••'
             {...register('password')}
           />
-          <p className='custom-lbl-form-error'>{errors.password?.message}</p>
+          <p className='msg-error-validation-custom'>{errors.password?.message}</p>
         </fieldset>
-        <button type='submit' className='custom-btn-form'>
+
+        <button type='submit' className='button-custom'>
           Iniciar Sesi&oacute;n
         </button>
       </form>

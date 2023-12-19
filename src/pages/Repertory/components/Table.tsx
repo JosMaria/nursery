@@ -1,43 +1,33 @@
-import { ItemResponse } from '../types';
+import { useRepertoryItems } from '../hooks';
 
-interface Props {
-  items: ItemResponse[];
-}
+export const Table = () => {
+  const { content: items } = useRepertoryItems();
 
-export const Table = ({ items }: Props) => {
   return (
-    <div className='w-screen overflow-x-scroll p-3 grid'>
-      <table className='place-self-center'>
-        <TableHeader />
-        <tbody>
-          {items.map((item) => (
-            <tr
-              key={item.id}
-              className='text-sm max-sm:text-xs bg-stone-50 [&:nth-child(even)]:bg-stone-200 text-center'
-            >
-              <td className='p-2'>{item.id}</td>
-              <td className='p-2 first-letter:uppercase'>{item.commonName}</td>
-              <td className='p-2 first-letter:uppercase italic'>
-                {item.scientificName}{' '}
-                {item.scientistLastnameInitial?.toUpperCase()}
-              </td>
-              <td className='p-2 first-letter:uppercase'>{item.family}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <table className='min-w-[28rem] w-full whitespace-nowrap'>
+      <thead className='bg-custom-dark text-custom-light whitespace-nowrap text-sm max-sm:text-xs'>
+        <tr>
+          <th className='py-2'>ID</th>
+          <th className='py-2'>Nombre Comun</th>
+          <th className='py-2'>Nombre Cientifico</th>
+          <th className='py-2'>Familia</th>
+        </tr>
+      </thead>
+      <tbody>
+        {items.map((item) => (
+          <tr
+            key={item.id}
+            className='text-sm max-sm:text-xs odd:bg-slate-100 even:bg-slate-200 text-center'
+          >
+            <td className='p-1.5'>{item.id}</td>
+            <td className='p-1.5 first-letter:uppercase'>{item.commonName}</td>
+            <td className='p-1.5 first-letter:uppercase italic'>
+              {item.scientificName} {item.scientistLastnameInitial?.toUpperCase()}
+            </td>
+            <td className='p-1.5 first-letter:uppercase'>{item.family}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 };
-
-const TableHeader = () => (
-  <thead className='bg-skin-nav text-skin-light whitespace-nowrap text-sm max-sm:text-xs'>
-    <tr>
-      {['#', 'Nombre Comun', 'Nombre Cientifico', 'Familia'].map((title, index) => (
-        <th key={index} className='py-3 px-10 max-sm:px-7'>
-          {title}
-        </th>
-      ))}
-    </tr>
-  </thead>
-);
