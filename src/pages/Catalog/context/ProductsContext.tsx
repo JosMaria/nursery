@@ -1,9 +1,9 @@
-import { AllClassificationType, PageType } from '../types/catalogTypes';
+import { AllClassificationType, CatalogPageType } from '../types/catalogTypes';
 import { PlantClassificationType } from '../../../types';
 import { createContext, useContext } from 'react';
 
 type ProductsContextType = {
-  content: PageType;
+  content: CatalogPageType;
   classificationSelected: PlantClassificationType | AllClassificationType;
   actions: {
     firstPage: {

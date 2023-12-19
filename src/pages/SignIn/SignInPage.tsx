@@ -3,11 +3,21 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-hot-toast';
 import { useTokenStore } from '../../store';
-import { authenticate } from './services';
+import { authenticate } from './services/signInService';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
-import { ErrorType } from '../../types';
 import { SignInSchemaType, signInValidation } from './validations';
+
+const getErrorMessage = (error: unknown): string => {
+  let message: string;
+  if (error instanceof Error) {
+    message = error.message;
+  } else {
+    message = 'Something went wrong.';
+  }
+
+  return message;
+};
 
 const SignInPage = () => {
   const id = useId();
@@ -29,11 +39,8 @@ const SignInPage = () => {
       toast.success(`Bienvenido ${variables.username}`, { className: 'successfully-alert-custom' });
       navigate('/');
     },
-    onError(error: ErrorType) {
-      const { response } = error;
-      if (response) {
-        toast.error('Datos incorrectos', { className: 'error-alert-custom' });
-      }
+    onError(error) {
+      
     },
   });
 
@@ -41,7 +48,7 @@ const SignInPage = () => {
     <section className='w-full flex flex-col items-center gap-2'>
       <h1 className='h1-custom'>Inicio de Sesi&oacute;n</h1>
       <form
-        className='bg-custom-medium py-5 max-w-xs w-full flex flex-col items-center gap-4'
+        className='bg-custom-medium py-5 max-w-sm w-full flex flex-col items-center gap-4'
         onSubmit={handleSubmit((payload) => authenticateMutateAsync(payload))}
       >
         <fieldset className='flex flex-col gap-1'>
@@ -49,7 +56,7 @@ const SignInPage = () => {
             Nombre de usuario
           </label>
           <input
-            className='input-custom'
+            className='input-custom w-72'
             type='text'
             id={`${id}-username`}
             placeholder='usuario'
@@ -64,7 +71,7 @@ const SignInPage = () => {
             Contrase&ntilde;a
           </label>
           <input
-            className='input-custom'
+            className='input-custom w-72'
             type='password'
             id={`${id}-password`}
             placeholder='••••••••••'

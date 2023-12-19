@@ -67,7 +67,16 @@ export const router = createBrowserRouter(
         }
       />
 
-      <Route path='signin' element={<SignInPage />} />
+      <Route
+        path='signin'
+        errorElement={<ErrorBoundary />}
+        element={
+          <Suspense fallback={<p>suspense news page</p>}>
+            <SignInPage />
+          </Suspense>
+        }
+      />
+
       <Route element={<ProtectedRoute canActivate={isAuthenticate} />}>
         <Route path='plants/*' element={<PlantRoutes />} />
         <Route path='accounts/*' element={<AccountsRoutes />} />
