@@ -39,7 +39,7 @@ const SignInPage = () => {
       toast.success(`Bienvenido ${variables.username}`, { className: 'successfully-alert-custom' });
       navigate('/');
     },
-    onError(error) {
+    onError() {
       
     },
   });
