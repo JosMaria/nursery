@@ -14,7 +14,7 @@ import { SkeletonProductPage } from '../pages/Product/skeletons';
 import { SkeletonRepertoryPage } from '../pages/Repertory/skeletons';
 import { SkeletonSignInPage } from '../pages/SignIn/skeletons';
 
-import { ErrorBoundary } from '../components';
+import { ErrorBoundary, NotFound } from '../components';
 
 const ProductRouter = lazy(() => import('../pages/Product/routes/ProductRouter'));
 const CatalogPage = lazy(() => import('../pages/Catalog/CatalogPage'));
@@ -84,7 +84,7 @@ export const router = createBrowserRouter(
         <Route path='inventory' element={<InventoryPage />} />
         <Route path='reports' element={<ReportsPage />} />
       </Route>
-      <Route path='*' element={<p>ruta no encontrada desde App routes main</p>} />
+      <Route path='*' element={<NotFound />} />
     </Route>
   )
 );

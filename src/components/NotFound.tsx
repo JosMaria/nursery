@@ -1,30 +1,23 @@
-import { Link, isRouteErrorResponse, useRouteError } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-export const NotFound = () => {
-  const error = useRouteError();
-
-  if (isRouteErrorResponse(error)) {
-    return (
-      <section className='bg-skin-light h-screen w-full flex items-center justify-center'>
-        <article className='flex flex-col items-center gap-10 max-md:gap-8 max-sm:gap-6 max-xs:gap-4 w-fit h-fit p-5'>
-          <h1 className='font-semibold text-4xl max-md:text-3xl max-xs:text-2xl font-serif'>
-            🪴 {error.status} - {error.statusText}
-          </h1>
-          <p className='max-w-sm text-center max-md:text-sm max-xs:text-xs'>
-            La p&aacute;gina que se esta observando probablemente haya sido
-            eliminado, cambio de ruta o temporalmente esta indisponible
-          </p>
-
-          <Link
-            to='/'
-            className='bg-skin-dark text-skin-light py-3 px-6 rounded-full font-medium w-fit max-md:text-sm max-sm:text-xs max-sm:px-4 max-sm:py-3'
-          >
-            Volver a Home
-          </Link>
-        </article>
-      </section>
-    );
-  } else {
-    return <div>Oops!</div>;
-  }
-};
+export const NotFound = () => (
+  <section className='flex items-center justify-center'>
+    <article className='flex flex-col items-center gap-5 max-xs:gap-2 w-fit p-3'>
+      <h1 className='font-serif font-semibold max-xs:text-2xl max-md:text-3xl text-4xl'>
+        🪴 404 - Not Found
+      </h1>
+      <div className='flex flex-col items-start max-sm:text-sm'>
+        <p>Que pudo pasar:</p>
+        <ul className='list-inside list-disc list'>
+          <li>P&aacute;gina puede que haya sido eliminada</li>
+          <li>P&aacute;gina con ruta incorrecta</li>
+          <li>P&aacute;gina puede no disponible temporal o permanentemente</li>
+        </ul>
+      </div>
+      <Link className='button-custom self-start flex gap-2' to='..' relative='route'>
+        <span>&#10229;</span>
+        Volver atr&aacute;s
+      </Link>
+    </article>
+  </section>
+);
