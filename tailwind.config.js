@@ -35,7 +35,7 @@ export default {
       borderColor: {
         custom: {
           light: withOpacity('--color-light'),
-          dark: withOpacity('--color-dark')
+          dark: withOpacity('--color-dark'),
         },
       },
       colors: {

@@ -1,20 +1,22 @@
+import { STYLE_TAB, STYLE_TAB_SELECTED } from '../constants';
 import { NavLink } from 'react-router-dom';
-import { NAV_LINKS } from '../constants/navLinksData';
 
 export const Navbar = () => (
-  <nav className='flex lg:flex-1 max-lg:order-last w-full max-sm:text-sm max-xs:text-xs'>
-    {NAV_LINKS.map((item) => (
-      <NavLink
-        key={item.text}
-        to={item.path}
-        className={({ isActive }) =>
-          `py-2 max-md:py-1.5 text-center flex-1 hover:bg-custom-dark-hover ${
-            isActive && 'border-b-2 border-custom-light bg-custom-dark-hover'
-          }`
-        }
-      >
-        {item.text}
-      </NavLink>
-    ))}
+  <nav className='max-md:order-last flex font-medium max-md:text-sm max-xs:text-xs w-full md:max-w-xl'>
+    <NavLink
+      className={({ isActive }) => `${STYLE_TAB} ${isActive && STYLE_TAB_SELECTED}`}
+      to='/'
+      children='Inicio'
+    />
+    <NavLink
+      className={({ isActive }) => `${STYLE_TAB} ${isActive && STYLE_TAB_SELECTED}`}
+      to='repertory'
+      children='Listado'
+    />
+    <NavLink
+      className={({ isActive }) => `${STYLE_TAB} ${isActive && STYLE_TAB_SELECTED}`}
+      to='news'
+      children='Novedades'
+    />
   </nav>
 );

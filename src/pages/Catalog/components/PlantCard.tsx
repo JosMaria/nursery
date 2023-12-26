@@ -9,7 +9,7 @@ type Props = {
 
 export const PlantCard = ({ content }: Props) => (
   <Link
-    className='w-36 xs:w-48 sm:w-60 lg:w-72 xl:w-80 2xl:w-96 focus:outline-none focus:shadow-2xl focus:shadow-custom hover:shadow-2xl hover:shadow-custom flex flex-col gap-1 bg-custom-dark p-1 lg:p-1.5 rounded'
+    className='w-36 xs:w-48 sm:w-60 lg:w-72 xl:w-80 2xl:w-96 focus:outline-none focus:shadow-2xl focus:shadow-custom hover:shadow-2xl hover:shadow-custom flex flex-col gap-1 bg-custom-dark p-1 lg:p-1.5 2xl:p-2 rounded'
     to={`product/${content.id}`}
   >
     <img
