@@ -1,4 +1,4 @@
-import EmptyImage from '../../../assets/no-image.png';
+import EmptyImage from '../../../../assets/no-image.png';
 import { usePhotosSlider } from '../hooks';
 
 const mock_photos_URL = [

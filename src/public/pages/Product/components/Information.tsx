@@ -1,4 +1,4 @@
-import { traduceClassification, traduceStatus } from '../../../utils';
+import { translateClassification, translateStatus } from '../../../utils';
 import { useProductInformation } from '../hooks';
 
 export const Information = () => {
@@ -21,14 +21,14 @@ export const Information = () => {
           <span className='first-letter:uppercase'>{productInfo.family}</span>
         </p>
         <p className='flex gap-2'>
-          <span className='font-medium'>Estado:</span> {traduceStatus(productInfo.status)}
+          <span className='font-medium'>Estado:</span> {translateStatus(productInfo.status)}
         </p>
         <div className='flex flex-col'>
           <p className='font-medium'>Classificaciones:</p>
           <ul className='self-center'>
             {productInfo.classifications.map((classification, index) => (
               <li key={index} className='list-inside list-disc'>
-                {traduceClassification(classification)}
+                {translateClassification(classification)}
               </li>
             ))}
           </ul>

@@ -1,5 +1,6 @@
-import { getStyleForStatus, translateStatus } from '../utils';
 import { ProductResponseType } from '../types/catalogTypes';
+import { translateStatus } from '../../../utils';
+import { getStyleForStatus } from '../utils';
 import { Link } from 'react-router-dom';
 
 type Props = {

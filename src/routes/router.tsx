@@ -1,4 +1,5 @@
 import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import { ErrorBoundary, NotFound } from '../components';
 import { Suspense, lazy } from 'react';
 
 // import { PlantRoutes } from '../pages/Plant/PlantRoutes';
@@ -8,24 +9,18 @@ import { Suspense, lazy } from 'react';
 // import ReportsPage from '../pages/Reports/ReportsPage';
 // import InventoryPage from '../pages/Inventory/InventoryPage';
 
-import { SkeletonProductPage } from '../pages/Product/skeletons';
-
-import { ErrorBoundary, NotFound } from '../components';
-
 import { LayoutPublic } from '../public';
 
 import { SkeletonCatalogPage } from '../public/pages/Catalog/skeletons';
-const CatalogPage = lazy(() => import('../public/pages/Catalog/CatalogPage'));
-
 import { SkeletonRepertoryPage } from '../public/pages/Repertory/skeletons';
-const RepertoryPage = lazy(() => import('../public/pages/Repertory/RepertoryPage'));
-
-const NewsPage = lazy(() => import('../public/pages/News/NewsPage'));
-
 import { SkeletonSignInPage } from '../public/pages/SignIn/skeletons';
-const SignInPage = lazy(() => import('../public/pages/SignIn/SignInPage'));
+import { SkeletonProductPage } from '../public/pages/Product/skeletons';
 
-const ProductRouter = lazy(() => import('../pages/Product/routes/ProductRouter'));
+const CatalogPage = lazy(() => import('../public/pages/Catalog/CatalogPage'));
+const RepertoryPage = lazy(() => import('../public/pages/Repertory/RepertoryPage'));
+const NewsPage = lazy(() => import('../public/pages/News/NewsPage'));
+const SignInPage = lazy(() => import('../public/pages/SignIn/SignInPage'));
+const ProductRouter = lazy(() => import('../public/pages/Product/routes/ProductRouter'));
 
 // const isAuthenticate = true;
 

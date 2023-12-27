@@ -1,6 +1,7 @@
 import { CLASSIFICATIONS, VALUE_ALL_CLASSIFICATION } from '../constants/classifications';
+import { translateClassification } from '../../../utils';
 import { useClassificationFilter } from '../hooks';
-import { translateClassification } from '../utils';
+
 
 export const ClassificationsFilter = () => {
   const { classificationSelected, changeClassification } = useClassificationFilter();

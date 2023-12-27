@@ -6,7 +6,7 @@ export const Navbar = () => (
       to='.'
       end
       className={({ isActive }) =>
-        `flex-1 flex flex-col justify-center hover:bg-custom-dark-hover h-full ${
+        `flex-1 flex flex-col justify-center hover:bg-custom-dark-hover focus:outline-none focus:bg-custom-dark-hover h-full ${
           isActive && 'border-b-4 border-custom-light bg-custom-dark-hover'
         }`
       }
@@ -16,7 +16,7 @@ export const Navbar = () => (
     <NavLink
       to='details'
       className={({ isActive }) =>
-        `flex-1 flex flex-col justify-center hover:bg-custom-dark-hover h-full ${
+        `flex-1 flex flex-col justify-center hover:bg-custom-dark-hover focus:outline-none focus:bg-custom-dark-hover h-full ${
           isActive && 'border-b-4 border-custom-light bg-custom-dark-hover'
         }`
       }

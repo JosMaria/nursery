@@ -1,6 +1,6 @@
 import CatalogEmptyImage from '../../../../assets/catalog-empty.png';
+import { translateClassification } from '../../../utils';
 import { useClassificationFilter } from '../hooks';
-import { translateClassification } from '../utils';
 
 export const EmptyContent = () => {
   const { classificationSelected } = useClassificationFilter();

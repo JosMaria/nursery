@@ -1,4 +1,4 @@
-import { ClassificationType, StatusType } from '../types/catalogTypes';
+import { ClassificationType, StatusType } from '../pages/Catalog/types/catalogTypes';
 
 export const translateStatus = (status: StatusType): string => {
   if (status === 'IN_CONSERVATION') {
