@@ -1,17 +1,15 @@
-import { useId } from 'react';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { toast } from 'react-hot-toast';
-import { useTokenStore } from '../../store';
+import { SignInSchemaType, signInValidation } from './validations/signInValidation';
 import { authenticate } from './services/signInService';
-import { useNavigate } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useMutation } from '@tanstack/react-query';
-import { SignInSchemaType, signInValidation } from './validations';
+import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
+import { useId } from 'react';
 
 const SignInPage = () => {
   const id = useId();
   const navigate = useNavigate();
-  const { updateToken } = useTokenStore();
 
   const {
     register,
@@ -23,8 +21,7 @@ const SignInPage = () => {
 
   const { mutateAsync: authenticateMutateAsync } = useMutation({
     mutationFn: authenticate,
-    onSuccess(data, variables) {
-      updateToken(data.token);
+    onSuccess(_, variables) {
       toast.success(`Bienvenido ${variables.username}`, { className: 'successfully-alert-custom' });
       navigate('/');
     },
@@ -52,7 +49,6 @@ const SignInPage = () => {
           />
           <p className='msg-error-validation-custom'>{errors.username?.message}</p>
         </fieldset>
-
         <fieldset className='flex flex-col gap-1'>
           <label className='font-medium text-sm' htmlFor={`${id}-password`}>
             Contrase&ntilde;a
@@ -66,7 +62,6 @@ const SignInPage = () => {
           />
           <p className='msg-error-validation-custom'>{errors.password?.message}</p>
         </fieldset>
-
         <button type='submit' className='button-custom'>
           Iniciar Sesi&oacute;n
         </button>

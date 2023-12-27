@@ -9,7 +9,6 @@ import { Suspense, lazy } from 'react';
 // import InventoryPage from '../pages/Inventory/InventoryPage';
 
 import { SkeletonProductPage } from '../pages/Product/skeletons';
-import { SkeletonSignInPage } from '../pages/SignIn/skeletons';
 
 import { ErrorBoundary, NotFound } from '../components';
 
@@ -21,9 +20,12 @@ const CatalogPage = lazy(() => import('../public/pages/Catalog/CatalogPage'));
 import { SkeletonRepertoryPage } from '../public/pages/Repertory/skeletons';
 const RepertoryPage = lazy(() => import('../public/pages/Repertory/RepertoryPage'));
 
+const NewsPage = lazy(() => import('../public/pages/News/NewsPage'));
+
+import { SkeletonSignInPage } from '../public/pages/SignIn/skeletons';
+const SignInPage = lazy(() => import('../public/pages/SignIn/SignInPage'));
+
 const ProductRouter = lazy(() => import('../pages/Product/routes/ProductRouter'));
-const NewsPage = lazy(() => import('../pages/News/NewsPage'));
-const SignInPage = lazy(() => import('../pages/SignIn/SignInPage'));
 
 // const isAuthenticate = true;
 
