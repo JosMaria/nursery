@@ -1,5 +1,5 @@
 import { VALUE_ALL_CLASSIFICATION } from '../constants/classifications';
-import { Page, StatusType } from '../../../types';
+import { PageType, StatusType } from '../../../../types';
 
 export type ProductResponseType = {
   id: number;
@@ -13,29 +13,4 @@ export type ProductResponseType = {
 
 export type AllClassificationType = typeof VALUE_ALL_CLASSIFICATION;
 
-export type PageType = {
-  totalElements: number;
-  totalPages: number;
-  last: boolean;
-  size: number;
-  number: number;
-  numberOfElements: number;
-  first: boolean;
-  empty: boolean;
-};
-
-export type CatalogPageType = { content: ProductResponse[] } & PageType;
-
-export type ClassificationType =
-  | 'ORNAMENTAL'
-  | 'FOREST'
-  | 'INDUSTRIAL'
-  | 'ALIMENTARY'
-  | 'MEDICINAL'
-  | 'EXOTIC'
-  | 'CACTUS'
-  | 'FRUITFUL'
-  | 'GRASS'
-  | 'SUCCULENT';
-
-export type StatusType = 'AVAILABLE' | 'IN_CONSERVATION' | 'NON_EXISTENT';
+export type CatalogPageType = { content: ProductResponseType[] } & PageType;

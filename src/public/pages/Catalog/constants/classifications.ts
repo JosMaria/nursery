@@ -1,4 +1,4 @@
-import { ClassificationType } from '../types/catalogTypes';
+import { ClassificationType } from '../../../../types';
 
 export const CLASSIFICATIONS: ClassificationType[] = [
   'ALIMENTARY',

@@ -2,14 +2,6 @@ import { SidebarDataType } from '../types/sidebarTypes';
 
 export const SIDEBAR_DATA: SidebarDataType[] = [
   {
-    header: 'Publico',
-    content: [
-      { title: 'Categorias', path: 'category' },
-      { title: 'Repertorio', path: 'repertory' },
-      { title: 'Novedades', path: 'news' },
-    ],
-  },
-  {
     header: 'Plantas',
     content: [
       { title: 'Crear Planta', path: 'plants/creation' },

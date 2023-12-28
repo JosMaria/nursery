@@ -9,25 +9,36 @@ import { Suspense, lazy } from 'react';
 // import ReportsPage from '../pages/Reports/ReportsPage';
 // import InventoryPage from '../pages/Inventory/InventoryPage';
 
-import { LayoutPublic } from '../public';
+import { ProtectedRoute } from '../utils';
 
-import { SkeletonCatalogPage } from '../public/pages/Catalog/skeletons';
-import { SkeletonRepertoryPage } from '../public/pages/Repertory/skeletons';
-import { SkeletonSignInPage } from '../public/pages/SignIn/skeletons';
-import { SkeletonProductPage } from '../public/pages/Product/skeletons';
+import { LayoutPrivate } from '../private';
 
-const CatalogPage = lazy(() => import('../public/pages/Catalog/CatalogPage'));
-const RepertoryPage = lazy(() => import('../public/pages/Repertory/RepertoryPage'));
-const NewsPage = lazy(() => import('../public/pages/News/NewsPage'));
-const SignInPage = lazy(() => import('../public/pages/SignIn/SignInPage'));
-const ProductRouter = lazy(() => import('../public/pages/Product/routes/ProductRouter'));
+import PlantRouter from '../private/routes/PlantRouter';
 
-// const isAuthenticate = true;
+// import { LayoutPublic } from '../public';
+
+// import { SkeletonCatalogPage } from '../public/pages/Catalog/skeletons';
+// import { SkeletonRepertoryPage } from '../public/pages/Repertory/skeletons';
+// import { SkeletonSignInPage } from '../public/pages/SignIn/skeletons';
+// import { SkeletonProductPage } from '../public/pages/Product/skeletons';
+
+// const CatalogPage = lazy(() => import('../public/pages/Catalog/CatalogPage'));
+// const RepertoryPage = lazy(() => import('../public/pages/Repertory/RepertoryPage'));
+// const NewsPage = lazy(() => import('../public/pages/News/NewsPage'));
+// const SignInPage = lazy(() => import('../public/pages/SignIn/SignInPage'));
+// const ProductRouter = lazy(() => import('../public/pages/Product/routes/ProductRouter'));
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<LayoutPublic />}>
-      <Route
+    <Route path='/' element={<LayoutPrivate />}>
+      <Route element={<ProtectedRoute canActivate={true} />}>
+        <Route path='nursery/*' element={<PlantRouter />} />
+        {/* <Route path='accounts/*' element={<AccountsRoutes />} />
+        <Route path='inventory' element={<InventoryPage />} />
+        <Route path='reports' element={<ReportsPage />} /> */}
+      </Route>
+
+      {/* <Route
         index
         errorElement={<ErrorBoundary />}
         element={
@@ -75,14 +86,7 @@ export const router = createBrowserRouter(
             <SignInPage />
           </Suspense>
         }
-      />
-
-      {/* <Route element={<ProtectedRoute canActivate={isAuthenticate} />}>
-        <Route path='plants/*' element={<PlantRoutes />} />
-        <Route path='accounts/*' element={<AccountsRoutes />} />
-        <Route path='inventory' element={<InventoryPage />} />
-        <Route path='reports' element={<ReportsPage />} />
-      </Route> */}
+      /> */}
       <Route path='*' element={<NotFound />} />
     </Route>
   )

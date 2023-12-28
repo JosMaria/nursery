@@ -3,8 +3,6 @@ import { useFieldArray, useForm } from 'react-hook-form';
 import { FamiliesCreationSchemaType, familiesCreationSchema } from '../validations';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
-import { HttpStatusCode } from 'axios';
-import { ErrorType } from '../../../types';
 import { createFamilies } from '../services';
 import { TrashButton } from '../components';
 
@@ -21,11 +19,8 @@ const FamilyCreationPage = () => {
         { className: 'successfully-alert-custom' }
       );
     },
-    onError(error: ErrorType) {
-      const { response } = error;
-      if (response.status === HttpStatusCode.BadRequest) {
-        toast.error(response.data.reason, { className: 'error-alert-custom' });
-      }
+    onError() {
+      
     },
   });
 

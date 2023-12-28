@@ -1,11 +1,10 @@
 import { useId } from 'react';
 import { traduceClassification, traduceStatus } from '../../../utils';
-import { ErrorType, PlantClassificationType, StatusType } from '../../../types';
+import { StatusType } from '../../../types';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
-import { HttpStatusCode } from 'axios';
 import { createPlant } from '../services';
 import { PlantCreationSchemaType, plantCreationSchema } from '../validations';
 import { CloseButton } from '../components';
@@ -23,12 +22,7 @@ const PlantCreationPage = () => {
         className: 'successfully-alert-custom',
       });
     },
-    onError(error: ErrorType) {
-      const { response } = error;
-      if (response.status === HttpStatusCode.BadRequest) {
-        toast.error(response.data.reason, { className: 'error-alert-custom' });
-      }
-    },
+    onError() {},
   });
 
   const {

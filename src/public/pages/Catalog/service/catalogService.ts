@@ -1,5 +1,6 @@
+import { AllClassificationType, CatalogPageType } from '../types/catalogTypes';
+import { ClassificationType } from '../../../../types';
 import { axiosInstance } from '../../../../config';
-import { AllClassificationType, CatalogPageType, ClassificationType } from '../types/catalogTypes';
 
 export const fetchPaginatedProducts = async (
   page = 0,

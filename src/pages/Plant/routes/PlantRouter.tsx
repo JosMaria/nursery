@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
-import PlantCreationPage from './pages/PlantCreationPage';
-import PlantListPage from './pages/PlantListPage';
-import PlantNotFoundPage from './pages/PlantNotFoundPage';
-import FamilyCreationPage from './pages/FamilyCreationPage';
-import FamilyListPage from './pages/FamilyListPage';
+import PlantCreationPage from '../pages/PlantCreationPage';
+import PlantListPage from '../pages/PlantListPage';
+import PlantNotFoundPage from '../pages/PlantNotFoundPage';
+import FamilyCreationPage from '../pages/FamilyCreationPage';
+import FamilyListPage from '../pages/FamilyListPage';
 
-export const PlantRoutes = () => (
+const PlantRouter = () => (
   <Routes>
     <Route index element={<PlantListPage />} />
     <Route path='creation' element={<PlantCreationPage />} />
@@ -16,3 +16,5 @@ export const PlantRoutes = () => (
     <Route path='*' element={<PlantNotFoundPage />} />
   </Routes>
 );
+
+export default PlantRouter;
