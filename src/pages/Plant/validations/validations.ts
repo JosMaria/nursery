@@ -16,6 +16,7 @@ export const plantCreationSchema = object({
   ),
 });
 
+
 export type PlantCreationSchemaType = InferType<typeof plantCreationSchema>;
 
 export const familiesCreationSchema = object({

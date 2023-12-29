@@ -8,4 +8,5 @@ export const CreateFamilySchema = object({
   ),
 });
 
+
 export type CreateFamilySchemaType = Input<typeof CreateFamilySchema>;

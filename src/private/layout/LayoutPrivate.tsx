@@ -1,19 +1,20 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Header, SidebarToDeviceLarge, SidebarToDeviceSmall } from './components';
+import { Header } from './components';
 import { Footer } from '../../components';
+import { SidebarLarge } from './components/SidebarLarge';
 
 export const LayoutPrivate = () => {
   const [isOpenSidebar, setIsOpenSidebar] = useState(false);
 
   return (
-    <div className='theme-assistant h-screen flex flex-col justify-between'>
+    <div className='min-h-screen flex flex-col justify-between gap-0.5'>
       <Header
         isOpenSidebar={isOpenSidebar}
         closeSidebar={() => setIsOpenSidebar(false)}
         openSidebar={() => setIsOpenSidebar(true)}
       />
-      <div className='lg:hidden'>
+      {/* <div className='lg:hidden'>
         {isOpenSidebar ? (
           <SidebarToDeviceSmall closeSidebar={() => setIsOpenSidebar(false)} />
         ) : (
@@ -21,11 +22,11 @@ export const LayoutPrivate = () => {
             <Outlet />
           </main>
         )}
-      </div>
+      </div> */}
 
-      <div className='flex-1 flex max-lg:hidden'>
-        <SidebarToDeviceLarge />
-        <main className='flex-1 bg-custom-light p-0 sm:py-4 sm:px-2'>
+      <div className='flex-1 flex'>
+        <SidebarLarge />
+        <main className='flex-1 bg-custom-light'>
           <Outlet />
         </main>
       </div>
