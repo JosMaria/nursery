@@ -3,8 +3,11 @@ import { translateClassification, translateStatus } from '../../../utils';
 import { ALL_CLASSIFICATIONS, ALL_STATUS } from '../../../constants';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useId } from 'react';
 
 const PlantCreationPage = () => {
+  const id = useId();
+
   const {
     register,
     handleSubmit,
@@ -12,7 +15,6 @@ const PlantCreationPage = () => {
     control,
   } = useForm({
     resolver: yupResolver<PlantCreationSchemaType>(plantCreationSchema),
-    defaultValues: { details: [{ detail: '' }], technicalSheet: [{ value: '', word: '' }] },
   });
 
   const {
@@ -42,25 +44,38 @@ const PlantCreationPage = () => {
       >
         <div className='grid max-md:place-items-center justify-items-center grid-cols-2 max-md:grid-cols-1 gap-y-5 gap-x-10 w-full'>
           <fieldset className='flex flex-col gap-1 w-60'>
-            <label className='text-sm font-medium'>Nombre com&uacute;n</label>
-            <input className='input-custom' autoComplete='off' {...register('commonName')} />
+            <label className='text-sm font-medium' htmlFor={`${id}-commonName`}>
+              Nombre com&uacute;n
+            </label>
+            <input
+              className='input-custom'
+              id={`${id}-commonName`}
+              autoComplete='off'
+              {...register('commonName')}
+            />
             <p className='msg-error-validation-custom'>{errors.commonName?.message}</p>
           </fieldset>
 
           <section className='flex gap-3'>
             <fieldset className='flex flex-col gap-1'>
-              <label className='text-sm font-medium'>(*) Nombre cientifico</label>
+              <label className='text-sm font-medium' htmlFor={`${id}-scientificName`}>
+                (*) Nombre cientifico
+              </label>
               <input
                 className='input-custom w-52'
+                id={`${id}-scientificName`}
                 autoComplete='off'
                 {...register('scientificName')}
               />
               <p className='msg-error-validation-custom'>{errors.scientificName?.message}</p>
             </fieldset>
             <fieldset className='flex flex-col gap-1'>
-              <label className='text-sm font-medium'>Inicial</label>
+              <label className='text-sm font-medium' htmlFor={`${id}-scientistLastnameInitial`}>
+                Inicial
+              </label>
               <input
                 className='input-custom w-10'
+                id={`${id}-scientistLastnameInitial`}
                 autoComplete='off'
                 {...register('scientistLastnameInitial')}
               />
@@ -71,10 +86,10 @@ const PlantCreationPage = () => {
           </section>
 
           <fieldset className='flex flex-col gap-1'>
-            <label className='text-sm font-medium' htmlFor='family'>
+            <label className='text-sm font-medium' htmlFor={`${id}-family`}>
               (*) Familia
             </label>
-            <select id='family' className='input-custom w-60' {...register('family')}>
+            <select className='input-custom w-60' id={`${id}-family`} {...register('family')}>
               <option value=''>sin familia</option>
               {[
                 { id: 1, name: 'familia one' },
@@ -88,35 +103,35 @@ const PlantCreationPage = () => {
           </fieldset>
 
           <fieldset className='flex flex-col gap-1'>
-            <label className='text-sm font-medium' htmlFor='status'>
+            <label className='text-sm font-medium' htmlFor={`${id}-status`}>
               Estado
             </label>
-            <select id='status' className='input-custom w-60' {...register('status')}>
+            <select className='input-custom w-60' id={`${id}-status`} {...register('status')}>
               {ALL_STATUS.map((status) => (
                 <option key={status} value={status}>
                   {translateStatus(status)}
                 </option>
               ))}
             </select>
-            <p className='custom-lbl-form-error'>{errors.status?.message}</p>
+            <p className='msg-error-validation-custom'>{errors.status?.message}</p>
           </fieldset>
 
           <fieldset className='flex flex-col gap-1 col-span-full'>
             <p className='font-medium text-sm'>Clasificaciones</p>
-            <ul className='flex flex-wrap max-sm:gap-x-10 max-sm:gap-y-2 max-w-2xl p-2 bg-custom-light justify-center'>
+            <ul className='flex flex-wrap gap-x-6 gap-y-4 max-sm:gap-y-2 max-w-2xl p-2 bg-custom-light justify-center'>
               {ALL_CLASSIFICATIONS.map((classification, index) => (
                 <li key={index}>
                   <div className='flex gap-1'>
                     <input
-                      type='checkbox'
-                      id={`classification-${index}`}
-                      value={classification}
                       className='w-5 accent-custom-dark focus:outline-none focus:ring-2 focus:ring-custom-dark'
+                      type='checkbox'
+                      id={`${id}-classification-${index}`}
+                      value={classification}
                       {...register('classifications')}
                     />
                     <label
-                      htmlFor={`classification-${index}`}
                       className='text-xs sm:text-sm select-none'
+                      htmlFor={`${id}-classification-${index}`}
                     >
                       {translateClassification(classification)}
                     </label>
@@ -124,17 +139,20 @@ const PlantCreationPage = () => {
                 </li>
               ))}
             </ul>
-            <p className='custom-lbl-form-error'>{errors.classifications?.message}</p>
+            <p className='msg-error-validation-custom'>{errors.classifications?.message}</p>
           </fieldset>
 
-          <fieldset className='flex flex-col gap-1 col-span-full w-full'>
-            <label className='font-medium text-sm'>(*) Descripci&oacute;n</label>
+          <fieldset className='col-span-full flex flex-col gap-1 w-full'>
+            <label className='font-medium text-sm' htmlFor={`${id}-description`}>
+              (*) Descripci&oacute;n
+            </label>
             <textarea
               className='input-custom h-16'
+              id={`${id}-description`}
               autoComplete='off'
               {...register('description')}
             ></textarea>
-            <p className='custom-lbl-form-error'>{errors.description?.message}</p>
+            <p className='msg-error-validation-custom'>{errors.description?.message}</p>
           </fieldset>
 
           <fieldset className='flex flex-col gap-2 w-full col-span-full'>
@@ -171,7 +189,7 @@ const PlantCreationPage = () => {
                   <div className='flex items-center gap-2'>
                     <input
                       type='text'
-                      placeholder='titulo'
+                      placeholder='Titulo'
                       autoComplete='off'
                       className='input-custom w-44'
                       {...register(`technicalSheet.${index}.word` as const)}
