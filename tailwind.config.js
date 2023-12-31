@@ -46,6 +46,11 @@ export default {
           dark: withOpacity('--color-dark'),
         },
       },
+      accentColor: {
+        custom: {
+          dark: withOpacity('--color-dark'),
+        },
+      },
     },
   },
   plugins: [],

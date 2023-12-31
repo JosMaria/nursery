@@ -1,18 +1,16 @@
-import { PlantClassificationType, StatusType } from '../types';
+import { ClassificationType, StatusType } from '../types';
 
-export const traduceStatus = (status: StatusType): string => {
+export const translateStatus = (status: StatusType): string => {
   if (status === 'IN_CONSERVATION') {
-    return 'en conservacion';
+    return 'EN CONSERVACION';
   } else if (status === 'AVAILABLE') {
-    return 'disponible';
+    return 'DISPONIBLE';
   } else {
-    return 'no existente';
+    return 'NO EXISTENTE';
   }
 };
 
-export const traduceClassification = (
-  classification: PlantClassificationType
-): string => {
+export const translateClassification = (classification: ClassificationType): string => {
   if (classification === 'ALIMENTARY') {
     return 'ALIMENTICIA';
   } else if (classification === 'CACTUS') {

@@ -1,1 +1,1 @@
-export * from './traductor';
+export * from '../../utils/traductor';

@@ -1,8 +1,8 @@
+import { SidebarLarge } from './components/SidebarLarge';
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header } from './components';
 import { Footer } from '../../components';
-import { SidebarLarge } from './components/SidebarLarge';
 
 export const LayoutPrivate = () => {
   const [isOpenSidebar, setIsOpenSidebar] = useState(false);
