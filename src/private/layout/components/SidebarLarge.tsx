@@ -51,12 +51,12 @@ export const SidebarLarge = () => {
       <div className='flex flex-col'>
         <NavLink
           className={({ isActive }) => `${STYLE_ITEM} ${isActive && STYLE_ITEM_SELECTED}`}
-          to='nursery/create/account'
+          to='nursery/list/account'
           children='Listado de Cuentas'
         />
         <NavLink
           className={({ isActive }) => `${STYLE_ITEM} ${isActive && STYLE_ITEM_SELECTED}`}
-          to='nursery/list/account'
+          to='nursery/create/account'
           children='Crear cuenta'
         />
       </div>
