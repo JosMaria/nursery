@@ -1,5 +1,4 @@
 const InventoryPage = () => {
-  return <h1 className='h1-custom'>InventoryPage</h1>;
+  return <div>InventoryPage</div>;
 };
-
 export default InventoryPage;
