@@ -25,7 +25,7 @@ export const LayoutPrivate = () => {
       </div> */}
 
       <div className='flex-1 flex'>
-        <SidebarLarge />
+        {/* <SidebarLarge /> */}
         <main className='flex-1 bg-custom-light'>
           <Outlet />
         </main>
