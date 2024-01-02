@@ -1,5 +1,6 @@
-import { AllClassificationType, ClassificationType } from '../types/catalogTypes';
 import { CLASSIFICATIONS } from '../constants/classifications';
+import { ClassificationType } from '../../../../types';
+import { AllClassificationType } from '../../../types';
 
 export const convertToClassificationType = (
   value: string

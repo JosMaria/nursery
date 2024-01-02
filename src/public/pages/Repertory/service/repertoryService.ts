@@ -1,4 +1,4 @@
-import { RepertoryPageType } from '../types/repertoryTypes';
+import { RepertoryPageType } from '../../../types';
 import { axiosInstance } from '../../../../config';
 
 export const fetchPaginatedItems = async (): Promise<RepertoryPageType> => {

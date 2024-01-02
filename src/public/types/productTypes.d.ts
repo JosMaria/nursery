@@ -1,3 +1,5 @@
+import { ClassificationType } from '../../types';
+
 export type SingleProductResponseType = {
   id: number;
   commonName: string;
@@ -5,7 +7,7 @@ export type SingleProductResponseType = {
   scientistLastnameInitial: string | null;
   family: string | null;
   status: StatusType;
-  classifications: PlantClassificationType[];
+  classifications: ClassificationType[];
   description: string;
   photos_URL: string[];
   notes: string[];

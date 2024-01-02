@@ -1,4 +1,4 @@
-import { StatusType } from '../types/catalogTypes';
+import { StatusType } from '../../../../types';
 
 export const getStyleForStatus = (status: StatusType): string => {
   const STYLE_GENERAL = 'px-1.5 rounded-lg font-medium text-xs border-2';

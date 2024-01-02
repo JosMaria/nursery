@@ -1,5 +1,5 @@
+import { SingleProductResponseType } from '../../../types';
 import { createContext, useContext } from 'react';
-import { SingleProductResponseType } from '../types/productTypes';
 
 const initialState: SingleProductResponseType = {
   id: 0,

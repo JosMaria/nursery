@@ -1,4 +1,4 @@
-import { ProductResponseType } from '../types/catalogTypes';
+import { ProductResponseType } from '../../../types';
 import { translateStatus } from '../../../utils';
 import { getStyleForStatus } from '../utils';
 import { Link } from 'react-router-dom';

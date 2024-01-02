@@ -1,4 +1,4 @@
-import { ResponseAuthType, SignInType } from '../types/signInTypes';
+import { ResponseAuthType, SignInType } from '../../../types';
 import { axiosInstance } from '../../../../config';
 
 export const authenticate = async (payload: SignInType): Promise<ResponseAuthType> => {

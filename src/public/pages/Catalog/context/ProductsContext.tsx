@@ -1,4 +1,4 @@
-import { AllClassificationType, CatalogPageType } from '../types/catalogTypes';
+import { AllClassificationType, CatalogPageType } from '../../../types';
 import { ClassificationType } from '../../../../types';
 import { createContext, useContext } from 'react';
 

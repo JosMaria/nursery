@@ -1,4 +1,4 @@
-import { RepertoryPageType } from '../types/repertoryTypes';
+import { RepertoryPageType } from '../../../types';
 import { createContext, useContext } from 'react';
 
 type ItemsContextType = {
