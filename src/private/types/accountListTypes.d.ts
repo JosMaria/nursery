@@ -1,4 +1,4 @@
-export type RoleType = 'ADMINISTRATOR' | 'ASSISTANT';
+import { RoleType } from '../../types';
 
 export interface AccountResponse {
   id: number;

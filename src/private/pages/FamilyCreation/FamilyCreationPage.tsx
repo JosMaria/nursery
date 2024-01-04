@@ -3,6 +3,10 @@ import { useFieldArray, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { IconButton } from './components/IconButton';
 import { BsTrashFill } from 'react-icons/bs';
+import { useMutation } from '@tanstack/react-query';
+import { createFamilies } from './services/service';
+import { AxiosErrorType } from '../../types';
+import toast from 'react-hot-toast';
 
 const FamilyCreationPage = () => {
   const {
@@ -10,6 +14,7 @@ const FamilyCreationPage = () => {
     handleSubmit,
     formState: { errors },
     control,
+    reset,
   } = useForm<FamilyCreationType>({
     resolver: yupResolver(familyCreationSchema),
     defaultValues: { families: [{ family_name: '' }] },
@@ -20,12 +25,27 @@ const FamilyCreationPage = () => {
     control,
   });
 
+  const { mutateAsync: createFamilyAsync } = useMutation({
+    mutationFn: createFamilies,
+    onSuccess: (data) => {
+      reset();
+      toast.success(
+        data.length > 1 ? 'Familias guardadas exitosamente' : 'Familia guardada exitosamente',
+        { className: 'successfully-alert-custom' }
+      );
+    },
+    onError: (error: AxiosErrorType) => {
+      const { response } = error;
+      toast.error(response.data.reason, { className: 'error-alert-custom' });
+    },
+  });
+
   return (
     <section className='flex flex-col items-center gap-2'>
       <h2 className='h1-custom'>Familias para crear</h2>
       <form
         className='bg-custom-medium flex flex-col items-center gap-2 rounded-md text-xl p-4 w-full max-w-xs'
-        onSubmit={handleSubmit((schema) => console.log(schema))}
+        onSubmit={handleSubmit((schema) => createFamilyAsync(schema.families))}
       >
         <fieldset className='flex flex-col items-start gap-2'>
           {fields.map((field, index) => (

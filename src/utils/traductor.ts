@@ -1,13 +1,15 @@
-import { ClassificationType, StatusType } from '../types';
+import { ClassificationType, RoleType, StatusType } from '../types';
 
 export const translateStatus = (status: StatusType): string => {
   if (status === 'IN_CONSERVATION') {
     return 'EN CONSERVACION';
   } else if (status === 'AVAILABLE') {
     return 'DISPONIBLE';
-  } else {
+  } else if (status === 'NON_EXISTENT') {
     return 'NO EXISTENTE';
   }
+
+  throw new Error(`Status ${status} does not founded.`);
 };
 
 export const translateClassification = (classification: ClassificationType): string => {
@@ -34,4 +36,14 @@ export const translateClassification = (classification: ClassificationType): str
   }
 
   throw new Error(`Classification ${classification} does not founded.`);
+};
+
+export const translateRole = (role: RoleType): string => {
+  if (role === 'ADMINISTRATOR') {
+    return 'ADMINISTRADOR';
+  } else if (role === 'ASSISTANT') {
+    return 'AUXILIAR';
+  }
+
+  throw new Error(`Role ${role} does not founded.`);
 };

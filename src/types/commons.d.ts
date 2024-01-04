@@ -22,3 +22,5 @@ export type PageType = {
   last: boolean;
   size: number;
 };
+
+export type RoleType = 'ADMINISTRATOR' | 'ASSISTANT';

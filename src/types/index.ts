@@ -14,5 +14,3 @@ type ResponseErrorType = {
 export type ErrorType = {
   response: ResponseErrorType;
 };
-
-export type RoleType = 'ADMINISTRATOR' | 'ASSISTANT';
