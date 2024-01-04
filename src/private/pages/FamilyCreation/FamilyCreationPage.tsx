@@ -1,10 +1,10 @@
 import { FamilyCreationType, familyCreationSchema } from './validations/validation';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { IconButton } from './components/IconButton';
 import { BsTrashFill } from 'react-icons/bs';
 import { useMutation } from '@tanstack/react-query';
 import { createFamilies } from './services/service';
+import { IconButton } from '../../components';
 import { AxiosErrorType } from '../../types';
 import toast from 'react-hot-toast';
 
@@ -60,8 +60,9 @@ const FamilyCreationPage = () => {
                 />
                 {index !== 0 && (
                   <IconButton
+                    color='red'
                     action={() => remove(index)}
-                    children={<BsTrashFill size='0.8em' />}
+                    children={<BsTrashFill size='0.7em' color='white' />}
                   />
                 )}
               </div>

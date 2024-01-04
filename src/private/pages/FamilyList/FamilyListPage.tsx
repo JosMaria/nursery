@@ -1,6 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { fetchAllFamilies } from './services/service';
+import { IconButton } from '../../components';
+import { BsTrashFill } from 'react-icons/bs';
+import { FaEdit } from 'react-icons/fa';
 
 const FamilyListPage = () => {
   const { data: families, status } = useQuery({
@@ -14,7 +17,7 @@ const FamilyListPage = () => {
       {status === 'pending' && <p>Cargando familias</p>}
       {status === 'error' && <p>Error al cargar los datos</p>}
       {status === 'success' && (
-        <article className='bg-custom-medium max-w-sm w-full flex flex-col items-center gap-2 py-3'>
+        <article className='bg-custom-medium max-w-sm w-full flex flex-col items-center gap-2 p-3'>
           {families.length === 0 ? (
             <>
               <p className='font-medium text-center select-none'>
@@ -25,11 +28,20 @@ const FamilyListPage = () => {
               </Link>
             </>
           ) : (
-            <>
+            <ul className='max-w-xs w-full flex flex-col gap-2 max-sm:gap-1 max-sm:text-sm'>
               {families.map((family) => (
-                <p key={family.id}>{family.name}</p>
+                <li
+                  key={family.id}
+                  className='bg-custom-light p-1.5 flex justify-between items-center rounded-md'
+                >
+                  <span>{family.name}</span>
+                  <div className='flex gap-2'>
+                    <IconButton children={<FaEdit />} color='yellow' />
+                    <IconButton children={<BsTrashFill color='white' />} color='red' />
+                  </div>
+                </li>
               ))}
-            </>
+            </ul>
           )}
         </article>
       )}

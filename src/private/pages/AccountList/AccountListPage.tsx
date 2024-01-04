@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { BiSolidShow } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import { translateRole } from '../../../utils';
+import { IconButton } from '../../components';
 
 const AccountListPage = () => {
   const { data: accounts, status } = useQuery({
@@ -39,10 +40,10 @@ const AccountListPage = () => {
                   <td className='py-1 px-2'>{translateRole(account.role)}</td>
                   <td className='py-1 flex justify-center'>
                     <Link
-                      className='bg-teal-700 hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-600 rounded border p-1'
                       to='/'
+                      className='focus:outline-none focus:border focus:border-custom-light focus:ring-2 rounded p-1.5 bg-teal-600 hover:bg-teal-700 focus:ring-teal-600'
                     >
-                      <BiSolidShow size='1.1em' color='white' />
+                      <BiSolidShow color='white' />
                     </Link>
                   </td>
                 </tr>
