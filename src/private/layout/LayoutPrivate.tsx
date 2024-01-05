@@ -5,7 +5,7 @@ import { Header } from './components';
 import { Footer } from '../../components';
 
 export const LayoutPrivate = () => {
-  const [isOpenSidebar, setIsOpenSidebar] = useState(false);
+  const [isOpenSidebar, setIsOpenSidebar] = useState(true);
 
   return (
     <div className='min-h-screen flex flex-col justify-between gap-0.5'>
@@ -14,19 +14,9 @@ export const LayoutPrivate = () => {
         closeSidebar={() => setIsOpenSidebar(false)}
         openSidebar={() => setIsOpenSidebar(true)}
       />
-      {/* <div className='lg:hidden'>
-        {isOpenSidebar ? (
-          <SidebarToDeviceSmall closeSidebar={() => setIsOpenSidebar(false)} />
-        ) : (
-          <main className='flex-1 bg-custom-light py-3'>
-            <Outlet />
-          </main>
-        )}
-      </div> */}
-
       <div className='flex-1 flex'>
-        <SidebarLarge />
-        <main className='flex-1 bg-custom-light'>
+        {isOpenSidebar && <SidebarLarge />}
+        <main className={`flex-1 bg-custom-light ${isOpenSidebar && 'max-lg:hidden'}`}>
           <Outlet />
         </main>
       </div>

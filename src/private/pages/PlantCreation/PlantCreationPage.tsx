@@ -42,7 +42,7 @@ const PlantCreationPage = () => {
         className='bg-custom-medium flex flex-col items-center gap-5 w-full max-w-3xl max-sm:p-2 p-5 '
         onSubmit={handleSubmit((schema) => console.log(schema))}
       >
-        <div className='grid max-md:place-items-center justify-items-center grid-cols-2 max-md:grid-cols-1 gap-y-5 gap-x-10 w-full'>
+        <div className='grid max-md:place-items-center justify-items-center grid-cols-2 max-md:grid-cols-1 gap-y-5 max-sm:gap-y-3 gap-x-10 w-full'>
           <fieldset className='flex flex-col gap-1 w-60'>
             <label className='text-sm font-medium' htmlFor={`${id}-commonName`}>
               Nombre com&uacute;n

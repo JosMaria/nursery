@@ -6,7 +6,7 @@ const STYLE_ITEM_SELECTED = 'bg-custom-dark-hover';
 
 export const SidebarLarge = () => {
   return (
-    <aside className='max-w-xs w-full bg-custom-dark text-custom-light flex flex-col'>
+    <aside className='lg:max-w-xs w-full bg-custom-dark text-custom-light flex flex-col'>
       <div className='font-medium hover:bg-custom-dark-hover cursor-pointer flex justify-between items-center px-5 py-2'>
         <p>Plantas</p>
         <BiChevronDown

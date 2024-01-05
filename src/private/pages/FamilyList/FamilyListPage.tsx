@@ -13,6 +13,25 @@ const FamilyListPage = () => {
 
   return (
     <section className='flex flex-col items-center'>
+      <button className='button-custom'>Open</button>
+      <dialog
+        className='fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm flex justify-center items-center select-none w-full h-screen p-2'
+        open={true}
+      >
+        <div className='bg-custom-light p-4 rounded-md flex flex-col justify-center items-center gap-3 relative w-80 max-sm:text-sm border-4 border-custom-dark'>
+          <button className='absolute right-0.5 top-0.5 cursor-pointer bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-custom-light focus:border text-white font-bold text-lg leading-none px-1 rounded'>
+            &times;
+          </button>
+          <h3 className='text-center'>
+            ¿Seguro que quieres eliminar la familia:{' '}
+            <span className='font-medium'>nombre de la familia</span>?
+          </h3>
+          <button className='button-custom' onClick={() => console.log('click button modal')}>
+            Si, Eliminar
+          </button>
+        </div>
+      </dialog>
+
       <h2 className='h1-custom'>Listado familias</h2>
       {status === 'pending' && <p>Cargando familias</p>}
       {status === 'error' && <p>Error al cargar los datos</p>}
