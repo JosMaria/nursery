@@ -11,3 +11,10 @@ export type ErrorResponseType = {
     reason: string;
   };
 };
+
+export type FamilyResponseType = {
+  id: number;
+  name: string;
+};
+
+type ColorButtonType = 'red' | 'yellow' | 'teal' | 'slate';

@@ -1,1 +1,4 @@
-export const A = 'S'
+export type PlantSimpleInfoType = {
+  id: number;
+  commonName: string;
+};

@@ -32,12 +32,12 @@ const FamilyListPage = () => {
               {families.map((family) => (
                 <li
                   key={family.id}
-                  className='bg-custom-light p-1.5 flex justify-between items-center rounded-md'
+                  className='bg-custom-light hover:bg-custom-medium p-1.5 flex justify-between items-center rounded-md'
                 >
                   <span>{family.name}</span>
                   <div className='flex gap-2'>
-                    <IconButton children={<FaEdit />} color='yellow' />
-                    <IconButton children={<BsTrashFill color='white' />} color='red' />
+                    <IconButton color='yellow' children={<FaEdit />} />
+                    <IconButton color='red' children={<BsTrashFill color='white' />} />
                   </div>
                 </li>
               ))}
