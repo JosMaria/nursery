@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import { fetchAllFamilies } from './services/service';
 import { IconButton } from '../../components';
 import { BsTrashFill } from 'react-icons/bs';
-import { DeleteFamilyModal } from './components';
+import { DeleteFamilyModal, EditFamilyModal } from './components';
 import { FaEdit } from 'react-icons/fa';
 import { useState } from 'react';
 import { useFamilyEditStore } from './zustand-store/familyEditStore';
 
 const FamilyListPage = () => {
-  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState<boolean>(false);
+  const [isOpenEditModal, setIsOpenEditModal] = useState<boolean>(false);
 
   const { changeValue } = useFamilyEditStore();
 
@@ -20,7 +21,8 @@ const FamilyListPage = () => {
 
   return (
     <section className='flex flex-col items-center'>
-      <DeleteFamilyModal isOpen={isOpenModal} close={() => setIsOpenModal(false)} />
+      <DeleteFamilyModal isOpen={isOpenDeleteModal} close={() => setIsOpenDeleteModal(false)} />
+      <EditFamilyModal isOpen={isOpenEditModal} close={() => setIsOpenEditModal(false)} />
       <h2 className='h1-custom'>Listado familias</h2>
       {status === 'pending' && <p>Cargando familias</p>}
       {status === 'error' && <p>Error al cargar los datos</p>}
@@ -39,18 +41,25 @@ const FamilyListPage = () => {
             <ul className='max-w-xs w-full flex flex-col gap-2 max-sm:gap-1 max-sm:text-sm'>
               {families.map((family) => (
                 <li
-                  key={family.id}
                   className='bg-custom-light hover:bg-custom-medium px-2 py-0.5  flex justify-between items-center rounded-md'
+                  key={family.id}
                 >
                   <span>{family.name}</span>
                   <div className='flex gap-2'>
-                    <IconButton color='yellow' children={<FaEdit />} />
+                    <IconButton
+                      color='yellow'
+                      children={<FaEdit />}
+                      action={() => {
+                        changeValue({ familyId: family.id, familyName: family.name });
+                        setIsOpenEditModal(true);
+                      }}
+                    />
                     <IconButton
                       color='red'
                       children={<BsTrashFill color='white' />}
                       action={() => {
-                        setIsOpenModal(true);
                         changeValue({ familyId: family.id, familyName: family.name });
+                        setIsOpenDeleteModal(true);
                       }}
                     />
                   </div>

@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useFamilyEditStore } from '../zustand-store/familyEditStore';
 import { deleteFamilyById } from '../services/service';
-import toast from 'react-hot-toast';
 import { AxiosErrorType } from '../../../types';
+import toast from 'react-hot-toast';
 
 type Props = {
   isOpen: boolean;
@@ -22,10 +22,10 @@ export const DeleteFamilyModal = ({ isOpen, close }: Props) => {
   const { mutateAsync: deleteFamilyMutateAsync } = useMutation({
     mutationFn: (data: { id: number; name: string }) => deleteFamilyById(data.id),
     onSuccess: (_, payload) => {
-      toast.success(`Familia: ${payload.name} eliminada.`, {
+      queryClient.invalidateQueries({ queryKey: ['families'] });
+      toast.success(`${payload.name} eliminada.`, {
         className: 'successfully-alert-custom',
       });
-      queryClient.invalidateQueries({ queryKey: ['families'] });
     },
     onError: (error: AxiosErrorType) => {
       const { response } = error;
@@ -41,12 +41,12 @@ export const DeleteFamilyModal = ({ isOpen, close }: Props) => {
       <div className='flex justify-center items-center h-full'>
         <div className='relative bg-custom-light border-custom-dark rounded border-4 max-sm:w-72 w-80 flex flex-col items-center gap-2 max-sm:pt-3.5 pt-4 max-sm:p-1.5 p-2'>
           <button
+            className='absolute flex justify-center items-center leading-none text-lg border rounded max-sm:px-1 px-1.5 right-0 top-0 text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-red-500 focus:ring-1'
             type='button'
             onClick={() => {
               close();
               reset();
             }}
-            className='absolute flex justify-center items-center leading-none text-lg border rounded max-sm:px-1 px-1.5 right-0 top-0 text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-red-500 focus:ring-1'
           >
             &times;
           </button>

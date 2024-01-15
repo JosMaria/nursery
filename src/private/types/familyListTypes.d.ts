@@ -1,1 +1,3 @@
-export const W = 'S'
+export type FamilyUpdateDTOType = {
+  family_name: string;
+};
