@@ -4,6 +4,7 @@ import { fetchAllFamilies } from './services/service';
 import { IconButton } from '../../components';
 import { BsTrashFill } from 'react-icons/bs';
 import { FaEdit } from 'react-icons/fa';
+import { DeleteFamyModal } from './components';
 
 const FamilyListPage = () => {
   const { data: families, status } = useQuery({
@@ -13,7 +14,7 @@ const FamilyListPage = () => {
 
   return (
     <section className='flex flex-col items-center'>
-      
+      <DeleteFamyModal isOpen={false} />
       <h2 className='h1-custom'>Listado familias</h2>
       {status === 'pending' && <p>Cargando familias</p>}
       {status === 'error' && <p>Error al cargar los datos</p>}
@@ -33,12 +34,16 @@ const FamilyListPage = () => {
               {families.map((family) => (
                 <li
                   key={family.id}
-                  className='bg-custom-light hover:bg-custom-medium p-1.5 flex justify-between items-center rounded-md'
+                  className='bg-custom-light hover:bg-custom-medium px-2 py-0.5  flex justify-between items-center rounded-md'
                 >
                   <span>{family.name}</span>
                   <div className='flex gap-2'>
                     <IconButton color='yellow' children={<FaEdit />} />
-                    <IconButton color='red' children={<BsTrashFill color='white' />} />
+                    <IconButton
+                      color='red'
+                      children={<BsTrashFill color='white' />}
+                      action={() => console.log('click delete button')}
+                    />
                   </div>
                 </li>
               ))}
