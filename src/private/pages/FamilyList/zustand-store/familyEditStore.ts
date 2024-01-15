@@ -1,5 +1,5 @@
-import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
+import { create } from 'zustand';
 
 type FamilyEditStateType = {
   familyId: number;
@@ -27,5 +27,3 @@ export const useFamilyEditStore = create<FamilyEditStateType & FamilyEditActions
     },
   }))
 );
-
-// useFamilyEditStore.setState((state) => ({familyId: }))

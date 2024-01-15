@@ -1,12 +1,12 @@
-import { useQuery } from '@tanstack/react-query';
-import { Link } from 'react-router-dom';
+import { useFamilyEditStore } from './zustand-store/familyEditStore';
+import { DeleteFamilyModal, EditFamilyModal } from './components';
 import { fetchAllFamilies } from './services/service';
+import { useQuery } from '@tanstack/react-query';
 import { IconButton } from '../../components';
 import { BsTrashFill } from 'react-icons/bs';
-import { DeleteFamilyModal, EditFamilyModal } from './components';
+import { Link } from 'react-router-dom';
 import { FaEdit } from 'react-icons/fa';
 import { useState } from 'react';
-import { useFamilyEditStore } from './zustand-store/familyEditStore';
 
 const FamilyListPage = () => {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState<boolean>(false);
