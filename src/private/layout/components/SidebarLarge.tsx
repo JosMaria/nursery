@@ -6,7 +6,7 @@ const STYLE_ITEM_SELECTED = 'bg-custom-dark-hover';
 
 export const SidebarLarge = () => {
   return (
-    <aside className='lg:max-w-xs w-full bg-custom-dark text-custom-light flex flex-col'>
+    <aside className='lg:max-w-xs w-full bg-custom-dark text-custom-light max-sm:text-sm flex flex-col'>
       <div className='font-medium hover:bg-custom-dark-hover cursor-pointer flex justify-between items-center px-5 py-2'>
         <p>Plantas</p>
         <BiChevronDown
@@ -18,7 +18,7 @@ export const SidebarLarge = () => {
       </div>
       <div className='flex flex-col'>
         <NavLink
-          className={({ isActive }) => `${STYLE_ITEM} ${isActive && STYLE_ITEM_SELECTED}`}
+          className={({ isActive }) => `focus:outline-none focus:bg-custom-dark focus:border ${STYLE_ITEM} ${isActive && STYLE_ITEM_SELECTED}`}
           to='nursery/create/plant'
           children='Crear Planta'
         />

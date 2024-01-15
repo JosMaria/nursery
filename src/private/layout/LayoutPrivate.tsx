@@ -5,7 +5,7 @@ import { Header } from './components';
 import { Footer } from '../../components';
 
 export const LayoutPrivate = () => {
-  const [isOpenSidebar, setIsOpenSidebar] = useState(true);
+  const [isOpenSidebar, setIsOpenSidebar] = useState(false);
 
   return (
     <div className='min-h-screen flex flex-col justify-between gap-0.5'>

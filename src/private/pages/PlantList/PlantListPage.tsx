@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { fetchAllPlants } from './service/service';
 import { IconButton } from '../../components';
 import { IoSettingsSharp } from 'react-icons/io5';
+import { getButtonTheme } from '../../utils';
 
 const PlantListPage = () => {
   const { data: plantNames, status } = useQuery({
@@ -37,7 +38,9 @@ const PlantListPage = () => {
                     <p>{plantName.id}</p>
                     <p>{plantName.commonName}</p>
                   </div>
-                  <IconButton children={<IoSettingsSharp color='white' />} color='slate' />
+                  <Link className={getButtonTheme('slate')} to={`../plant/${plantName.id}`}>
+                    <IoSettingsSharp color='white' />
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -15,30 +15,32 @@ import { LayoutPrivate } from '../private';
 
 import PlantRouter from '../private/routes/PlantRouter';
 
-// import { LayoutPublic } from '../public';
+import { LayoutPublic } from '../public';
 
-// import { SkeletonCatalogPage } from '../public/pages/Catalog/skeletons';
-// import { SkeletonRepertoryPage } from '../public/pages/Repertory/skeletons';
-// import { SkeletonSignInPage } from '../public/pages/SignIn/skeletons';
-// import { SkeletonProductPage } from '../public/pages/Product/skeletons';
+import { SkeletonCatalogPage } from '../public/pages/Catalog/skeletons';
+import { SkeletonRepertoryPage } from '../public/pages/Repertory/skeletons';
+import { SkeletonSignInPage } from '../public/pages/SignIn/skeletons';
+import { SkeletonProductPage } from '../public/pages/Product/skeletons';
+import { AccountsRoutes } from '../pages/Accounts/AccountsRoutes';
+import InventoryPage from '../private/pages/Inventory/InventoryPage';
 
-// const CatalogPage = lazy(() => import('../public/pages/Catalog/CatalogPage'));
-// const RepertoryPage = lazy(() => import('../public/pages/Repertory/RepertoryPage'));
-// const NewsPage = lazy(() => import('../public/pages/News/NewsPage'));
-// const SignInPage = lazy(() => import('../public/pages/SignIn/SignInPage'));
-// const ProductRouter = lazy(() => import('../public/pages/Product/routes/ProductRouter'));
+const CatalogPage = lazy(() => import('../public/pages/Catalog/CatalogPage'));
+const RepertoryPage = lazy(() => import('../public/pages/Repertory/RepertoryPage'));
+const NewsPage = lazy(() => import('../public/pages/News/NewsPage'));
+const SignInPage = lazy(() => import('../public/pages/SignIn/SignInPage'));
+const ProductRouter = lazy(() => import('../public/pages/Product/routes/ProductRouter'));
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<LayoutPrivate />}>
       <Route element={<ProtectedRoute canActivate={true} />}>
         <Route path='nursery/*' element={<PlantRouter />} />
-        {/* <Route path='accounts/*' element={<AccountsRoutes />} />
+        <Route path='accounts/*' element={<AccountsRoutes />} />
         <Route path='inventory' element={<InventoryPage />} />
-        <Route path='reports' element={<ReportsPage />} /> */}
+        {/* <Route path='reports' element={<ReportsPage />} /> */}
       </Route>
 
-      {/* <Route
+      <Route
         index
         errorElement={<ErrorBoundary />}
         element={
@@ -86,7 +88,7 @@ export const router = createBrowserRouter(
             <SignInPage />
           </Suspense>
         }
-      /> */}
+      />
       <Route path='*' element={<NotFound />} />
     </Route>
   )

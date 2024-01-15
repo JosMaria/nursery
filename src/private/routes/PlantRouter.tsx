@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import InventoryPage from '../pages/Inventory/InventoryPage';
 import AccountCreationPage from '../pages/AccountCreation/AccountCreationPage';
 import AccountListPage from '../pages/AccountList/AccountListPage';
+import PlantSettingPage from '../pages/PlantSetting/PlantSettingPage';
 
 const PlantRouter = () => (
   <Routes>
@@ -18,6 +19,7 @@ const PlantRouter = () => (
     <Route path='list/account' element={<AccountListPage />} />
     <Route path='inventory' element={<InventoryPage />} />
     <Route path='reports' element={<ReportPage />} />
+    <Route path='plant/:id' element={<PlantSettingPage />} />
     <Route path='*' element={<p>Not found plant router</p>} />
   </Routes>
 );

@@ -4,9 +4,13 @@ import { ALL_CLASSIFICATIONS, ALL_STATUS } from '../../../constants';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useId } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { fetchAllFamilies } from './services/service';
 
 const PlantCreationPage = () => {
   const id = useId();
+
+  const { data: families } = useQuery({ queryKey: ['families'], queryFn: fetchAllFamilies });
 
   const {
     register,
@@ -91,10 +95,7 @@ const PlantCreationPage = () => {
             </label>
             <select className='input-custom w-60' id={`${id}-family`} {...register('family')}>
               <option value=''>sin familia</option>
-              {[
-                { id: 1, name: 'familia one' },
-                { id: 2, name: 'familia two' },
-              ].map((family) => (
+              {families?.map((family) => (
                 <option key={family.id} value={family.name}>
                   {family.name}
                 </option>
@@ -123,7 +124,7 @@ const PlantCreationPage = () => {
                 <li key={index}>
                   <div className='flex gap-1'>
                     <input
-                      className='w-5 accent-custom-dark focus:outline-none focus:ring-2 focus:ring-custom-dark'
+                      className='w-4 accent-custom-dark focus:outline-none focus:ring-2 focus:ring-custom-dark'
                       type='checkbox'
                       id={`${id}-classification-${index}`}
                       value={classification}
