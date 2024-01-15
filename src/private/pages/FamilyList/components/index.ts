@@ -1,1 +1,1 @@
-export * from './DeleteFamyModal';
+export * from './DeleteFamilyModal';

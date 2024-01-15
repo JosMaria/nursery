@@ -3,10 +3,16 @@ import { Link } from 'react-router-dom';
 import { fetchAllFamilies } from './services/service';
 import { IconButton } from '../../components';
 import { BsTrashFill } from 'react-icons/bs';
+import { DeleteFamilyModal } from './components';
 import { FaEdit } from 'react-icons/fa';
-import { DeleteFamyModal } from './components';
+import { useState } from 'react';
+import { useFamilyEditStore } from './zustand-store/familyEditStore';
 
 const FamilyListPage = () => {
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+
+  const { changeValue } = useFamilyEditStore();
+
   const { data: families, status } = useQuery({
     queryKey: ['families'],
     queryFn: fetchAllFamilies,
@@ -14,7 +20,7 @@ const FamilyListPage = () => {
 
   return (
     <section className='flex flex-col items-center'>
-      <DeleteFamyModal isOpen={false} />
+      <DeleteFamilyModal isOpen={isOpenModal} close={() => setIsOpenModal(false)} />
       <h2 className='h1-custom'>Listado familias</h2>
       {status === 'pending' && <p>Cargando familias</p>}
       {status === 'error' && <p>Error al cargar los datos</p>}
@@ -42,7 +48,10 @@ const FamilyListPage = () => {
                     <IconButton
                       color='red'
                       children={<BsTrashFill color='white' />}
-                      action={() => console.log('click delete button')}
+                      action={() => {
+                        setIsOpenModal(true);
+                        changeValue({ familyId: family.id, familyName: family.name });
+                      }}
                     />
                   </div>
                 </li>
