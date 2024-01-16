@@ -1,15 +1,17 @@
 import { PlantCreationSchemaType, plantCreationSchema } from './validations/validation';
 import { translateClassification, translateStatus } from '../../../utils';
 import { ALL_CLASSIFICATIONS, ALL_STATUS } from '../../../constants';
+import { createPlant, fetchAllFamilies } from './services/service';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { toPlantCreationDTOType } from './utils/changeTyping';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { AxiosErrorType } from '../../types';
+import toast from 'react-hot-toast';
 import { useId } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { fetchAllFamilies } from './services/service';
 
 const PlantCreationPage = () => {
   const id = useId();
-
   const { data: families } = useQuery({ queryKey: ['families'], queryFn: fetchAllFamilies });
 
   const {
@@ -17,6 +19,7 @@ const PlantCreationPage = () => {
     handleSubmit,
     formState: { errors },
     control,
+    reset,
   } = useForm({
     resolver: yupResolver<PlantCreationSchemaType>(plantCreationSchema),
   });
@@ -39,12 +42,26 @@ const PlantCreationPage = () => {
     name: 'technicalSheet',
   });
 
+  const { mutateAsync: createPlantMutateAsync } = useMutation({
+    mutationFn: createPlant,
+    onSuccess: (response) => {
+      reset();
+      toast.success(`Planta ${response.commonName} guardada existosamente`, {
+        className: 'successfully-alert-custom',
+      });
+    },
+    onError: (error: AxiosErrorType) => {
+      const { response } = error;
+      toast.error(response.data.reason, { className: 'error-alert-custom' });
+    },
+  });
+
   return (
     <article className='bg-custom-light w-full flex flex-col items-center gap-2'>
       <h1 className='h1-custom'>Crear Planta</h1>
       <form
         className='bg-custom-medium flex flex-col items-center gap-5 w-full max-w-3xl max-sm:p-2 p-5 '
-        onSubmit={handleSubmit((schema) => console.log(schema))}
+        onSubmit={handleSubmit((schema) => createPlantMutateAsync(toPlantCreationDTOType(schema)))}
       >
         <div className='grid max-md:place-items-center justify-items-center grid-cols-2 max-md:grid-cols-1 gap-y-5 max-sm:gap-y-3 gap-x-10 w-full'>
           <fieldset className='flex flex-col gap-1 w-60'>
@@ -122,9 +139,9 @@ const PlantCreationPage = () => {
             <ul className='flex flex-wrap gap-x-6 gap-y-4 max-sm:gap-y-2 max-w-2xl p-2 bg-custom-light justify-center'>
               {ALL_CLASSIFICATIONS.map((classification, index) => (
                 <li key={index}>
-                  <div className='flex gap-1'>
+                  <div className='flex items-center gap-1'>
                     <input
-                      className='w-4 accent-custom-dark focus:outline-none focus:ring-2 focus:ring-custom-dark'
+                      className='w-3.5 h-3.5 accent-custom-dark focus:outline-none focus:ring-2 focus:ring-custom-dark'
                       type='checkbox'
                       id={`${id}-classification-${index}`}
                       value={classification}
