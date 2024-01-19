@@ -5,8 +5,8 @@ import { Link, Outlet } from 'react-router-dom';
 const ProductPage = () => (
   <ProductContextProvider>
     <div className='flex justify-center w-full'>
-      <div className='flex flex-col items-center gap-4 w-full max-w-5xl px-1'>
-        <section className='w-full bg-custom-medium flex max-md:flex-wrap justify-evenly items-center px-5 max-lg:px-3 max-sm:px-1'>
+      <div className='flex flex-col items-center gap-4 w-full max-w-6xl p-1'>
+        <section className='w-full bg-custom-medium flex max-md:flex-wrap justify-evenly px-5 max-lg:px-3 max-sm:px-1'>
           <Information />
           <Photos />
         </section>

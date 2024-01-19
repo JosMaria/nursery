@@ -1,6 +1,6 @@
 export const SkeletonProductPage = () => (
   <div role='status' className='animate-pulse opacity-80 w-full flex justify-center items-start'>
-    <div className='w-full max-w-5xl flex flex-col p-3 gap-10 max-sm:gap-5'>
+    <div className='w-full max-w-6xl flex flex-col p-3 gap-10 max-sm:gap-5'>
       <div className='flex flex-wrap justify-evenly gap-10 max-sm:gap-6 w-full'>
         <div className='flex flex-col gap-4 max-sm:gap-2 item-center max-w-xl w-full max-h-72'>
           <div className='bg-custom-dark h-10 max-sm:h-6 w-1/2 self-center rounded'></div>

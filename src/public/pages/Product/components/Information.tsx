@@ -5,7 +5,7 @@ export const Information = () => {
   const productInfo = useProductInformation();
 
   return (
-    <article className='w-full flex flex-col items-center gap-1 max-sm:text-xs p-2 max-md:pt-0'>
+    <article className='w-full flex flex-col items-center gap-2 max-sm:text-xs p-2 max-md:pt-0'>
       <h1 className='text-2xl max-sm:text-xl font-medium first-letter:uppercase'>
         {productInfo.commonName}
       </h1>
