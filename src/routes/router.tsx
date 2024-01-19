@@ -55,7 +55,7 @@ export const router = createBrowserRouter(
         errorElement={<ErrorBoundary />}
         element={
           <Suspense fallback={<SkeletonProductPage />}>
-            <ProductRouter />
+            <SkeletonProductPage />
           </Suspense>
         }
       />
