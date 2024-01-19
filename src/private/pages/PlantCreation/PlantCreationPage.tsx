@@ -22,6 +22,9 @@ const PlantCreationPage = () => {
     reset,
   } = useForm({
     resolver: yupResolver<PlantCreationSchemaType>(plantCreationSchema),
+    defaultValues: {
+      classifications: [],
+    },
   });
 
   const {
@@ -111,7 +114,7 @@ const PlantCreationPage = () => {
               (*) Familia
             </label>
             <select className='input-custom w-60' id={`${id}-family`} {...register('family')}>
-              <option value=''>sin familia</option>
+              <option value='sin familia'>sin familia</option>
               {families?.map((family) => (
                 <option key={family.id} value={family.name}>
                   {family.name}

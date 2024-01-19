@@ -3,11 +3,11 @@ import FamilyCreationPage from '../pages/FamilyCreation/FamilyCreationPage';
 import PlantListPage from '../pages/PlantList/PlantListPage';
 import FamilyListPage from '../pages/FamilyList/FamilyListPage';
 import ReportPage from '../pages/Report/ReportPage';
-import { Route, Routes } from 'react-router-dom';
 import InventoryPage from '../pages/Inventory/InventoryPage';
 import AccountCreationPage from '../pages/AccountCreation/AccountCreationPage';
 import AccountListPage from '../pages/AccountList/AccountListPage';
 import PlantSettingPage from '../pages/PlantSetting/PlantSettingPage';
+import { Route, Routes } from 'react-router-dom';
 
 const PlantRouter = () => (
   <Routes>

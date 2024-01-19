@@ -9,7 +9,7 @@ export type PlantCreationDTOType = {
   commonName: string;
   scientificName: string;
   scientistLastnameInitial: string;
-  family: string;
+  family: string | null;
   classifications: string[];
   status: string;
   description: string;
