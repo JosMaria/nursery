@@ -23,6 +23,7 @@ const PlantCreationPage = () => {
   } = useForm({
     resolver: yupResolver<PlantCreationSchemaType>(plantCreationSchema),
     defaultValues: {
+      price: 0,
       classifications: [],
     },
   });
@@ -135,6 +136,19 @@ const PlantCreationPage = () => {
               ))}
             </select>
             <p className='msg-error-validation-custom'>{errors.status?.message}</p>
+          </fieldset>
+
+          <fieldset className='flex flex-col gap-1 w-60'>
+            <label className='text-sm font-medium' htmlFor={`${id}-price`}>
+              Precio
+            </label>
+            <input
+              className='input-custom'
+              id={`${id}-price`}
+              autoComplete='off'
+              {...register('price', { valueAsNumber: true })}
+            />
+            <p className='msg-error-validation-custom'>{errors.price?.message}</p>
           </fieldset>
 
           <fieldset className='flex flex-col gap-1 col-span-full'>

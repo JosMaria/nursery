@@ -8,6 +8,7 @@ export const useProductInformation = () => {
       scientistLastnameInitial,
       family,
       status,
+      price,
       classifications,
       description,
     },
@@ -19,6 +20,7 @@ export const useProductInformation = () => {
     scientistLastnameInitial,
     family,
     status,
+    price,
     classifications,
     description,
   };

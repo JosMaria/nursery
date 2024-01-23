@@ -1,4 +1,4 @@
-import { InferType, array, object, string } from 'yup';
+import { InferType, array, number, object, string } from 'yup';
 
 export const plantCreationSchema = object({
   commonName: string()
@@ -8,6 +8,7 @@ export const plantCreationSchema = object({
   scientistLastnameInitial: string().max(1, 'Max 1 letra').default(''),
   family: string().default(''),
   status: string().required(),
+  price: number().min(0, 'Ingrese un precio mayor a 0').required('Ingrese el precio').default(0),
   classifications: array()
     .of(string().required())
     .min(1, 'Selecciona al menos una clasificacion de planta')

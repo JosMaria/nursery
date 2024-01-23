@@ -23,6 +23,12 @@ export const Information = () => {
         <p className='flex gap-2'>
           <span className='font-medium'>Estado:</span> {translateStatus(productInfo.status)}
         </p>
+        <div className='flex gap-2'>
+          <span className='font-medium'>Precio:</span>
+          <p>
+            {productInfo.price}<span>Bs</span>
+          </p>
+        </div>
         <div className='flex flex-col'>
           <p className='font-medium'>Classificaciones:</p>
           <ul className='self-center'>

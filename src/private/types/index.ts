@@ -6,4 +6,5 @@ export * from './familyListTypes';
 export * from './inventoryTypes';
 export * from './plantCreationTypes';
 export * from './plantListTypes';
+export * from './plantSettingTypes';
 export * from './reportTypes';

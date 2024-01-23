@@ -12,6 +12,7 @@ export type PlantCreationDTOType = {
   family: string | null;
   classifications: string[];
   status: string;
+  price: number;
   description: string;
   details: string[];
   technicalSheet: TechnicalSheetType[];

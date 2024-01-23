@@ -7,6 +7,7 @@ export type SingleProductResponseType = {
   scientistLastnameInitial: string | null;
   family: string | null;
   status: StatusType;
+  price: number;
   classifications: ClassificationType[];
   description: string;
   photos_URL: string[];
