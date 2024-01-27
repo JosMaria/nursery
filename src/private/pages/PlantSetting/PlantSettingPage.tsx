@@ -3,18 +3,22 @@ import { useParams } from 'react-router-dom';
 import { fetchPlantById } from './services/service';
 import { IoIosArrowDown } from 'react-icons/io';
 import { translateStatus } from '../../../utils';
-import { UploadFileInput } from './components';
-import { useState } from 'react';
+import { DragAndDropImage, PictureSelectedContainer, PlantPictures } from './components';
+import { useRef, useState } from 'react';
+import { PictureUploadType } from '../../types';
 
 const urlImages: string[] = [
   'https://ornamentalis.com/wp-content/uploads/2015/01/Dahlia-hybrida.jpg',
-  // 'https://www.revistapem.org/wp-content/uploads/2018/09/petunia-flor.jpg',
-  // 'https://i0.wp.com/ornamentalis.com/wp-content/uploads/2019/07/plantas-ornamentales-nombres.jpg',
+  'https://www.revistapem.org/wp-content/uploads/2018/09/petunia-flor.jpg',
+  'https://i0.wp.com/ornamentalis.com/wp-content/uploads/2019/07/plantas-ornamentales-nombres.jpg',
 ];
 
 const PlantSettingPage = () => {
   const { id } = useParams();
   const [isDragging, setIsDragging] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [pictureSelected, setPictureSelected] = useState<PictureUploadType | null>(null);
+
   // const {
   //   data: plant,
   //   status,
@@ -43,71 +47,49 @@ const PlantSettingPage = () => {
     event.preventDefault();
     setIsDragging(false);
     console.log('on drop');
-    // const files = event.dataTransfer.files;
-    // addImages(files);
+    const files = event.dataTransfer.files;
+    if (files && files.length >= 0) {
+      const file = files[0];
+      if (file.type.split('/')[0] === 'image') {
+        setPictureSelected({ name: file.name, url: URL.createObjectURL(file) });
+      }
+    }
+  };
+
+  const onFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    const files = event.target.files;
+
+    if (files && files.length >= 0) {
+      const file = files[0];
+      if (file.type.split('/')[0] === 'image') {
+        setPictureSelected({ name: file.name, url: URL.createObjectURL(file) });
+      }
+    }
   };
 
   return (
     <section className='flex flex-col items-center'>
       <h1 className='h1-custom'>Configuracion de la Planta</h1>
-      {/* <article className='w-full flex flex-col items-start justify-start'>
-        <details className='border-2 border-custom-dark w-full rounded m-5' open={true}>
-          <summary className='button-custom flex w-full justify-between items-center rounded-none px-3'>
-            <p className='font-medium text-xl'>Details</p>
-            <IoIosArrowDown size='1.3em' className='-rotate-90' />
-          </summary>
-          <div className='bg-custom-medium p-2'>
-            <p>
-              <span className='font-medium'>Nombre Com&uacute;n:</span> {plant.commonName}
-            </p>
-            <p>
-              <span className='font-medium'>Nombre Cientifico:</span> {plant.scientificName}{' '}
-              {plant.scientistLastnameInitial}
-            </p>
-            <p>
-              <span className='font-medium'>Familia:</span> {plant.family}
-            </p>
-            <p>
-              <span className='font-medium'>Estado:</span> {translateStatus(plant.status)}
-            </p>
-            <div className='flex gap-2'>
-              <p className='font-medium'>Clasificaciones:</p>
-              <ul>
-                {plant.classifications.map((classification, index) => (
-                  <li key={index}>{classification}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </details>
-      </article>
 
-      <UploadFileInput /> */}
+      <article className='w-full max-w-4xl flex flex-col items-center gap-2 bg-pink-300 p-2'>
+        <PlantPictures urls={urlImages} />
 
-      <article className='w-full max-w-4xl'>
-        <h2 className='text-lg font-medium'>Fotos actuales</h2>
-        <div className='flex flex-wrap gap-5 bg-red-400 p-2'>
-          {urlImages.map((url, index) => (
-            <div className='w-60 h-fit' key={index}>
-              <img src={url} alt='img-1' />
-            </div>
-          ))}
-        </div>
-        <h2 className='text-lg font-medium'>Agregue nuevas fotos</h2>
-
-        <article
-          className='w-full max-w-md h-44 bg-custom-medium border-4 border-dashed border-custom-dark select-none flex justify-center items-center'
-          onDragOver={onDragOver}
-          onDragLeave={onDragLeave}
-          onDrop={onDrop}
-        >
-          <span className='font-bold text-lg max-sm:text-base tracking-wider text-skin-dark p-3 text-center'>
-            Arrastre y suelte las imagenes aqui o{' '}
-            <button className='button-custom' onClick={() => console.log('asdsad')}>
-              Elija una foto
-            </button>
-          </span>
-        </article>
+        {pictureSelected ? (
+          <PictureSelectedContainer
+            picture={pictureSelected}
+            changePicture={() => setPictureSelected(null)}
+          />
+        ) : (
+          <DragAndDropImage
+            onDragOver={onDragOver}
+            onDragLeave={onDragLeave}
+            onDrop={onDrop}
+            isDragging={isDragging}
+            fileInputRef={fileInputRef}
+            onFileSelect={onFileSelect}
+          />
+        )}
       </article>
     </section>
   );
