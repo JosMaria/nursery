@@ -1,8 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
-import { useParams } from 'react-router-dom';
-import { fetchPlantById } from './services/service';
-import { IoIosArrowDown } from 'react-icons/io';
-import { translateStatus } from '../../../utils';
+// import { useQuery } from '@tanstack/react-query';
+// import { useParams } from 'react-router-dom';
+// import { fetchPlantById } from './services/service';
+// import { IoIosArrowDown } from 'react-icons/io';
+// import { translateStatus } from '../../../utils';
 import { DragAndDropImage, PictureSelectedContainer, PlantPictures } from './components';
 import { useRef, useState } from 'react';
 import { PictureUploadType } from '../../types';
@@ -14,10 +14,15 @@ const urlImages: string[] = [
 ];
 
 const PlantSettingPage = () => {
-  const { id } = useParams();
+  //const { id } = useParams();
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [pictureSelected, setPictureSelected] = useState<PictureUploadType | null>(null);
+  const [fileSelected, setFileSelected] = useState<File>();
+
+  const changeFileSelected = (file: File) => {
+    setFileSelected(file);
+  };
 
   // const {
   //   data: plant,
@@ -30,44 +35,6 @@ const PlantSettingPage = () => {
   // if (status === 'pending') return <p>status pending</p>;
   // if (status === 'error') return <p>status error</p>;
 
-  const onDragOver = (event: React.DragEvent<HTMLElement>) => {
-    event.preventDefault();
-    setIsDragging(true);
-    event.dataTransfer.dropEffect = 'copy';
-    console.log('drag over');
-  };
-
-  const onDragLeave = (event: React.DragEvent<HTMLElement>) => {
-    event.preventDefault();
-    setIsDragging(false);
-    console.log('drag leave');
-  };
-
-  const onDrop = (event: React.DragEvent<HTMLElement>) => {
-    event.preventDefault();
-    setIsDragging(false);
-    console.log('on drop');
-    const files = event.dataTransfer.files;
-    if (files && files.length >= 0) {
-      const file = files[0];
-      if (file.type.split('/')[0] === 'image') {
-        setPictureSelected({ name: file.name, url: URL.createObjectURL(file) });
-      }
-    }
-  };
-
-  const onFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    const files = event.target.files;
-
-    if (files && files.length >= 0) {
-      const file = files[0];
-      if (file.type.split('/')[0] === 'image') {
-        setPictureSelected({ name: file.name, url: URL.createObjectURL(file) });
-      }
-    }
-  };
-
   return (
     <section className='flex flex-col items-center'>
       <h1 className='h1-custom'>Configuracion de la Planta</h1>
@@ -79,15 +46,15 @@ const PlantSettingPage = () => {
           <PictureSelectedContainer
             picture={pictureSelected}
             changePicture={() => setPictureSelected(null)}
+            fileSelected={fileSelected}
           />
         ) : (
           <DragAndDropImage
-            onDragOver={onDragOver}
-            onDragLeave={onDragLeave}
-            onDrop={onDrop}
             isDragging={isDragging}
             fileInputRef={fileInputRef}
-            onFileSelect={onFileSelect}
+            setIsDragging={setIsDragging}
+            changeFileSelected={changeFileSelected}
+            setPictureSelected={setPictureSelected}
           />
         )}
       </article>

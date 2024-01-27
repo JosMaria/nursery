@@ -1,38 +1,72 @@
+import { PictureUploadType } from '../../../types';
+
 type DragAndDropImageProps = {
-  onDragOver: (event: React.DragEvent<HTMLElement>) => void;
-  onDragLeave: (event: React.DragEvent<HTMLElement>) => void;
-  onDrop: (event: React.DragEvent<HTMLElement>) => void;
   isDragging: boolean;
   fileInputRef: React.MutableRefObject<HTMLInputElement | null>;
-  onFileSelect: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  setIsDragging: React.Dispatch<React.SetStateAction<boolean>>;
+  changeFileSelected: (file: File) => void;
+  setPictureSelected: React.Dispatch<React.SetStateAction<PictureUploadType | null>>;
 };
 
 export const DragAndDropImage = ({
-  onDragOver,
-  onDragLeave,
-  onDrop,
   isDragging,
   fileInputRef,
-  onFileSelect,
-}: DragAndDropImageProps) => (
-  <article
-    className='w-full max-w-md h-44 bg-custom-medium border-4 border-dashed border-custom-dark select-none flex justify-center items-center'
-    onDragOver={onDragOver}
-    onDragLeave={onDragLeave}
-    onDrop={onDrop}
-  >
-    {isDragging ? (
-      <span className='font-bold text-lg tracking-wider text-custom-dark p-1 text-center opacity-70'>
-        Suelte la foto aqui
-      </span>
-    ) : (
-      <span className='font-bold text-lg max-sm:text-base tracking-wider text-skin-dark p-3 text-center'>
-        Arrastre y suelte las fotos aqui o  {' '}
-        <button className='button-custom' onClick={() => console.log('asdsad')}>
-          Elija una foto
-        </button>
-      </span>
-    )}
-    <input className='hidden' type='file' ref={fileInputRef} onChange={onFileSelect} />
-  </article>
-);
+  setIsDragging,
+  changeFileSelected,
+  setPictureSelected,
+}: DragAndDropImageProps) => {
+  const onDragOver = (event: React.DragEvent<HTMLElement>) => {
+    event.preventDefault();
+    setIsDragging(true);
+    event.dataTransfer.dropEffect = 'copy';
+  };
+
+  const onDragLeave = (event: React.DragEvent<HTMLElement>) => {
+    event.preventDefault();
+    setIsDragging(false);
+  };
+
+  const onDrop = (event: React.DragEvent<HTMLElement>) => {
+    event.preventDefault();
+    setIsDragging(false);
+    const files = event.dataTransfer.files;
+    fileReadyToUpload(files);
+  };
+
+  const onFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    const files = event.target.files;
+    fileReadyToUpload(files);
+  };
+
+  const fileReadyToUpload = (fileList: FileList | null) => {
+    if (fileList && fileList.length >= 0) {
+      const fileSelected = fileList[0];
+      changeFileSelected(fileSelected);
+      setPictureSelected({ name: fileSelected.name, url: URL.createObjectURL(fileSelected) });
+    }
+  };
+
+  return (
+    <article
+      className='w-full max-w-md h-44 bg-custom-medium border-4 border-dashed border-custom-dark select-none flex justify-center items-center'
+      onDragOver={onDragOver}
+      onDragLeave={onDragLeave}
+      onDrop={onDrop}
+    >
+      {isDragging ? (
+        <span className='font-bold text-lg tracking-wider text-custom-dark p-1 text-center opacity-70'>
+          Suelte la foto aqui
+        </span>
+      ) : (
+        <span className='font-bold text-lg max-sm:text-base tracking-wider text-skin-dark p-3 text-center'>
+          Arrastre y suelte las fotos aqui o{' '}
+          <button className='button-custom' onClick={() => console.log('asdsad')}>
+            Elija una foto
+          </button>
+        </span>
+      )}
+      <input className='hidden' type='file' ref={fileInputRef} onChange={onFileSelect} />
+    </article>
+  );
+};
