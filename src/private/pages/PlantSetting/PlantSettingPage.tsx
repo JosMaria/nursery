@@ -3,7 +3,12 @@
 // import { fetchPlantById } from './services/service';
 // import { IoIosArrowDown } from 'react-icons/io';
 // import { translateStatus } from '../../../utils';
-import { DragAndDropImage, PictureSelectedContainer, PlantPictures } from './components';
+import {
+  DragAndDropImage,
+  Information,
+  PictureSelectedContainer,
+  PlantPictures,
+} from './components';
 import { useRef, useState } from 'react';
 import { PictureUploadType } from '../../types';
 
@@ -36,28 +41,32 @@ const PlantSettingPage = () => {
   // if (status === 'error') return <p>status error</p>;
 
   return (
-    <section className='flex flex-col items-center'>
+    <section className='flex flex-col items-center max-w-4xl'>
       <h1 className='h1-custom'>Configuracion de la Planta</h1>
-
-      <article className='w-full max-w-4xl flex flex-col items-center gap-2 bg-pink-300 p-2'>
-        <PlantPictures urls={urlImages} />
-
-        {pictureSelected ? (
-          <PictureSelectedContainer
-            picture={pictureSelected}
-            changePicture={() => setPictureSelected(null)}
-            fileSelected={fileSelected}
-          />
-        ) : (
-          <DragAndDropImage
-            isDragging={isDragging}
-            fileInputRef={fileInputRef}
-            setIsDragging={setIsDragging}
-            changeFileSelected={changeFileSelected}
-            setPictureSelected={setPictureSelected}
-          />
-        )}
-      </article>
+      <details className='w-full'>
+        <summary className='bg-custom-dark text-custom-light p-1 font-medium cursor-pointer select-none active:bg-custom-dark-hover'>
+          Fotos de la planta
+        </summary>
+        <article className='flex flex-col items-center gap-2 bg-custom-medium max-sm:p-1 p-2'>
+          <Information />
+          <PlantPictures urls={urlImages} />
+          {pictureSelected ? (
+            <PictureSelectedContainer
+              picture={pictureSelected}
+              changePicture={() => setPictureSelected(null)}
+              fileSelected={fileSelected}
+            />
+          ) : (
+            <DragAndDropImage
+              isDragging={isDragging}
+              fileInputRef={fileInputRef}
+              setIsDragging={setIsDragging}
+              changeFileSelected={changeFileSelected}
+              setPictureSelected={setPictureSelected}
+            />
+          )}
+        </article>
+      </details>
     </section>
   );
 };

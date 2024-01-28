@@ -49,7 +49,7 @@ export const DragAndDropImage = ({
 
   return (
     <article
-      className='w-full max-w-md h-44 bg-custom-medium border-4 border-dashed border-custom-dark select-none flex justify-center items-center'
+      className='w-full max-w-xl h-44 bg-custom-light border-4 border-dashed border-custom-dark select-none flex justify-center items-center'
       onDragOver={onDragOver}
       onDragLeave={onDragLeave}
       onDrop={onDrop}
@@ -59,7 +59,7 @@ export const DragAndDropImage = ({
           Suelte la foto aqui
         </span>
       ) : (
-        <span className='font-bold text-lg max-sm:text-base tracking-wider text-skin-dark p-3 text-center'>
+        <span className='font-bold text-lg max-sm:text-base tracking-wider text-skin-dark p-3 text-center h-full flex flex-col justify-center items-center'>
           Arrastre y suelte las fotos aqui o{' '}
           <button className='button-custom' onClick={() => console.log('asdsad')}>
             Elija una foto
