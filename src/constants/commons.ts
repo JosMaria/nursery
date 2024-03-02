@@ -1,6 +1,6 @@
-import { PlantClassificationType, StatusType } from '../types';
+import { ClassificationType, StatusType } from '../types';
 
-export const ALL_CLASSIFICATIONS: PlantClassificationType[] = [
+export const ALL_CLASSIFICATIONS: ClassificationType[] = [
   'FRUITFUL',
   'ALIMENTARY',
   'ORNAMENTAL',
@@ -13,8 +13,4 @@ export const ALL_CLASSIFICATIONS: PlantClassificationType[] = [
   'FOREST',
 ];
 
-export const ALL_STATUS: StatusType[] = [
-  'AVAILABLE',
-  'IN_CONSERVATION',
-  'NON_EXISTENT',
-];
+export const ALL_STATUS: StatusType[] = ['AVAILABLE', 'IN_CONSERVATION', 'NON_EXISTENT'];

@@ -1,4 +1,3 @@
-import { PlantClassificationType } from '../../../types';
 
 export type TechnicalSheetType = {
   word: string;

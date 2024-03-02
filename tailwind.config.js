@@ -35,13 +35,18 @@ export default {
       borderColor: {
         custom: {
           light: withOpacity('--color-light'),
-          dark: withOpacity('--color-dark')
+          dark: withOpacity('--color-dark'),
         },
       },
       colors: {
         custom: withOpacity('--color-dark'),
       },
       ringColor: {
+        custom: {
+          dark: withOpacity('--color-dark'),
+        },
+      },
+      accentColor: {
         custom: {
           dark: withOpacity('--color-dark'),
         },

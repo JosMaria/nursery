@@ -1,18 +1,18 @@
-import { PlantClassificationType, StatusType } from '../types';
+import { ClassificationType, RoleType, StatusType } from '../types';
 
-export const traduceStatus = (status: StatusType): string => {
+export const translateStatus = (status: StatusType): string => {
   if (status === 'IN_CONSERVATION') {
-    return 'en conservacion';
+    return 'EN CONSERVACION';
   } else if (status === 'AVAILABLE') {
-    return 'disponible';
-  } else {
-    return 'no existente';
+    return 'DISPONIBLE';
+  } else if (status === 'NON_EXISTENT') {
+    return 'NO EXISTENTE';
   }
+
+  throw new Error(`Status ${status} does not founded.`);
 };
 
-export const traduceClassification = (
-  classification: PlantClassificationType
-): string => {
+export const translateClassification = (classification: ClassificationType): string => {
   if (classification === 'ALIMENTARY') {
     return 'ALIMENTICIA';
   } else if (classification === 'CACTUS') {
@@ -36,4 +36,14 @@ export const traduceClassification = (
   }
 
   throw new Error(`Classification ${classification} does not founded.`);
+};
+
+export const translateRole = (role: RoleType): string => {
+  if (role === 'ADMINISTRATOR') {
+    return 'ADMINISTRADOR';
+  } else if (role === 'ASSISTANT') {
+    return 'AUXILIAR';
+  }
+
+  throw new Error(`Role ${role} does not founded.`);
 };

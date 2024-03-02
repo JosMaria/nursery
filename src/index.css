@@ -27,7 +27,7 @@
 
 @layer components {
   .button-custom {
-    @apply w-fit text-sm font-medium focus:ring focus:ring-custom-dark focus:border focus:border-custom-light focus:outline-none bg-custom-dark hover:bg-custom-dark-hover text-custom-light max-xs:text-sm py-1.5 max-xs:py-1 px-6 max-xs:px-5 rounded select-none;
+    @apply w-fit text-sm font-medium focus:ring-2 focus:ring-custom-dark focus:border focus:border-custom-light focus:outline-none bg-custom-dark hover:bg-custom-dark-hover text-custom-light max-xs:text-sm py-1 max-xs:py-1 px-6 max-xs:px-5 rounded select-none;
   }
 
   .h1-custom {
