@@ -6,13 +6,13 @@ import toast from 'react-hot-toast';
 
 type PictureSelectedContainerProps = {
   picture: PictureUploadType;
-  changePicture: () => void;
+  removePictureSelected: () => void;
   fileSelected?: File;
 };
 
 export const PictureSelectedContainer = ({
   picture,
-  changePicture,
+  removePictureSelected,
   fileSelected,
 }: PictureSelectedContainerProps) => {
   const { id } = useParams();
@@ -34,11 +34,12 @@ export const PictureSelectedContainer = ({
   if (!id) return <p>No se encontro las fotos de la planta con ID: {id}</p>;
 
   return (
-    <article className='max-w-xs flex flex-col items-center gap-1'>
+    <article className='max-w-xs w-full flex flex-col items-center gap-1'>
       <h1>
-        Nombre: <span className='italic'>{picture.name}</span>
+        <span className='font-medium'>Nombre: </span>
+        <span className='italic'>{picture.name}</span>
       </h1>
-      <div className='border-4 border-dashed border-custom-dark p-1 bg-custom-medium'>
+      <div className='border-4 border-dashed border-custom-dark p-1 bg-custom-light max-sm:w-60 w-72 h-fit'>
         <img src={picture.url} alt={picture.name} />
       </div>
       <div className='w-full flex justify-evenly'>
@@ -53,7 +54,7 @@ export const PictureSelectedContainer = ({
         </button>
         <button
           className='w-fit text-sm font-medium focus:ring-2 focus:ring-red-500 focus:border focus:border-red-100 focus:outline-none bg-red-500 hover:bg-red-600 text-red-50 max-xs:text-sm py-1 max-xs:py-1 px-6 max-xs:px-5 rounded select-none'
-          onClick={changePicture}
+          onClick={removePictureSelected}
         >
           Cancelar
         </button>

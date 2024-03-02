@@ -6,7 +6,7 @@ export const PlantPictures = ({ urls }: PlantPicturesProps) => (
   <div className='flex flex-wrap justify-center max-sm:gap-3 gap-4 p-2'>
     {urls.map((url, index) => (
       <div
-        className='max-xs:w-32 max-sm:w-36 max-lg:w-40 max-xl:w-52 w-60 flex flex-col justify-between gap-0.5 bg-custom-dark p-1.5 rounded'
+        className='max-xs:w-32 max-sm:w-36 max-lg:w-40 max-xl:w-52 w-60 flex flex-col justify-between gap-0.5 bg-custom-dark max-sm:p-1 p-1.5 rounded'
         key={index}
       >
         <img src={url} alt='img-1' />

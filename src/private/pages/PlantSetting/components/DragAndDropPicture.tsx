@@ -1,20 +1,14 @@
-import { PictureUploadType } from '../../../types';
+import { useCallback, useRef, useState } from 'react';
 
-type DragAndDropImageProps = {
-  isDragging: boolean;
-  fileInputRef: React.MutableRefObject<HTMLInputElement | null>;
-  setIsDragging: React.Dispatch<React.SetStateAction<boolean>>;
+type Props = {
   changeFileSelected: (file: File) => void;
-  setPictureSelected: React.Dispatch<React.SetStateAction<PictureUploadType | null>>;
+  changePictureSelected: (name: string, url: string) => void;
 };
 
-export const DragAndDropImage = ({
-  isDragging,
-  fileInputRef,
-  setIsDragging,
-  changeFileSelected,
-  setPictureSelected,
-}: DragAndDropImageProps) => {
+export const DragAndDropPicture = ({ changeFileSelected, changePictureSelected }: Props) => {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+
   const onDragOver = (event: React.DragEvent<HTMLElement>) => {
     event.preventDefault();
     setIsDragging(true);
@@ -43,9 +37,15 @@ export const DragAndDropImage = ({
     if (fileList && fileList.length >= 0) {
       const fileSelected = fileList[0];
       changeFileSelected(fileSelected);
-      setPictureSelected({ name: fileSelected.name, url: URL.createObjectURL(fileSelected) });
+      changePictureSelected(fileSelected.name, URL.createObjectURL(fileSelected));
     }
   };
+
+  const handleInputFileClick = useCallback(() => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  }, []);
 
   return (
     <article
@@ -55,18 +55,24 @@ export const DragAndDropImage = ({
       onDrop={onDrop}
     >
       {isDragging ? (
-        <span className='font-bold text-lg tracking-wider text-custom-dark p-1 text-center opacity-70'>
+        <span className='font-semibold text-lg tracking-wider text-custom-dark p-1 text-center opacity-70'>
           Suelte la foto aqui
         </span>
       ) : (
-        <span className='font-bold text-lg max-sm:text-base tracking-wider text-skin-dark p-3 text-center h-full flex flex-col justify-center items-center'>
+        <span className='font-semibold text-lg max-sm:text-base tracking-wider text-skin-dark p-3 text-center h-full flex flex-col justify-center items-center'>
           Arrastre y suelte las fotos aqui o{' '}
-          <button className='button-custom' onClick={() => console.log('asdsad')}>
+          <button className='button-custom' onClick={handleInputFileClick}>
             Elija una foto
           </button>
         </span>
       )}
-      <input className='hidden' type='file' ref={fileInputRef} onChange={onFileSelect} />
+      <input
+        className='hidden'
+        ref={fileInputRef}
+        onChange={onFileSelect}
+        type='file'
+        accept='image/*'
+      />
     </article>
   );
 };
