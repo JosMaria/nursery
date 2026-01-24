@@ -1,5 +1,6 @@
 package com.lievasoft.service;
 
+import com.lievasoft.dto.PlantCardResponse;
 import com.lievasoft.dto.PlantCreateDto;
 import com.lievasoft.dto.PlantResponseCreateDto;
 import com.lievasoft.entity.Plant;
@@ -18,5 +19,13 @@ public class PlantService {
         PLANTS.add(plantToPersist);
         long generatedPlantId = PLANTS.size();
         return new PlantResponseCreateDto(generatedPlantId, plantToPersist);
+    }
+
+    public List<PlantCardResponse> fetchAll() {
+        return PLANTS.stream()
+                .map(plant -> new PlantCardResponse(
+                        plant.getCommonName(),
+                        plant.getScientificName()
+                )).toList();
     }
 }
