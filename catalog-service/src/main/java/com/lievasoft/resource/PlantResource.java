@@ -21,8 +21,7 @@ public class PlantResource {
     @POST
     public Response create(PlantCreateDto payload) {
         var response = plantService.create(payload);
-        Long generatedId = response.id();
-        URI location = URI.create("/api/v1/plants/" + generatedId);
+        URI location = URI.create("/api/v1/plants/" + response.id());
         return Response.created(location)
                 .entity(response)
                 .build();
