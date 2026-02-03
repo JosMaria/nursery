@@ -40,15 +40,19 @@ public class Plant {
         this.createdAt = LocalDateTime.now();
     }
 
+    public Long getId() {
+        return this.id;
+    }
+
     public String getCommonName() {
-        return commonName;
+        return this.commonName;
     }
 
     public String getScientificName() {
-        return scientificName;
+        return this.scientificName;
     }
 
     public LocalDateTime getCreatedAt() {
-        return createdAt;
+        return this.createdAt;
     }
 }

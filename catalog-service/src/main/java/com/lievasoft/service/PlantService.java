@@ -4,6 +4,7 @@ import com.lievasoft.dto.PlantCardResponse;
 import com.lievasoft.dto.PlantCreateDto;
 import com.lievasoft.dto.PlantResponseCreateDto;
 import com.lievasoft.entity.Plant;
+import com.lievasoft.repository.PlantRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.ArrayList;
@@ -13,12 +14,16 @@ import java.util.List;
 public class PlantService {
 
     private static final List<Plant> PLANTS = new ArrayList<>();
+    private final PlantRepository plantRepository;
+
+    public PlantService(PlantRepository plantRepository) {
+        this.plantRepository = plantRepository;
+    }
 
     public PlantResponseCreateDto create(PlantCreateDto payload) {
         var plantToPersist = new Plant(payload);
-        PLANTS.add(plantToPersist);
-        long generatedPlantId = PLANTS.size();
-        return new PlantResponseCreateDto(generatedPlantId, plantToPersist);
+        plantRepository.persist(plantToPersist);
+        return new PlantResponseCreateDto(plantToPersist.getId(), plantToPersist);
     }
 
     public List<PlantCardResponse> fetchAll() {
