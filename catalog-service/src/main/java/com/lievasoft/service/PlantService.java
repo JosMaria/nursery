@@ -22,15 +22,11 @@ public class PlantService {
 
     public PlantResponseCreateDto create(PlantCreateDto payload) {
         var plantToPersist = new Plant(payload);
-        plantRepository.persist(plantToPersist);
+        plantRepository.create(plantToPersist);
         return new PlantResponseCreateDto(plantToPersist.getId(), plantToPersist);
     }
 
-    public List<PlantCardResponse> fetchAll() {
-        return PLANTS.stream()
-                .map(plant -> new PlantCardResponse(
-                        plant.getCommonName(),
-                        plant.getScientificName()
-                )).toList();
+    public List<PlantCardResponse> fetchPlantCards() {
+        return plantRepository.fetchPlantCards();
     }
 }

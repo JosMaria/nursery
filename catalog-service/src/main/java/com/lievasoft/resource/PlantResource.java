@@ -28,8 +28,8 @@ public class PlantResource {
     }
 
     @GET
-    public Response fetchAll() {
-        var response = plantService.fetchAll();
+    public Response fetchPlantCards() {
+        var response = plantService.fetchPlantCards();
         return Response.ok(response).build();
     }
 }

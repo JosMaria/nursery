@@ -1,5 +1,6 @@
 package com.lievasoft.entity;
 
+import com.lievasoft.dto.PlantCardResponse;
 import com.lievasoft.dto.PlantCreateDto;
 import jakarta.persistence.*;
 
@@ -9,6 +10,25 @@ import static jakarta.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Table(name = "plants")
+@NamedNativeQuery(
+        name = "Plant.fetchPlantCards",
+        query = """
+            SELECT common_name, scientific_name
+            FROM plants
+        """,
+        resultSetMapping = "PlantCardsMapping"
+
+)
+@SqlResultSetMapping(
+        name = "PlantCardsMapping",
+        classes = @ConstructorResult(
+                targetClass = PlantCardResponse.class,
+                columns = {
+                        @ColumnResult(name = "common_name", type = String.class),
+                        @ColumnResult(name = "scientific_name", type = String.class)
+                })
+
+)
 public class Plant {
 
     @Id
