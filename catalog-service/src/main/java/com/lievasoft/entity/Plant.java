@@ -6,16 +6,15 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+import static com.lievasoft.plant.PlantConstant.FETCH_PLANT_CARDS_NAME;
+import static com.lievasoft.plant.PlantConstant.FETCH_PLANT_CARDS_QUERY;
 import static jakarta.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Table(name = "plants")
 @NamedNativeQuery(
-        name = "Plant.fetchPlantCards",
-        query = """
-            SELECT common_name, scientific_name
-            FROM plants
-        """,
+        name = FETCH_PLANT_CARDS_NAME,
+        query = FETCH_PLANT_CARDS_QUERY,
         resultSetMapping = "PlantCardsMapping"
 
 )
@@ -25,9 +24,8 @@ import static jakarta.persistence.GenerationType.SEQUENCE;
                 targetClass = PlantCardResponse.class,
                 columns = {
                         @ColumnResult(name = "common_name", type = String.class),
-                        @ColumnResult(name = "scientific_name", type = String.class)
+                        @ColumnResult(name = "scientific", type = String.class)
                 })
-
 )
 public class Plant {
 

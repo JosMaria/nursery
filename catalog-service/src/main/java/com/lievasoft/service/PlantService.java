@@ -34,7 +34,7 @@ public class PlantService {
 
     public List<PlantCardResponse> fetchPlantCards() {
         var plantCards = plantRepository.fetchPlantCards();
-        cachePlantList(plantCards);
+//        cachePlantList(plantCards);
         return plantCards;
     }
 

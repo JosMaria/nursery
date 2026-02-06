@@ -8,6 +8,8 @@ import jakarta.transaction.Transactional;
 
 import java.util.List;
 
+import static com.lievasoft.plant.PlantConstant.FETCH_PLANT_CARDS_NAME;
+
 @ApplicationScoped
 public class PlantRepository implements PanacheRepository<Plant> {
 
@@ -18,8 +20,7 @@ public class PlantRepository implements PanacheRepository<Plant> {
 
     public List<PlantCardResponse> fetchPlantCards() {
         return getEntityManager()
-                .createNamedQuery("Plant.fetchPlantCards", PlantCardResponse.class)
+                .createNamedQuery(FETCH_PLANT_CARDS_NAME, PlantCardResponse.class)
                 .getResultList();
     }
-
 }
