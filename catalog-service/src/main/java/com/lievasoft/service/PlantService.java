@@ -7,6 +7,7 @@ import com.lievasoft.dto.PlantCreateDto;
 import com.lievasoft.dto.PlantResponseCreateDto;
 import com.lievasoft.entity.Plant;
 import com.lievasoft.repository.PlantRepository;
+import io.quarkus.cache.CacheResult;
 import io.quarkus.redis.datasource.RedisDataSource;
 import io.quarkus.redis.datasource.value.ValueCommands;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -32,10 +33,10 @@ public class PlantService {
         return new PlantResponseCreateDto(plantToPersist.getId(), plantToPersist);
     }
 
+    @CacheResult(cacheName = "plant-cards-cache")
     public List<PlantCardResponse> fetchPlantCards() {
-        var plantCards = plantRepository.fetchPlantCards();
+        return plantRepository.fetchPlantCards();
 //        cachePlantList(plantCards);
-        return plantCards;
     }
 
     public void cachePlantList(List<PlantCardResponse> plantCards) {
