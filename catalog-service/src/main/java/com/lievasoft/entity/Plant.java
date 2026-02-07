@@ -2,31 +2,52 @@ package com.lievasoft.entity;
 
 import com.lievasoft.dto.PlantCardResponse;
 import com.lievasoft.dto.PlantCreateDto;
+import com.lievasoft.dto.PlantDetailsResponse;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
-import static com.lievasoft.plant.PlantConstant.FETCH_PLANT_CARDS_NAME;
-import static com.lievasoft.plant.PlantConstant.FETCH_PLANT_CARDS_QUERY;
+import static com.lievasoft.plant.PlantConstant.*;
 import static jakarta.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Table(name = "plants")
-@NamedNativeQuery(
-        name = FETCH_PLANT_CARDS_NAME,
-        query = FETCH_PLANT_CARDS_QUERY,
-        resultSetMapping = "PlantCardsMapping"
+@NamedNativeQueries({
+        @NamedNativeQuery(
+                name = FETCH_PLANT_CARDS_NAME,
+                query = FETCH_PLANT_CARDS_QUERY,
+                resultSetMapping = "PlantCardsMapping"
+        ),
+        @NamedNativeQuery(
+                name = FETCH_PLANT_DETAILS_NAME,
+                query = FETCH_PLANT_DETAILS_QUERY,
+                resultSetMapping = "PlantDetailsMapping"
+        ),
 
-)
-@SqlResultSetMapping(
-        name = "PlantCardsMapping",
-        classes = @ConstructorResult(
-                targetClass = PlantCardResponse.class,
-                columns = {
-                        @ColumnResult(name = "common_name", type = String.class),
-                        @ColumnResult(name = "scientific", type = String.class)
-                })
-)
+})
+@SqlResultSetMappings({
+        @SqlResultSetMapping(
+                name = "PlantCardsMapping",
+                classes = @ConstructorResult(
+                        targetClass = PlantCardResponse.class,
+                        columns = {
+                                @ColumnResult(name = "common_name", type = String.class),
+                                @ColumnResult(name = "scientific", type = String.class)
+                        })
+        ),
+        @SqlResultSetMapping(
+                name = "PlantDetailsMapping",
+                classes = @ConstructorResult(
+                        targetClass = PlantDetailsResponse.class,
+                        columns = {
+                                @ColumnResult(name = "id", type = Long.class),
+                                @ColumnResult(name = "common_name", type = String.class),
+                                @ColumnResult(name = "scientific_name", type = String.class),
+                                @ColumnResult(name = "is_available", type = Boolean.class),
+                                @ColumnResult(name = "updated_at", type = LocalDateTime.class)
+                        })
+        )
+})
 public class Plant {
 
     @Id

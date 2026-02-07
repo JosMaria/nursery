@@ -8,4 +8,10 @@ public class PlantConstant {
                     FROM plants
             """;
 
+    public static final String FETCH_PLANT_DETAILS_NAME = "Plant.fetchPlantDetailsById";
+    public static final String FETCH_PLANT_DETAILS_QUERY = """
+                    SELECT id, common_name, scientific_name, is_available, updated_at
+                    FROM plants
+                    WHERE id = :id
+            """;
 }

@@ -6,6 +6,7 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.Response;
+import org.jboss.resteasy.reactive.RestPath;
 
 import java.net.URI;
 
@@ -35,7 +36,8 @@ public class PlantResource {
 
     @GET
     @Path("/{id}")
-    public Response fetchPlantDetailsById(Long id) {
-        return Response.ok().build();
+    public Response fetchPlantDetailsById(@RestPath("id") Long plantId) {
+        var response = plantService.fetchPlantDetailsById(plantId);
+        return Response.ok(response).build();
     }
 }

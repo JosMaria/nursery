@@ -11,6 +11,7 @@ import io.quarkus.redis.datasource.RedisDataSource;
 import io.quarkus.redis.datasource.hash.HashCommands;
 import io.quarkus.redis.datasource.keys.KeyCommands;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.persistence.EntityNotFoundException;
 
 import java.time.Duration;
 import java.util.List;
@@ -40,20 +41,25 @@ public class PlantService {
         return plantRepository.fetchPlantCards();
     }
 
-    public PlantDetailsResponse fetchPlantDetailsById(Long id) {
-        return null;
+    public PlantDetailsResponse fetchPlantDetailsById(Long plantId) {
+        var plantDetailsResponse = plantRepository.fetchPlantDetailsById(plantId)
+                .orElseThrow(() -> new EntityNotFoundException("Plant with ID %s not found".formatted(plantId)));
+        saveToRedisCache(plantDetailsResponse);
+        return plantDetailsResponse;
     }
 
-    private void saveToRedisCache(Long plantId, PlantDetailsResponse plantDetails) {
-        var key = "plant:details:%s".formatted(plantId);
+    private void saveToRedisCache(PlantDetailsResponse plantDetails) {
+        Long plantId = plantDetails.id();
+        String key = "plant:details:%s".formatted(plantId);
         Map<String, String> hash = Map.of(
                 "id", String.valueOf(plantId),
                 "commonName", plantDetails.commonName(),
                 "scientificName", plantDetails.scientificName(),
-                "isAvailable", String.valueOf(plantDetails.isAvailable())
+                "isAvailable", String.valueOf(plantDetails.isAvailable()),
+                "updatedAt", plantDetails.updatedAt().toString()
         );
 
-       this.hashCommands.hset(key, hash);
-       this.keyCommands.expire(key, Duration.ofSeconds(30));
+        this.hashCommands.hset(key, hash);
+        this.keyCommands.expire(key, Duration.ofMinutes(30));
     }
 }
