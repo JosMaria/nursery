@@ -30,7 +30,7 @@ import static jakarta.persistence.GenerationType.SEQUENCE;
 public class Plant {
 
     @Id
-    @SequenceGenerator(name = "sequence", sequenceName = "plant_sequence")
+    @SequenceGenerator(name = "sequence", sequenceName = "plant_sequence", allocationSize = 1)
     @GeneratedValue(strategy = SEQUENCE, generator = "sequence")
     private Long id;
 
@@ -72,5 +72,17 @@ public class Plant {
 
     public LocalDateTime getCreatedAt() {
         return this.createdAt;
+    }
+
+    @PrePersist
+    public void onCreated() {
+        var localDateTime = LocalDateTime.now();
+        this.createdAt = localDateTime;
+        this.updatedAt = localDateTime;
+    }
+
+    @PreUpdate
+    public void onUpdated() {
+        this.updatedAt = LocalDateTime.now();
     }
 }

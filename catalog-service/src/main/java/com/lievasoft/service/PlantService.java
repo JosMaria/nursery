@@ -33,10 +33,9 @@ public class PlantService {
         return new PlantResponseCreateDto(plantToPersist.getId(), plantToPersist);
     }
 
-    @CacheResult(cacheName = "plant-cards-cache")
+    @CacheResult(cacheName = "plant-cards-list")
     public List<PlantCardResponse> fetchPlantCards() {
         return plantRepository.fetchPlantCards();
-//        cachePlantList(plantCards);
     }
 
     public void cachePlantList(List<PlantCardResponse> plantCards) {
