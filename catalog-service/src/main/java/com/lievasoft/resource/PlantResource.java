@@ -32,4 +32,10 @@ public class PlantResource {
         var response = plantService.fetchPlantCards();
         return Response.ok(response).build();
     }
+
+    @GET
+    @Path("/{id}")
+    public Response fetchPlantDetailsById(Long id) {
+        return Response.ok().build();
+    }
 }

@@ -1,30 +1,32 @@
 package com.lievasoft.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lievasoft.dto.PlantCardResponse;
 import com.lievasoft.dto.PlantCreateDto;
+import com.lievasoft.dto.PlantDetailsResponse;
 import com.lievasoft.dto.PlantResponseCreateDto;
 import com.lievasoft.entity.Plant;
 import com.lievasoft.repository.PlantRepository;
 import io.quarkus.cache.CacheResult;
 import io.quarkus.redis.datasource.RedisDataSource;
-import io.quarkus.redis.datasource.value.ValueCommands;
+import io.quarkus.redis.datasource.hash.HashCommands;
+import io.quarkus.redis.datasource.keys.KeyCommands;
 import jakarta.enterprise.context.ApplicationScoped;
 
+import java.time.Duration;
 import java.util.List;
+import java.util.Map;
 
 @ApplicationScoped
 public class PlantService {
 
-    private final ValueCommands<String, String> valueCommands;
+    private final HashCommands<String, String, String> hashCommands;
+    private final KeyCommands<String> keyCommands;
     private final PlantRepository plantRepository;
-    private final ObjectMapper objectMapper;
 
-    public PlantService(PlantRepository plantRepository, RedisDataSource redisDataSource, ObjectMapper objectMapper) {
+    public PlantService(RedisDataSource redisDataSource, PlantRepository plantRepository) {
+        this.hashCommands = redisDataSource.hash(String.class);
+        this.keyCommands = redisDataSource.key();
         this.plantRepository = plantRepository;
-        valueCommands = redisDataSource.value(String.class);
-        this.objectMapper = objectMapper;
     }
 
     public PlantResponseCreateDto create(PlantCreateDto payload) {
@@ -38,17 +40,20 @@ public class PlantService {
         return plantRepository.fetchPlantCards();
     }
 
-    public void cachePlantList(List<PlantCardResponse> plantCards) {
-        String plantCardsJson = serializePlantList(plantCards);
-        valueCommands.set("plantCards:list", plantCardsJson);
+    public PlantDetailsResponse fetchPlantDetailsById(Long id) {
+        return null;
     }
 
-    private String serializePlantList(List<PlantCardResponse> plantCards) {
-        try {
-            return objectMapper.writeValueAsString(plantCards);
+    private void saveToRedisCache(Long plantId, PlantDetailsResponse plantDetails) {
+        var key = "plant:details:%s".formatted(plantId);
+        Map<String, String> hash = Map.of(
+                "id", String.valueOf(plantId),
+                "commonName", plantDetails.commonName(),
+                "scientificName", plantDetails.scientificName(),
+                "isAvailable", String.valueOf(plantDetails.isAvailable())
+        );
 
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException("Error serializing plant list", e);
-        }
+       this.hashCommands.hset(key, hash);
+       this.keyCommands.expire(key, Duration.ofSeconds(30));
     }
 }
