@@ -16,6 +16,7 @@ import jakarta.persistence.EntityNotFoundException;
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @ApplicationScoped
 public class PlantService {
@@ -42,24 +43,23 @@ public class PlantService {
     }
 
     public PlantDetailsResponse fetchPlantDetailsById(Long plantId) {
-        var plantDetailsResponse = plantRepository.fetchPlantDetailsById(plantId)
-                .orElseThrow(() -> new EntityNotFoundException("Plant with ID %s not found".formatted(plantId)));
-        saveToRedisCache(plantDetailsResponse);
-        return plantDetailsResponse;
+        var key = "plant:details:%s".formatted(plantId);
+        Map<String, String> redisPlantHash = hashCommands.hgetall(key);
+
+        if (!(Objects.isNull(redisPlantHash) || redisPlantHash.isEmpty()))
+            return new PlantDetailsResponse(redisPlantHash);
+
+        else {
+            var plantDetailsResponse = plantRepository.fetchPlantDetailsById(plantId)
+                    .orElseThrow(() -> new EntityNotFoundException("Plant with ID %s not found".formatted(plantId)));
+            saveToRedisCache(key, plantDetailsResponse);
+            return plantDetailsResponse;
+        }
     }
 
-    private void saveToRedisCache(PlantDetailsResponse plantDetails) {
-        Long plantId = plantDetails.id();
-        String key = "plant:details:%s".formatted(plantId);
-        Map<String, String> hash = Map.of(
-                "id", String.valueOf(plantId),
-                "commonName", plantDetails.commonName(),
-                "scientificName", plantDetails.scientificName(),
-                "isAvailable", String.valueOf(plantDetails.isAvailable()),
-                "updatedAt", plantDetails.updatedAt().toString()
-        );
-
-        this.hashCommands.hset(key, hash);
-        this.keyCommands.expire(key, Duration.ofMinutes(30));
+    private void saveToRedisCache(String key, PlantDetailsResponse plantDetails) {
+        Map<String, String> hashToPersist = plantDetails.mapToRedisHash();
+        this.hashCommands.hset(key, hashToPersist);
+        this.keyCommands.expire(key, Duration.ofMinutes(1));
     }
 }
