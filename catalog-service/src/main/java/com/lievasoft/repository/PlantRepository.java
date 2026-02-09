@@ -5,6 +5,7 @@ import com.lievasoft.dto.PlantDetailsResponse;
 import com.lievasoft.entity.Plant;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.persistence.NoResultException;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
@@ -28,11 +29,16 @@ public class PlantRepository implements PanacheRepository<Plant> {
     }
 
     public Optional<PlantDetailsResponse> fetchPlantDetailsById(Long plantId) {
-        var plantDetailsResponse = getEntityManager()
-                .createNamedQuery(FETCH_PLANT_DETAILS_NAME, PlantDetailsResponse.class)
-                .setParameter("id", plantId)
-                .getSingleResult();
+        try {
+            var plantDetailsResponse = getEntityManager()
+                    .createNamedQuery(FETCH_PLANT_DETAILS_NAME, PlantDetailsResponse.class)
+                    .setParameter("id", plantId)
+                    .getSingleResult();
 
-        return Optional.ofNullable(plantDetailsResponse);
+            return Optional.ofNullable(plantDetailsResponse);
+
+        } catch (NoResultException e) {
+            return Optional.empty();
+        }
     }
 }

@@ -5,13 +5,13 @@ import com.lievasoft.dto.PlantCreateDto;
 import com.lievasoft.dto.PlantDetailsResponse;
 import com.lievasoft.dto.PlantResponseCreateDto;
 import com.lievasoft.entity.Plant;
+import com.lievasoft.exception.PlantNotFoundException;
 import com.lievasoft.repository.PlantRepository;
 import io.quarkus.cache.CacheResult;
 import io.quarkus.redis.datasource.RedisDataSource;
 import io.quarkus.redis.datasource.hash.HashCommands;
 import io.quarkus.redis.datasource.keys.KeyCommands;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.persistence.EntityNotFoundException;
 
 import java.time.Duration;
 import java.util.List;
@@ -51,7 +51,7 @@ public class PlantService {
 
         else {
             var plantDetailsResponse = plantRepository.fetchPlantDetailsById(plantId)
-                    .orElseThrow(() -> new EntityNotFoundException("Plant with ID %s not found".formatted(plantId)));
+                    .orElseThrow(() -> new PlantNotFoundException(plantId));
             saveToRedisCache(key, plantDetailsResponse);
             return plantDetailsResponse;
         }
