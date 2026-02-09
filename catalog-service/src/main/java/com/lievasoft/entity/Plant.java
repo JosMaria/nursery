@@ -76,7 +76,6 @@ public class Plant {
     public Plant(PlantCreateDto plantCreateDto) {
         this.commonName = plantCreateDto.commonName();
         this.scientificName = plantCreateDto.scientificName();
-        this.createdAt = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -93,6 +92,10 @@ public class Plant {
 
     public LocalDateTime getCreatedAt() {
         return this.createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return this.updatedAt;
     }
 
     @PrePersist
