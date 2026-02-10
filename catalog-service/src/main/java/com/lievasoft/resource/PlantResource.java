@@ -1,7 +1,9 @@
 package com.lievasoft.resource;
 
 import com.lievasoft.dto.PlantCreateDto;
+import com.lievasoft.dto.PlantCreateDtoV2;
 import com.lievasoft.service.PlantService;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -26,6 +28,12 @@ public class PlantResource {
         return Response.created(location)
                 .entity(response)
                 .build();
+    }
+
+    @POST
+    @Path("/v2")
+    public Response createV2(@Valid PlantCreateDtoV2 payload) {
+        return Response.ok().build();
     }
 
     @GET

@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedNativeQueries;
 import jakarta.persistence.NamedNativeQuery;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.SequenceGenerator;
@@ -19,6 +20,7 @@ import jakarta.persistence.SqlResultSetMappings;
 import jakarta.persistence.Table;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static com.lievasoft.plant.PlantConstant.FETCH_PLANT_CARDS_NAME;
 import static com.lievasoft.plant.PlantConstant.FETCH_PLANT_CARDS_QUERY;
@@ -75,6 +77,9 @@ public class Plant {
 
     @Column(name = "scientific_name")
     private String scientificName;
+
+    @OneToMany(mappedBy = "plantId")
+    private List<CommonName> commonNames;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
