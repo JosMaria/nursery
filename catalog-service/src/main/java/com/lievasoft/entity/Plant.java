@@ -3,11 +3,27 @@ package com.lievasoft.entity;
 import com.lievasoft.dto.PlantCardResponse;
 import com.lievasoft.dto.PlantCreateDto;
 import com.lievasoft.dto.PlantDetailsResponse;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.ColumnResult;
+import jakarta.persistence.ConstructorResult;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.NamedNativeQueries;
+import jakarta.persistence.NamedNativeQuery;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.SqlResultSetMapping;
+import jakarta.persistence.SqlResultSetMappings;
+import jakarta.persistence.Table;
 
 import java.time.LocalDateTime;
 
-import static com.lievasoft.plant.PlantConstant.*;
+import static com.lievasoft.plant.PlantConstant.FETCH_PLANT_CARDS_NAME;
+import static com.lievasoft.plant.PlantConstant.FETCH_PLANT_CARDS_QUERY;
+import static com.lievasoft.plant.PlantConstant.FETCH_PLANT_DETAILS_NAME;
+import static com.lievasoft.plant.PlantConstant.FETCH_PLANT_DETAILS_QUERY;
 import static jakarta.persistence.GenerationType.SEQUENCE;
 
 @Entity
@@ -43,7 +59,6 @@ import static jakarta.persistence.GenerationType.SEQUENCE;
                                 @ColumnResult(name = "id", type = Long.class),
                                 @ColumnResult(name = "common_name", type = String.class),
                                 @ColumnResult(name = "scientific_name", type = String.class),
-                                @ColumnResult(name = "is_available", type = Boolean.class),
                                 @ColumnResult(name = "updated_at", type = LocalDateTime.class)
                         })
         )
@@ -60,9 +75,6 @@ public class Plant {
 
     @Column(name = "scientific_name")
     private String scientificName;
-
-    @Column(name = "is_available")
-    private boolean isAvailable;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -92,10 +104,6 @@ public class Plant {
 
     public LocalDateTime getCreatedAt() {
         return this.createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return this.updatedAt;
     }
 
     @PrePersist
