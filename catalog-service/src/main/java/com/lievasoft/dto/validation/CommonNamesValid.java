@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = CommonNamesValidator.class)
 public @interface CommonNamesValid {
 
-    String message() default "names is mandatory and country must exists in the Country Enum";
+    String message() default "";
 
     Class<?>[] groups() default {};
 

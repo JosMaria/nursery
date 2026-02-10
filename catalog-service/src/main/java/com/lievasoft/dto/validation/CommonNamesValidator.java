@@ -10,18 +10,25 @@ public class CommonNamesValidator implements ConstraintValidator<CommonNamesVali
 
     @Override
     public boolean isValid(List<CommonNameDto> dtos, ConstraintValidatorContext context) {
-        boolean isValid = true;
+        context.disableDefaultConstraintViolation();
+
+        String errorMessage = "cannot be null, empty or blank";
+        var hasError = false;
         var index = 0;
 
-        while (isValid && index < dtos.size()) {
-            var commonNameDto = dtos.get(index);
-            String name = commonNameDto.name();
-
-            if (Objects.isNull(name) || name.isBlank())
-                isValid = false;
-
+        for (var commonNameDto : dtos) {
+            if (isNameInvalid(commonNameDto.name())) {
+                var fullMessage = "common_name[%d] %s".formatted(index, errorMessage);
+                context.buildConstraintViolationWithTemplate(fullMessage).addConstraintViolation();
+                hasError = true;
+            }
             index++;
         }
-        return false;
+
+        return !hasError;
+    }
+
+    private boolean isNameInvalid(String name) {
+        return Objects.isNull(name) || name.isBlank();
     }
 }
