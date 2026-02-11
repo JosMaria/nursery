@@ -1,4 +1,4 @@
-package com.lievasoft.dto.validation;
+package com.lievasoft.dto.validation.order;
 
 public interface SecondValidationOrder {
 }

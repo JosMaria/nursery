@@ -1,4 +1,4 @@
-package com.lievasoft.dto.validation;
+package com.lievasoft.dto.validation.annotation;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;

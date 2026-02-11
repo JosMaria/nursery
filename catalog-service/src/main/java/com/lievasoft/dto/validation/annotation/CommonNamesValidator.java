@@ -1,5 +1,6 @@
-package com.lievasoft.dto.validation;
+package com.lievasoft.dto.validation.annotation;
 
+import com.lievasoft.dto.validation.CommonNameDto;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
@@ -10,11 +11,10 @@ public class CommonNamesValidator implements ConstraintValidator<CommonNamesVali
 
     @Override
     public boolean isValid(List<CommonNameDto> dtos, ConstraintValidatorContext context) {
-        context.disableDefaultConstraintViolation();
-
         String errorMessage = "cannot be null, empty or blank";
         var hasError = false;
         var index = 0;
+        context.disableDefaultConstraintViolation();
 
         for (var commonNameDto : dtos) {
             if (isNameInvalid(commonNameDto.name())) {
@@ -24,7 +24,6 @@ public class CommonNamesValidator implements ConstraintValidator<CommonNamesVali
             }
             index++;
         }
-
         return !hasError;
     }
 

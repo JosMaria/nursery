@@ -2,10 +2,10 @@ package com.lievasoft.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lievasoft.dto.validation.CommonNameDto;
-import com.lievasoft.dto.validation.CommonNamesValid;
-import com.lievasoft.dto.validation.FirstValidationOrder;
-import com.lievasoft.dto.validation.SecondValidationOrder;
-import com.lievasoft.dto.validation.ThirdValidationOrder;
+import com.lievasoft.dto.validation.annotation.CommonNamesValid;
+import com.lievasoft.dto.validation.order.FirstValidationOrder;
+import com.lievasoft.dto.validation.order.SecondValidationOrder;
+import com.lievasoft.dto.validation.order.ThirdValidationOrder;
 import com.lievasoft.entity.Country;
 import jakarta.validation.GroupSequence;
 import jakarta.validation.constraints.AssertFalse;
@@ -22,7 +22,6 @@ import java.util.Set;
         FirstValidationOrder.class,
         SecondValidationOrder.class,
         ThirdValidationOrder.class
-
 })
 public record PlantCreateDtoV2(
 
@@ -40,7 +39,7 @@ public record PlantCreateDtoV2(
         return !(Objects.isNull(commonNames) || commonNames.isEmpty());
     }
 
-    @AssertFalse(message = "Countries must be uniques.", groups = ThirdValidationOrder.class)
+    @AssertFalse(message = "countries of the common names must be uniques", groups = ThirdValidationOrder.class)
     public boolean hasDuplicateCountries() {
         Set<Country> obtainedCountries = new HashSet<>();
         var isRepeat = false;
@@ -51,7 +50,6 @@ public record PlantCreateDtoV2(
             isRepeat = !obtainedCountries.add(commonNameDto.country());
             index++;
         }
-
         return isRepeat;
     }
 }
