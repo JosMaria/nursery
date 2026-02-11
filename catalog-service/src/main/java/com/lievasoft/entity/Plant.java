@@ -2,7 +2,9 @@ package com.lievasoft.entity;
 
 import com.lievasoft.dto.PlantCardResponse;
 import com.lievasoft.dto.PlantCreateDto;
+import com.lievasoft.dto.PlantCreateDtoV2;
 import com.lievasoft.dto.PlantDetailsResponse;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.ColumnResult;
 import jakarta.persistence.ConstructorResult;
@@ -20,7 +22,8 @@ import jakarta.persistence.SqlResultSetMappings;
 import jakarta.persistence.Table;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import static com.lievasoft.plant.PlantConstant.FETCH_PLANT_CARDS_NAME;
 import static com.lievasoft.plant.PlantConstant.FETCH_PLANT_CARDS_QUERY;
@@ -72,14 +75,14 @@ public class Plant {
     @GeneratedValue(strategy = SEQUENCE, generator = "sequence")
     private Long id;
 
-    @Column(name = "common_name", nullable = false)
+    @Column(name = "common_name")
     private String commonName;
 
     @Column(name = "scientific_name")
     private String scientificName;
 
-    @OneToMany(mappedBy = "plantId")
-    private List<CommonName> commonNames;
+    @OneToMany(mappedBy = "plant", cascade = CascadeType.PERSIST)
+    private final Set<CommonName> commonNames = new HashSet<>();
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -95,12 +98,12 @@ public class Plant {
         this.scientificName = plantCreateDto.scientificName();
     }
 
-    public Long getId() {
-        return this.id;
+    public Plant(PlantCreateDtoV2 plantCreateDto) {
+        this.scientificName = plantCreateDto.scientificName();
     }
 
-    public String getCommonName() {
-        return this.commonName;
+    public Long getId() {
+        return this.id;
     }
 
     public String getScientificName() {
@@ -121,5 +124,12 @@ public class Plant {
     @PreUpdate
     public void onUpdated() {
         this.updatedAt = LocalDateTime.now();
+    }
+
+    public void addCommonNames(Set<CommonName> commonNames) {
+        commonNames.forEach(commonName -> {
+            this.commonNames.add(commonName);
+            commonName.setPlant(this);
+        });
     }
 }

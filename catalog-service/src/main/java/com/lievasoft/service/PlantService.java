@@ -2,8 +2,10 @@ package com.lievasoft.service;
 
 import com.lievasoft.dto.PlantCardResponse;
 import com.lievasoft.dto.PlantCreateDto;
+import com.lievasoft.dto.PlantCreateDtoV2;
 import com.lievasoft.dto.PlantDetailsResponse;
 import com.lievasoft.dto.PlantResponseCreateDto;
+import com.lievasoft.entity.CommonName;
 import com.lievasoft.entity.Plant;
 import com.lievasoft.exception.PlantNotFoundException;
 import com.lievasoft.repository.PlantRepository;
@@ -17,6 +19,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class PlantService {
@@ -33,6 +36,17 @@ public class PlantService {
 
     public PlantResponseCreateDto create(PlantCreateDto payload) {
         var plantToPersist = new Plant(payload);
+        plantRepository.create(plantToPersist);
+        return new PlantResponseCreateDto(plantToPersist.getId(), plantToPersist);
+    }
+
+    public PlantResponseCreateDto createV2(PlantCreateDtoV2 payload) {
+        var plantToPersist = new Plant(payload);
+        var commonNamesToPersist = payload.commonNames()
+                .stream().map(CommonName::new)
+                .collect(Collectors.toSet());
+
+        plantToPersist.addCommonNames(commonNamesToPersist);
         plantRepository.create(plantToPersist);
         return new PlantResponseCreateDto(plantToPersist.getId(), plantToPersist);
     }

@@ -33,7 +33,11 @@ public class PlantResource {
     @POST
     @Path("/v2")
     public Response createV2(@Valid PlantCreateDtoV2 payload) {
-        return Response.ok().build();
+        var plantResponseCreateDto = plantService.createV2(payload);
+        URI location = URI.create("/api/v1/plants/" + plantResponseCreateDto.id());
+        return Response.created(location)
+                .entity(plantResponseCreateDto)
+                .build();
     }
 
     @GET
