@@ -1,7 +1,6 @@
 package com.lievasoft.entity;
 
 import com.lievasoft.dto.PlantCardResponse;
-import com.lievasoft.dto.PlantCreateDto;
 import com.lievasoft.dto.PlantCreateDtoV2;
 import com.lievasoft.dto.PlantDetailsResponse;
 import jakarta.persistence.CascadeType;
@@ -75,9 +74,6 @@ public class Plant {
     @GeneratedValue(strategy = SEQUENCE, generator = "sequence")
     private Long id;
 
-    @Column(name = "common_name")
-    private String commonName;
-
     @Column(name = "scientific_name")
     private String scientificName;
 
@@ -91,11 +87,6 @@ public class Plant {
     private LocalDateTime updatedAt;
 
     public Plant() {
-    }
-
-    public Plant(PlantCreateDto plantCreateDto) {
-        this.commonName = plantCreateDto.commonName();
-        this.scientificName = plantCreateDto.scientificName();
     }
 
     public Plant(PlantCreateDtoV2 plantCreateDto) {

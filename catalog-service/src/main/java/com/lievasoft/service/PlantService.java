@@ -1,7 +1,6 @@
 package com.lievasoft.service;
 
 import com.lievasoft.dto.PlantCardResponse;
-import com.lievasoft.dto.PlantCreateDto;
 import com.lievasoft.dto.PlantCreateDtoV2;
 import com.lievasoft.dto.PlantDetailsResponse;
 import com.lievasoft.dto.PlantResponseCreateDto;
@@ -34,13 +33,7 @@ public class PlantService {
         this.plantRepository = plantRepository;
     }
 
-    public PlantResponseCreateDto create(PlantCreateDto payload) {
-        var plantToPersist = new Plant(payload);
-        plantRepository.create(plantToPersist);
-        return new PlantResponseCreateDto(plantToPersist.getId(), plantToPersist);
-    }
-
-    public PlantResponseCreateDto createV2(PlantCreateDtoV2 payload) {
+    public PlantResponseCreateDto create(PlantCreateDtoV2 payload) {
         var plantToPersist = new Plant(payload);
         var commonNamesToPersist = payload.commonNames()
                 .stream().map(CommonName::new)
