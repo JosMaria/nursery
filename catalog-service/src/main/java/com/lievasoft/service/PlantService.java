@@ -1,9 +1,9 @@
 package com.lievasoft.service;
 
-import com.lievasoft.dto.PlantCardResponse;
-import com.lievasoft.dto.PlantCreateDtoV2;
-import com.lievasoft.dto.PlantDetailsResponse;
-import com.lievasoft.dto.PlantResponseCreateDto;
+import com.lievasoft.dto.response.PlantCardResponse;
+import com.lievasoft.dto.request.PlantCreateDto;
+import com.lievasoft.dto.response.PlantDetailsResponse;
+import com.lievasoft.dto.response.PlantResponseCreateDto;
 import com.lievasoft.entity.CommonName;
 import com.lievasoft.entity.Plant;
 import com.lievasoft.exception.PlantNotFoundException;
@@ -33,7 +33,7 @@ public class PlantService {
         this.plantRepository = plantRepository;
     }
 
-    public PlantResponseCreateDto create(PlantCreateDtoV2 payload) {
+    public PlantResponseCreateDto create(PlantCreateDto payload) {
         var plantToPersist = new Plant(payload);
         var commonNamesToPersist = payload.commonNames()
                 .stream().map(CommonName::new)

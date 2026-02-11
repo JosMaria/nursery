@@ -1,4 +1,4 @@
-package com.lievasoft.dto;
+package com.lievasoft.dto.response;
 
 import com.lievasoft.entity.Plant;
 

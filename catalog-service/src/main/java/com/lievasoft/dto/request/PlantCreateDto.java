@@ -1,11 +1,11 @@
-package com.lievasoft.dto;
+package com.lievasoft.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.lievasoft.dto.validation.CommonNameDto;
-import com.lievasoft.dto.validation.annotation.CommonNamesValid;
-import com.lievasoft.dto.validation.order.FirstValidationOrder;
-import com.lievasoft.dto.validation.order.SecondValidationOrder;
-import com.lievasoft.dto.validation.order.ThirdValidationOrder;
+import com.lievasoft.dto.request.validation.CommonNameDto;
+import com.lievasoft.dto.request.validation.annotation.CommonNamesValid;
+import com.lievasoft.dto.request.validation.order.FirstValidationOrder;
+import com.lievasoft.dto.request.validation.order.SecondValidationOrder;
+import com.lievasoft.dto.request.validation.order.ThirdValidationOrder;
 import com.lievasoft.entity.Country;
 import jakarta.validation.GroupSequence;
 import jakarta.validation.constraints.AssertFalse;
@@ -18,12 +18,12 @@ import java.util.Objects;
 import java.util.Set;
 
 @GroupSequence({
-        PlantCreateDtoV2.class,
+        PlantCreateDto.class,
         FirstValidationOrder.class,
         SecondValidationOrder.class,
         ThirdValidationOrder.class
 })
-public record PlantCreateDtoV2(
+public record PlantCreateDto(
 
         @JsonProperty("scientific_name")
         @NotBlank(message = "scientific name must not be null, empty or blank")

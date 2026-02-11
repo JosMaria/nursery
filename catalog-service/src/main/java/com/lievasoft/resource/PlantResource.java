@@ -1,6 +1,6 @@
 package com.lievasoft.resource;
 
-import com.lievasoft.dto.PlantCreateDtoV2;
+import com.lievasoft.dto.request.PlantCreateDto;
 import com.lievasoft.service.PlantService;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.GET;
@@ -21,7 +21,7 @@ public class PlantResource {
     }
 
     @POST
-    public Response createV2(@Valid PlantCreateDtoV2 payload) {
+    public Response createV2(@Valid PlantCreateDto payload) {
         var plantResponseCreateDto = plantService.create(payload);
         URI location = URI.create("/api/v1/plants/" + plantResponseCreateDto.id());
         return Response.created(location)

@@ -1,7 +1,7 @@
 package com.lievasoft.repository;
 
-import com.lievasoft.dto.PlantCardResponse;
-import com.lievasoft.dto.PlantDetailsResponse;
+import com.lievasoft.dto.response.PlantCardResponse;
+import com.lievasoft.dto.response.PlantDetailsResponse;
 import com.lievasoft.entity.Plant;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;

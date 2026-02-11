@@ -1,6 +1,6 @@
 package com.lievasoft.entity;
 
-import com.lievasoft.dto.validation.CommonNameDto;
+import com.lievasoft.dto.request.validation.CommonNameDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

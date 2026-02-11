@@ -1,4 +1,4 @@
-package com.lievasoft.dto;
+package com.lievasoft.dto.response;
 
 import java.time.LocalDateTime;
 import java.util.Map;

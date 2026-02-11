@@ -1,8 +1,8 @@
 package com.lievasoft.entity;
 
-import com.lievasoft.dto.PlantCardResponse;
-import com.lievasoft.dto.PlantCreateDtoV2;
-import com.lievasoft.dto.PlantDetailsResponse;
+import com.lievasoft.dto.response.PlantCardResponse;
+import com.lievasoft.dto.request.PlantCreateDto;
+import com.lievasoft.dto.response.PlantDetailsResponse;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.ColumnResult;
@@ -89,7 +89,7 @@ public class Plant {
     public Plant() {
     }
 
-    public Plant(PlantCreateDtoV2 plantCreateDto) {
+    public Plant(PlantCreateDto plantCreateDto) {
         this.scientificName = plantCreateDto.scientificName();
     }
 

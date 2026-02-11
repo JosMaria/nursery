@@ -1,4 +1,4 @@
-package com.lievasoft.dto;
+package com.lievasoft.dto.response;
 
 public record PlantCardResponse(
         String scientificName,
