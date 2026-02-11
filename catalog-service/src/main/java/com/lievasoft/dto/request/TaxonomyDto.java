@@ -14,4 +14,14 @@ public record TaxonomyDto(
         String genus,
         String species
 ) {
+
+    public TaxonomyDto {
+        kingdom = kingdom.toLowerCase();
+        division = division.toLowerCase();
+        clazz = clazz.toLowerCase();
+        order = order.toLowerCase();
+        family = family.toLowerCase();
+        genus = genus.toLowerCase();
+        species = species.toLowerCase();
+    }
 }

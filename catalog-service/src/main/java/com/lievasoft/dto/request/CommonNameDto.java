@@ -7,4 +7,8 @@ public record CommonNameDto(
         Country country,
         String place
 ) {
+
+    public CommonNameDto {
+        name = name.toLowerCase();
+    }
 }
