@@ -21,7 +21,7 @@ public class PlantResource {
     }
 
     @POST
-    public Response createV2(@Valid PlantCreateDto payload) {
+    public Response create(@Valid PlantCreateDto payload) {
         var plantResponseCreateDto = plantService.create(payload);
         URI location = URI.create("/api/v1/plants/" + plantResponseCreateDto.id());
         return Response.created(location)

@@ -1,7 +1,7 @@
 package com.lievasoft.entity;
 
-import com.lievasoft.dto.response.PlantCardResponse;
 import com.lievasoft.dto.request.PlantCreateDto;
+import com.lievasoft.dto.response.PlantCardResponse;
 import com.lievasoft.dto.response.PlantDetailsResponse;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.NamedNativeQueries;
 import jakarta.persistence.NamedNativeQuery;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.SequenceGenerator;
@@ -74,8 +75,11 @@ public class Plant {
     @GeneratedValue(strategy = SEQUENCE, generator = "sequence")
     private Long id;
 
-    @Column(name = "scientific_name")
+    @Column(name = "scientific_name", unique = true)
     private String scientificName;
+
+    @OneToOne(mappedBy = "plant", cascade = CascadeType.PERSIST)
+    private Taxonomy taxonomy;
 
     @OneToMany(mappedBy = "plant", cascade = CascadeType.PERSIST)
     private final Set<CommonName> commonNames = new HashSet<>();
@@ -101,6 +105,10 @@ public class Plant {
         return this.scientificName;
     }
 
+    public void setTaxonomy(Taxonomy taxonomy) {
+        this.taxonomy = taxonomy;
+    }
+
     public LocalDateTime getCreatedAt() {
         return this.createdAt;
     }
@@ -122,5 +130,10 @@ public class Plant {
             this.commonNames.add(commonName);
             commonName.setPlant(this);
         });
+    }
+
+    public void addTaxonomy(Taxonomy taxonomy) {
+        this.setTaxonomy(taxonomy);
+        taxonomy.setPlant(this);
     }
 }

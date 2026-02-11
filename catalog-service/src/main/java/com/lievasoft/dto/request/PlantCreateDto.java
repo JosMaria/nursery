@@ -1,7 +1,6 @@
 package com.lievasoft.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.lievasoft.dto.request.validation.CommonNameDto;
 import com.lievasoft.dto.request.validation.annotation.CommonNamesValid;
 import com.lievasoft.dto.request.validation.order.FirstValidationOrder;
 import com.lievasoft.dto.request.validation.order.SecondValidationOrder;
@@ -31,7 +30,10 @@ public record PlantCreateDto(
 
         @JsonProperty("common_names")
         @CommonNamesValid(groups = SecondValidationOrder.class)
-        List<CommonNameDto> commonNames
+        List<CommonNameDto> commonNames,
+
+        @JsonProperty("taxonomy")
+        TaxonomyDto taxonomyDto
 ) {
 
     @AssertTrue(message = "common names list must not be null or empty", groups = FirstValidationOrder.class)
@@ -45,7 +47,7 @@ public record PlantCreateDto(
         var isRepeat = false;
         var index = 0;
 
-        while(!isRepeat && index < commonNames.size()) {
+        while (!isRepeat && index < commonNames.size()) {
             var commonNameDto = commonNames.get(index);
             isRepeat = !obtainedCountries.add(commonNameDto.country());
             index++;

@@ -6,6 +6,7 @@ import com.lievasoft.dto.response.PlantDetailsResponse;
 import com.lievasoft.dto.response.PlantResponseCreateDto;
 import com.lievasoft.entity.CommonName;
 import com.lievasoft.entity.Plant;
+import com.lievasoft.entity.Taxonomy;
 import com.lievasoft.exception.PlantNotFoundException;
 import com.lievasoft.repository.PlantRepository;
 import io.quarkus.cache.CacheResult;
@@ -38,8 +39,10 @@ public class PlantService {
         var commonNamesToPersist = payload.commonNames()
                 .stream().map(CommonName::new)
                 .collect(Collectors.toSet());
+        var taxonomyToPersist = new Taxonomy(payload.taxonomyDto());
 
         plantToPersist.addCommonNames(commonNamesToPersist);
+        plantToPersist.addTaxonomy(taxonomyToPersist);
         plantRepository.create(plantToPersist);
         return new PlantResponseCreateDto(plantToPersist.getId(), plantToPersist);
     }

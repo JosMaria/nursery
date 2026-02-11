@@ -1,6 +1,6 @@
 package com.lievasoft.dto.request.validation.annotation;
 
-import com.lievasoft.dto.request.validation.CommonNameDto;
+import com.lievasoft.dto.request.CommonNameDto;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 

@@ -1,4 +1,4 @@
-package com.lievasoft.dto.request.validation;
+package com.lievasoft.dto.request;
 
 import com.lievasoft.entity.Country;
 
