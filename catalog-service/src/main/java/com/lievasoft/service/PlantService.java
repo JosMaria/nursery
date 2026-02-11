@@ -1,7 +1,7 @@
 package com.lievasoft.service;
 
-import com.lievasoft.dto.response.PlantCardResponse;
 import com.lievasoft.dto.request.PlantCreateDto;
+import com.lievasoft.dto.response.PlantCardResponse;
 import com.lievasoft.dto.response.PlantDetailsResponse;
 import com.lievasoft.dto.response.PlantResponseCreateDto;
 import com.lievasoft.entity.CommonName;
@@ -19,6 +19,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
@@ -44,7 +45,13 @@ public class PlantService {
         plantToPersist.addCommonNames(commonNamesToPersist);
         plantToPersist.addTaxonomy(taxonomyToPersist);
         plantRepository.create(plantToPersist);
-        return new PlantResponseCreateDto(plantToPersist.getId(), plantToPersist);
+
+        return new PlantResponseCreateDto(
+                plantToPersist.getId(),
+                plantToPersist,
+                payload.taxonomyDto(),
+                Set.copyOf(payload.commonNames())
+        );
     }
 
     @CacheResult(cacheName = "plant-cards-list")
