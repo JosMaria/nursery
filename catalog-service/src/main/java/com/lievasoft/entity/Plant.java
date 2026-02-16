@@ -1,5 +1,6 @@
 package com.lievasoft.entity;
 
+import com.lievasoft.dto.plant.PlantCreateDTO;
 import com.lievasoft.dto.request.PlantCreateDto;
 import com.lievasoft.dto.response.PlantCardResponse;
 import com.lievasoft.dto.response.PlantDetailsResponse;
@@ -91,6 +92,10 @@ public class Plant {
     private LocalDateTime updatedAt;
 
     public Plant() {
+    }
+
+    public Plant(PlantCreateDTO plantCreateDTO) {
+        this.scientificName = plantCreateDTO.scientificName();
     }
 
     public Plant(PlantCreateDto plantCreateDto) {

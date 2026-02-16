@@ -1,5 +1,6 @@
 package com.lievasoft.entity;
 
+import com.lievasoft.dto.plant.CommonNameCreateDTO;
 import com.lievasoft.dto.request.CommonNameDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,6 +35,12 @@ public class CommonName {
     private String place;
 
     public CommonName() {
+    }
+
+    public CommonName(CommonNameCreateDTO commonNameCreateDTO) {
+        this.name = commonNameCreateDTO.name();
+        this.country = commonNameCreateDTO.country();
+        this.place = commonNameCreateDTO.place();
     }
 
     public CommonName(CommonNameDto commonNameDto) {

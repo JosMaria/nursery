@@ -1,6 +1,9 @@
 package com.lievasoft.resource;
 
+import com.lievasoft.dto.plant.PlantCreateDTO;
 import com.lievasoft.dto.request.PlantCreateRequest;
+import com.lievasoft.resource.transformer.PlantCreateTransformer;
+import com.lievasoft.resource.validator.PlantValidator;
 import com.lievasoft.service.PlantService;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -14,24 +17,20 @@ import java.net.URI;
 public class PlantResource {
 
     private final PlantService plantService;
-    private final PlantCreateValidator validator;
-    private final PlantCreateTransformer transformer;
+    private final PlantValidator plantValidator;
 
-    public PlantResource(PlantService plantService, PlantCreateValidator validator, PlantCreateTransformer transformer) {
+    public PlantResource(PlantService plantService, PlantValidator plantValidator) {
         this.plantService = plantService;
-        this.validator = validator;
-        this.transformer = transformer;
+        this.plantValidator = plantValidator;
     }
 
     @POST
-    public Response create(PlantCreateRequest payload) {
-        validator.validate(payload);
-        var plantCreateDto = transformer.transform(payload);
-        var plantResponseCreateDto = plantService.create(plantCreateDto);
-        URI location = URI.create("/api/v1/plants/" + plantResponseCreateDto.id());
-
+    public Response create(PlantCreateDTO plantCreateDTO) {
+        plantValidator.validateCreation(plantCreateDTO);
+        var plantCreateResponse = plantService.create(plantCreateDTO);
+        URI location = URI.create("/api/v1/plants/" + plantCreateResponse.id());
         return Response.created(location)
-                .entity(plantResponseCreateDto)
+                .entity(plantCreateResponse)
                 .build();
     }
 

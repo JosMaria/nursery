@@ -1,5 +1,7 @@
 package com.lievasoft.service;
 
+import com.lievasoft.dto.plant.PlantCreateDTO;
+import com.lievasoft.dto.plant.response.PlantCreateResponse;
 import com.lievasoft.dto.request.PlantCreateDto;
 import com.lievasoft.dto.response.PlantCardResponse;
 import com.lievasoft.dto.response.PlantDetailsResponse;
@@ -33,6 +35,25 @@ public class PlantService {
         this.hashCommands = redisDataSource.hash(String.class);
         this.keyCommands = redisDataSource.key();
         this.plantRepository = plantRepository;
+    }
+
+    public PlantCreateResponse create(PlantCreateDTO plantCreateDTO) {
+        var plantToPersist = new Plant(plantCreateDTO);
+        Taxonomy taxonomyToPersist = new Taxonomy(plantCreateDTO.taxonomyDTO());
+        Set<CommonName> commonNamesToPersist = plantCreateDTO.commonNamesDTO()
+                .stream()
+                .map(CommonName::new)
+                .collect(Collectors.toSet());
+
+        plantToPersist.addTaxonomy(taxonomyToPersist);
+        plantToPersist.addCommonNames(commonNamesToPersist);
+        plantRepository.create(plantToPersist);
+
+        return new PlantCreateResponse(
+                plantToPersist,
+                plantCreateDTO.taxonomyDTO(),
+                plantCreateDTO.commonNamesDTO()
+        );
     }
 
     public PlantResponseCreateDto create(PlantCreateDto payload) {

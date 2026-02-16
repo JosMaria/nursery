@@ -1,4 +1,4 @@
-package com.lievasoft.resource;
+package com.lievasoft.resource.transformer;
 
 import com.lievasoft.dto.request.PlantCreateDto;
 import com.lievasoft.dto.request.PlantCreateRequest;

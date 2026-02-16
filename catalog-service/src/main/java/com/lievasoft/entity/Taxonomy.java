@@ -1,5 +1,6 @@
 package com.lievasoft.entity;
 
+import com.lievasoft.dto.plant.TaxonomyCreateDTO;
 import com.lievasoft.dto.request.TaxonomyDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,6 +37,16 @@ public class Taxonomy {
     private String species;
 
     public Taxonomy() {
+    }
+
+    public Taxonomy(TaxonomyCreateDTO taxonomyCreateDTO) {
+        this.kingdom = taxonomyCreateDTO.kingdom();
+        this.division = taxonomyCreateDTO.division();
+        this.clazz = taxonomyCreateDTO.clazz();
+        this.order = taxonomyCreateDTO.order();
+        this.family = taxonomyCreateDTO.family();
+        this.genus = taxonomyCreateDTO.genus();
+        this.species = taxonomyCreateDTO.species();
     }
 
     public Taxonomy(TaxonomyDto taxonomyDto) {
