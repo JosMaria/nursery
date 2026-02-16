@@ -1,15 +1,7 @@
 package com.lievasoft.entity;
 
 import com.lievasoft.dto.plant.TaxonomyCreateDTO;
-import com.lievasoft.dto.request.TaxonomyDto;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MapsId;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "taxonomies")
@@ -47,16 +39,6 @@ public class Taxonomy {
         this.family = taxonomyCreateDTO.family();
         this.genus = taxonomyCreateDTO.genus();
         this.species = taxonomyCreateDTO.species();
-    }
-
-    public Taxonomy(TaxonomyDto taxonomyDto) {
-        this.kingdom = taxonomyDto.kingdom();
-        this.division = taxonomyDto.division();
-        this.clazz = taxonomyDto.clazz();
-        this.order = taxonomyDto.order();
-        this.family = taxonomyDto.family();
-        this.genus = taxonomyDto.genus();
-        this.species = taxonomyDto.species();
     }
 
     public void setPlant(Plant plant) {

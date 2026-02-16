@@ -2,10 +2,8 @@ package com.lievasoft.service;
 
 import com.lievasoft.dto.plant.PlantCreateDTO;
 import com.lievasoft.dto.plant.response.PlantCreateResponse;
-import com.lievasoft.dto.request.PlantCreateDto;
 import com.lievasoft.dto.response.PlantCardResponse;
 import com.lievasoft.dto.response.PlantDetailsResponse;
-import com.lievasoft.dto.response.PlantResponseCreateDto;
 import com.lievasoft.entity.CommonName;
 import com.lievasoft.entity.Plant;
 import com.lievasoft.entity.Taxonomy;
@@ -39,7 +37,7 @@ public class PlantService {
 
     public PlantCreateResponse create(PlantCreateDTO plantCreateDTO) {
         var plantToPersist = new Plant(plantCreateDTO);
-        Taxonomy taxonomyToPersist = new Taxonomy(plantCreateDTO.taxonomyDTO());
+        var taxonomyToPersist = new Taxonomy(plantCreateDTO.taxonomyDTO());
         Set<CommonName> commonNamesToPersist = plantCreateDTO.commonNamesDTO()
                 .stream()
                 .map(CommonName::new)
@@ -53,25 +51,6 @@ public class PlantService {
                 plantToPersist,
                 plantCreateDTO.taxonomyDTO(),
                 plantCreateDTO.commonNamesDTO()
-        );
-    }
-
-    public PlantResponseCreateDto create(PlantCreateDto payload) {
-        var plantToPersist = new Plant(payload);
-        var commonNamesToPersist = payload.commonNames()
-                .stream().map(CommonName::new)
-                .collect(Collectors.toSet());
-        var taxonomyToPersist = new Taxonomy(payload.taxonomyDto());
-
-        plantToPersist.addCommonNames(commonNamesToPersist);
-        plantToPersist.addTaxonomy(taxonomyToPersist);
-        plantRepository.create(plantToPersist);
-
-        return new PlantResponseCreateDto(
-                plantToPersist.getId(),
-                plantToPersist,
-                payload.taxonomyDto(),
-                Set.copyOf(payload.commonNames())
         );
     }
 

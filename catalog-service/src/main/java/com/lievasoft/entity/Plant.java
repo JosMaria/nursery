@@ -1,35 +1,15 @@
 package com.lievasoft.entity;
 
 import com.lievasoft.dto.plant.PlantCreateDTO;
-import com.lievasoft.dto.request.PlantCreateDto;
 import com.lievasoft.dto.response.PlantCardResponse;
 import com.lievasoft.dto.response.PlantDetailsResponse;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.ColumnResult;
-import jakarta.persistence.ConstructorResult;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.NamedNativeQueries;
-import jakarta.persistence.NamedNativeQuery;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.SqlResultSetMapping;
-import jakarta.persistence.SqlResultSetMappings;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.lievasoft.plant.PlantConstant.FETCH_PLANT_CARDS_NAME;
-import static com.lievasoft.plant.PlantConstant.FETCH_PLANT_CARDS_QUERY;
-import static com.lievasoft.plant.PlantConstant.FETCH_PLANT_DETAILS_NAME;
-import static com.lievasoft.plant.PlantConstant.FETCH_PLANT_DETAILS_QUERY;
+import static com.lievasoft.plant.PlantConstant.*;
 import static jakarta.persistence.GenerationType.SEQUENCE;
 
 @Entity
@@ -96,10 +76,6 @@ public class Plant {
 
     public Plant(PlantCreateDTO plantCreateDTO) {
         this.scientificName = plantCreateDTO.scientificName();
-    }
-
-    public Plant(PlantCreateDto plantCreateDto) {
-        this.scientificName = plantCreateDto.scientificName();
     }
 
     public Long getId() {
