@@ -22,6 +22,11 @@ public class PlantRepository implements PanacheRepository<Plant> {
         persist(plant);
     }
 
+    @Transactional
+    public void remove(Plant plant) {
+        delete(plant);
+    }
+
     public List<PlantCardResponse> fetchPlantCards() {
         return getEntityManager()
                 .createNamedQuery(FETCH_PLANT_CARDS_NAME, PlantCardResponse.class)

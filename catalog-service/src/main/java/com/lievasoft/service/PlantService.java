@@ -1,7 +1,8 @@
 package com.lievasoft.service;
 
 import com.lievasoft.dto.plant.PlantCreateDTO;
-import com.lievasoft.dto.plant.response.PlantCreateResponse;
+import com.lievasoft.dto.plant.PlantCreateResponse;
+import com.lievasoft.dto.plant.PlantResponse;
 import com.lievasoft.dto.response.PlantCardResponse;
 import com.lievasoft.dto.response.PlantDetailsResponse;
 import com.lievasoft.entity.CommonName;
@@ -52,6 +53,13 @@ public class PlantService {
                 plantCreateDTO.taxonomyDTO(),
                 plantCreateDTO.commonNamesDTO()
         );
+    }
+
+    public PlantResponse delete(Long plantId) {
+        var obtainedPlant = plantRepository.findByIdOptional(plantId)
+                .orElseThrow(() -> new PlantNotFoundException(plantId));
+        plantRepository.remove(obtainedPlant);
+        return new PlantResponse(obtainedPlant);
     }
 
     @CacheResult(cacheName = "plant-cards-list")

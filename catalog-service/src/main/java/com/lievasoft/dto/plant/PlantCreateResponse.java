@@ -1,8 +1,6 @@
-package com.lievasoft.dto.plant.response;
+package com.lievasoft.dto.plant;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.lievasoft.dto.plant.CommonNameCreateDTO;
-import com.lievasoft.dto.plant.TaxonomyCreateDTO;
 import com.lievasoft.entity.Plant;
 
 import java.time.LocalDateTime;

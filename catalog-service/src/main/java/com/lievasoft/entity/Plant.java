@@ -59,10 +59,10 @@ public class Plant {
     @Column(name = "scientific_name", unique = true)
     private String scientificName;
 
-    @OneToOne(mappedBy = "plant", cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy = "plant", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Taxonomy taxonomy;
 
-    @OneToMany(mappedBy = "plant", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "plant", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private final Set<CommonName> commonNames = new HashSet<>();
 
     @Column(name = "created_at")

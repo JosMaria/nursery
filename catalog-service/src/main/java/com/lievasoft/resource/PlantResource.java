@@ -3,6 +3,7 @@ package com.lievasoft.resource;
 import com.lievasoft.dto.plant.PlantCreateDTO;
 import com.lievasoft.resource.validator.PlantValidator;
 import com.lievasoft.service.PlantService;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -30,6 +31,13 @@ public class PlantResource {
         return Response.created(location)
                 .entity(plantCreateResponse)
                 .build();
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public Response delete(@RestPath("id") Long plantId) {
+        var plantResponse = plantService.delete(plantId);
+        return Response.ok(plantResponse).build();
     }
 
     @GET
