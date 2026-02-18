@@ -28,6 +28,10 @@ public class PlantValidator {
         List<Country> countries = commonNamesDTO.stream().map(CommonNameCreateDTO::country).toList();
         if (hasDuplicateCountries(countries))
             throw new IllegalArgumentException("countries of the common names must be uniques");
+
+        List<Boolean> selections = commonNamesDTO.stream().map(CommonNameCreateDTO::isSelected).toList();
+        if (existsMoreOneSelected(selections))
+            throw new IllegalArgumentException("It must has zero or one values in selection");
     }
 
     private boolean isScientificNameInvalid(String scientificName) {
@@ -55,5 +59,13 @@ public class PlantValidator {
         } while (!isRepeat && index < countries.size());
 
         return isRepeat;
+    }
+
+    private boolean existsMoreOneSelected(Collection<Boolean> selections) {
+        long selectedCount = selections.stream()
+                .filter(selectedValue -> selectedValue)
+                .count();
+
+        return selectedCount > 1;
     }
 }
