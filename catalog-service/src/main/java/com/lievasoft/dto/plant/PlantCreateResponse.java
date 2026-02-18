@@ -3,6 +3,7 @@ package com.lievasoft.dto.plant;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lievasoft.entity.Plant;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
@@ -19,7 +20,9 @@ public record PlantCreateResponse(
         TaxonomyCreateDTO taxonomyCreateDTO,
 
         @JsonProperty("common_names")
-        Collection<CommonNameCreateDTO> commonNamesDTO
+        Collection<CommonNameCreateDTO> commonNamesDTO,
+
+        BigDecimal price
 ) {
 
     public PlantCreateResponse(Plant persistedPlant,
@@ -30,7 +33,8 @@ public record PlantCreateResponse(
                 persistedPlant.getScientificName(),
                 persistedPlant.getCreatedAt(),
                 taxonomyCreateDTO,
-                commonNamesDTO
+                commonNamesDTO,
+                persistedPlant.getPrice()
         );
     }
 }

@@ -36,11 +36,12 @@ public class PlantResource {
     @DELETE
     @Path("/{id}")
     public Response delete(@RestPath("id") Long plantId) {
-        var plantResponse = plantService.delete(plantId);
+        var plantResponse = plantService.removeById(plantId);
         return Response.ok(plantResponse).build();
     }
 
     @GET
+    @Path("/cards")
     public Response fetchPlantCards() {
         var response = plantService.fetchPlantCards();
         return Response.ok(response).build();

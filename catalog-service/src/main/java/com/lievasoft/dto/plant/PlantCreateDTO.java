@@ -2,6 +2,7 @@ package com.lievasoft.dto.plant;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 
 public record PlantCreateDTO(
@@ -12,6 +13,8 @@ public record PlantCreateDTO(
         Collection<CommonNameCreateDTO> commonNamesDTO,
 
         @JsonProperty("taxonomy")
-        TaxonomyCreateDTO taxonomyDTO
+        TaxonomyCreateDTO taxonomyDTO,
+
+        BigDecimal price
 ) {
 }

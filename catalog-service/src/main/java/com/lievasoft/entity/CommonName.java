@@ -12,7 +12,7 @@ public class CommonName {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "plantId", nullable = false)
+    @JoinColumn(name = "plant_id", nullable = false)
     private Plant plant;
 
     @Column(nullable = false)

@@ -5,6 +5,7 @@ import com.lievasoft.dto.response.PlantCardResponse;
 import com.lievasoft.dto.response.PlantDetailsResponse;
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -65,6 +66,9 @@ public class Plant {
     @OneToMany(mappedBy = "plant", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private final Set<CommonName> commonNames = new HashSet<>();
 
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal price;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
@@ -76,6 +80,7 @@ public class Plant {
 
     public Plant(PlantCreateDTO plantCreateDTO) {
         this.scientificName = plantCreateDTO.scientificName();
+        this.price = plantCreateDTO.price();
     }
 
     public Long getId() {
@@ -88,6 +93,10 @@ public class Plant {
 
     public void setTaxonomy(Taxonomy taxonomy) {
         this.taxonomy = taxonomy;
+    }
+
+    public BigDecimal getPrice() {
+        return this.price;
     }
 
     public LocalDateTime getCreatedAt() {

@@ -55,7 +55,7 @@ public class PlantService {
         );
     }
 
-    public PlantResponse delete(Long plantId) {
+    public PlantResponse removeById(Long plantId) {
         var obtainedPlant = plantRepository.findByIdOptional(plantId)
                 .orElseThrow(() -> new PlantNotFoundException(plantId));
         plantRepository.remove(obtainedPlant);
