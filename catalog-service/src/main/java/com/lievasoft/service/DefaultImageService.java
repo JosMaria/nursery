@@ -35,16 +35,15 @@ public class DefaultImageService implements ImageService {
     @Transactional
     public PlantImageResponse persist(long plantId, boolean isSelected, FileUpload imageUpload) {
         var persistedPlant = plantRepository.obtainByIdOrThrowException(plantId);
-        var uploadImageResponse = imageStorageService.uploadImageToFileSystem(plantId, imageUpload);
-
-        if (isSelected) {
-            boolean existImages = imageRepository.existsByPlant(plantId);
-            if (existImages) {
-                int rowsAffected = imageRepository.update("isSelected = FALSE WHERE plant.id = ?1", plantId);
+        if (imageRepository.existsByPlant(plantId)) {
+            if (isSelected) {
+                var statement = "isSelected = FALSE WHERE plant.id = ?1 AND isSelected = TRUE";
+                int rowsAffected = imageRepository.update(statement, plantId);
                 LOG.infof("%s images affected given plantId %s", rowsAffected, plantId);
             }
-        }
+        } else isSelected = true;
 
+        var uploadImageResponse = imageStorageService.uploadImageToFileSystem(plantId, imageUpload);
         var imageToPersist = new Image(
                 uploadImageResponse.storagePath(),
                 uploadImageResponse.filename(),
@@ -52,7 +51,6 @@ public class DefaultImageService implements ImageService {
                 imageUpload.contentType(),
                 isSelected
         );
-
         persistedPlant.addImage(imageToPersist);
         return new PlantImageResponse(imageToPersist);
     }
